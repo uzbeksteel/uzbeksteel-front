@@ -1,0 +1,17 @@
+export const dictionary = {
+    add: 'Add',
+    save: 'Save',
+    noData: 'No data',
+    search: 'Search',
+    title: 'Title',
+    top: 'Top',
+    cancel: 'Cancel',
+    createdAt: 'Created at',
+    address: 'Address',
+    amount: 'Amount',
+    actions: 'Actions',
+    loading: 'Loading',
+    edit: 'Edit',
+    messages: ['Please enter', 'Must be at least 6 characters', 'Invalid link'],
+    warning: 'Are you sure you want to delete?',
+};
