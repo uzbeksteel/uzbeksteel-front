@@ -2,7 +2,7 @@ import { ROUTES } from '@/constants';
 import { Layout } from '@/layout';
 // import { useAuthStore } from '@/store';
 import { useRoutes } from 'react-router-dom';
-import { Forgot, Home, Login } from './loadable';
+import { Deeds, Forgot, Graphics, GraphicsDetail, Home, Login, Lows } from './loadable';
 import { Protected } from './protected';
 import { Public } from './public';
 
@@ -21,6 +21,27 @@ export const Router = () => {
                         {
                             index: true,
                             element: <Home />,
+                        },
+                        {
+                            path: ROUTES.graphics,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <Graphics />,
+                                },
+                                {
+                                    path: ROUTES.single,
+                                    element: <GraphicsDetail />,
+                                },
+                            ],
+                        },
+                        {
+                            path: ROUTES.deeds,
+                            element: <Deeds />,
+                        },
+                        {
+                            path: ROUTES.lows,
+                            element: <Lows />,
                         },
                     ],
                 },

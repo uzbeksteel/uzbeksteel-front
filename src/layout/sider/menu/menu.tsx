@@ -16,5 +16,5 @@ export const Menu = () => {
         history.push(key);
     };
 
-    return <AntMenu mode="inline" theme="light" selectedKeys={[selectedMenuOpenKey]} openKeys={[selectedMenuOpenKey]} items={menuItems} onClick={handleClick} />;
+    return <AntMenu mode="inline" theme="light" selectedKeys={[decodedPathname]} openKeys={[decodedPathname]} items={menuItems} onClick={handleClick} />;
 };

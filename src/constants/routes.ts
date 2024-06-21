@@ -5,4 +5,7 @@ export const ROUTES = {
     single: ':id',
     login: '/login',
     forgot: 'forgot',
+    graphics: '/graphics',
+    deeds: '/deeds',
+    lows: '/lows',
 } as const;

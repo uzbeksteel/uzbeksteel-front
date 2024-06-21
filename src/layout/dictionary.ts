@@ -1,4 +1,4 @@
 export const dictionary = {
-    labels: ['Dashboard'],
+    labels: ['Дашборд', 'Графиклар', 'Далолатномалар', 'Асослар'],
     modal: ['Вы хотите выйти из системы?'],
 };
