@@ -1,4 +1,5 @@
 import { Box, Card, Icon, Typography } from '@/components';
+import { history } from '@/lib/utils';
 import { Tabs } from 'antd';
 import { useState } from 'react';
 import { Tab1, Tab2, Tab3 } from './tabs';
@@ -9,10 +10,10 @@ export const GraphicsDetail = () => {
 
     return (
         <>
-            <Card cardType="horizantal">
+            <Card>
                 <Box $direction="column" $gap="20px">
                     <Box $gap="20px">
-                        <Icon name="ArrowLeft" />
+                        <Icon name="ArrowLeft" onClick={() => history.back()} style={{ cursor: 'pointer' }} />
                         <Typography type="title" level={4}>
                             Далолатномалар
                         </Typography>
@@ -21,7 +22,7 @@ export const GraphicsDetail = () => {
                 </Box>
             </Card>
             <br />
-            <Card cardType="block">{key === '1' ? <Tab1 /> : key === '2' ? <Tab2 /> : <Tab3 />}</Card>
+            <Card>{key === '1' ? <Tab1 /> : key === '2' ? <Tab2 /> : <Tab3 />}</Card>
         </>
     );
 };
