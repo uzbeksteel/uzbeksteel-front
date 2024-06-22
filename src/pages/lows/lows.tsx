@@ -1,3 +1,5 @@
+import { LowsTable } from './table';
+
 export const Lows = () => {
-    return <div>Lows</div>;
+    return <LowsTable />;
 };
