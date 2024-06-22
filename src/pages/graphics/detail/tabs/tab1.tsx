@@ -1,4 +1,5 @@
 import { Table } from '@/components';
+import { useResponsive } from '@/lib/hooks';
 
 const dataSource = [
     {
@@ -34,5 +35,7 @@ const columns = [
 ];
 
 export const Tab1 = () => {
-    return <Table columns={columns} dataSource={dataSource} titleTable="Тузилган далолатномалар рўйхати" isAdd={false} />;
+    const { isTablet } = useResponsive();
+
+    return <Table columns={columns} dataSource={dataSource} titleTable={!isTablet ? '' : 'Тузилган далолатномалар рўйхати'} isAdd={false} />;
 };
