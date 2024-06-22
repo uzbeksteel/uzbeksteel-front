@@ -11,10 +11,8 @@ export const Layout = () => {
     return (
         <AntLayout>
             <Header bg={colorBgContainer} />
-
             <AntLayout>
                 <Sider bg={colorBgContainer} />
-
                 <Content bg={colorBgContainer} />
             </AntLayout>
         </AntLayout>
