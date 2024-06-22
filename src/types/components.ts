@@ -49,4 +49,5 @@ export type TAddProps = {
 export type TIsAdd = {
     isAdd?: boolean;
     titleTable?: string;
+    onClick?: () => void;
 };

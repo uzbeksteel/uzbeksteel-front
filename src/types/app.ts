@@ -6,6 +6,7 @@ export interface IAppStore {
     search: string;
     action: Action;
     isModal: boolean;
+    isDrawer: boolean;
     imageId: number;
     fileList: UploadFile[];
     location: Location;
@@ -18,6 +19,7 @@ export interface IAppStore {
     setHistory: ({ action, location }: THistory) => void;
     setImageId: (imageId: number) => void;
     setIsModal: (isModal: boolean) => void;
+    setIsDrawer: (isDrawer: boolean) => void;
     setFileList: (fileList: UploadFile[]) => void;
     setCollapsed: (collapsed: boolean) => void;
     setPreviewImage: (image: string) => void;
