@@ -1,5 +1,5 @@
 export const dictionary = {
-    add: 'Add',
+    add: 'Create',
     save: 'Save',
     noData: 'No data',
     search: 'Search',

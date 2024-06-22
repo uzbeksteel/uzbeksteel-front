@@ -2,6 +2,7 @@ export { Box } from './box';
 export * from './button';
 export { Card } from './card';
 export * from './common';
+export { Drawer } from './drawer';
 export { Float } from './float';
 export * from './form';
 export { Icon } from './icon';

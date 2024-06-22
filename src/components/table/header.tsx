@@ -7,7 +7,7 @@ import { Add } from '../common';
 import { Icon } from '../icon';
 import { AntInput } from './style';
 
-export const Header = ({ isAdd, titleTable }: TIsAdd) => {
+export const Header = ({ isAdd, titleTable, onClick }: TIsAdd) => {
     const { onSearch } = useDebounce();
 
     return (
@@ -20,7 +20,7 @@ export const Header = ({ isAdd, titleTable }: TIsAdd) => {
                 <Icon name="RotateCcw" />
                 <Icon name="Settings" />
                 <Icon name="Expand" />
-                {!isAdd && <Add path={ROUTES.add} />}
+                {!isAdd ? <Add path={ROUTES.add} /> : <Add onClick={onClick} />}
             </Box>
         </Flex>
     );
