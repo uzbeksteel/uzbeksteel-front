@@ -12,6 +12,7 @@ export const LayoutSider = styled(Layout.Sider)<StyleProps>`
     background: ${({ $bg }) => $bg} !important;
     position: relative;
     box-shadow: 0px 2px 8px 0px #00000026;
+    z-index: 99;
 `;
 
 export const LayoutHeader = styled(Layout.Header)<StyleProps>`
