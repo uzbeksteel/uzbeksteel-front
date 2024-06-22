@@ -6,6 +6,7 @@ import { createSelectors } from '../createSelectors';
 const initialState = {
     theme: getLocalStorage(THEME) || ETheme.LIGHT,
     isModal: false,
+    isDrawer: false,
     search: '',
     action: history.action,
     imageId: 0,
@@ -32,6 +33,7 @@ const useAppBase = create<IAppStore>()((set) => ({
     setImageId: (imageId) => set(() => ({ imageId })),
     setHistory: ({ action, location }) => set(() => ({ action, location })),
     setIsModal: (isModal) => set(() => ({ isModal })),
+    setIsDrawer: (isDrawer) => set(() => ({ isDrawer })),
     setFileList: (fileList) => set(() => ({ fileList })),
     setCollapsed: (collapsed) =>
         set((state) => {

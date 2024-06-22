@@ -4,7 +4,7 @@ import { TableProps } from 'antd';
 import { Header } from './header';
 import { AndtTable } from './style';
 
-export const Table = ({ isAdd, titleTable, ...props }: TableProps<any> & Partial<TIsAdd>) => {
+export const Table = ({ isAdd, titleTable, onClick, ...props }: TableProps<any> & Partial<TIsAdd>) => {
     const isFetching = useIsFetching();
 
     return (
@@ -20,7 +20,7 @@ export const Table = ({ isAdd, titleTable, ...props }: TableProps<any> & Partial
             rowKey="id"
             bordered
             loading={!!isFetching}
-            title={() => <Header isAdd={isAdd} titleTable={titleTable} />}
+            title={() => <Header onClick={onClick} isAdd={isAdd} titleTable={titleTable} />}
             {...props}
         />
     );
