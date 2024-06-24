@@ -3,15 +3,14 @@ import { Input } from 'antd';
 import { FC } from 'react';
 import { dictionary } from '../dictionary';
 import { AuthForm } from '../style';
-import { TabProps } from './type';
+import { IProps, TabProps } from './type';
 
 interface Values {
     login: string;
     password: string;
 }
-17;
 
-export const Tab2: FC<TabProps<Values> & { isPending: boolean }> = ({ onFinish, isPending }) => {
+export const Tab11: FC<TabProps<Values> & IProps> = ({ onFinish, isPending }) => {
     return (
         <AuthForm layout="vertical" onFinish={onFinish}>
             <Field span={24} name="login" prefix={<Icon name="User" />} placeholder="Имя пользователя" />
