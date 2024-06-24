@@ -10,3 +10,4 @@ export { Loading } from './loading';
 export { ImageModal } from './modal';
 export { Table } from './table';
 export * from './typography';
+export { Calendar } from './calendar';
