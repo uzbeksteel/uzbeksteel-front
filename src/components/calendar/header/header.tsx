@@ -4,6 +4,7 @@ import { Button, Select } from 'antd';
 import localeData from 'dayjs/plugin/localeData';
 import { Box, Icon } from '@/components';
 import { CalendarHeaderProps } from 'antd/lib/calendar/Header';
+import { Create } from '@/components/calendar/create';
 
 dayjs.extend(localeData);
 
@@ -32,15 +33,15 @@ export const Header: FC<Pick<CalendarHeaderProps<Dayjs>, 'onChange' | 'value' | 
             </Select.Option>,
         );
     }
+
     return (
         <Box $p="15px 15px 15px 0" $align="center" $justify="space-between">
-            <Button type="primary" size="middle" icon={<Icon name="Plus" />}>
+            <Button type="primary" size="middle" icon={<Icon name="Plus" />} onClick={Create}>
                 Создать
             </Button>
             <Box>
                 <Select
                     size="middle"
-                    dropdownMatchSelectWidth={false}
                     className="my-year-select"
                     value={year}
                     onChange={(newYear) => {
@@ -52,7 +53,6 @@ export const Header: FC<Pick<CalendarHeaderProps<Dayjs>, 'onChange' | 'value' | 
                 </Select>
                 <Select
                     size="middle"
-                    dropdownMatchSelectWidth={false}
                     value={month}
                     onChange={(newMonth) => {
                         const now = value.clone().month(newMonth);
