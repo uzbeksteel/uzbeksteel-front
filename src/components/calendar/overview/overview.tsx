@@ -26,5 +26,6 @@ export const Overview = (date: Dayjs) => {
         icon: null,
         okText: dictionary.cancel,
         okButtonProps: { type: 'default' },
+        width: 572,
     });
 };
