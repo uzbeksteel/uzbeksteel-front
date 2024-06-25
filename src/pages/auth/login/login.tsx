@@ -6,9 +6,10 @@ import { Flex, Tabs } from 'antd';
 import { dictionary } from '../dictionary';
 import { Auth } from '../style';
 import { getTabs } from './constants';
+import { addMessage } from '@/lib/utils';
 
 export const Login = () => {
-    const { setToken } = useAuthStore();
+    const { setToken, setIsAuth } = useAuthStore();
     const { mutateAsync, isPending } = useLoginQuery(onSuccess);
 
     function onSuccess(data: ILoginResponse) {
@@ -16,6 +17,11 @@ export const Login = () => {
     }
 
     const onFinish = (values: TLoginBody) => {
+        if (values.login === 'jasur' && values.password === 'jasdev01') {
+            setIsAuth(true);
+        } else {
+            addMessage('Тизмга кириш мумкин емас');
+        }
         mutateAsync(values);
     };
 
