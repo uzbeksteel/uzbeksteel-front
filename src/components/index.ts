@@ -11,3 +11,4 @@ export { ImageModal } from './modal';
 export { Table } from './table';
 export * from './typography';
 export { Calendar } from './calendar';
+export { ProfileDisplay } from './profileDisplay';

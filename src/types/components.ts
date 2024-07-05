@@ -51,3 +51,8 @@ export type TIsAdd = {
     titleTable?: string;
     onClick?: () => void;
 };
+
+export type IProfileDisplayProps = {
+    avatar: string;
+    fullName: string;
+};

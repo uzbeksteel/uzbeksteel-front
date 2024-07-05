@@ -1,15 +1,13 @@
 import { ROUTES } from '@/constants';
 import { Layout } from '@/layout';
-// import { useAuthStore } from '@/store';
 import { useRoutes } from 'react-router-dom';
-import { Deeds, Forgot, Graphics, GraphicsDetail, Home, Login, Lows } from './loadable';
+import { Accidents, Certification, CertificationCreate, CertificationList, Deeds, Forgot, Graphics, GraphicsDetail, Home, Login, Lows } from './loadable';
 import { Protected } from './protected';
 import { Public } from './public';
 import { useAuthStore } from '@/store';
 
 export const Router = () => {
     const { isAuth } = useAuthStore();
-    // const isAuth = true;
 
     return useRoutes([
         {
@@ -43,6 +41,27 @@ export const Router = () => {
                         {
                             path: ROUTES.lows,
                             element: <Lows />,
+                        },
+                        {
+                            path: ROUTES.certification,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <Certification />,
+                                },
+                                {
+                                    path: ROUTES.single,
+                                    element: <CertificationList />,
+                                },
+                                {
+                                    path: ROUTES.add,
+                                    element: <CertificationCreate />,
+                                },
+                            ],
+                        },
+                        {
+                            path: ROUTES.accidents,
+                            element: <Accidents />,
                         },
                     ],
                 },

@@ -8,4 +8,6 @@ export const ROUTES = {
     graphics: '/graphics',
     deeds: '/deeds',
     lows: '/lows',
+    certification: '/certification',
+    accidents: '/accidents',
 } as const;

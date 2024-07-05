@@ -1,4 +1,4 @@
-import { ROUTES, dictionary } from '@/constants';
+import { dictionary, ROUTES } from '@/constants';
 import { useDebounce, useResponsive } from '@/lib/hooks';
 import type { TIsAdd } from '@/types/components';
 import { Flex } from 'antd';
@@ -7,7 +7,7 @@ import { Add } from '../common';
 import { Icon } from '../icon';
 import { AntInput } from './style';
 
-export const Header = ({ isAdd, titleTable }: TIsAdd) => {
+export const Header = ({ isAdd, titleTable, onClick }: TIsAdd) => {
     const { onSearch } = useDebounce();
     const { isTablet } = useResponsive();
 
@@ -21,7 +21,7 @@ export const Header = ({ isAdd, titleTable }: TIsAdd) => {
                 {isTablet && <Icon name="RotateCcw" />}
                 {isTablet && <Icon name="Settings" />}
                 {isTablet && <Icon name="Expand" />}
-                {!isAdd && <Add path={ROUTES.add} />}
+                {!isAdd && <Add path={!onClick ? ROUTES.add : undefined} onClick={onClick} />}
             </Box>
         </Flex>
     );

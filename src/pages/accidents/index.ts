@@ -1,0 +1,1 @@
+export { Accidents } from './accidents';

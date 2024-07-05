@@ -25,4 +25,14 @@ export const menuItems = [
         icon: <Icon name="BookOpenText" />,
         label: menuLabels[3],
     },
+    {
+        key: ROUTES.certification,
+        icon: <Icon name="Flag" />,
+        label: menuLabels[4],
+    },
+    {
+        key: ROUTES.accidents,
+        icon: <Icon name="Siren" />,
+        label: menuLabels[5],
+    },
 ];
