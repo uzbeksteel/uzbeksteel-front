@@ -9,4 +9,5 @@ export enum Endpoints {
     SubCategoryByParentId = 'sub-category/by-parent/',
     Upload = 'upload/',
     Users = 'users',
+    Graphic = 'graphic',
 }

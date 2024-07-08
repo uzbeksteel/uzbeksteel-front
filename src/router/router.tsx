@@ -4,10 +4,10 @@ import { useRoutes } from 'react-router-dom';
 import { Accidents, Certification, CertificationCreate, CertificationList, Deeds, Forgot, Graphics, GraphicsDetail, Home, Login, Lows } from './loadable';
 import { Protected } from './protected';
 import { Public } from './public';
-import { useAuthStore } from '@/store';
 
 export const Router = () => {
-    const { isAuth } = useAuthStore();
+    // const { isAuth } = useAuthStore();
+    const isAuth = true;
 
     return useRoutes([
         {
