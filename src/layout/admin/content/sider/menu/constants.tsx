@@ -1,6 +1,6 @@
 import { Icon } from '@/components';
 import { ROUTES } from '@/constants';
-import { dictionary } from '@/layout/dictionary';
+import { dictionary } from '@/layout/tb/content/dictionary';
 
 const menuLabels = dictionary.labels;
 

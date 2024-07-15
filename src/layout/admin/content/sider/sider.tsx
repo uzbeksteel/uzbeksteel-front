@@ -1,6 +1,6 @@
 import { useAppStore } from '@/store';
-import { LayoutSider } from '../style';
-import { Props } from '../type';
+import { LayoutSider } from '../../../style';
+import { Props } from '../../../type';
 import { Collapce } from './collapse';
 import { Menu } from './menu';
 
