@@ -10,4 +10,7 @@ export const ROUTES = {
     lows: '/lows',
     certification: '/certification',
     accidents: '/accidents',
+    tb: '/tb',
+    admin: '/admin',
+    workshop: '/workshop',
 } as const;

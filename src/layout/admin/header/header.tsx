@@ -1,8 +1,8 @@
 import { Image } from '@/assets';
 import { Icon, Typography } from '@/components';
 import { Flex } from 'antd';
-import { LayoutHeader } from '../style';
-import { Props } from '../type';
+import { LayoutHeader } from '../../style';
+import { Props } from '../../type';
 
 export const Header = ({ bg }: Props) => {
     return (

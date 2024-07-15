@@ -1,9 +1,9 @@
 import { Layout as AntLayout, theme } from 'antd';
 import { Content } from './content';
+import { Sider } from './content/sider';
 import { Header } from './header';
-import { Sider } from './sider';
 
-export const Layout = () => {
+export const WorkshopLayout = () => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();

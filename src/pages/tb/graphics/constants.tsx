@@ -1,6 +1,6 @@
-import { TabsProps } from 'antd';
 import { Calendar } from '@/components';
-import { Tab1 } from '@/pages/graphics/tabs';
+import { Tab1 } from '@/pages/tb/graphics/tabs';
+import { TabsProps } from 'antd';
 
 export const getTabs = () => {
     const items: TabsProps['items'] = [
