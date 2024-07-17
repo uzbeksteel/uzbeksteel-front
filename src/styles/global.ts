@@ -55,4 +55,16 @@ export const GlobalStyles = createGlobalStyle`
   .ant-input-number, .ant-input-number-group-wrapper, .ant-space {
     width: var(--full);
   }
+
+   .ant-select-selector {
+    border-radius: 0px !important;
+  }
+  
+  .ant-select-dropdown {
+    border-radius: 0px !important;
+
+    .ant-select-item {
+      border-radius: 0px !important;
+    }
+  }
 `;

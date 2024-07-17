@@ -1,7 +1,7 @@
 import { ROUTES } from '@/constants';
 import { AdminLayout, TbLayout, WorkshopLayout } from '@/layout';
 import { useRoutes } from 'react-router-dom';
-import { Accidents, AdminEmployees, AdminHome, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, Deeds, Forgot, Graphics, GraphicsDetail, Home, Login, Lows, WorkshopHome } from './loadable';
+import { Accidents, AdminEmployees, AdminHome, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, Deeds, Forgot, Graphics, GraphicsDetail, Home, Login, Lows, WorkShopCreatePage, WorkshopHome } from './loadable';
 import { Protected } from './protected';
 import { Public } from './public';
 
@@ -85,7 +85,16 @@ export const Router = () => {
                         },
                         {
                             path: ROUTES.adminWorkshop,
-                            element: <AdminWorkshops />,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <AdminWorkshops />,
+                                },
+                                {
+                                    path: ROUTES.add,
+                                    element: <WorkShopCreatePage />,
+                                },
+                            ],
                         },
                         {
                             path: ROUTES.adminEmployees,

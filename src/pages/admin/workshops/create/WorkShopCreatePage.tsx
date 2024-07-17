@@ -1,3 +1,11 @@
+import { PageHeader } from '@/components';
+import { CreateForm } from './CreateForm';
+
 export const WorkShopCreatePage = () => {
-    return <div>WorkShopCreatePage</div>;
+    return (
+        <>
+            <PageHeader title={'Цехлар'} />
+            <CreateForm />
+        </>
+    );
 };

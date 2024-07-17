@@ -11,5 +11,6 @@ export { Icon } from './icon';
 export { Loading } from './loading';
 export { ImageModal } from './modal';
 export { ProfileDisplay } from './profileDisplay';
+export { Select } from './select/Select';
 export { Table } from './table';
 export * from './typography';

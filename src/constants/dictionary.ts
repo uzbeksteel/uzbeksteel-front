@@ -1,11 +1,11 @@
 export const dictionary = {
     add: 'Create',
-    save: 'Save',
+    save: 'Сақлаш',
     noData: 'No data',
     search: 'Search',
     title: 'Title',
     top: 'Top',
-    cancel: 'Cancel',
+    cancel: 'Бекор қилиш',
     createdAt: 'Created at',
     address: 'Address',
     amount: 'Amount',

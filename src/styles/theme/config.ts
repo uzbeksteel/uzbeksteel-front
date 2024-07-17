@@ -45,6 +45,7 @@ export const components: ThemeConfig['components'] = {
     Select: {
         controlHeightLG,
         padding: 12,
+        borderRadius: 0,
     },
 
     Tabs: {
