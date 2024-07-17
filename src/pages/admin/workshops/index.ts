@@ -1,0 +1,1 @@
+export { AdminWorkshops } from './Workshops';

@@ -17,6 +17,10 @@ export const Accidents = getLoadablePage('Accidents');
 
 // admin
 export const AdminHome = getLoadablePage('AdminHome');
+export const AnalyticalData = getLoadablePage('AnalyticalData');
+export const Archives = getLoadablePage('Archives');
+export const AdminEmployees = getLoadablePage('AdminEmployees');
+export const AdminWorkshops = getLoadablePage('AdminWorkshops');
 
 // workshop
 export const WorkshopHome = getLoadablePage('WorkshopHome');
