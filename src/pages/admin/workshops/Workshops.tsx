@@ -1,3 +1,11 @@
+import { PageHeader } from '@/components';
+import { WorkshopsTable } from './table/Table';
+
 export const AdminWorkshops = () => {
-    return <div>AdminWorkshops</div>;
+    return (
+        <>
+            <PageHeader title="Цехлар" />
+            <WorkshopsTable />
+        </>
+    );
 };

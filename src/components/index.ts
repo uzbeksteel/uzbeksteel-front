@@ -1,5 +1,7 @@
+export { PageHeader } from './PageHeader';
 export { Box } from './box';
 export * from './button';
+export { Calendar } from './calendar';
 export { Card } from './card';
 export * from './common';
 export { Drawer } from './drawer';
@@ -8,7 +10,6 @@ export * from './form';
 export { Icon } from './icon';
 export { Loading } from './loading';
 export { ImageModal } from './modal';
+export { ProfileDisplay } from './profileDisplay';
 export { Table } from './table';
 export * from './typography';
-export { Calendar } from './calendar';
-export { ProfileDisplay } from './profileDisplay';
