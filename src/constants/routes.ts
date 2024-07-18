@@ -22,4 +22,7 @@ export const ROUTES = {
 
     // work shop routes
     workshop: '/workshop',
+    workshopGraphics: '/workshop/graphics',
+    workshopEmployes: '/workshop/employes',
+    workshopInspections: '/workshop/inspections',
 } as const;

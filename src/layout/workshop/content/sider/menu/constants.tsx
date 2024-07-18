@@ -1,6 +1,6 @@
 import { Icon } from '@/components';
 import { ROUTES } from '@/constants';
-import { dictionary } from '@/layout/tb/content/dictionary';
+import { dictionary } from './../../dictionary';
 
 const menuLabels = dictionary.labels;
 
@@ -11,28 +11,18 @@ export const menuItems = [
         label: menuLabels[0],
     },
     {
-        key: ROUTES.graphics,
+        key: ROUTES.workshopGraphics,
         icon: <Icon name="BarChartBig" />,
         label: menuLabels[1],
     },
     {
-        key: ROUTES.deeds,
-        icon: <Icon name="BookText" />,
+        key: ROUTES.workshopEmployes,
+        icon: <Icon name="UserRound" />,
         label: menuLabels[2],
     },
     {
-        key: ROUTES.lows,
-        icon: <Icon name="BookOpenText" />,
+        key: ROUTES.workshopInspections,
+        icon: <Icon name="ClipboardCheck" />,
         label: menuLabels[3],
-    },
-    {
-        key: ROUTES.certification,
-        icon: <Icon name="Flag" />,
-        label: menuLabels[4],
-    },
-    {
-        key: ROUTES.accidents,
-        icon: <Icon name="Siren" />,
-        label: menuLabels[5],
     },
 ];

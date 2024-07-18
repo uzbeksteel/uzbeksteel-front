@@ -25,3 +25,5 @@ export const WorkShopCreatePage = getLoadablePage('WorkShopCreatePage');
 
 // workshop
 export const WorkshopHome = getLoadablePage('WorkshopHome');
+export const WorkshopEmployes = getLoadablePage('WorkshopEmployes');
+export const WorkshopInspections = getLoadablePage('WorkshopInspections');
