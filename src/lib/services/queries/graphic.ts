@@ -6,6 +6,8 @@ import { dictionary } from '@/constants';
 import { useMutation, useQuery } from '@tanstack/react-query';
 
 const getGraphics = async (): Promise<IGraphic[]> => await api.get(Endpoints.Graphic);
+
+const getGraphicsByDate = async (date?: string): Promise<IGraphic[]> => await api.get(Endpoints.Graphic, { params: { date } });
 const getGraphicById = async (id: string): Promise<IGraphic> => {
     const hideMessage = message.loading(dictionary.loading, 0);
     try {
@@ -52,5 +54,18 @@ export const useGetGraphicsQuery = () =>
 export const useCreateGraphicQuery = (onSuccess: (data: IGraphic) => void) =>
     useMutation({
         mutationFn: createGraphic,
+        onSuccess,
+    });
+
+export const useGetGraphicsByDateQuery = (date?: string) =>
+    useQuery<IGraphic[]>({
+        queryKey: [Endpoints.Graphic, date],
+        queryFn: () => getGraphicsByDate(date),
+        initialData: [],
+    });
+
+export const useDeleteGraphicQuery = (onSuccess: () => void) =>
+    useMutation({
+        mutationFn: deleteGraphic,
         onSuccess,
     });

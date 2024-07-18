@@ -1,43 +1,43 @@
 import { Table } from 'antd';
 import { Box, Icon } from '@/components';
+import { useDeleteGraphicQuery, useGetGraphicsByDateQuery } from '@/lib/services/queries/graphic.ts';
+import { IGraphic } from '@/types/graphics.ts';
 
 export const Content = () => {
+    const params = new URLSearchParams(window.location.href.split('?')[1]);
+    const { data, refetch } = useGetGraphicsByDateQuery(params.get('date')?.split('T')[0]);
+    const { mutate } = useDeleteGraphicQuery(onSuccess);
+
+    async function onSuccess() {
+        await refetch();
+    }
+
     const columns = [
         {
             title: 'Цех',
             dataIndex: 'workshop',
-            key: 'id',
+            key: 'workshop',
         },
         {
             title: 'Текширув',
             dataIndex: 'inspection',
-            key: 'id',
+            key: 'inspection',
         },
         {
             title: '',
             dataIndex: '',
-            key: 'x',
-            render: () => (
+            key: 'actions',
+            render: (_, record: IGraphic) => (
                 <Box $align="center" $gap="15px">
-                    <Icon style={{ width: '16px' }} name="Eye" color="#1890ff" />
-                    <Icon style={{ width: '16px' }} name="Pencil" color="#faad14" />
-                    <Icon style={{ width: '16px' }} color="red" name="Trash2" />
+                    <Icon style={{ width: '16px', cursor: 'pointer' }} name="Eye" color="#1890ff" />
+                    <Icon style={{ width: '16px', cursor: 'pointer' }} name="Pencil" color="#faad14" />
+                    <Icon onClick={() => mutate(record.id)} style={{ width: '16px', cursor: 'pointer' }} color="red" name="Trash2" />
                 </Box>
             ),
         },
     ];
 
-    const data = [
-        {
-            id: 1,
-            workshop: 'РМИЧ',
-            inspection: 'РМИЧ (барча участкалари ва бўлинмалари)',
-        },
-        {
-            id: 2,
-            workshop: 'Қуюв-прокатлаш мажмуаси',
-            inspection: '12,13-участкалар, Техникаларни таъмирлаш участкалари, омборхоналар, комбинат таркибий бўлинмалари ҳудудларидаги қурилиш ишлари олиб борилаётган объектлар',
-        },
-    ];
-    return <Table columns={columns} dataSource={data} pagination={false} />;
+    const dataWithKeys = data?.map((item) => ({ ...item, key: item.id })) || [];
+
+    return <Table columns={columns} dataSource={dataWithKeys} pagination={false} />;
 };
