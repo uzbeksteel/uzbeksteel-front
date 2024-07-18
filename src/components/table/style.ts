@@ -7,7 +7,14 @@ export const AntInput = styled(Input)`
 `;
 
 export const AndtTable = styled(Table)`
+    max-width: 100%;
+    width: 100%;
     border-radius: 0px !important;
+    margin: 10px 24px !important;
+
+    .ant-table-title {
+        border-radius: 0px !important;
+    }
 
     .ant-pagination-item {
         border-radius: 0px !important;

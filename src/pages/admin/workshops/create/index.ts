@@ -1,0 +1,1 @@
+export { WorkShopCreatePage } from './WorkShopCreatePage';

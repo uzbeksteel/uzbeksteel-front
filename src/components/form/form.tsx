@@ -2,8 +2,9 @@ import { dictionary } from '@/constants';
 import type { TParams } from '@/types/app';
 import { TAntFormProps, TFieldProps } from '@/types/components';
 import { useIsMutating } from '@tanstack/react-query';
-import { Form as AntForm, Button, Col, Input, InputNumber, Row, Spin } from 'antd';
+import { Form as AntForm, Col, Input, InputNumber, Row, Spin } from 'antd';
 import { useParams } from 'react-router-dom';
+import { Button } from '..';
 import { Box } from '../box';
 
 export const Form = ({ save, loading, children, ...props }: TAntFormProps) => {
@@ -19,9 +20,14 @@ export const Form = ({ save, loading, children, ...props }: TAntFormProps) => {
             <Row gutter={[10, 10]}>{children}</Row>
 
             {!save && (
-                <Button htmlType="submit" type="primary" loading={!!isMutating} disabled={!!isMutating}>
-                    {id ? dictionary.save : dictionary.add}
-                </Button>
+                <Box $gap="10px" $justify="end" $mt="10px">
+                    <Button htmlType="submit" type="primary" loading={!!isMutating} disabled={!!isMutating} style={{ background: 'white', color: '#d5680a', border: '1px solid ' }}>
+                        {dictionary.cancel}
+                    </Button>
+                    <Button htmlType="submit" type="primary" loading={!!isMutating} disabled={!!isMutating}>
+                        {dictionary.save}
+                    </Button>
+                </Box>
             )}
         </AntForm>
     );

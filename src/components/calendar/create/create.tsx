@@ -1,6 +1,7 @@
 import { modal } from '@/app';
 import { dictionary } from '@/constants';
 import { Content } from './content';
+import { useGraphicStore } from '@/store';
 
 export const Create = () => {
     modal.confirm({
@@ -8,10 +9,9 @@ export const Create = () => {
         content: <Content />,
         icon: null,
         okText: dictionary.save,
-        onOk: () => {
-            modal.success({
-                title: 'Текширув қўшиш мувафақиятли амалга оширилди!',
-            });
+        onOk: async () => {
+            await useGraphicStore.getState().createFormInstance?.validateFields();
+            useGraphicStore.getState().createFormInstance?.submit();
         },
     });
 };

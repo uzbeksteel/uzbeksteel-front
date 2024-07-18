@@ -1,4 +1,6 @@
 export const ROUTES = {
+    // tb routes
+    tb: '/tb',
     home: '/',
     all: '*',
     add: 'add',
@@ -10,8 +12,15 @@ export const ROUTES = {
     lows: '/lows',
     certification: '/certification',
     accidents: '/accidents',
-    tb: '/tb',
+
+    // admin routes
     admin: '/admin',
+    adminWorkshop: '/admin/workshop',
+    adminEmployees: '/admin/employees',
+    adminAnalyticalData: '/admin/analytical-data',
+    adminArchives: '/admin/archive',
+
+    // work shop routes
     workshop: '/workshop',
     workshopGraphics: '/workshop/graphics',
     workshopEmployes: '/workshop/employes',

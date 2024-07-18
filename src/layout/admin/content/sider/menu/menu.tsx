@@ -2,12 +2,12 @@ import { AntMenu } from '@/layout/style';
 import { usePathname } from '@/lib/hooks';
 import { history } from '@/lib/utils';
 import { MenuProps } from 'antd';
-import { menuItems } from './constants';
+import { adminMenuItems } from './constants';
 
-export const Menu = () => {
+export const AdminMenu = () => {
     const { decodedPathname } = usePathname();
 
-    // const selectedMenuOpenKey = useMemo(() => menuItems.find((item) => decodedPathname.includes(item.key))?.key || menuItems[0].key, [decodedPathname, menuItems]);
+    //const selectedMenuOpenKey = useMemo(() => menuItems.find((item) => decodedPathname.includes(item.key))?.key || menuItems[0].key, [decodedPathname, menuItems]);
 
     const handleClick: MenuProps['onClick'] = ({ key, domEvent }) => {
         domEvent.preventDefault();
@@ -15,5 +15,5 @@ export const Menu = () => {
         history.push(key);
     };
 
-    return <AntMenu mode="inline" theme="light" selectedKeys={[decodedPathname]} openKeys={[decodedPathname]} items={menuItems} onClick={handleClick} />;
+    return <AntMenu mode="inline" theme="light" selectedKeys={[decodedPathname]} openKeys={[decodedPathname]} items={adminMenuItems} onClick={handleClick} />;
 };
