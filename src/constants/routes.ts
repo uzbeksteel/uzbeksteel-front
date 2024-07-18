@@ -13,4 +13,7 @@ export const ROUTES = {
     tb: '/tb',
     admin: '/admin',
     workshop: '/workshop',
+    workshopGraphics: '/workshop/graphics',
+    workshopEmployes: '/workshop/employes',
+    workshopInspections: '/workshop/inspections',
 } as const;
