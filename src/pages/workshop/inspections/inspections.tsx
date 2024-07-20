@@ -1,6 +1,8 @@
-import { Box, Card, Icon, Table, Typography } from '@/components';
+import { Box, Card, Icon, Typography } from '@/components';
+import { Tabs } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
+import { inspectionTabs } from './constants';
 
 export const WorkshopInspections = () => {
     const navigate = useNavigate();
@@ -13,7 +15,7 @@ export const WorkshopInspections = () => {
                 </Typography>
             </Box>
             <Card>
-                <Table scroll={{ x: true }} columns={[]} dataSource={[]} titleTable="Текширувлар рўйхати" />
+                <Tabs defaultActiveKey="1" items={inspectionTabs()} />
             </Card>
         </Fragment>
     );
