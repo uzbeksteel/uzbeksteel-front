@@ -1,7 +1,7 @@
 import { ROUTES } from '@/constants';
 import { AdminLayout, TbLayout, WorkshopLayout } from '@/layout';
 import { useRoutes } from 'react-router-dom';
-import { Accidents, AdminEmployees, AdminHome, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, Deeds, Forgot, Graphics, GraphicsDetail, Home, Login, Lows, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
+import { Accidents, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, Deeds, Forgot, Graphics, GraphicsDetail, Home, InspectionCreate, Login, Lows, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
 import { Protected } from './protected';
 import { Public } from './public';
 
@@ -85,6 +85,10 @@ export const Router = () => {
                             path: ROUTES.workshopInspections,
                             element: <WorkshopInspections />,
                         },
+                        {
+                            path: ROUTES.workshopInspectionsAdd,
+                            element: <InspectionCreate />,
+                        },
                     ],
                 },
                 {
@@ -106,8 +110,22 @@ export const Router = () => {
                                     path: ROUTES.add,
                                     element: <WorkShopCreatePage />,
                                 },
+                                {
+                                    path: ROUTES.adminWorkshopBranches,
+                                    children: [
+                                        {
+                                            index: true,
+                                            element: <AdminWorkShopBranches />,
+                                        },
+                                        {
+                                            path: ROUTES.add,
+                                            element: <AdminCreateWorkShopBranches />,
+                                        },
+                                    ],
+                                },
                             ],
                         },
+
                         {
                             path: ROUTES.adminEmployees,
                             element: <AdminEmployees />,

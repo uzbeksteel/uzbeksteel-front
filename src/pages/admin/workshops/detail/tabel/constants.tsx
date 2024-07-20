@@ -2,7 +2,7 @@ import { Box, Icon } from '@/components';
 import { Button } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 
-export const WorkShoptableComplumns: ColumnsType<any> = [
+export const WorkShopBranchesComplumns: ColumnsType<any> = [
     {
         title: 'Т/р',
         dataIndex: 'id',
@@ -11,16 +11,15 @@ export const WorkShoptableComplumns: ColumnsType<any> = [
         sorter: (a, b) => a?.id - b?.id,
     },
     {
-        title: 'Цех номи',
+        title: 'Бўлим номи',
         dataIndex: 'name',
         key: 'name',
     },
     {
-        title: 'Начальник цеха',
-        dataIndex: ['workshop'],
+        title: 'Бош master',
+        dataIndex: ['master'],
         key: 'Начальник цеха',
     },
-
     {
         title: 'Ҳаракат',
         render: () => {
