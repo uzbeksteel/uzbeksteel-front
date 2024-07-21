@@ -1,13 +1,14 @@
-import { IGraphic } from '@/types/graphics.ts';
-import { api } from '@/lib/services/api';
-import { Endpoints } from '@/lib/services';
-import { message } from 'antd';
 import { dictionary } from '@/constants';
+import { Endpoints } from '@/lib/services';
+import { api } from '@/lib/services/api';
+import { IGraphic } from '@/types/graphics.ts';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { message } from 'antd';
 
 const getGraphics = async (): Promise<IGraphic[]> => await api.get(Endpoints.Graphic);
 
 const getGraphicsByDate = async (date?: string): Promise<IGraphic[]> => await api.get(Endpoints.Graphic, { params: { date } });
+
 const getGraphicById = async (id: string): Promise<IGraphic> => {
     const hideMessage = message.loading(dictionary.loading, 0);
     try {
