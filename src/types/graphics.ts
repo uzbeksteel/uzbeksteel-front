@@ -1,9 +1,10 @@
 import { Dayjs } from 'dayjs';
+import { IWorkshop } from '@/types/workshop.ts';
 
 export interface IGraphic {
     id: string;
     date: Dayjs;
-    workshop: string;
+    workshop: IWorkshop;
     inspection: string;
     created_at: string;
     updated_at: string;

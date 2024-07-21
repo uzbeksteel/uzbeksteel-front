@@ -18,7 +18,7 @@ export const Content = () => {
     const columns = [
         {
             title: 'Цех',
-            dataIndex: 'workshop',
+            dataIndex: ['workshop', 'name'],
             key: 'workshop',
         },
         {
