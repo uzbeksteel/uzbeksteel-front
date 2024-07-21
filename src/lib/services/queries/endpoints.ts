@@ -8,6 +8,10 @@ export enum Endpoints {
     SubCategoryMain = 'sub-category/main',
     SubCategoryByParentId = 'sub-category/by-parent/',
     Upload = 'upload/',
-    Users = 'users',
+    Users = 'user',
     Graphic = 'graphic',
+    Get1CUserByTabNumber = 'user/find-user-with-tab-number',
+    SelectbleWorkshops = 'workshop/selectable-workshop',
+    SelectbleWorkshopEmployes = 'workshop/employees',
+    Workshop = 'workshop',
 }

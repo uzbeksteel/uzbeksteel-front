@@ -5,10 +5,12 @@ import { ColumnsType } from 'antd/es/table';
 export const WorkShoptableComplumns: ColumnsType<any> = [
     {
         title: 'Т/р',
-        dataIndex: 'id',
         key: 'id',
+        render(_value, _record, index) {
+            return index + 1;
+        },
         defaultSortOrder: 'descend',
-        sorter: (a, b) => a?.id - b?.id,
+        // sorter: (a, b) => a?.id - b?.id,
     },
     {
         title: 'Цех номи',
@@ -17,7 +19,7 @@ export const WorkShoptableComplumns: ColumnsType<any> = [
     },
     {
         title: 'Начальник цеха',
-        dataIndex: ['workshop'],
+        dataIndex: ['workshop_director', 'first_name'],
         key: 'Начальник цеха',
     },
 
@@ -26,7 +28,6 @@ export const WorkShoptableComplumns: ColumnsType<any> = [
         render: () => {
             return (
                 <Box $justify="space-around" $align="center">
-                    {/* <Flex justify="space-around"></Flex> */}
                     <Button>
                         <Icon name={'Pencil'} color="#52C41A" />
                     </Button>

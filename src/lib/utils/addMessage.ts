@@ -7,3 +7,17 @@ export const addMessage = (data: any): void => {
         content: makeErrMsg(data),
     });
 };
+
+export const errorMessage = (data: any): void => {
+    message.open({
+        type: 'error',
+        content: data,
+    });
+};
+
+export const successMessage = (data: any): void => {
+    message.open({
+        type: 'success',
+        content: data,
+    });
+};
