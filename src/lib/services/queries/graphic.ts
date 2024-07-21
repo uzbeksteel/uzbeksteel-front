@@ -26,10 +26,10 @@ const createGraphic = async (request: Pick<IGraphic, 'date' | 'inspection' | 'wo
     }
 };
 
-const updateGraphic = async (id: string, request: Partial<IGraphic>): Promise<IGraphic> => {
+const updateGraphic = async (request: Partial<IGraphic>): Promise<IGraphic> => {
     const hideMessage = message.loading(dictionary.loading, 0);
     try {
-        return await api.patch(`${Endpoints.Graphic}/${id}`, request);
+        return await api.patch(`${Endpoints.Graphic}/${request.id}`, request);
     } finally {
         hideMessage();
     }
@@ -67,5 +67,11 @@ export const useGetGraphicsByDateQuery = (date?: string) =>
 export const useDeleteGraphicQuery = (onSuccess: () => void) =>
     useMutation({
         mutationFn: deleteGraphic,
+        onSuccess,
+    });
+
+export const useUpdateGraphicQuery = (onSuccess: () => void) =>
+    useMutation({
+        mutationFn: updateGraphic,
         onSuccess,
     });
