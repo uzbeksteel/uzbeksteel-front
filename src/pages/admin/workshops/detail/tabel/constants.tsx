@@ -1,11 +1,15 @@
-import { Box, Icon } from '@/components';
-import { Button } from 'antd';
+import { Box, Edit } from '@/components';
+import { IMasters } from '@/types/workshop';
+import { Tag } from 'antd';
 import { ColumnsType } from 'antd/es/table';
+import { Key } from 'react';
 
 export const WorkShopBranchesComplumns: ColumnsType<any> = [
     {
         title: 'Т/р',
-        dataIndex: 'id',
+        render(_value, _record, index) {
+            return index + 1;
+        },
         key: 'id',
         defaultSortOrder: 'descend',
         sorter: (a, b) => a?.id - b?.id,
@@ -17,24 +21,38 @@ export const WorkShopBranchesComplumns: ColumnsType<any> = [
     },
     {
         title: 'Бош master',
-        dataIndex: ['master'],
+        dataIndex: ['masters'],
         key: 'Начальник цеха',
+        render: (a) => {
+            return (
+                <Tag color="#F08D10">
+                    {a[0].first_name} {a[0].last_name}
+                </Tag>
+            );
+        },
+    },
+    {
+        title: 'Masters',
+        dataIndex: ['masters'],
+        key: 'Начальник цеха',
+        render: (a) => {
+            return a.map((v: IMasters, index: Key | null | undefined) => (
+                <Tag key={index}>
+                    {v.first_name} {v.last_name}
+                </Tag>
+            ));
+        },
     },
     {
         title: 'Ҳаракат',
+
         render: () => {
             return (
                 <Box $justify="space-around" $align="center">
-                    {/* <Flex justify="space-around"></Flex> */}
-                    <Button>
-                        <Icon name={'Pencil'} color="#52C41A" />
-                    </Button>
-                    <Button>
-                        <Icon name={'Eye'} color="#F08D10" />
-                    </Button>
+                    <Edit id={'12'} />
                 </Box>
             );
         },
-        width: '200px',
+        width: '100px',
     },
 ];

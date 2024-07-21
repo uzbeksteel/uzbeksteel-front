@@ -7,7 +7,7 @@ export const Icon = ({ btn, name, ...props }: TIconProps) => {
     const LucideIcon = LucideIcons[name as keyof typeof LucideIcons] as LucideIcons.LucideIcon;
 
     return (
-        <Box as={btn ? Button : 'div'} {...props}>
+        <Box as={btn ? Button : 'div'} {...props} style={{ cursor: 'pointer' }}>
             <Box as={LucideIcon} $align="center" $justify="center" $height="var(--full)" $width="var(--full)" style={{ color: props.color }} />
         </Box>
     );

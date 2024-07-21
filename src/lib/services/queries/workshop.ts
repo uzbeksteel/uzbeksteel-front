@@ -1,4 +1,4 @@
-import { IMainWorkshops, IWorkShopEmployes, IWorkshop } from '@/types/workshop';
+import { IBranches, IMainWorkshops, IWorkShopEmployes, IWorkshop } from '@/types/workshop';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api';
 import { Endpoints } from './endpoints';
@@ -6,6 +6,8 @@ import { Endpoints } from './endpoints';
 const selectableWorkshops = async (): Promise<IMainWorkshops[]> => api.get(Endpoints.SelectbleWorkshops);
 const selectableWorkshopEmpoyes = async (ref_key: string): Promise<IWorkShopEmployes[]> => api.get(`${Endpoints.SelectbleWorkshopEmployes}/${ref_key}`);
 const getAllWorkshops = async (): Promise<IWorkshop[]> => (await api.get(Endpoints.Workshop)).data;
+const getWorkShopBranches = async () => (await api.get(Endpoints.WorkShopBranches)).data;
+const getWorkShopBranchesByRef = async (ref: string): Promise<IBranches[]> => await api.get(Endpoints.WorkShopBranchesByRefKey + ref);
 
 export const useSelectableWorkshopQuery = () =>
     useQuery<IMainWorkshops[]>({
@@ -27,4 +29,19 @@ export const getAllWorkshopsQuery = () =>
         queryKey: [Endpoints.Workshop],
         queryFn: getAllWorkshops,
         initialData: [],
+    });
+
+export const getWorkShopBranchesQuery = () =>
+    useQuery<any[]>({
+        queryKey: [Endpoints.WorkShopBranches],
+        queryFn: getWorkShopBranches,
+        initialData: [],
+    });
+
+export const getWorkShopBranchesByRefQuery = (ref: string) =>
+    useQuery<IBranches[]>({
+        queryKey: [Endpoints.WorkShopBranchesByRefKey, ref],
+        queryFn: () => getWorkShopBranchesByRef(ref),
+        initialData: [],
+        enabled: !!ref,
     });

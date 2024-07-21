@@ -50,6 +50,7 @@ export type TIsAdd = {
     isAdd?: boolean;
     titleTable?: string;
     onClick?: () => void;
+    onRotate?: () => void;
 };
 
 export type IProfileDisplayProps = {

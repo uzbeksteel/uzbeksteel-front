@@ -111,7 +111,7 @@ export const Router = () => {
                                     element: <WorkShopCreatePage />,
                                 },
                                 {
-                                    path: ROUTES.adminWorkshopBranches,
+                                    path: ROUTES.single,
                                     children: [
                                         {
                                             index: true,

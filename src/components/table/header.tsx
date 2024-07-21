@@ -7,7 +7,7 @@ import { Add } from '../common';
 import { Icon } from '../icon';
 import { AntInput } from './style';
 
-export const Header = ({ isAdd, titleTable, onClick }: TIsAdd) => {
+export const Header = ({ isAdd, titleTable, onClick, onRotate }: TIsAdd) => {
     const { onSearch } = useDebounce();
     const { isTablet } = useResponsive();
 
@@ -18,7 +18,7 @@ export const Header = ({ isAdd, titleTable, onClick }: TIsAdd) => {
             </Typography>
             <Box $align="center" $gap="8px">
                 <AntInput suffix={<Icon name="Search" />} onChange={onSearch} placeholder={dictionary.search} />
-                {isTablet && <Icon name="RotateCcw" />}
+                {isTablet && <Icon name="RotateCcw" onClick={onRotate} />}
                 {isTablet && <Icon name="Settings" />}
                 {isTablet && <Icon name="Expand" />}
                 {!isAdd && <Add path={!onClick ? ROUTES.add : undefined} onClick={onClick} />}

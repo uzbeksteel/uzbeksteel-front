@@ -1,17 +1,13 @@
 import { Box, Table } from '@/components';
+import { getWorkShopBranchesQuery } from '@/lib/services';
 import { WorkShopBranchesComplumns } from './constants';
 
 export const WorkshopBranchesTable = () => {
-    const dataSource = [
-        {
-            id: 1,
-            name: 'Test tsehi',
-            master: 'Ashraf Azizbey',
-        },
-    ];
+    const { data, isLoading, refetch, isRefetching } = getWorkShopBranchesQuery();
+
     return (
         <Box>
-            <Table titleTable="Бўлимлар рўйхати" columns={WorkShopBranchesComplumns} dataSource={dataSource} />
+            <Table onRotate={() => refetch({})} scroll={{ x: 1200 }} titleTable="Бўлимлар рўйхати" columns={WorkShopBranchesComplumns} dataSource={data} loading={isLoading || isRefetching} />
         </Box>
     );
 };

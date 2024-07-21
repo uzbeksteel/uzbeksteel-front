@@ -42,7 +42,7 @@ export const CreateForm = () => {
                         <Select loading={workshopLoading} placeholder={dictionary.labels[0]} options={generateSelectOptions(workshops, 'Description', 'Ref_Key')} showSearch={true} onChange={(e: string) => getWorkshopEmployes(e)} />
                     </Field>
 
-                    <Field span={24} label={dictionary.labels[0]} name="tub_number" required={true}>
+                    <Field span={24} label={dictionary.labels[1]} name="tub_number" required={true}>
                         <Select onChange={(e: string) => getWorkshopDirector(e)} loading={employesLoading} placeholder={dictionary.labels[0]} options={generateSelectOptions(employes, 'ishchi', 'tabNomer')} showSearch={true} />
                     </Field>
                 </Form>
