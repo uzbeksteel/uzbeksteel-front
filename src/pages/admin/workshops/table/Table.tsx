@@ -1,17 +1,13 @@
 import { Box, Table } from '@/components';
+import { getAllWorkshopsQuery } from '@/lib/services';
 import { WorkShoptableComplumns } from './constants';
 
 export const WorkshopsTable = () => {
-    const dataSource = [
-        {
-            id: 1,
-            name: 'Test tsehi',
-            workshop: 'Ashraf Azizbey',
-        },
-    ];
+    const { data, isLoading } = getAllWorkshopsQuery();
+
     return (
         <Box>
-            <Table titleTable="Цехлар рўйхати" columns={WorkShoptableComplumns} dataSource={dataSource} />
+            <Table loading={isLoading} titleTable="Цехлар рўйхати" columns={WorkShoptableComplumns} dataSource={data} />
         </Box>
     );
 };
