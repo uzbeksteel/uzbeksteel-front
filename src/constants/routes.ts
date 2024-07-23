@@ -12,6 +12,7 @@ export const ROUTES = {
     lows: '/lows',
     certification: '/certification',
     accidents: '/accidents',
+    magazine: '/magazine',
 
     // admin routes
     admin: '/admin',

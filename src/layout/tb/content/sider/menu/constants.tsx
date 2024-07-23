@@ -16,6 +16,11 @@ export const menuItems = [
         label: menuLabels[1],
     },
     {
+        key: ROUTES.magazine,
+        icon: <Icon name="ClipboardCheck" />,
+        label: menuLabels[6],
+    },
+    {
         key: ROUTES.deeds,
         icon: <Icon name="BookText" />,
         label: menuLabels[2],

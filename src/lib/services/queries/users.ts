@@ -7,6 +7,7 @@ import { api } from '../api';
 import { Endpoints } from './endpoints';
 
 const getUser1CByTabNumber = async (tubNumber: string): Promise<User1CType> => await api.get(`${Endpoints.Get1CUserByTabNumber}/${tubNumber}`);
+const getUsers = async (): Promise<TUser[]> => (await api.get(Endpoints.Users)).data;
 
 const deleteUser = async (id: TParams): Promise<TUser> => {
     const hideMessage = message.loading(dictionary.loading, 0);
@@ -22,6 +23,13 @@ export const getUser1CByTabNumberQuery = (tubNumber: string) =>
         queryKey: [Endpoints.Get1CUserByTabNumber],
         queryFn: () => getUser1CByTabNumber(tubNumber),
         enabled: !!tubNumber,
+    });
+
+export const getUsersQuery = () =>
+    useQuery<TUser[]>({
+        queryKey: [Endpoints.Users],
+        queryFn: () => getUsers(),
+        initialData: [],
     });
 
 export const useDeleteUserQuery = (onSuccess: () => void) =>

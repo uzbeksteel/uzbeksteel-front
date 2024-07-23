@@ -8,3 +8,8 @@ export enum UserRoles {
     USER = 'USER',
     DIRECTOR = 'DIRECTOR',
 }
+
+export enum CONTROL_TYPE {
+    FIRST_STAGE = 'FIRST_STAGE',
+    SECOND_STAGE = 'SECOND_STAGE',
+}
