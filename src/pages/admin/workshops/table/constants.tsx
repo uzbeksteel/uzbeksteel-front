@@ -1,4 +1,5 @@
 import { Box, Edit, See } from '@/components';
+import { Tag } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 
 export const WorkShoptableComplumns: ColumnsType<any> = [
@@ -14,6 +15,7 @@ export const WorkShoptableComplumns: ColumnsType<any> = [
     {
         title: 'Цех номи',
         dataIndex: 'name',
+        render: (name: string) => <Tag color="success">{name}</Tag>,
         key: 'name',
     },
     {

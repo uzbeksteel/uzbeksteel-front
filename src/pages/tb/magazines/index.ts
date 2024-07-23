@@ -1,0 +1,1 @@
+export { TbMagazines } from './magazine';

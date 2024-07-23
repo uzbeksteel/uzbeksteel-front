@@ -1,16 +1,13 @@
 import { Box, Card, Field, Form, Select } from '@/components';
-import { UserRoles } from '@/constants';
 import { generateSelectOptions } from '@/lib/helper';
-import { getUser1CByTabNumberQuery, selectableWShEmpoyesQuery, useSelectableWorkshopQuery, useWorkshopMutation } from '@/lib/services';
-import { useCreateUserMutation } from '@/lib/services/mutations/user';
+import { selectableWShEmpoyesQuery, useSelectableWorkshopQuery, useWorkshopMutation } from '@/lib/services';
 import { useState } from 'react';
 import { dictionary } from '../dictionary';
 
 export const CreateForm = () => {
     const [refKey, setRefKey] = useState<string | null>(null);
-    const [tabNumber, setTabNumber] = useState<string | null>(null);
+
     const { mutate: createWorkshop } = useWorkshopMutation();
-    const { mutateAsync: createUser } = useCreateUserMutation();
     const { data: workshops, isLoading: workshopLoading } = useSelectableWorkshopQuery();
     const { data: employes, isLoading: employesLoading } = selectableWShEmpoyesQuery(refKey || '');
 
@@ -18,19 +15,11 @@ export const CreateForm = () => {
         setRefKey(ref_key);
     };
 
-    const getWorkshopDirector = (tub_number: string) => {
-        setTabNumber(tub_number);
-    };
-
-    const { data: director } = getUser1CByTabNumberQuery(tabNumber || '');
-
-    const onFinish = async ({ ref_key }: { ref_key: string }) => {
-        const user = await createUser({ first_name: director?.ishchi as string, last_name: director?.ishchi as string, password: director?.telefon as string, nationality: director?.millati as string, tab_number: director?.tabNomer as string, position: director?.lavozim as string, birth_date: director?.tugilganSana as string, place_of_birth: director?.tugilganJoyi as string, phone: director?.telefon as string, role: UserRoles.DIRECTOR });
-
+    const onFinish = async ({ ref_key, tub_number }: { ref_key: string; tub_number: string }) => {
         createWorkshop({
             name: workshops.find((el) => el.Ref_Key === ref_key)?.Description as string,
             ref_key,
-            workshop_director: user.id,
+            workshop_director: tub_number,
         });
     };
 
@@ -43,7 +32,7 @@ export const CreateForm = () => {
                     </Field>
 
                     <Field span={24} label={dictionary.labels[1]} name="tub_number" required={true}>
-                        <Select onChange={(e: string) => getWorkshopDirector(e)} loading={employesLoading} placeholder={dictionary.labels[0]} options={generateSelectOptions(employes, 'ishchi', 'tabNomer')} showSearch={true} />
+                        <Select loading={employesLoading} placeholder={dictionary.labels[0]} options={generateSelectOptions(employes, 'ishchi', 'tabNomer')} showSearch={true} />
                     </Field>
                 </Form>
             </Card>
