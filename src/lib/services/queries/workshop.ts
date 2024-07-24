@@ -1,4 +1,4 @@
-import { IBranches, IMainWorkshops, IWorkShopEmployes, IWorkshop } from '@/types/workshop';
+import { IBranches, IMainWorkshops, IUsers, IWorkShopEmployes, IWorkshop } from '@/types/workshop';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api';
 import { Endpoints } from './endpoints';
@@ -8,6 +8,7 @@ const selectableWorkshopEmpoyes = async (ref_key: string): Promise<IWorkShopEmpl
 const getAllWorkshops = async (): Promise<IWorkshop[]> => (await api.get(Endpoints.Workshop)).data;
 const getWorkShopBranches = async () => (await api.get(Endpoints.WorkShopBranches)).data;
 const getWorkShopBranchesByRef = async (ref: string): Promise<IBranches[]> => await api.get(Endpoints.WorkShopBranchesByRefKey + ref);
+const getUserQuery = async (): Promise<IUsers[]> => (await api.get(Endpoints.Users)).data;
 
 export const useSelectableWorkshopQuery = () =>
     useQuery<IMainWorkshops[]>({
@@ -44,4 +45,10 @@ export const getWorkShopBranchesByRefQuery = (ref: string) =>
         queryFn: () => getWorkShopBranchesByRef(ref),
         initialData: [],
         enabled: !!ref,
+    });
+
+export const getEmployeeQuery = () =>
+    useQuery<IUsers[]>({
+        queryKey: [Endpoints.User],
+        queryFn: () => getUserQuery(),
     });
