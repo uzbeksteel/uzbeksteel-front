@@ -58,3 +58,11 @@ export interface IBranches {
     НаименованиеПолное: string;
     Code: string;
 }
+
+export interface IBodyWorkshopBranches {
+    branch_name: string;
+    masters: {
+        master_type: number;
+        master: string;
+    }[];
+}

@@ -26,7 +26,7 @@ export const WorkShopBranchesComplumns: ColumnsType<any> = [
         render: (a) => {
             return (
                 <Tag color="#F08D10">
-                    {a[0].first_name} {a[0].last_name}
+                    {a[0]?.first_name} {a[0]?.last_name}
                 </Tag>
             );
         },
@@ -38,7 +38,7 @@ export const WorkShopBranchesComplumns: ColumnsType<any> = [
         render: (a) => {
             return a.map((v: IMasters, index: Key | null | undefined) => (
                 <Tag key={index}>
-                    {v.first_name} {v.last_name}
+                    {v?.first_name} {v?.last_name}
                 </Tag>
             ));
         },
