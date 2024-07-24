@@ -1,6 +1,6 @@
-import { Box, CustomModal, Icon } from '@/components';
-import { AntInput } from '@/components/table/style';
+import { Box, CustomModal } from '@/components';
 import { useAppStore } from '@/store';
+import { Input } from 'antd';
 import { useState } from 'react';
 
 export const AddEmployeeModal = () => {
@@ -20,8 +20,7 @@ export const AddEmployeeModal = () => {
     return (
         <CustomModal open={isModal} onClose={handleClose} onCancel={handleClose}>
             <Box $justify="space-evenly" $align="center">
-                <AntInput style={{ width: '70%', margin: '10px' }} placeholder="Введите номер вкладки" onChange={(v) => setInput(v.target.value)} value={input} />
-                <Icon name="Search" btn onClick={handleClick} loading={Loading} />
+                <Input.Search style={{ width: '90%', borderRadius: '0px !important' }} placeholder="Введите номер вкладки" onChange={(v) => setInput(v.target.value)} value={input} />
             </Box>
         </CustomModal>
     );

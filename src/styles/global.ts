@@ -67,4 +67,8 @@ export const GlobalStyles = createGlobalStyle`
       border-radius: 0px !important;
     }
   }
+
+  .ant-input {
+    border-radius: 0px !important;
+  }
 `;
