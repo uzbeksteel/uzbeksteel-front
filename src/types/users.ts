@@ -61,14 +61,14 @@ export type User1CType = {
 
 export interface CreateUserBody {
     first_name: string;
-    last_name: string;
+    last_name?: string;
     password: string;
     tab_number: string;
     position: string;
     birth_date: string;
     place_of_birth: string;
-    nationality: string;
+    nationality?: string;
     phone: string;
-    role: string;
+    role?: string;
     user_type?: string;
 }

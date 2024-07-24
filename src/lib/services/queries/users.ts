@@ -20,7 +20,7 @@ const deleteUser = async (id: TParams): Promise<TUser> => {
 
 export const getUser1CByTabNumberQuery = (tubNumber: string) =>
     useQuery<User1CType>({
-        queryKey: [Endpoints.Get1CUserByTabNumber],
+        queryKey: [Endpoints.Get1CUserByTabNumber, tubNumber],
         queryFn: () => getUser1CByTabNumber(tubNumber),
         enabled: !!tubNumber,
     });

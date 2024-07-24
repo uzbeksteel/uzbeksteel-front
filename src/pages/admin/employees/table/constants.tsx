@@ -1,4 +1,4 @@
-import { Box, Edit, See } from '@/components';
+import { Box, Edit } from '@/components';
 import { Tag } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 
@@ -13,27 +13,40 @@ export const EmployeesComplumns: ColumnsType<any> = [
         sorter: (a, b) => a?.id - b?.id,
     },
     {
-        title: 'Цех номи',
-        dataIndex: 'name',
+        title: 'Исми',
+        dataIndex: 'first_name',
         render: (name: string) => <Tag color="success">{name}</Tag>,
         key: 'name',
     },
     {
-        title: 'Начальник цеха',
-        dataIndex: ['workshop_director', 'first_name'],
+        title: 'Таб номери',
+        dataIndex: ['tab_number'],
         key: 'Начальник цеха',
     },
-
+    {
+        title: 'Лавозим',
+        dataIndex: 'position',
+        key: 'positoon',
+    },
+    {
+        title: 'Тиғулган жойи',
+        dataIndex: 'place_of_birth',
+        key: 'place_of_birth',
+    },
+    {
+        title: 'Роле',
+        dataIndex: 'role',
+        key: 'role',
+    },
     {
         title: 'Ҳаракат',
-        render: (record) => {
+        render: () => {
             return (
                 <Box $justify="space-around" $align="center">
                     <Edit id={'12'} />
-                    <See id={record?.ref_key} />
                 </Box>
             );
         },
-        width: '200px',
+        width: '100px',
     },
 ];
