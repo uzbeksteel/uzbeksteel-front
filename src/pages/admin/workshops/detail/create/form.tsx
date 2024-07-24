@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 export const CreateWorkshopBranchesForm = () => {
     const { id } = useParams();
     const [ref, setRef] = useState<string>();
+    const [value, setValue] = useState(1);
     const { setIsModal } = useAppStore();
 
     const { data, isLoading } = getWorkShopBranchesByRefQuery(id as string);
@@ -32,7 +33,7 @@ export const CreateWorkshopBranchesForm = () => {
                             </Form.Item>
                         </Col>
                         <Col span={24}>
-                            <Typography type="paragraph">Добавить мастера</Typography>
+                            <Typography type="paragraph">Добавить мастера</Typography> have
                         </Col>
                         <Col span={24}>
                             <Form.List name="masters">
@@ -42,6 +43,14 @@ export const CreateWorkshopBranchesForm = () => {
                                             <Card size="small" key={i} title={`${subField.key + 1}. Мастер`} extra={<Icon btn={false} name="BadgeX" onClick={() => remove(subField.name)} />} style={{ marginTop: '10px' }}>
                                                 <Row gutter={10}>
                                                     <Col span={24}>
+                                                        <Form.Item label="Тип мастера" name="master_type" rules={[{ required: true }]}>
+                                                            <Radio.Group onChange={(v) => setValue(v.target.value)} defaultValue={1} value={value}>
+                                                                <Radio value={1}>Мастер</Radio>
+                                                                <Radio value={2}>Старший мастер</Radio>
+                                                            </Radio.Group>
+                                                        </Form.Item>
+                                                    </Col>
+                                                    <Col span={24}>
                                                         <Form.Item label="Мастер:" name="master" rules={[{ required: true }]}>
                                                             {employeeData && employeeData.length !== 0 ? (
                                                                 <Select placeholder="Мастер" options={employeeData?.map((v) => ({ label: v.ishchi, value: v.tabNomer }))} showSearch={true} loading={employeeLoading} />
@@ -50,14 +59,6 @@ export const CreateWorkshopBranchesForm = () => {
                                                                     Добавить сотрудника +{' '}
                                                                 </Button>
                                                             )}
-                                                        </Form.Item>
-                                                    </Col>
-                                                    <Col span={24}>
-                                                        <Form.Item label="Тип мастера" name="master_type" rules={[{ required: true }]}>
-                                                            <Radio.Group onChange={() => {}} value={1}>
-                                                                <Radio value={1}>Мастер</Radio>
-                                                                <Radio value={2}>Старший мастер</Radio>
-                                                            </Radio.Group>
                                                         </Form.Item>
                                                     </Col>
                                                 </Row>
