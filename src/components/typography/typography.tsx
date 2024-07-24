@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { StyledParagraph, StyledText, StyledTitle } from './style';
 import { TypographyProps } from './types';
 
-export const Typography: FC<TypographyProps> = ({ type, children, ...props }) => {
+export const Typography: FC<TypographyProps> = ({ type, children, marginBottom, ...props }) => {
     switch (type) {
         case 'title':
             return (

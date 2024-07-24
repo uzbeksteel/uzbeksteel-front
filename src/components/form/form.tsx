@@ -3,20 +3,18 @@ import type { TParams } from '@/types/app';
 import { TAntFormProps, TFieldProps } from '@/types/components';
 import { useIsMutating } from '@tanstack/react-query';
 import { Form as AntForm, Col, Input, InputNumber, Row, Spin } from 'antd';
-import { useParams } from 'react-router-dom';
 import { Button } from '..';
 import { Box } from '../box';
 
-export const Form = ({ save, loading, children, ...props }: TAntFormProps) => {
+export const Form = ({ save, loading, children, isloading, ...props }: TAntFormProps) => {
     const isMutating = useIsMutating();
-    const { id } = useParams();
 
     return loading ? (
         <Box $align="center" $justify="center" $height="var(--full)">
             <Spin size="large" />
         </Box>
     ) : (
-        <AntForm layout="vertical" {...props}>
+        <AntForm layout="vertical" disabled={isloading} {...props}>
             <Row gutter={[10, 10]}>{children}</Row>
 
             {!save && (

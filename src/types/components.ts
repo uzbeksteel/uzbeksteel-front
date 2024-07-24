@@ -6,6 +6,7 @@ export type TAntFormProps = {
     save?: boolean;
     loading?: boolean;
     children: ReactNode;
+    isloading?: boolean;
 } & Partial<FormProps>;
 
 export type TFieldProps = {
