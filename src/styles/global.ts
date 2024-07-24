@@ -71,4 +71,8 @@ export const GlobalStyles = createGlobalStyle`
   .ant-input {
     border-radius: 0px !important;
   }
+
+  .ant-input-password  {
+    border-radius: 0px !important;
+  }
 `;

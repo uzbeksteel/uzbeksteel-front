@@ -31,3 +31,4 @@ export const WorkshopHome = getLoadablePage('WorkshopHome');
 export const WorkshopEmployes = getLoadablePage('WorkshopEmployes');
 export const WorkshopInspections = getLoadablePage('WorkshopInspections');
 export const InspectionCreate = getLoadablePage('InspectionCreate');
+export const CreateEmployee = getLoadablePage('CreateEmployee');
