@@ -13,7 +13,7 @@ interface Values {
 export const Tab21: FC<TabProps<Values> & IProps> = ({ onFinish, isPending }) => {
     return (
         <AuthForm layout="vertical" onFinish={onFinish}>
-            <Field span={24} name="login" prefix={<Icon name="User" />} placeholder="Имя пользователя" />
+            <Field span={24} name="tabNumber" prefix={<Icon name="User" />} placeholder="Имя пользователя" />
             <Field span={24} name="password">
                 <Input.Password style={{ borderRadius: 0 }} prefix={<Icon name="LockKeyhole" />} type="password" placeholder="Пароль" />
             </Field>

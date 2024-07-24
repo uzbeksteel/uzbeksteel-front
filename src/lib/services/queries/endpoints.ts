@@ -1,6 +1,7 @@
 export enum Endpoints {
     Branches = 'branches',
-    SignIn = 'auth/signIn',
+    SignIn = 'auth/login',
+    GetMe = 'auth/me',
     News = 'news',
     Upload = 'upload/',
     Users = 'user',

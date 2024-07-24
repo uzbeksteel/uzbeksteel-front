@@ -36,7 +36,7 @@ export const Header: FC<Pick<CalendarHeaderProps<Dayjs>, 'onChange' | 'value' | 
 
     return (
         <Box $p="15px 15px 15px 0" $align="center" $justify="space-between">
-            <Button type="primary" size="middle" icon={<Icon name="Plus" />} onClick={Create}>
+            <Button style={{ borderRadius: 0 }} type="primary" size="middle" icon={<Icon name="Plus" />} onClick={Create}>
                 Создать
             </Button>
             <Box>

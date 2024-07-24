@@ -4,10 +4,10 @@ import { useRoutes } from 'react-router-dom';
 import { Accidents, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateEmployee, Deeds, Forgot, Graphics, GraphicsDetail, Home, InspectionCreate, Login, Lows, TbMagazines, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
 import { Protected } from './protected';
 import { Public } from './public';
+import { useAuthStore } from '@/store';
 
 export const Router = () => {
-    // const { isAuth } = useAuthStore();
-    const isAuth = true;
+    const { isAuth } = useAuthStore();
 
     return useRoutes([
         {

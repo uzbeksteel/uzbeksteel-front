@@ -1,3 +1,5 @@
+import { UserRoles, UserTypes } from '@/constants';
+
 export interface TUser {
     id: string;
     created_at: string;
@@ -11,8 +13,8 @@ export interface TUser {
     place_of_birth: string;
     nationality: string;
     phone: string;
-    role: string;
-    user_type: string;
+    role: UserRoles;
+    user_type: UserTypes;
     workshop: Workshop;
     workShopBranches: WorkShopBranches;
 }

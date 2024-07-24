@@ -1,6 +1,7 @@
 export enum UserTypes {
     MASTER = 'MASTER',
     GRAND_MASTER = 'GRAND_MASTER',
+    INDUSTRIAL_SECURITY = 'INDUSTRIAL_SECURITY',
 }
 
 export enum UserRoles {

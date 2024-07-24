@@ -3,9 +3,19 @@ import { useGetGraphicsQuery } from '@/lib/services/queries/graphic.ts';
 import dayjs, { Dayjs } from 'dayjs';
 import { Badge } from 'antd';
 import { IGraphic } from '@/types/graphics.ts';
+import { useAuthStore } from '@/store';
+import { useLocation } from 'react-router-dom';
+import { ROUTES } from '@/constants';
 
 export const Tab1 = () => {
-    const { data } = useGetGraphicsQuery();
+    let worshopId;
+    const location = useLocation();
+    const user = useAuthStore((state) => state.user);
+    if (location.pathname.includes(ROUTES.workshop)) {
+        worshopId = user?.workshop?.id;
+    }
+    const { data } = useGetGraphicsQuery(worshopId);
+
     const formatGraphics = (graphics: IGraphic[]) => {
         return graphics.reduce(
             (acc, graphic) => {

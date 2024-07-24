@@ -9,6 +9,8 @@ export const COLLAPSED = 'collapsed';
 export const CATEGORY_ID = 'category_id';
 export const SUB_CATEGORY_ID = 'sub_category_id';
 
+export const USER = 'user';
+
 const PREFIX = '/';
 
 export const getRoute = (...routes: Array<string>) => {

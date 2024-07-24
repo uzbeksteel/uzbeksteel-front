@@ -1,10 +1,14 @@
-export interface IAuthStore {
-  token: string | null;
-  isAuth: boolean | null;
-  isInitiated: boolean;
+import { TUser } from '@/types/users.ts';
 
-  logout: () => void;
-  setToken: (token: string) => void;
-  setIsAuth: (isAuth: boolean) => void;
-  setIsInitiated: (isInitiated: boolean) => void;
+export interface IAuthStore {
+    token: string | null;
+    isAuth: boolean | null;
+    isInitiated: boolean;
+    user: TUser | null;
+
+    logout: () => void;
+    setToken: (token: string) => void;
+    setIsAuth: (isAuth: boolean) => void;
+    setIsInitiated: (isInitiated: boolean) => void;
+    setUser: (user: TUser) => void;
 }

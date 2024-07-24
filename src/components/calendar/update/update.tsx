@@ -9,6 +9,8 @@ export const Update = () => {
         content: <Content />,
         icon: null,
         okText: dictionary.save,
+        okButtonProps: { style: { borderRadius: 0 } },
+        cancelButtonProps: { style: { borderRadius: 0 } },
         onOk: async () => {
             await useGraphicStore.getState().updateFormInstance?.validateFields();
             useGraphicStore.getState().updateFormInstance?.submit();

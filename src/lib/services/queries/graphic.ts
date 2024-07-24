@@ -5,7 +5,7 @@ import { IGraphic } from '@/types/graphics.ts';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { message } from 'antd';
 
-const getGraphics = async (): Promise<IGraphic[]> => await api.get(Endpoints.Graphic);
+const getGraphics = async (workshopId?: string): Promise<IGraphic[]> => await api.get(Endpoints.Graphic, { params: { workshopId } });
 
 const getGraphicsByDate = async (date?: string): Promise<IGraphic[]> => await api.get(Endpoints.Graphic, { params: { date } });
 
@@ -45,10 +45,10 @@ const deleteGraphic = async (id: string): Promise<void> => {
     }
 };
 
-export const useGetGraphicsQuery = () =>
+export const useGetGraphicsQuery = (workshopId?: string) =>
     useQuery<IGraphic[]>({
         queryKey: [Endpoints.Graphic],
-        queryFn: () => getGraphics(),
+        queryFn: () => getGraphics(workshopId),
         initialData: [],
     });
 

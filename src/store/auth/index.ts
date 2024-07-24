@@ -1,12 +1,14 @@
-import { clearLocalStorage, getLocalStorage, setLocalStorage, TOKEN } from '@/lib/utils';
+import { clearLocalStorage, getLocalStorage, setLocalStorage, TOKEN, USER } from '@/lib/utils';
 import { create } from 'zustand';
 import { createSelectors } from '../createSelectors';
 import { IAuthStore } from './types';
+import { fromBase64, toBase64 } from '@/lib/utils/base64.ts';
 
 const useAppBase = create<IAuthStore>()((set) => ({
     token: getLocalStorage(TOKEN),
     isAuth: null,
     isInitiated: true,
+    user: fromBase64(getLocalStorage(USER)),
 
     logout: () =>
         set((state) => {
@@ -15,6 +17,7 @@ const useAppBase = create<IAuthStore>()((set) => ({
             return {
                 ...state,
                 token: null,
+                user: null,
                 isAuth: false,
             };
         }),
@@ -30,6 +33,11 @@ const useAppBase = create<IAuthStore>()((set) => ({
         }),
     setIsAuth: (isAuth) => set(() => ({ isAuth })),
     setIsInitiated: (isInitiated) => set(() => ({ isInitiated })),
+    setUser: (user) =>
+        set(() => {
+            setLocalStorage(USER, toBase64(user));
+            return { user };
+        }),
 }));
 
 export const useAuthStore = createSelectors(useAppBase);
