@@ -40,4 +40,9 @@ export const menuItems = [
         icon: <Icon name="Siren" />,
         label: menuLabels[5],
     },
+    {
+        key: ROUTES.dangers,
+        icon: <Icon name="Bug" />,
+        label: menuLabels[7],
+    },
 ];

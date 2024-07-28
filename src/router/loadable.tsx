@@ -32,3 +32,7 @@ export const WorkshopEmployes = getLoadablePage('WorkshopEmployes');
 export const WorkshopInspections = getLoadablePage('WorkshopInspections');
 export const InspectionCreate = getLoadablePage('InspectionCreate');
 export const CreateEmployee = getLoadablePage('CreateEmployee');
+
+export const Dangers = getLoadablePage('Dangers');
+export const DangersDetail = getLoadablePage('DangersDetail');
+export const AddDanger = getLoadablePage('AddDanger');

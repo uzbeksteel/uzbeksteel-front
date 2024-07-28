@@ -1,0 +1,1 @@
+export { DangersDetail } from './detail';

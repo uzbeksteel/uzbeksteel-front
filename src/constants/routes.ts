@@ -13,6 +13,7 @@ export const ROUTES = {
     certification: '/certification',
     accidents: '/accidents',
     magazine: '/magazine',
+    dangers: '/dangers',
 
     // admin routes
     admin: '/admin',
