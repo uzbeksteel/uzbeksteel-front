@@ -3,13 +3,14 @@ import { Box, Button, Icon, Table, Typography } from '@/components';
 import { ColumnsType, TablePaginationConfig } from 'antd/es/table';
 import { useState } from 'react';
 import { ROUTES } from '@/constants';
+import { useGetDangersQuery } from '@/lib/services/queries/dangers.ts';
 
 export const DangersDetail = () => {
     const param = useParams();
     const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(1);
     const workshopId = param.id;
-
+    const { data } = useGetDangersQuery(workshopId);
     const columns: ColumnsType = [
         {
             title: 'Т/р',
@@ -66,9 +67,9 @@ export const DangersDetail = () => {
             dataIndex: '',
             key: '',
             width: '10%',
-            render: (_, record) => {
+            render: () => {
                 return (
-                    <Button onClick={() => navigate(':' + record.id)} type="link" style={{ color: '#F08D10' }}>
+                    <Button type="link" style={{ color: '#F08D10' }}>
                         <Icon name="Eye" /> Кўриш
                     </Button>
                 );
@@ -78,8 +79,6 @@ export const DangersDetail = () => {
     const handleTableChange = (pagination: TablePaginationConfig) => {
         setCurrentPage(pagination.current || 1);
     };
-
-    const data: any[] = [];
     return (
         <>
             <Box $p="20px" $gap="10px" style={{ background: '#FFF' }}>

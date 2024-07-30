@@ -2,12 +2,23 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Form as AntdForm } from 'antd';
 import { Box, Field, Form, Icon, Typography } from '@/components';
 import { IDanger } from '@/types/danger.ts';
+import { useCreateDangerQuery } from '@/lib/services/queries/dangers.ts';
+import { history } from '@/lib/utils';
 
 export const AddDanger = () => {
     const param = useParams();
     const navigate = useNavigate();
+    const { mutate } = useCreateDangerQuery(onSuccess);
     const [form] = AntdForm.useForm<Omit<IDanger, 'workshopId'>>();
     const workshopId = param.id;
+
+    function onSuccess() {
+        history.back();
+    }
+
+    const onFinish = (data: Omit<IDanger, 'workshopId'>) => {
+        mutate({ ...data, workshop: workshopId as never });
+    };
     return (
         <>
             <Box $p="20px" $gap="10px" style={{ background: '#FFF' }}>
@@ -17,7 +28,7 @@ export const AddDanger = () => {
                 </Typography>
             </Box>
             <Box style={{ background: 'white' }} $p="20px" $m="10px">
-                <Form form={form} style={{ width: '100%' }}>
+                <Form form={form} onFinish={onFinish} style={{ width: '100%' }}>
                     <Field name="profession" isRequired span={24} label="Должность, профессия" placeholder="Должность, профессия" />
                     <Field name="typeActivity" isRequired span={24} label="Вид деятельности с условным обозначением" placeholder="Вид деятельности с условным обозначением" />
                     <Field name="typeDescriptionOfHazard" isRequired span={24} label="Тип и описание опасности" placeholder="Тип и описание опасности" />

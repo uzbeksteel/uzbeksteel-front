@@ -1,4 +1,7 @@
+import { IWorkshop } from '@/types/workshop.ts';
+
 export interface IDanger {
+    id?: string;
     profession: string;
     typeActivity: string;
     typeDescriptionOfHazard: string;
@@ -7,5 +10,8 @@ export interface IDanger {
     seriousness: string;
     riskLevel: string;
     controlMethods: string;
-    workshopId: string;
+    workshop: IWorkshop;
+    created_at?: string;
+    updated_at?: string;
+    deleted_at?: string;
 }

@@ -55,7 +55,7 @@ export const Dangers = () => {
             width: '10%',
             render: (_, record) => {
                 return (
-                    <Button onClick={() => navigate(':' + record.id)} type="link" style={{ color: '#F08D10' }}>
+                    <Button onClick={() => navigate(record.id)} type="link" style={{ color: '#F08D10' }}>
                         <Icon name="Eye" /> Кўриш
                     </Button>
                 );
