@@ -1,10 +1,10 @@
 import { ROUTES } from '@/constants';
 import { AdminLayout, TbLayout, WorkshopLayout } from '@/layout';
+import { useAuthStore } from '@/store';
 import { useRoutes } from 'react-router-dom';
-import { Accidents, AddDanger, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateEmployee, Dangers, DangersDetail, Deeds, Forgot, Graphics, GraphicsDetail, Home, InspectionCreate, Login, Lows, TbMagazines, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
+import { Accidents, AddDanger, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateActs, CreateEmployee, Dangers, DangersDetail, Deeds, Forgot, Graphics, GraphicsDetail, Home, InspectionCreate, Login, Lows, TbMagazines, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
 import { Protected } from './protected';
 import { Public } from './public';
-import { useAuthStore } from '@/store';
 
 export const Router = () => {
     const { isAuth } = useAuthStore();
@@ -30,7 +30,16 @@ export const Router = () => {
                                 },
                                 {
                                     path: ROUTES.single,
-                                    element: <GraphicsDetail />,
+                                    children: [
+                                        {
+                                            index: true,
+                                            element: <GraphicsDetail />,
+                                        },
+                                        {
+                                            path: ROUTES.add,
+                                            element: <CreateActs />,
+                                        },
+                                    ],
                                 },
                             ],
                         },

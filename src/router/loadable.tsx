@@ -15,6 +15,7 @@ export const CertificationList = getLoadablePage('CertificationList');
 export const CertificationCreate = getLoadablePage('CertificationCreate');
 export const Accidents = getLoadablePage('Accidents');
 export const TbMagazines = getLoadablePage('TbMagazines');
+export const CreateActs = getLoadablePage('CreateActs');
 
 // admin
 export const AdminHome = getLoadablePage('AdminHome');
@@ -32,7 +33,6 @@ export const WorkshopEmployes = getLoadablePage('WorkshopEmployes');
 export const WorkshopInspections = getLoadablePage('WorkshopInspections');
 export const InspectionCreate = getLoadablePage('InspectionCreate');
 export const CreateEmployee = getLoadablePage('CreateEmployee');
-
 export const Dangers = getLoadablePage('Dangers');
 export const DangersDetail = getLoadablePage('DangersDetail');
 export const AddDanger = getLoadablePage('AddDanger');
