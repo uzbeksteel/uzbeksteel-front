@@ -8,14 +8,26 @@ export function toBase64(obj: any) {
 
 export function fromBase64(base64: string | undefined) {
     if (!base64) return null;
-    const binaryString = atob(base64);
 
-    const byteArray = new Uint8Array(binaryString.length);
-    for (let i = 0; i < binaryString.length; i++) {
-        byteArray[i] = binaryString.charCodeAt(i);
+    // Validate if the string is a valid Base64 encoded string
+    const base64Regex = /^[A-Za-z0-9+/]+={0,2}$/;
+    if (!base64Regex.test(base64)) {
+        console.error('Invalid Base64 string');
+        return null;
     }
 
-    const jsonString = new TextDecoder().decode(byteArray);
+    try {
+        const binaryString = atob(base64);
 
-    return JSON.parse(jsonString);
+        const byteArray = new Uint8Array(binaryString.length);
+        for (let i = 0; i < binaryString.length; i++) {
+            byteArray[i] = binaryString.charCodeAt(i);
+        }
+
+        const jsonString = new TextDecoder().decode(byteArray);
+        return JSON.parse(jsonString);
+    } catch (e) {
+        console.error('Error decoding Base64 string:', e);
+        return null;
+    }
 }
