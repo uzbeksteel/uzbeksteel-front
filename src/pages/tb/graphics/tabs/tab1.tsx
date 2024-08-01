@@ -8,13 +8,13 @@ import { useLocation } from 'react-router-dom';
 import { ROUTES } from '@/constants';
 
 export const Tab1 = () => {
-    let worshopId;
+    let userId;
     const location = useLocation();
     const user = useAuthStore((state) => state.user);
     if (location.pathname.includes(ROUTES.workshop)) {
-        worshopId = user?.workshop?.id;
+        userId = user?.id;
     }
-    const { data } = useGetGraphicsQuery(worshopId);
+    const { data } = useGetGraphicsQuery(userId);
 
     const formatGraphics = (graphics: IGraphic[]) => {
         return graphics.reduce(

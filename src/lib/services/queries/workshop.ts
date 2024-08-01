@@ -1,4 +1,4 @@
-import { IBranches, IMainWorkshops, IUsers, IWorkShopEmployes, IWorkshop } from '@/types/workshop';
+import { IBranches, IMainWorkshops, IUsers, IWorkshop, IWorkShopEmployes } from '@/types/workshop';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api';
 import { Endpoints } from './endpoints';
@@ -30,7 +30,6 @@ export const getAllWorkshopsQuery = (id?: string) =>
         queryKey: [Endpoints.Workshop],
         queryFn: getAllWorkshops,
         initialData: [],
-        enabled: !!id,
     });
 
 export const getWorkShopBranchesQuery = () =>
