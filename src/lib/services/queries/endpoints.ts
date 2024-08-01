@@ -16,4 +16,5 @@ export enum Endpoints {
     SignatureMagazine = 'magazines/signature',
     User = 'user',
     Dangers = 'danger',
+    Acts = 'acts',
 }

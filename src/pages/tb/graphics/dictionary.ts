@@ -1,3 +1,3 @@
-export const dictionary = {
+export const workShopDictionary = {
     labels: ['Номи', 'Сех', 'Файл'],
 };

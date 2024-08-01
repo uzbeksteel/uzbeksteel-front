@@ -1,7 +1,7 @@
 import { dictionary } from '@/constants';
 import { Endpoints } from '@/lib/services';
 import { api } from '@/lib/services/api';
-import { IGraphic } from '@/types/graphics.ts';
+import { IActs, IGraphic } from '@/types/graphics.ts';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { message } from 'antd';
 
@@ -9,7 +9,9 @@ const getGraphics = async (workshopId?: string): Promise<IGraphic[]> => await ap
 
 const getGraphicsByDate = async (date?: string): Promise<IGraphic[]> => await api.get(Endpoints.Graphic, { params: { date } });
 
-const getGraphicById = async (id: string): Promise<IGraphic> => {
+const getAllActs = async (): Promise<IActs[]> => (await api.get(Endpoints.Acts)).data;
+
+export const getGraphicById = async (id: string): Promise<IGraphic> => {
     const hideMessage = message.loading(dictionary.loading, 0);
     try {
         return await api.get(`${Endpoints.Graphic}/${id}`);
@@ -75,4 +77,11 @@ export const useUpdateGraphicQuery = (onSuccess: () => void) =>
     useMutation({
         mutationFn: updateGraphic,
         onSuccess,
+    });
+
+export const getActsQuery = () =>
+    useQuery<IActs[]>({
+        queryKey: [Endpoints.Acts],
+        queryFn: getAllActs,
+        initialData: [],
     });

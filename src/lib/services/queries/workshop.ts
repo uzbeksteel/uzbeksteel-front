@@ -25,11 +25,12 @@ export const selectableWShEmpoyesQuery = (ref_key: string) =>
         enabled: !!ref_key,
     });
 
-export const getAllWorkshopsQuery = () =>
+export const getAllWorkshopsQuery = (id?: string) =>
     useQuery<IWorkshop[]>({
         queryKey: [Endpoints.Workshop],
         queryFn: getAllWorkshops,
         initialData: [],
+        enabled: !!id,
     });
 
 export const getWorkShopBranchesQuery = () =>

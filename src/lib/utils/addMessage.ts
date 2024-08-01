@@ -1,4 +1,4 @@
-import { message } from '@/app';
+import { message } from 'antd';
 import { makeErrMsg } from './general';
 
 export const addMessage = (data: any): void => {

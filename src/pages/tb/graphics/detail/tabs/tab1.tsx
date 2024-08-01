@@ -1,41 +1,44 @@
-import { Table } from '@/components';
+import { Box, Table } from '@/components';
 import { useResponsive } from '@/lib/hooks';
+import { getActsQuery } from '@/lib/services/queries/graphic';
+import { IActs } from '@/types/graphics';
+import { Badge } from 'antd';
+import { ColumnsType } from 'antd/es/table';
+import { Link } from 'react-router-dom';
 
-const dataSource = [
-    {
-        key: '1',
-        name: 'Mike',
-        age: 32,
-        address: '10 Downing Street',
-    },
-    {
-        key: '2',
-        name: 'John',
-        age: 42,
-        address: '10 Downing Street',
-    },
-];
-
-const columns = [
+const columns: ColumnsType<IActs> = [
     {
         title: 'Name',
         dataIndex: 'name',
         key: 'name',
     },
     {
-        title: 'Age',
-        dataIndex: 'age',
-        key: 'age',
+        title: 'File',
+        dataIndex: ['file', 'name'],
+        key: 'file',
+        render: (v) => <Link to={''}>{v}</Link>,
     },
     {
-        title: 'Address',
-        dataIndex: 'address',
-        key: 'address',
+        title: 'Workshop',
+        dataIndex: ['workshop', 'name'],
+        key: 'workshop',
+    },
+    {
+        title: 'Status',
+        dataIndex: 'status',
+        key: 'status',
+        render: (v) => <>{v == 'PENDING' ? <Badge status="warning" text={v.toLowerCase()} /> : v == 'APPROVED' ? <Badge status="success" text={v.toLowerCase()} /> : <Badge status="error" text={v.toLowerCase()} />}</>,
     },
 ];
 
 export const Tab1 = () => {
     const { isTablet } = useResponsive();
 
-    return <Table columns={columns} dataSource={dataSource} titleTable={!isTablet ? '' : 'Тузилган далолатномалар рўйхати'} isAdd={false} />;
+    const { data, isLoading } = getActsQuery();
+
+    return (
+        <Box $align="center" $justify="center">
+            <Table columns={columns} dataSource={data} titleTable={!isTablet ? '' : 'Тузилган далолатномалар рўйхати'} isAdd={false} loading={isLoading} />
+        </Box>
+    );
 };
