@@ -30,6 +30,7 @@ export const WorkShopBranchesComplumns: ColumnsType<any> = [
                 </Tag>
             );
         },
+        width: 100,
     },
     {
         title: 'Masters',
@@ -42,6 +43,7 @@ export const WorkShopBranchesComplumns: ColumnsType<any> = [
                 </Tag>
             ));
         },
+        width: '100px',
     },
     {
         title: 'Ҳаракат',
