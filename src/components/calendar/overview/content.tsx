@@ -1,9 +1,11 @@
-import { Table } from 'antd';
+import { Modal, Table } from 'antd';
 import { Box, Icon } from '@/components';
 import { useDeleteGraphicQuery, useGetGraphicsByDateQuery } from '@/lib/services/queries/graphic.ts';
 import { IGraphic } from '@/types/graphics.ts';
 import { Update } from '@/components/calendar/update';
 import { useGraphicStore } from '@/store';
+import { ROUTES } from '@/constants';
+import { history } from '@/lib/utils';
 
 export const Content = () => {
     const params = new URLSearchParams(window.location.href.split('?')[1]);
@@ -35,9 +37,13 @@ export const Content = () => {
                     setUpdateGraphicCredentials(record);
                     Update();
                 };
+                const handleEyeBtn = () => {
+                    Modal.destroyAll();
+                    history.push(`${ROUTES.graphics}/${record.id}`);
+                };
                 return (
                     <Box $align="center" $gap="15px">
-                        <Icon style={{ width: '16px', cursor: 'pointer' }} name="Eye" color="#1890ff" />
+                        <Icon onClick={handleEyeBtn} style={{ width: '16px', cursor: 'pointer' }} name="Eye" color="#1890ff" />
                         <Icon onClick={handleEditBtn} style={{ width: '16px', cursor: 'pointer' }} name="Pencil" color="#faad14" />
                         <Icon onClick={() => mutate(record.id)} style={{ width: '16px', cursor: 'pointer' }} color="red" name="Trash2" />
                     </Box>
