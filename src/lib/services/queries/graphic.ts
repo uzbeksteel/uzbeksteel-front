@@ -1,7 +1,7 @@
 import { dictionary } from '@/constants';
 import { Endpoints } from '@/lib/services';
 import { api } from '@/lib/services/api';
-import { IActs, IGraphic } from '@/types/graphics.ts';
+import { IActs, IGraphic, IMeasures } from '@/types/graphics.ts';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { message } from 'antd';
 
@@ -9,7 +9,11 @@ const getGraphics = async (userId?: string): Promise<IGraphic[]> => await api.ge
 
 const getGraphicsByDate = async (date?: string): Promise<IGraphic[]> => await api.get(Endpoints.Graphic, { params: { date } });
 
-const getAllActs = async (): Promise<IActs[]> => (await api.get(Endpoints.Acts)).data;
+const getAllActs = async (graphicId?: string, search?: string): Promise<IActs[]> => (await api.get(`${Endpoints.Acts.toString()}${graphicId ? `?filter.graphic.id=${graphicId}${search ? `&search=${search}` : ''}` : search ? `&search=${search}` : ''}`)).data;
+
+const getMeasures = async (graphicId?: string, search?: string): Promise<IMeasures[]> => (await api.get(`${Endpoints.Measures.toString()}${graphicId ? `?filter.graphic.id=${graphicId}${search ? `&search=${search}` : ''}` : search ? `&search=${search}` : ''}`)).data;
+
+const getReports = async (graphicId?: string, search?: string): Promise<IMeasures[]> => (await api.get(`${Endpoints.Reports.toString()}${graphicId ? `?filter.graphic.id=${graphicId}${search ? `&search=${search}` : ''}` : search ? `&search=${search}` : ''}`)).data;
 
 export const getGraphicById = async (id: string): Promise<IGraphic> => {
     const hideMessage = message.loading(dictionary.loading, 0);
@@ -79,9 +83,44 @@ export const useUpdateGraphicQuery = (onSuccess: () => void) =>
         onSuccess,
     });
 
-export const getActsQuery = () =>
-    useQuery<IActs[]>({
-        queryKey: [Endpoints.Acts],
-        queryFn: getAllActs,
+export const getActsQuery = (graphicId?: string, search?: string) => {
+    return useQuery<IActs[]>({
+        queryKey: [Endpoints.Acts, graphicId, search],
+        queryFn: () => getAllActs(graphicId, search),
         initialData: [],
+        enabled: !!graphicId || !!search,
+        refetchOnMount(query) {
+            return query.state.data?.length ? false : true;
+        },
+        refetchOnWindowFocus: false, // don't refetch on window focus
+        refetchOnReconnect: false,
+    });
+};
+
+export const getMeasuresQuery = (graphicId?: string, search?: string) =>
+    useQuery<IMeasures[]>({
+        queryKey: [Endpoints.Measures, graphicId, search],
+        queryFn: () => getMeasures(graphicId, search),
+        initialData: [],
+        retry: 2,
+        refetchOnMount(query) {
+            return query.state.data?.length ? false : true;
+        },
+        refetchOnWindowFocus: false, // don't refetch on window focus
+        refetchOnReconnect: false, // refetch on network reconnection
+        enabled: !!graphicId || !!search,
+    });
+
+export const getReportsQuery = (graphicId?: string, search?: string) =>
+    useQuery<IMeasures[]>({
+        queryKey: [Endpoints.Reports, graphicId, search],
+        queryFn: () => getReports(graphicId, search),
+        initialData: [],
+        retry: 2,
+        refetchOnWindowFocus: false, // don't refetch on window focus
+        refetchOnReconnect: true, // refetch on network reconnection
+        enabled: !!graphicId || !!search,
+        refetchOnMount(query) {
+            return query.state.data?.length ? false : true;
+        },
     });

@@ -2,6 +2,7 @@ import { dictionary, ROUTES } from '@/constants';
 import { useDebounce, useResponsive } from '@/lib/hooks';
 import type { TIsAdd } from '@/types/components';
 import { Flex } from 'antd';
+import { useSearchParams } from 'react-router-dom';
 import { Box, Typography } from '..';
 import { Add } from '../common';
 import { Icon } from '../icon';
@@ -10,6 +11,10 @@ import { AntInput } from './style';
 export const Header = ({ isAdd, titleTable, onClick, onRotate }: TIsAdd) => {
     const { onSearch } = useDebounce();
     const { isTablet } = useResponsive();
+
+    const [searchParams] = useSearchParams();
+    const type = searchParams.get('type');
+    const typeFilter = type === '1' ? `?type=1` : type === '2' ? `?type=2` : type === '3' ? `?type=3` : '';
 
     return (
         <Flex justify="space-between" align="center">
@@ -21,7 +26,7 @@ export const Header = ({ isAdd, titleTable, onClick, onRotate }: TIsAdd) => {
                 {isTablet && <Icon name="RotateCcw" onClick={onRotate} />}
                 {isTablet && <Icon name="Settings" />}
                 {isTablet && <Icon name="Expand" />}
-                {!isAdd && <Add path={!onClick ? ROUTES.add : undefined} onClick={onClick} />}
+                {!isAdd && <Add path={!onClick ? ROUTES.add + typeFilter : undefined} onClick={onClick} />}
             </Box>
         </Flex>
     );

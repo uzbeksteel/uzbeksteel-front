@@ -1,9 +1,10 @@
 import { Box, Card, Field, Form, Icon, Select } from '@/components';
-import { getAllWorkshopsQuery, useActMutation } from '@/lib/services';
+import { getAllWorkshopsQuery, useActMutation, useMeasuresMutation, useReportsMutation } from '@/lib/services';
+import { history } from '@/lib/utils';
 import { Input, Upload, message } from 'antd';
 import { UploadProps } from 'antd/lib';
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { workShopDictionary } from '../../dictionary';
 
 interface IValues {
@@ -15,9 +16,13 @@ interface IValues {
 export const CreateActForm = () => {
     const [imageId, setImageId] = useState<string>();
     const { id } = useParams();
+    const [searchParams] = useSearchParams();
+    const type = searchParams.get('type');
 
     const { data, isLoading } = getAllWorkshopsQuery(id);
     const { mutate } = useActMutation();
+    const { mutateAsync: mutateMeasures } = useMeasuresMutation();
+    const { mutateAsync: mutateReports } = useReportsMutation();
 
     const props: UploadProps = {
         name: 'file',
@@ -34,18 +39,39 @@ export const CreateActForm = () => {
                 message.error(`${info.file.name} file upload failed.`);
             }
         },
-        onDrop(e) {
-            console.log('Dropped files', e.dataTransfer.files);
-        },
     };
 
     const onFinish = async (values: IValues) => {
-        if (imageId) {
-            mutate({
-                name: values.name,
-                workShopId: values.sex,
-                file: imageId,
-            });
+        if (imageId && id) {
+            switch (type) {
+                case '1':
+                    mutate({
+                        name: values.name,
+                        workshopId: values.sex,
+                        graphicId: id,
+                        file: imageId,
+                    });
+                    break;
+                case '2':
+                    mutateMeasures({
+                        name: values.name,
+                        workshopId: values.sex,
+                        graphicId: id,
+                        file: imageId,
+                    });
+                    break;
+                case '3':
+                    mutateReports({
+                        name: values.name,
+                        workshopId: values.sex,
+                        graphicId: id,
+                        file: imageId,
+                    });
+                    break;
+                default:
+                    history.back();
+                    break;
+            }
         }
     };
 

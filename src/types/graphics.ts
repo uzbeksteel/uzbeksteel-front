@@ -13,7 +13,8 @@ export interface IGraphic {
 
 export interface ICreateActPayload {
     name: string;
-    workShopId: string;
+    workshopId: string;
+    graphicId: string;
     file: string;
 }
 
@@ -28,7 +29,7 @@ export interface IActs {
     workshop: Workshop;
 }
 
-export interface File {
+export interface IFile {
     id: string;
     created_at: string;
     updated_at: string;
@@ -45,4 +46,16 @@ export interface Workshop {
     deleted_at: any;
     name: string;
     ref_key: string;
+}
+
+export interface IMeasures {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: any;
+    name: string;
+    status: string;
+    file: IFile;
+    graphic: IGraphic;
+    workshop: Workshop;
 }
