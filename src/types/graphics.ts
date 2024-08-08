@@ -18,17 +18,6 @@ export interface ICreateActPayload {
     file: string;
 }
 
-export interface IActs {
-    id: string;
-    created_at: string;
-    updated_at: string;
-    deleted_at: any;
-    name: string;
-    status: string;
-    file: File;
-    workshop: Workshop;
-}
-
 export interface IFile {
     id: string;
     created_at: string;
@@ -37,6 +26,17 @@ export interface IFile {
     name: string;
     url: string;
     type: string;
+}
+
+export interface IActs {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: any;
+    name: string;
+    status: string;
+    file: IFile;
+    workshop: Workshop;
 }
 
 export interface Workshop {

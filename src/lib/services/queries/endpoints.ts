@@ -19,4 +19,6 @@ export enum Endpoints {
     Acts = 'acts',
     Measures = 'measures',
     Reports = 'reports',
+    Download = 'download',
+    Files = 'files',
 }
