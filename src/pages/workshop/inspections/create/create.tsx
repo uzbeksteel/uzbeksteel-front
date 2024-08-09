@@ -15,10 +15,7 @@ export const InspectionCreate = () => {
     const { data: users, isFetching, isPending } = getUsersQuery();
 
     const onFinissh = (value: CreateMagazineBody) => {
-        console.log(value);
-
         const opt = { ...value, magazine_type: stage, signature: false, workshop: '870573ec-3cfc-4474-b2bb-60fd5af50cc5', workshop_branches: '931790b6-42ff-49d2-8080-498d58823b27' } as CreateMagazineBody;
-
         mutate(opt);
     };
 
@@ -59,9 +56,6 @@ export const InspectionCreate = () => {
                                 <DatePicker style={{ width: '100%' }} />
                             </Field>
 
-                            {/* <Field span={24} name="sgnature" label="Бажарилганлиги  бўйича белги (сана,бажаришга жавобгар шахс ва меҳнат муҳофазаси бўйича вакил имзоси):" rules={[{ required: true, message: 'Майдонни тўлдиринг!' }]}>
-                                <Checkbox />
-                            </Field> */}
                             <Col span={24}>
                                 <Button loading={isPending} htmlType="submit" type="primary" style={{ width: '100%' }}>
                                     Сақлаш
