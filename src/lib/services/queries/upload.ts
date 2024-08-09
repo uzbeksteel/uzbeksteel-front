@@ -1,7 +1,8 @@
 import { message } from '@/app';
-import { dictionary } from '@/constants';
+import { API_URL, dictionary } from '@/constants';
 import { TUploadFileResponse } from '@/types/app';
 import { useMutation } from '@tanstack/react-query';
+import axios, { AxiosResponse } from 'axios';
 import { api } from '../api';
 import { Endpoints } from './endpoints';
 
@@ -23,6 +24,10 @@ const deleteFile = async (id: string): Promise<TUploadFileResponse> => {
     } finally {
         hideMessage();
     }
+};
+
+export const downloadFile = async (id: string | number): Promise<AxiosResponse> => {
+    return await axios.get(`${API_URL}${Endpoints.Files}/${id}/${Endpoints.Download}`, { responseType: 'blob' });
 };
 
 export const useUploadFileQuery = (onSuccess: (data: TUploadFileResponse) => void) =>

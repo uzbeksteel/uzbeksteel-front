@@ -10,14 +10,15 @@ import { CreateMagazineBody } from './type';
 export const InspectionCreate = () => {
     const { stage } = useMagazineStore();
     const navigate = useNavigate();
-    const { mutate, isPending } = createMagazineMutation();
+    const { mutate } = createMagazineMutation();
 
-    const { data: users, isFetching } = getUsersQuery();
+    const { data: users, isFetching, isPending } = getUsersQuery();
 
     const onFinissh = (value: CreateMagazineBody) => {
         console.log(value);
 
         const opt = { ...value, magazine_type: stage, signature: false, workshop: '870573ec-3cfc-4474-b2bb-60fd5af50cc5', workshop_branches: '931790b6-42ff-49d2-8080-498d58823b27' } as CreateMagazineBody;
+
         mutate(opt);
     };
 

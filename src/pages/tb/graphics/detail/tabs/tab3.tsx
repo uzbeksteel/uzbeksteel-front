@@ -1,41 +1,20 @@
-import { Table } from '@/components';
+import { Box, Table } from '@/components';
 import { useResponsive } from '@/lib/hooks';
-
-const dataSource = [
-    {
-        key: '2',
-        name: 'John',
-        age: 42,
-        address: '10 Downing Street',
-    },
-    {
-        key: '3',
-        name: 'Doe',
-        age: 44,
-        address: '14 upstreet Street',
-    },
-];
-
-const columns = [
-    {
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
-    },
-    {
-        title: 'Age',
-        dataIndex: 'age',
-        key: 'age',
-    },
-    {
-        title: 'Address',
-        dataIndex: 'address',
-        key: 'address',
-    },
-];
+import { getReportsQuery } from '@/lib/services';
+import { useAppStore } from '@/store';
+import { useParams } from 'react-router-dom';
+import { ActsColumns } from './constants';
 
 export const Tab3 = () => {
     const { isTablet } = useResponsive();
+    const { id } = useParams();
+    const { search } = useAppStore();
 
-    return <Table columns={columns} dataSource={dataSource} titleTable={!isTablet ? '' : 'Тузилган далолатномалар рўйхати'} isAdd={false} />;
+    const { isFetching, data } = getReportsQuery(id, search === '' ? undefined : search);
+
+    return (
+        <Box $align="center" $justify="center">
+            <Table columns={ActsColumns} loading={isFetching} dataSource={data} titleTable={!isTablet ? '' : 'Тузилган далолатномалар рўйхати'} isAdd={false} />
+        </Box>
+    );
 };

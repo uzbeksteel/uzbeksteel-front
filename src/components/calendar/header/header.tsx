@@ -1,14 +1,25 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
 import { Button, Select } from 'antd';
 import localeData from 'dayjs/plugin/localeData';
 import { Box, Icon } from '@/components';
 import { CalendarHeaderProps } from 'antd/lib/calendar/Header';
 import { Create } from '@/components/calendar/create';
+import { useLocation } from 'react-router-dom';
+import { ROUTES } from '@/constants';
 
 dayjs.extend(localeData);
 
 export const Header: FC<Pick<CalendarHeaderProps<Dayjs>, 'onChange' | 'value' | 'onModeChange' | 'mode'>> = ({ onChange, value }) => {
+    const [canAdd, setCanAdd] = useState(true);
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.pathname.includes(ROUTES.workshop)) {
+            setCanAdd(false);
+        }
+    }, [location]);
+
     const start = 0;
     const end = 12;
     const monthOptions = [];
@@ -36,7 +47,7 @@ export const Header: FC<Pick<CalendarHeaderProps<Dayjs>, 'onChange' | 'value' | 
 
     return (
         <Box $p="15px 15px 15px 0" $align="center" $justify="space-between">
-            <Button style={{ borderRadius: 0 }} type="primary" size="middle" icon={<Icon name="Plus" />} onClick={Create}>
+            <Button style={{ borderRadius: 0, visibility: canAdd ? 'visible' : 'hidden' }} type="primary" size="middle" icon={<Icon name="Plus" />} onClick={Create}>
                 Создать
             </Button>
             <Box>
