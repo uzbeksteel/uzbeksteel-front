@@ -1,20 +1,24 @@
 import { Box, Card, Field, Icon, Typography } from '@/components';
-import { CONTROL_TYPE } from '@/constants';
 import { generateSelectOptions } from '@/lib/helper';
 import { createMagazineMutation, getUsersQuery } from '@/lib/services';
+import { useMagazineStore } from '@/store';
 import { Button, Col, DatePicker, Form, Input, Row, Select } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
 import { CreateMagazineBody } from './type';
 
 export const InspectionCreate = () => {
+    const { stage } = useMagazineStore();
     const navigate = useNavigate();
     const { mutate } = createMagazineMutation();
 
-    const { data: users, isFetching } = getUsersQuery();
+    const { data: users, isFetching, isPending } = getUsersQuery();
 
     const onFinissh = (value: CreateMagazineBody) => {
-        const opt = { ...value, magazine_type: CONTROL_TYPE.FIRST_STAGE, signature: false, workshop: '870573ec-3cfc-4474-b2bb-60fd5af50cc5', workshop_branches: '931790b6-42ff-49d2-8080-498d58823b27' } as CreateMagazineBody;
+        console.log(value);
+
+        const opt = { ...value, magazine_type: stage, signature: false, workshop: '870573ec-3cfc-4474-b2bb-60fd5af50cc5', workshop_branches: '931790b6-42ff-49d2-8080-498d58823b27' } as CreateMagazineBody;
+
         mutate(opt);
     };
 
@@ -59,7 +63,7 @@ export const InspectionCreate = () => {
                                 <Checkbox />
                             </Field> */}
                             <Col span={24}>
-                                <Button htmlType="submit" type="primary" style={{ width: '100%' }}>
+                                <Button loading={isPending} htmlType="submit" type="primary" style={{ width: '100%' }}>
                                     Сақлаш
                                 </Button>
                             </Col>
