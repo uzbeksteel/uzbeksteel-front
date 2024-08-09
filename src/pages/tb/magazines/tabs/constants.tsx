@@ -1,4 +1,5 @@
 import { Box, Icon } from '@/components';
+import { dateFormatter } from '@/lib/utils';
 import { IMagazine } from '@/types/magazine';
 import { TUser } from '@/types/users';
 import { Button, Flex, Tag } from 'antd';
@@ -19,6 +20,7 @@ export const InspectionColumn = ({ success }: { success: (id: string) => void })
         {
             title: 'Назоратни ўтказиш санаси',
             dataIndex: 'control_date',
+            render: (date: string) => dateFormatter(date),
             key: 'control_date',
         },
         {
@@ -40,7 +42,7 @@ export const InspectionColumn = ({ success }: { success: (id: string) => void })
             render: (user: TUser[]) => (
                 <Flex align="center" vertical>
                     {user.map((u: TUser, index: Key | null | undefined) => (
-                        <Tag color="warning" key={index}>
+                        <Tag color="success" key={index}>
                             {u.first_name}
                         </Tag>
                     ))}
@@ -54,7 +56,7 @@ export const InspectionColumn = ({ success }: { success: (id: string) => void })
             key: 'responsibles',
             render: (user: TUser[]) => {
                 return user.map((u: TUser, index: Key | null | undefined) => (
-                    <Tag color="warning" key={index}>
+                    <Tag color="success" key={index}>
                         {u.first_name} {u.last_name}
                     </Tag>
                 ));
@@ -64,6 +66,7 @@ export const InspectionColumn = ({ success }: { success: (id: string) => void })
         {
             title: 'Бажариш муддати',
             dataIndex: 'complate_date',
+            render: (date: string) => dateFormatter(date),
             key: 'complate_date',
         },
 

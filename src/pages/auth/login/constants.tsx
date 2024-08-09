@@ -5,12 +5,12 @@ export const getTabs = ({ ...props }) => {
     const items: TabsProps['items'] = [
         {
             key: '1',
-            label: 'One ID орқали кириш',
+            label: 'Логин билан кириш',
             children: <Tab11 onFinish={props.onFinish} isPending={props.isPending} />,
         },
         {
             key: '2',
-            label: 'Логин билан кириш',
+            label: 'One ID орқали кириш',
             children: <Tab21 onFinish={props.onFinish} isPending={props.isPending} />,
         },
     ];

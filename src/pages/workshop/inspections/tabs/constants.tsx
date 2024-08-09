@@ -1,4 +1,5 @@
 import { Box, Edit } from '@/components';
+import { dateFormatter } from '@/lib/utils';
 import { TUser } from '@/types/users';
 import { Flex, Tag } from 'antd';
 import { ColumnsType } from 'antd/es/table';
@@ -17,6 +18,7 @@ export const InspectionColumn: ColumnsType<any> = [
     {
         title: 'Назоратни ўтказиш санаси',
         dataIndex: 'control_date',
+        render: (date: string) => dateFormatter(date),
         key: 'control_date',
     },
     {
@@ -38,7 +40,7 @@ export const InspectionColumn: ColumnsType<any> = [
         render: (user: TUser[]) => (
             <Flex align="center" vertical>
                 {user.map((u: TUser, index: Key | null | undefined) => (
-                    <Tag color="warning" key={index}>
+                    <Tag color="success" key={index}>
                         {u.first_name}
                     </Tag>
                 ))}
@@ -52,7 +54,7 @@ export const InspectionColumn: ColumnsType<any> = [
         key: 'responsibles',
         render: (user: TUser[]) => {
             return user.map((u: TUser, index: Key | null | undefined) => (
-                <Tag color="warning" key={index}>
+                <Tag color="success" key={index}>
                     {u.first_name} {u.last_name}
                 </Tag>
             ));
@@ -62,9 +64,9 @@ export const InspectionColumn: ColumnsType<any> = [
     {
         title: 'Бажариш муддати',
         dataIndex: 'complate_date',
+        render: (date: string) => dateFormatter(date),
         key: 'complate_date',
     },
-
     {
         title: 'Бажарилганлиги бўйича белги',
         dataIndex: ['signature'],
