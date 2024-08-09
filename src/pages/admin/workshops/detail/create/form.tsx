@@ -1,7 +1,6 @@
 import { Box, Button, Icon, Select, Typography } from '@/components';
 import { dictionary } from '@/constants';
 import { getWorkShopBranchesByRefQuery, selectableWShEmpoyesQuery, useWorkshopBranchesMuation } from '@/lib/services';
-import { useAppStore } from '@/store';
 import { useIsMutating } from '@tanstack/react-query';
 import { Card, Col, Form, Radio, Row } from 'antd';
 import { useState } from 'react';
@@ -10,7 +9,6 @@ import { useParams } from 'react-router-dom';
 export const CreateWorkshopBranchesForm = () => {
     const { id } = useParams();
     const [ref, setRef] = useState<string>();
-    const { setIsModal } = useAppStore();
     const isMutating = useIsMutating();
 
     const { data, isLoading } = getWorkShopBranchesByRefQuery(id as string);

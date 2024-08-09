@@ -6,15 +6,10 @@ import { useState } from 'react';
 export const AddEmployeeModal = () => {
     const { isModal, setIsModal } = useAppStore();
     const [input, setInput] = useState<string>();
-    const [Loading, setLoading] = useState<boolean>();
 
     const handleClose = () => {
         setIsModal(false);
         setInput('');
-    };
-
-    const handleClick = () => {
-        setInput(input);
     };
 
     return (

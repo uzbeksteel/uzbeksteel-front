@@ -10,7 +10,7 @@ export const SecoundStageInspection = () => {
 
     const handleSuccess = (id: string) => {
         mutate(id, {
-            onSuccess: (data) => {},
+            onSuccess: () => {},
         });
     };
 

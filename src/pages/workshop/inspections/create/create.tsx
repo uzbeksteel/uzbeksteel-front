@@ -9,7 +9,7 @@ import { CreateMagazineBody } from './type';
 
 export const InspectionCreate = () => {
     const navigate = useNavigate();
-    const { mutate, isPending } = createMagazineMutation();
+    const { mutate } = createMagazineMutation();
 
     const { data: users, isFetching } = getUsersQuery();
 

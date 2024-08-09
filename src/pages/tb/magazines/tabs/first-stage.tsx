@@ -10,7 +10,7 @@ export const FirstStageInspection = () => {
 
     const handleSuccess = (id: string) => {
         mutate(id, {
-            onSuccess: (data) => {},
+            onSuccess: () => {},
         });
     };
     return <Table loading={isLoading} scroll={{ x: true }} columns={InspectionColumn({ success: handleSuccess })} dataSource={data} titleTable="Текширувлар рўйхати" />;
