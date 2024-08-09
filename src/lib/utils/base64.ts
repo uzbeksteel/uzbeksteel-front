@@ -11,7 +11,6 @@ export function fromBase64(base64: string | undefined) {
 
     const base64Regex = /^[A-Za-z0-9+/]+={0,2}$/;
     if (!base64Regex.test(base64)) {
-        console.error('Invalid Base64 string');
         return null;
     }
 
@@ -26,7 +25,6 @@ export function fromBase64(base64: string | undefined) {
         const jsonString = new TextDecoder().decode(byteArray);
         return JSON.parse(jsonString);
     } catch (e) {
-        console.error('Error decoding Base64 string:', e);
         return null;
     }
 }

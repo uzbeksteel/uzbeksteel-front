@@ -1,5 +1,5 @@
-import { TUser } from "./users";
-import { IWorkshop } from "./workshop";
+import { TUser } from './users';
+import { IWorkshop } from './workshop';
 
 export interface IMagazine {
     id: string;

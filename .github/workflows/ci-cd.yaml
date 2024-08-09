@@ -1,0 +1,102 @@
+name: Deployment Uzbekstell Front...
+
+on:
+    push:
+        branches:
+            - 'main'
+
+jobs:
+    lint:
+        name: Linting code for checks...
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout the code for lints...
+              uses: actions/checkout@v3
+
+            - name: Cashe dependancies for reusable
+              id: cashe
+              uses: actions/cashe@v3
+              with:
+                  path: node_modules
+                  key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+
+            - name: Install dependencies...
+              if: steps.cashe.outputs.cache-hit != 'true'
+              run: npm install
+
+            - name: Linting...
+              run: npm run lint
+    build:
+        needs: lint
+        name: Build the code for tests...
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code for build
+              uses: actions/checkout@v3
+
+            - name: Cashe dependencies
+              id: cache
+              uses: actions/cache@v3
+              with:
+                  path: node_modules
+                  key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+
+            - name: Install Dependencies
+              if: steps.cache.outputs.cache-hit != 'true'
+              run: npm install
+
+            - name: Build the code ...
+              run: npm run build
+
+            - name: Upload arrifacts ...
+              uses: actions/upload-artifact@v3
+              with:
+                  name: dist-files
+                  path: build
+
+    deploy:
+        needs: build
+        name: Deployment to The server
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout my code 🪐
+              uses: actions/checkout@v3
+
+            - name: Cache dependencies 🧪
+              id: cache
+              uses: actions/cache@v3
+              with:
+                  path: node_modules
+                  key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+
+            - name: Install Dependencies 🌨
+              if: steps.cache.outputs.cache-hit != 'true'
+              run: npm install
+
+            - name: Download artifacts.. dist..
+              uses: actions/download-artifact@v3
+              with:
+                  name: dist-files
+                  path: ./build
+
+            - name: Output Contents..
+              run: ls ./build
+
+            - name: Transfer artifacts to server 🆘
+              uses: appleboy/scp-action@master
+              with:
+                  host: ${{ secrets.SERVER_HOST }}
+                  username: ${{ secrets.SERVER_USER }}
+                  key: ${{ secrets.SERVER_SSH_KEY }}
+                  source: './build/*'
+                  target: '/var/www/uzbekstell'
+
+            - name: Connect to server and deploy 🆘
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ${{ secrets.SERVER_HOST }}
+                  username: ${{ secrets.SERVER_USER }}
+                  key: ${{ secrets.SERVER_SSH_KEY }}
+                  script: |
+                      - cd /var/www/uzbekstell
+                      - ls

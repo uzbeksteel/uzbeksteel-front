@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface TypographyProps {
     type?: 'title' | 'text' | 'paragraph';
     color?: string;

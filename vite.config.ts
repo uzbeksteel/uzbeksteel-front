@@ -6,42 +6,42 @@ import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import svgr from 'vite-plugin-svgr';
 
 export default defineConfig({
-   envPrefix: 'APP_',
-   resolve: {
-      // eslint-disable-next-line no-undef
-      alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
-   },
-   plugins: [
-      react(),
-      svgr({
-         svgrOptions: {
-            icon: true,
-         },
-      }),
-      ViteImageOptimizer(),
-      eslint(),
-   ],
-   optimizeDeps: {
-      force: true,
-      esbuildOptions: {
-         loader: {
-            '.ts': 'tsx',
-         },
-      },
-   },
-   build: {
-      outDir: 'build',
-      minify: 'terser',
-      chunkSizeWarningLimit: 1600,
-      manifest: true,
-      sourcemap: false,
-      reportCompressedSize: true,
-      rollupOptions: {
-         output: {
-            entryFileNames: 'js/[name].js',
-            chunkFileNames: 'js/[name].js',
-            assetFileNames: 'assets/[name].[ext]',
-         },
-      },
-   },
+    envPrefix: 'APP_',
+    resolve: {
+        // eslint-disable-next-line no-undef
+        alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
+    },
+    plugins: [
+        react(),
+        svgr({
+            svgrOptions: {
+                icon: true,
+            },
+        }),
+        ViteImageOptimizer(),
+        eslint(),
+    ],
+    optimizeDeps: {
+        force: true,
+        esbuildOptions: {
+            loader: {
+                '.ts': 'tsx',
+            },
+        },
+    },
+    build: {
+        outDir: 'build',
+        minify: 'terser',
+        chunkSizeWarningLimit: 1600,
+        manifest: true,
+        sourcemap: false,
+        reportCompressedSize: true,
+        rollupOptions: {
+            output: {
+                entryFileNames: 'js/[name].js',
+                chunkFileNames: 'js/[name].js',
+                assetFileNames: 'assets/[name].[ext]',
+            },
+        },
+    },
 });
