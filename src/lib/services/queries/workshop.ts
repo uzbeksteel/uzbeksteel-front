@@ -30,7 +30,7 @@ export const getAllWorkshopsQuery = (id?: string) =>
         queryKey: [Endpoints.Workshop],
         queryFn: getAllWorkshops,
         initialData: [],
-        enabled: !!id,
+        // enabled: !!id,
     });
 
 export const getWorkShopBranchesQuery = () =>
