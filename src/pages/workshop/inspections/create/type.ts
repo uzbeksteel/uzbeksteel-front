@@ -7,6 +7,4 @@ export interface CreateMagazineBody {
     complate_date: string;
     commissions: string[];
     responsibles: string[];
-    workshop?: string;
-    workshop_branches?: string;
 }
