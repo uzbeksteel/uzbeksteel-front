@@ -8,6 +8,7 @@ export const Forgot = getLoadablePage('Forgot');
 export const Home = getLoadablePage('Home');
 export const Deeds = getLoadablePage('Deeds');
 export const Lows = getLoadablePage('Lows');
+export const DocumentDetail = getLoadablePage('DocumentDetail');
 export const Graphics = getLoadablePage('Graphics');
 export const GraphicsDetail = getLoadablePage('GraphicsDetail');
 export const Certification = getLoadablePage('Certification');

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const Box = styled.div<TBoxProps>`
     align-items: ${({ $align }) => $align};
+    background-color: ${({ $bg }) => $bg};
     display: flex;
     flex-direction: ${({ $direction }) => $direction};
     justify-content: ${({ $justify }) => $justify};

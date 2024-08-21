@@ -21,4 +21,5 @@ export enum Endpoints {
     Reports = 'reports',
     Download = 'download',
     Files = 'files',
+    Documents = 'documents',
 }
