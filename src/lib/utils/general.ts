@@ -66,5 +66,5 @@ export const makeErrMsg = (error: any | string): string => {
 };
 
 export const dateFormatter = (date: string): string => dayjs(date).format('MM-DD-YYYY');
-
+export const generateDate = (date: string): string => dayjs(date).toISOString();
 export const getImgUrl = (url: string) => `${IMAGE_URL}${url}`;

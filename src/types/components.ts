@@ -29,6 +29,8 @@ export type TBoxProps = {
     $mt?: string;
     $p?: string;
     $width?: string;
+    $bg?: string;
+    $shadow?: string;
 };
 
 export type TIconProps = {

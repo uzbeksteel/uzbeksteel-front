@@ -20,11 +20,7 @@ export const menuItems = [
         icon: <Icon name="ClipboardCheck" />,
         label: menuLabels[6],
     },
-    {
-        key: ROUTES.deeds,
-        icon: <Icon name="BookText" />,
-        label: menuLabels[2],
-    },
+
     {
         key: ROUTES.lows,
         icon: <Icon name="BookOpenText" />,
