@@ -22,4 +22,5 @@ export enum Endpoints {
     Download = 'download',
     Files = 'files',
     Documents = 'documents',
+    PersonalCard = 'personal-card',
 }

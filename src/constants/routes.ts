@@ -14,6 +14,9 @@ export const ROUTES = {
     accidents: '/accidents',
     magazine: '/magazine',
     dangers: '/dangers',
+    personalCard: '/personal-card',
+    personalCardDetail: '/personal-card/detail/:id',
+    personalCardDetailItem: '/personal-card/detail/:id/:itemId',
 
     // admin routes
     admin: '/admin',

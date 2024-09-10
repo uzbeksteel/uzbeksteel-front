@@ -16,8 +16,6 @@ export const DocumentDetail = () => {
 
     const { data, isLoading, isRefetching } = useDocumentQuery(id as string);
 
-    console.log(data);
-
     useEffect(() => {
         form.setFieldValue('name', data?.name);
         form.setFieldValue('year', dayjs(data?.year as string));

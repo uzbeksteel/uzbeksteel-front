@@ -1,2 +1,2 @@
-export { WorkshopBrnches } from './branches';
+export { WorkshopBranches } from './WorkshopBranches';
 export { CreateWorkshopBranches } from './create';
