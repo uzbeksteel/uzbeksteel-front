@@ -1,4 +1,4 @@
-import { Box, Field, Form, Icon, PageHeader, Select } from '@/components';
+import { Box, Field, Form, Icon, Loading, PageHeader, Select } from '@/components';
 import { IMAGE_URL } from '@/constants';
 import { useUpload } from '@/lib/hooks';
 import { DatePicker, Upload } from 'antd';
@@ -12,13 +12,19 @@ export const MutatePersonalCard: FC<IProps> = ({ type = 'create' }) => {
     const {
         fieldProps,
         uploadProps: { fileList, onChange },
-        handleSetImages,
     } = useUpload(() => {}, true);
+
+    const onFinish = () => {
+        if (type === 'create') {
+            return <Loading />;
+        }
+    };
+
     return (
         <>
             <PageHeader title="Личная карточка" />
             <Box $m="20px">
-                <Form style={{ width: '100%' }}>
+                <Form style={{ width: '100%' }} onFinish={onFinish}>
                     <Field span={24} placeholder="Таб.№ киритинг" required name={'tab_number'} label={'Таб.№'} />
 
                     <Field span={24} placeholder="Фамилия И.О. киритинг" required name={'name'} label={'Фамилия И.О.'} />

@@ -3,7 +3,7 @@ import loadable from '@loadable/component';
 import { ComponentType } from 'react';
 
 type PagesModule = {
-    [key: string]: ComponentType;
+    [key: string]: ComponentType<any>;
 };
 
 export type AuthProps = {
