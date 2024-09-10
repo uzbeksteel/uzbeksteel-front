@@ -17,6 +17,8 @@ export const CertificationCreate = getLoadablePage('CertificationCreate');
 export const Accidents = getLoadablePage('Accidents');
 export const TbMagazines = getLoadablePage('TbMagazines');
 export const CreateActs = getLoadablePage('CreateActs');
+export const PersonalCards = getLoadablePage('PersonalCards');
+export const MutatePersonalCard = getLoadablePage('MutablePersonalCard');
 
 // admin
 export const AdminHome = getLoadablePage('AdminHome');

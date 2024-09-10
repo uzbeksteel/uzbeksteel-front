@@ -1,11 +1,11 @@
 import { Calendar } from '@/components';
-import { useGetGraphicsQuery } from '@/lib/services/queries/graphic.ts';
-import dayjs, { Dayjs } from 'dayjs';
-import { Badge } from 'antd';
-import { IGraphic } from '@/types/graphics.ts';
-import { useAuthStore } from '@/store';
-import { useLocation } from 'react-router-dom';
 import { ROUTES } from '@/constants';
+import { useGetGraphicsQuery } from '@/lib/services/queries/graphic.ts';
+import { useAuthStore } from '@/store';
+import { IGraphic } from '@/types/graphics.ts';
+import { Badge } from 'antd';
+import dayjs, { Dayjs } from 'dayjs';
+import { useLocation } from 'react-router-dom';
 
 export const Tab1 = () => {
     let userId;

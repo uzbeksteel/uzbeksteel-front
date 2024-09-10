@@ -4,6 +4,7 @@ export * from './document';
 export { Endpoints } from './endpoints';
 export * from './graphic';
 export * from './magazine';
+export * from './personal-cards';
 export * from './upload';
 export * from './users';
 export * from './workshop';
