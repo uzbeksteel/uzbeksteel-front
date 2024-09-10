@@ -6,10 +6,15 @@ export interface IDanger {
     typeActivity: string;
     typeDescriptionOfHazard: string;
     riskAssociatedWithDanger: string;
-    probability: string;
-    seriousness: string;
-    riskLevel: string;
+    riskLevel?: string;
+    riskScore?: number;
     controlMethods: string;
+    importance: number;
+    isStaffQualified: boolean;
+    areToolsCompliant: boolean;
+    isDocumentationMethodAvailable: boolean;
+    areKPIsMeasured: boolean;
+    areEnvironmentalStandardsMet: boolean;
     workshop: IWorkshop;
     created_at?: string;
     updated_at?: string;

@@ -49,13 +49,23 @@ export const DangersDetail = () => {
         },
         {
             title: 'Серьезность',
-            dataIndex: 'seriousness',
-            key: 'seriousness',
+            dataIndex: 'importance',
+            key: 'importance',
         },
         {
             title: 'Степень риска',
-            dataIndex: 'riskLevel',
-            key: 'riskLevel',
+            dataIndex: 'riskScore',
+            key: 'riskScore',
+            width: 200,
+            onCell: () => ({ style: { padding: 0 } }),
+            render: (text, record) => {
+                return (
+                    <Box $direction="column">
+                        <span style={{ padding: '16px' }}>{`${record.riskLevel === 'High' ? 'Высокий' : 'Низкий'} уровень риска`}</span>
+                        <span style={{ padding: '16px', background: record.riskLevel === 'High' ? 'red' : record.riskLevel === 'Low' ? 'yellow' : 'green' }}>{text}</span>
+                    </Box>
+                );
+            },
         },
         {
             title: 'Методы контроля и существующие способы защиты',

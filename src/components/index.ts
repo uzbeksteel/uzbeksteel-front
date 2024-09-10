@@ -14,3 +14,4 @@ export { ProfileDisplay } from './profileDisplay';
 export { Select } from './select/Select';
 export { Table } from './table';
 export * from './typography';
+export * from './switch';
