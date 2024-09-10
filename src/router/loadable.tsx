@@ -27,7 +27,7 @@ export const Archives = getLoadablePage('Archives');
 export const AdminEmployees = getLoadablePage('AdminEmployees');
 export const AdminWorkshops = getLoadablePage('AdminWorkshops');
 export const WorkShopCreatePage = getLoadablePage('WorkShopCreatePage');
-export const AdminWorkShopBranches = getLoadablePage('WorkshopBrnches');
+export const AdminWorkShopBranches = getLoadablePage('WorkshopBranches');
 export const AdminCreateWorkShopBranches = getLoadablePage('CreateWorkshopBranches');
 
 // workshop

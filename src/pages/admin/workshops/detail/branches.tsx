@@ -1,7 +1,7 @@
 import { PageHeader } from '@/components';
 import { WorkshopBranchesTable } from './tabel/table';
 
-export const WorkshopBrnches = () => {
+export const WorkshopBranches = () => {
     return (
         <>
             <PageHeader title="Цеҳ бўлимлари" />
