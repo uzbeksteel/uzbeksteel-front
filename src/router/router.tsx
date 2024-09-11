@@ -101,10 +101,6 @@ export const Router = () => {
                                     path: ROUTES.single,
                                     element: <DangersDetail />,
                                 },
-                                {
-                                    path: `${ROUTES.single}/${ROUTES.add}`,
-                                    element: <AddDanger />,
-                                },
                             ],
                         },
                         {
@@ -216,6 +212,23 @@ export const Router = () => {
                         {
                             path: ROUTES.adminArchives,
                             element: <Archives />,
+                        },
+                        {
+                            path: ROUTES.adminDangers,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <Dangers />,
+                                },
+                                {
+                                    path: ROUTES.single,
+                                    element: <DangersDetail />,
+                                },
+                                {
+                                    path: `${ROUTES.single}/${ROUTES.add}`,
+                                    element: <AddDanger />,
+                                },
+                            ],
                         },
                     ],
                 },

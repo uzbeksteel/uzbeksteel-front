@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Box, Button, Icon, Table, Typography } from '@/components';
 import { ColumnsType, TablePaginationConfig } from 'antd/es/table';
 import { useState } from 'react';
@@ -8,9 +8,11 @@ import { useGetDangersQuery } from '@/lib/services/queries/dangers.ts';
 export const DangersDetail = () => {
     const param = useParams();
     const navigate = useNavigate();
+    const { pathname } = useLocation();
     const [currentPage, setCurrentPage] = useState(1);
     const workshopId = param.id;
     const { data } = useGetDangersQuery(workshopId);
+    const isAdminRoute = pathname.includes('admin');
     const columns: ColumnsType = [
         {
             title: 'Т/р',
@@ -98,7 +100,7 @@ export const DangersDetail = () => {
                 </Typography>
             </Box>
             <Box $p="10px">
-                <Table onClick={() => navigate(ROUTES.add)} onChange={handleTableChange} scroll={{ x: 'calc(700px + 50%)' }} columns={columns} dataSource={data} titleTable="Касблар рўйхати" />
+                <Table isAdd={!isAdminRoute} onClick={() => navigate(ROUTES.add)} onChange={handleTableChange} scroll={{ x: 'calc(700px + 50%)' }} columns={columns} dataSource={data} titleTable="Касблар рўйхати" />
             </Box>
         </>
     );
