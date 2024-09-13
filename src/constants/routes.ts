@@ -22,6 +22,7 @@ export const ROUTES = {
     workPermission: '/personal-card/:id/work-permission',
     safetyInfo: '/personal-card/:id/safety-info',
     repeatBriefing: '/personal-card/:id/repeat-briefing',
+    educationInfo: '/personal-card/:id/education-info',
 
     // admin routes
     admin: '/admin',

@@ -31,6 +31,8 @@ export const SafetyInfo = getLoadablePage('SafetyInfo');
 export const MutateSafetyInfo = getLoadablePage('MutateSafetyInfo');
 export const RepeatBriefing = getLoadablePage('RepeatBriefing');
 export const MutationRepeatBriefing = getLoadablePage('MutationRepeatBriefing');
+export const EducationInfo = getLoadablePage('EducationInfo');
+export const MutateEducationInfo = getLoadablePage('MutateEducationInfo');
 
 // admin
 export const AdminHome = getLoadablePage('AdminHome');
