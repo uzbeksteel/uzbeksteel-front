@@ -21,6 +21,7 @@ export const ROUTES = {
     orderReport: '/personal-card/:id/order-report',
     workPermission: '/personal-card/:id/work-permission',
     safetyInfo: '/personal-card/:id/safety-info',
+    repeatBriefing: '/personal-card/:id/repeat-briefing',
 
     // admin routes
     admin: '/admin',

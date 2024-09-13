@@ -3,7 +3,7 @@ import { AdminLayout, TbLayout, WorkshopLayout } from '@/layout';
 import { MutateIntroBriefing, MutatePersonalCard, OrderReport } from '@/pages';
 import { useAuthStore } from '@/store';
 import { useRoutes } from 'react-router-dom';
-import { Accidents, AddDanger, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateActs, CreateEmployee, Dangers, DangersDetail, Deeds, DocumentDetail, Forgot, Graphics, GraphicsDetail, Home, InitWorkTraining, InspectionCreate, IntroductoryBriefing, Login, Lows, MutateOrderReport, MutateSafetyInfo, MutateWorkPermission, PersonalCardDetails, PersonalCards, SafetyInfo, TbMagazines, WorkPermission, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
+import { Accidents, AddDanger, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateActs, CreateEmployee, Dangers, DangersDetail, Deeds, DocumentDetail, Forgot, Graphics, GraphicsDetail, Home, InitWorkTraining, InspectionCreate, IntroductoryBriefing, Login, Lows, MutateOrderReport, MutateSafetyInfo, MutateWorkPermission, MutationRepeatBriefing, PersonalCardDetails, PersonalCards, RepeatBriefing, SafetyInfo, TbMagazines, WorkPermission, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
 import { Protected } from './protected';
 import { Public } from './public';
 
@@ -190,6 +190,23 @@ export const Router = () => {
                                                 {
                                                     path: ROUTES.edit,
                                                     element: <MutateSafetyInfo />,
+                                                },
+                                            ],
+                                        },
+                                        {
+                                            path: ROUTES.repeatBriefing,
+                                            children: [
+                                                {
+                                                    index: true,
+                                                    element: <RepeatBriefing />,
+                                                },
+                                                {
+                                                    path: ROUTES.add,
+                                                    element: <MutationRepeatBriefing />,
+                                                },
+                                                {
+                                                    path: ROUTES.edit,
+                                                    element: <MutationRepeatBriefing />,
                                                 },
                                             ],
                                         },
