@@ -19,6 +19,7 @@ export const ROUTES = {
     edit: 'edit/:id',
     initWorkTraining: '/personal-card/:id/init-work-training',
     orderReport: '/personal-card/:id/order-report',
+    workPermission: '/personal-card/:id/work-permission',
 
     // admin routes
     admin: '/admin',

@@ -25,6 +25,8 @@ export const MutateIntroBriefing = getLoadablePage('MutateIntroBriefing');
 export const InitWorkTraining = getLoadablePage('InitWorkTraining');
 export const OrderReport = getLoadablePage('OrderReport');
 export const MutateOrderReport = getLoadablePage('MutateOrderReport');
+export const WorkPermission = getLoadablePage('WorkPermission');
+export const MutateWorkPermission = getLoadablePage('MutateWorkPermission');
 
 // admin
 export const AdminHome = getLoadablePage('AdminHome');

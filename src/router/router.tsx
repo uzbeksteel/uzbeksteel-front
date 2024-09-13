@@ -3,7 +3,7 @@ import { AdminLayout, TbLayout, WorkshopLayout } from '@/layout';
 import { MutateIntroBriefing, MutatePersonalCard, OrderReport } from '@/pages';
 import { useAuthStore } from '@/store';
 import { useRoutes } from 'react-router-dom';
-import { Accidents, AddDanger, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateActs, CreateEmployee, Dangers, DangersDetail, Deeds, DocumentDetail, Forgot, Graphics, GraphicsDetail, Home, InitWorkTraining, InspectionCreate, IntroductoryBriefing, Login, Lows, MutateOrderReport, PersonalCardDetails, PersonalCards, TbMagazines, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
+import { Accidents, AddDanger, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateActs, CreateEmployee, Dangers, DangersDetail, Deeds, DocumentDetail, Forgot, Graphics, GraphicsDetail, Home, InitWorkTraining, InspectionCreate, IntroductoryBriefing, Login, Lows, MutateOrderReport, MutateWorkPermission, PersonalCardDetails, PersonalCards, TbMagazines, WorkPermission, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
 import { Protected } from './protected';
 import { Public } from './public';
 
@@ -156,6 +156,23 @@ export const Router = () => {
                                                 {
                                                     path: ROUTES.edit,
                                                     element: <MutateOrderReport />,
+                                                },
+                                            ],
+                                        },
+                                        {
+                                            path: ROUTES.workPermission,
+                                            children: [
+                                                {
+                                                    index: true,
+                                                    element: <WorkPermission />,
+                                                },
+                                                {
+                                                    path: ROUTES.add,
+                                                    element: <MutateWorkPermission />,
+                                                },
+                                                {
+                                                    path: ROUTES.edit,
+                                                    element: <MutateWorkPermission />,
                                                 },
                                             ],
                                         },
