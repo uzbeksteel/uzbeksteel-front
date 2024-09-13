@@ -5,10 +5,11 @@ import { useNavigate } from 'react-router-dom';
 
 interface Props {
     title: string;
+    onclick?: (e: any) => void;
     children: ReactNode;
 }
 
-export const Content = ({ title, children }: Props) => {
+export const Content = ({ title, children, onclick }: Props) => {
     const navigate = useNavigate();
     return (
         <Fragment>
@@ -19,7 +20,7 @@ export const Content = ({ title, children }: Props) => {
                 </Typography>
                 <Row style={{ marginLeft: 'auto' }} gutter={10}>
                     <Col span={12}>
-                        <Button type="primary" icon={<Icon name="FilePenLine" />}>
+                        <Button onClick={onclick} type="primary" icon={<Icon name="FilePenLine" />}>
                             Редактировать
                         </Button>
                     </Col>

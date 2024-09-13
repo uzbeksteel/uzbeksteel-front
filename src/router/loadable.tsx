@@ -22,6 +22,7 @@ export const MutatePersonalCard = getLoadablePage('MutablePersonalCard');
 export const PersonalCardDetails = getLoadablePage('PersonalCardDetails');
 export const IntroductoryBriefing = getLoadablePage('IntroductoryBriefing');
 export const MutateIntroBriefing = getLoadablePage('MutateIntroBriefing');
+export const InitWorkTraining = getLoadablePage('InitWorkTraining');
 
 // admin
 export const AdminHome = getLoadablePage('AdminHome');

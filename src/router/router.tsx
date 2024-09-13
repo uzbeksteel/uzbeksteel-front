@@ -3,7 +3,7 @@ import { AdminLayout, TbLayout, WorkshopLayout } from '@/layout';
 import { MutateIntroBriefing, MutatePersonalCard } from '@/pages';
 import { useAuthStore } from '@/store';
 import { useRoutes } from 'react-router-dom';
-import { Accidents, AddDanger, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateActs, CreateEmployee, Dangers, DangersDetail, Deeds, DocumentDetail, Forgot, Graphics, GraphicsDetail, Home, InspectionCreate, IntroductoryBriefing, Login, Lows, PersonalCardDetails, PersonalCards, TbMagazines, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
+import { Accidents, AddDanger, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateActs, CreateEmployee, Dangers, DangersDetail, Deeds, DocumentDetail, Forgot, Graphics, GraphicsDetail, Home, InitWorkTraining, InspectionCreate, IntroductoryBriefing, Login, Lows, PersonalCardDetails, PersonalCards, TbMagazines, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
 import { Protected } from './protected';
 import { Public } from './public';
 
@@ -137,6 +137,10 @@ export const Router = () => {
                                                     element: <MutateIntroBriefing type="edit" />,
                                                 },
                                             ],
+                                        },
+                                        {
+                                            path: ROUTES.initWorkTraining,
+                                            children: [{ index: true, element: <InitWorkTraining /> }],
                                         },
                                     ],
                                 },

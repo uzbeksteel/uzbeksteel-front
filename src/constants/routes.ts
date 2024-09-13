@@ -17,6 +17,7 @@ export const ROUTES = {
     personalCard: '/personal-card',
     personalCardDetailItem: '/personal-card/:id/intro-briefing',
     edit: 'edit/:id',
+    initWorkTraining: '/personal-card/:id/init-work-training',
 
     // admin routes
     admin: '/admin',
