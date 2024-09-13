@@ -35,6 +35,8 @@ export const EducationInfo = getLoadablePage('EducationInfo');
 export const MutateEducationInfo = getLoadablePage('MutateEducationInfo');
 export const SafetyNotes = getLoadablePage('SafetyNotes');
 export const MutateSafetyNotes = getLoadablePage('MutateSafetyNotes');
+export const HealthResult = getLoadablePage('HealthResult');
+export const MutateHealthResult = getLoadablePage('MutateHealthResult');
 
 // admin
 export const AdminHome = getLoadablePage('AdminHome');

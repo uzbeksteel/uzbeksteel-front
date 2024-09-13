@@ -24,6 +24,7 @@ export const ROUTES = {
     repeatBriefing: '/personal-card/:id/repeat-briefing',
     educationInfo: '/personal-card/:id/education-info',
     safetyNotes: '/personal-card/:id/safety-notes',
+    healthResult: '/personal-card/:id/health-result',
 
     // admin routes
     admin: '/admin',

@@ -1,4 +1,5 @@
 export * from './education-info';
+export * from './health-result';
 export * from './init-work-training';
 export * from './intro-briefing';
 export * from './order';
