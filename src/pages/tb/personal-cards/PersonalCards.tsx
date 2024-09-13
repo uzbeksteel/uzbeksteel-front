@@ -1,12 +1,13 @@
 import { Box, Card, Icon, Table, Typography } from '@/components';
-import { usePersonalCardQuery } from '@/lib/services';
+import { useGetPersonalCardsQuery } from '@/lib/services';
 import { useNavigate } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
 import { columns } from './components/constants';
 
 export const PersonalCards = () => {
-    const { data, isLoading } = usePersonalCardQuery();
+    const { data, isLoading } = useGetPersonalCardsQuery();
     const navigate = useNavigate();
+
     return (
         <Fragment>
             <Box $p="20px" $gap="10px" style={{ background: '#FFF' }}>

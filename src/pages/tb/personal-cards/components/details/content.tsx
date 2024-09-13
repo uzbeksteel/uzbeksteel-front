@@ -1,5 +1,5 @@
-import { Box, Icon, Typography } from '@/components';
-import { Button, Col, Row } from 'antd';
+import { Box, Button, Icon, Typography } from '@/components';
+import { Col, Row } from 'antd';
 import { Fragment, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,6 +10,7 @@ interface Props {
 
 export const Content = ({ title, children }: Props) => {
     const navigate = useNavigate();
+
     return (
         <Fragment>
             <Box $p="20px" $gap="10px" style={{ background: '#FFF' }}>

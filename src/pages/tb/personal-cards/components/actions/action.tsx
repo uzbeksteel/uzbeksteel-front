@@ -7,7 +7,7 @@ export const Actions = ({ id }: { id: string }) => {
     return (
         <Fragment>
             <Flex gap={10} justify="center" align="center">
-                <Link to={id}>
+                <Link to={`detail/${id}`}>
                     <Button type="dashed" icon={<Icon name="Eye" />} />
                 </Link>
             </Flex>
