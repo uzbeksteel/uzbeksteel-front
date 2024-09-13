@@ -17,7 +17,7 @@ export const Content = ({ title, children, onclick }: Props) => {
             <Box $p="20px" $gap="10px" style={{ background: '#FFF' }}>
                 <Icon onClick={() => navigate(-1)} style={{ cursor: 'pointer' }} name="ArrowLeft" />
                 <Typography type="title" level={3}>
-                    {title}
+                    {title.slice(0, 40)}...
                 </Typography>
                 <Row style={{ marginLeft: 'auto' }} gutter={10}>
                     <Col span={12}>

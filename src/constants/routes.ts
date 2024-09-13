@@ -20,6 +20,7 @@ export const ROUTES = {
     initWorkTraining: '/personal-card/:id/init-work-training',
     orderReport: '/personal-card/:id/order-report',
     workPermission: '/personal-card/:id/work-permission',
+    safetyInfo: '/personal-card/:id/safety-info',
 
     // admin routes
     admin: '/admin',

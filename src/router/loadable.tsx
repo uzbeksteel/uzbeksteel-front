@@ -27,6 +27,8 @@ export const OrderReport = getLoadablePage('OrderReport');
 export const MutateOrderReport = getLoadablePage('MutateOrderReport');
 export const WorkPermission = getLoadablePage('WorkPermission');
 export const MutateWorkPermission = getLoadablePage('MutateWorkPermission');
+export const SafetyInfo = getLoadablePage('SafetyInfo');
+export const MutateSafetyInfo = getLoadablePage('MutateSafetyInfo');
 
 // admin
 export const AdminHome = getLoadablePage('AdminHome');
