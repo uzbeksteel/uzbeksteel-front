@@ -23,6 +23,7 @@ export const PersonalCardDetails = getLoadablePage('PersonalCardDetails');
 export const IntroductoryBriefing = getLoadablePage('IntroductoryBriefing');
 export const MutateIntroBriefing = getLoadablePage('MutateIntroBriefing');
 export const InitWorkTraining = getLoadablePage('InitWorkTraining');
+export const OrderReport = getLoadablePage('OrderReport');
 
 // admin
 export const AdminHome = getLoadablePage('AdminHome');

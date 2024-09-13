@@ -1,6 +1,6 @@
 import { ROUTES } from '@/constants';
 import { AdminLayout, TbLayout, WorkshopLayout } from '@/layout';
-import { MutateIntroBriefing, MutatePersonalCard } from '@/pages';
+import { MutateIntroBriefing, MutatePersonalCard, OrderReport } from '@/pages';
 import { useAuthStore } from '@/store';
 import { useRoutes } from 'react-router-dom';
 import { Accidents, AddDanger, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateActs, CreateEmployee, Dangers, DangersDetail, Deeds, DocumentDetail, Forgot, Graphics, GraphicsDetail, Home, InitWorkTraining, InspectionCreate, IntroductoryBriefing, Login, Lows, PersonalCardDetails, PersonalCards, TbMagazines, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
@@ -141,6 +141,15 @@ export const Router = () => {
                                         {
                                             path: ROUTES.initWorkTraining,
                                             children: [{ index: true, element: <InitWorkTraining /> }],
+                                        },
+                                        {
+                                            path: ROUTES.orderReport,
+                                            children: [
+                                                {
+                                                    index: true,
+                                                    element: <OrderReport />,
+                                                },
+                                            ],
                                         },
                                     ],
                                 },
