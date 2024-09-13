@@ -33,6 +33,8 @@ export const RepeatBriefing = getLoadablePage('RepeatBriefing');
 export const MutationRepeatBriefing = getLoadablePage('MutationRepeatBriefing');
 export const EducationInfo = getLoadablePage('EducationInfo');
 export const MutateEducationInfo = getLoadablePage('MutateEducationInfo');
+export const SafetyNotes = getLoadablePage('SafetyNotes');
+export const MutateSafetyNotes = getLoadablePage('MutateSafetyNotes');
 
 // admin
 export const AdminHome = getLoadablePage('AdminHome');

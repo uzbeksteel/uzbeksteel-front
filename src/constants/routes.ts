@@ -23,6 +23,7 @@ export const ROUTES = {
     safetyInfo: '/personal-card/:id/safety-info',
     repeatBriefing: '/personal-card/:id/repeat-briefing',
     educationInfo: '/personal-card/:id/education-info',
+    safetyNotes: '/personal-card/:id/safety-notes',
 
     // admin routes
     admin: '/admin',
