@@ -25,7 +25,6 @@ export const ROUTES = {
     adminEmployees: '/admin/employees',
     adminAnalyticalData: '/admin/analytical-data',
     adminArchives: '/admin/archive',
-    adminDangers: '/admin/dangers',
 
     // work shop routes
     workshop: '/workshop',
@@ -33,4 +32,5 @@ export const ROUTES = {
     workshopEmployes: '/workshop/employes',
     workshopInspections: '/workshop/inspections',
     workshopInspectionsAdd: '/workshop/inspections/add',
+    workshopDangers: '/workshop/dangers',
 } as const;

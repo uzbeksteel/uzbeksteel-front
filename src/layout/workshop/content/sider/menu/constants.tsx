@@ -25,4 +25,9 @@ export const menuItems = [
         icon: <Icon name="ClipboardCheck" />,
         label: menuLabels[3],
     },
+    {
+        key: ROUTES.workshopDangers,
+        icon: <Icon name="Bug" />,
+        label: menuLabels[5],
+    },
 ];

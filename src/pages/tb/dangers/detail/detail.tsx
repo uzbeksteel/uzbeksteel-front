@@ -12,7 +12,7 @@ export const DangersDetail = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const workshopId = param.id;
     const { data } = useGetDangersQuery(workshopId);
-    const isAdminRoute = pathname.includes('admin');
+    const isAdminRoute = pathname.includes('workshop');
     const columns: ColumnsType = [
         {
             title: 'Т/р',

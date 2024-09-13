@@ -30,9 +30,4 @@ export const adminMenuItems = [
         icon: <Icon name="Folder" />,
         label: menuLabels[4],
     },
-    {
-        key: ROUTES.adminDangers,
-        icon: <Icon name="Bug" />,
-        label: menuLabels[5],
-    },
 ];
