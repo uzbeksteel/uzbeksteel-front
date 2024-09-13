@@ -13,8 +13,6 @@ export const InitWorkTraining = () => {
         <>
             <Content
                 onclick={() => {
-                    console.log('salom');
-
                     setIsModal(true);
                 }}
                 title="Иш жойда дастлабки тайёргарлик"
