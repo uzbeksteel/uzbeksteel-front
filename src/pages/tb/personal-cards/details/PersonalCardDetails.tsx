@@ -3,9 +3,9 @@ import { API_URL } from '@/constants';
 import { useGetPersonalCardQuery } from '@/lib/services';
 import { dateFormatter } from '@/lib/utils';
 import { Flex, Image } from 'antd';
-import { useParams } from 'react-router-dom';
-import { Content } from './content';
+import { Content } from './components/Content';
 import * as S from './styled';
+import { useParams } from 'react-router-dom';
 
 export const PersonalCardDetails = () => {
     const { id } = useParams();

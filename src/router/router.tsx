@@ -1,9 +1,9 @@
 import { ROUTES } from '@/constants';
 import { AdminLayout, TbLayout, WorkshopLayout } from '@/layout';
-import { MutatePersonalCard } from '@/pages';
+import { MutateIntroBriefing, MutatePersonalCard } from '@/pages';
 import { useAuthStore } from '@/store';
 import { useRoutes } from 'react-router-dom';
-import { Accidents, AddDanger, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateActs, CreateEmployee, Dangers, DangersDetail, Deeds, DocumentDetail, Forgot, Graphics, GraphicsDetail, Home, InspectionCreate, Login, Lows, PersonalCardDetailItem, PersonalCardDetails, PersonalCards, TbMagazines, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
+import { Accidents, AddDanger, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateActs, CreateEmployee, Dangers, DangersDetail, Deeds, DocumentDetail, Forgot, Graphics, GraphicsDetail, Home, InitWorkTraining, InspectionCreate, IntroductoryBriefing, Login, Lows, PersonalCardDetails, PersonalCards, TbMagazines, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
 import { Protected } from './protected';
 import { Public } from './public';
 
@@ -101,10 +101,6 @@ export const Router = () => {
                                     path: ROUTES.single,
                                     element: <DangersDetail />,
                                 },
-                                {
-                                    path: `${ROUTES.single}/${ROUTES.add}`,
-                                    element: <AddDanger />,
-                                },
                             ],
                         },
                         {
@@ -119,7 +115,7 @@ export const Router = () => {
                                     element: <MutatePersonalCard type="create" />,
                                 },
                                 {
-                                    path: ROUTES.personalCardDetail,
+                                    path: ROUTES.single,
                                     children: [
                                         {
                                             index: true,
@@ -127,7 +123,24 @@ export const Router = () => {
                                         },
                                         {
                                             path: ROUTES.personalCardDetailItem,
-                                            element: <PersonalCardDetailItem />,
+                                            children: [
+                                                {
+                                                    index: true,
+                                                    element: <IntroductoryBriefing />,
+                                                },
+                                                {
+                                                    path: ROUTES.add,
+                                                    element: <MutateIntroBriefing type="create" />,
+                                                },
+                                                {
+                                                    path: ROUTES.edit,
+                                                    element: <MutateIntroBriefing type="edit" />,
+                                                },
+                                            ],
+                                        },
+                                        {
+                                            path: ROUTES.initWorkTraining,
+                                            children: [{ index: true, element: <InitWorkTraining /> }],
                                         },
                                     ],
                                 },
@@ -158,6 +171,23 @@ export const Router = () => {
                         {
                             path: ROUTES.workshopInspectionsAdd,
                             element: <InspectionCreate />,
+                        },
+                        {
+                            path: ROUTES.workshopDangers,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <Dangers />,
+                                },
+                                {
+                                    path: ROUTES.single,
+                                    element: <DangersDetail />,
+                                },
+                                {
+                                    path: `${ROUTES.single}/${ROUTES.add}`,
+                                    element: <AddDanger />,
+                                },
+                            ],
                         },
                     ],
                 },
