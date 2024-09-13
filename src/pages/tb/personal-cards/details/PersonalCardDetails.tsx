@@ -1,6 +1,6 @@
 import { Box, Card } from '@/components';
 import { Flex, Image } from 'antd';
-import { Content } from './content';
+import { Content } from './components/Content';
 import * as S from './styled';
 
 export const PersonalCardDetails = () => {

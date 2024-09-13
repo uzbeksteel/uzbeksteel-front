@@ -20,7 +20,8 @@ export const CreateActs = getLoadablePage('CreateActs');
 export const PersonalCards = getLoadablePage('PersonalCards');
 export const MutatePersonalCard = getLoadablePage('MutablePersonalCard');
 export const PersonalCardDetails = getLoadablePage('PersonalCardDetails');
-export const PersonalCardDetailItem = getLoadablePage('PersonalCardDetailItem');
+export const IntroductoryBriefing = getLoadablePage('IntroductoryBriefing');
+export const MutateIntroBriefing = getLoadablePage('MutateIntroBriefing');
 
 // admin
 export const AdminHome = getLoadablePage('AdminHome');

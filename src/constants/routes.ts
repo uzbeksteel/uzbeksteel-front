@@ -15,8 +15,8 @@ export const ROUTES = {
     magazine: '/magazine',
     dangers: '/dangers',
     personalCard: '/personal-card',
-    personalCardDetail: '/personal-card/detail/:id',
-    personalCardDetailItem: '/personal-card/detail/:id/:itemId',
+    personalCardDetailItem: '/personal-card/:id/intro-briefing',
+    edit: 'edit/:id',
 
     // admin routes
     admin: '/admin',

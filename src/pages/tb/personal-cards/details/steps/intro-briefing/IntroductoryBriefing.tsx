@@ -1,7 +1,7 @@
 import { Box, Card } from '@/components';
-import { Content } from './content';
+import { Content } from '../../components/Content';
 
-export const PersonalCardDetailItem = () => {
+export const IntroductoryBriefing = () => {
     return (
         <Content title="1. Вводный инструктаж">
             <Box $m="20px">
