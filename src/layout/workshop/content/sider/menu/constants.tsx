@@ -30,4 +30,9 @@ export const menuItems = [
         icon: <Icon name="Bug" />,
         label: menuLabels[5],
     },
+    {
+        key: ROUTES.workshopAccidents,
+        icon: <Icon name="Siren" />,
+        label: menuLabels[6],
+    },
 ];

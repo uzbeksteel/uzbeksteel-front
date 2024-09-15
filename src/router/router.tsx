@@ -3,7 +3,7 @@ import { AdminLayout, TbLayout, WorkshopLayout } from '@/layout';
 import { MutatePersonalCard } from '@/pages';
 import { useAuthStore } from '@/store';
 import { useRoutes } from 'react-router-dom';
-import { Accidents, AddDanger, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateActs, CreateEmployee, Dangers, DangersDetail, Deeds, DocumentDetail, Forgot, Graphics, GraphicsDetail, Home, InspectionCreate, Login, Lows, PersonalCardDetailItem, PersonalCardDetails, PersonalCards, TbMagazines, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
+import { Accidents, AddAccidentAct, AddDanger, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateActs, CreateEmployee, Dangers, DangersDetail, Deeds, DocumentDetail, Forgot, Graphics, GraphicsDetail, Home, InspectionCreate, Login, Lows, PersonalCardDetailItem, PersonalCardDetails, PersonalCards, TbMagazines, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
 import { Protected } from './protected';
 import { Public } from './public';
 
@@ -169,6 +169,19 @@ export const Router = () => {
                                 {
                                     path: `${ROUTES.single}/${ROUTES.add}`,
                                     element: <AddDanger />,
+                                },
+                            ],
+                        },
+                        {
+                            path: ROUTES.workshopAccidents,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <Accidents />,
+                                },
+                                {
+                                    path: ROUTES.workshopAccidentsActAdd,
+                                    element: <AddAccidentAct />,
                                 },
                             ],
                         },

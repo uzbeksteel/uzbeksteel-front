@@ -23,4 +23,6 @@ export enum Endpoints {
     Files = 'files',
     Documents = 'documents',
     PersonalCard = 'personal-card',
+    Accident = 'accident',
+    CreateAccidentAct = 'accident/create-act',
 }

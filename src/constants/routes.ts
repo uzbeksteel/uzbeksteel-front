@@ -33,4 +33,6 @@ export const ROUTES = {
     workshopInspections: '/workshop/inspections',
     workshopInspectionsAdd: '/workshop/inspections/add',
     workshopDangers: '/workshop/dangers',
+    workshopAccidents: '/workshop/accidents',
+    workshopAccidentsActAdd: '/workshop/accidents/act-add',
 } as const;
