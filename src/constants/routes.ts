@@ -15,8 +15,16 @@ export const ROUTES = {
     magazine: '/magazine',
     dangers: '/dangers',
     personalCard: '/personal-card',
-    personalCardDetail: '/personal-card/detail/:id',
-    personalCardDetailItem: '/personal-card/detail/:id/:itemId',
+    personalCardDetailItem: '/personal-card/:id/intro-briefing',
+    edit: 'edit/:id',
+    initWorkTraining: '/personal-card/:id/init-work-training',
+    orderReport: '/personal-card/:id/order-report',
+    workPermission: '/personal-card/:id/work-permission',
+    safetyInfo: '/personal-card/:id/safety-info',
+    repeatBriefing: '/personal-card/:id/repeat-briefing',
+    educationInfo: '/personal-card/:id/education-info',
+    safetyNotes: '/personal-card/:id/safety-notes',
+    healthResult: '/personal-card/:id/health-result',
 
     // admin routes
     admin: '/admin',

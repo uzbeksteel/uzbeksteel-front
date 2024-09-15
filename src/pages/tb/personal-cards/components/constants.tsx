@@ -14,19 +14,19 @@ export const columns: ColumnType<IDocuments>[] = [
         title: 'Фамилия И.О.',
         dataIndex: 'user',
         key: '1',
-        render: (user: IUsers) => user.first_name,
+        render: (user: IUsers) => user?.first_name,
     },
     {
         title: 'Подразделение (цех)',
         dataIndex: 'workshop',
         key: '2',
-        render: (workshop: IWorkshop) => workshop.name,
+        render: (workshop: IWorkshop) => workshop?.name,
     },
     {
         title: 'Должность, профессия',
         dataIndex: 'user',
         key: '3',
-        render: (user: IUsers) => user.role,
+        render: (user: IUsers) => user?.role,
     },
     {
         title: 'Харакатлар',
