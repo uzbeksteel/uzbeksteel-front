@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { DatePicker, Form as AntdForm } from 'antd';
 import { Genders } from '@/constants/gender.ts';
 import { IAccidentAct } from '@/types/accident.ts';
-import { createAccidentActMutation } from '@/lib/services/mutations/accident.ts';
+import { createAccidentActMutation } from '@/lib/services';
 
 export const CreateAct = () => {
     const navigate = useNavigate();

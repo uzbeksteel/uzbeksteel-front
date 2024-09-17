@@ -3,7 +3,7 @@ import { AdminLayout, TbLayout, WorkshopLayout } from '@/layout';
 import { MutateIntroBriefing, MutatePersonalCard, OrderReport } from '@/pages';
 import { useAuthStore } from '@/store';
 import { useRoutes } from 'react-router-dom';
-import { Accidents, AddAccidentAct, AddDanger, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateActs, CreateEmployee, Dangers, DangersDetail, Deeds, DocumentDetail, EducationInfo, Forgot, Graphics, GraphicsDetail, HealthResult, Home, InitWorkTraining, InspectionCreate, IntroductoryBriefing, Login, Lows, MutateEducationInfo, MutateHealthResult, MutateOrderReport, MutateSafetyInfo, MutateSafetyNotes, MutateWorkPermission, MutationRepeatBriefing, PersonalCardDetails, PersonalCards, RepeatBriefing, SafetyInfo, SafetyNotes, TbMagazines, WorkPermission, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
+import { Accidents, AddAccidentAct, AddAccidentOrder, AddDanger, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateActs, CreateEmployee, Dangers, DangersDetail, Deeds, DocumentDetail, EducationInfo, Forgot, Graphics, GraphicsDetail, HealthResult, Home, InitWorkTraining, InspectionCreate, IntroductoryBriefing, Login, Lows, MutateEducationInfo, MutateHealthResult, MutateOrderReport, MutateSafetyInfo, MutateSafetyNotes, MutateWorkPermission, MutationRepeatBriefing, PersonalCardDetails, PersonalCards, RepeatBriefing, SafetyInfo, SafetyNotes, TbMagazines, WorkPermission, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
 import { Protected } from './protected';
 import { Public } from './public';
 
@@ -318,6 +318,10 @@ export const Router = () => {
                                 {
                                     path: ROUTES.workshopAccidentsActAdd,
                                     element: <AddAccidentAct />,
+                                },
+                                {
+                                    path: ROUTES.workshopAccidentsOrderAdd,
+                                    element: <AddAccidentOrder />,
                                 },
                             ],
                         },

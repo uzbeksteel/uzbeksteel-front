@@ -58,3 +58,4 @@ export const Dangers = getLoadablePage('Dangers');
 export const DangersDetail = getLoadablePage('DangersDetail');
 export const AddDanger = getLoadablePage('AddDanger');
 export const AddAccidentAct = getLoadablePage('CreateAct');
+export const AddAccidentOrder = getLoadablePage('CreateOrder');

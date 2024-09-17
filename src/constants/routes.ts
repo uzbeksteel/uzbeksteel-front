@@ -43,4 +43,5 @@ export const ROUTES = {
     workshopDangers: '/workshop/dangers',
     workshopAccidents: '/workshop/accidents',
     workshopAccidentsActAdd: '/workshop/accidents/act-add',
+    workshopAccidentsOrderAdd: '/workshop/accidents/order-add',
 } as const;
