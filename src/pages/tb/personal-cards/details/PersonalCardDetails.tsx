@@ -65,7 +65,7 @@ export const PersonalCardDetails = () => {
             </Box>
             <Box $p="20px" $gap="10px" style={{ background: '#FFF', marginTop: '20px' }}>
                 <S.List>
-                    <S.Link to={'init-work-training'}>1. Вводный инструктаж</S.Link>
+                    <S.Link to={'intro-briefing'}>1. Вводный инструктаж</S.Link>
                     <S.Link to={'#'}>2. Первичный нструктаж на рабочем месте</S.Link>
                     <S.Link to={'#'}>3. Распоряжение</S.Link>
                     <S.Link to={'#'}>4. Протокол-разрешение</S.Link>
