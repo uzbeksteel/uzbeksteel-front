@@ -28,4 +28,5 @@ export enum Endpoints {
     CreateAccidentAct = 'accident/create-act',
     CreateAccidentOrder = 'accident/create-order',
     CreateAccidentOrderFile = 'accident/create-order-file',
+    AccidentById = 'accident/by-id',
 }

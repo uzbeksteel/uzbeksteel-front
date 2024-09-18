@@ -1,3 +1,7 @@
+import { AccidentStatus } from '@/constants';
+import { IWorkshop } from '@/types/workshop.ts';
+import { IFile } from '@/types/graphics.ts';
+
 export interface IAccidentAct {
     accidentPlace: string;
     fullName: string;
@@ -48,9 +52,28 @@ export interface ICreateAccidentOrder extends IAccidentOrder {
 export interface IAccidentOrderFile {
     name: string;
     date: Date;
+    file: IFile;
 }
 
 export interface ICreateAccidentOrderFile extends IAccidentOrderFile {
     fileId: string;
     accidentId: string;
+}
+
+export interface IAccident {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: any;
+    status: AccidentStatus;
+    workshop: IWorkshop;
+    order?: IAccidentOrder;
+    orderFile?: IAccidentOrderFile;
+    acts: IAccidentAct[];
+}
+
+export interface ICreateAccident {
+    workshopId: string;
+    accidentDate: Date;
+    victimsNumber: number;
 }

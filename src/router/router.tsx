@@ -3,7 +3,60 @@ import { AdminLayout, TbLayout, WorkshopLayout } from '@/layout';
 import { MutateIntroBriefing, MutatePersonalCard, OrderReport } from '@/pages';
 import { useAuthStore } from '@/store';
 import { useRoutes } from 'react-router-dom';
-import { Accidents, AddAccidentAct, AddAccidentOrder, AddDanger, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateActs, CreateEmployee, Dangers, DangersDetail, Deeds, DocumentDetail, EducationInfo, Forgot, Graphics, GraphicsDetail, HealthResult, Home, InitWorkTraining, InspectionCreate, IntroductoryBriefing, Login, Lows, MutateEducationInfo, MutateHealthResult, MutateOrderReport, MutateSafetyInfo, MutateSafetyNotes, MutateWorkPermission, MutationRepeatBriefing, PersonalCardDetails, PersonalCards, RepeatBriefing, SafetyInfo, SafetyNotes, TbMagazines, WorkPermission, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
+import {
+    AccidentDetails,
+    Accidents,
+    AccidentWorkshops,
+    AddAccident,
+    AddAccidentAct,
+    AddAccidentOrder,
+    AddDanger,
+    AdminCreateWorkShopBranches,
+    AdminEmployees,
+    AdminHome,
+    AdminWorkShopBranches,
+    AdminWorkshops,
+    AnalyticalData,
+    Archives,
+    Certification,
+    CertificationCreate,
+    CertificationList,
+    CreateActs,
+    CreateEmployee,
+    Dangers,
+    DangersDetail,
+    Deeds,
+    DocumentDetail,
+    EducationInfo,
+    Forgot,
+    Graphics,
+    GraphicsDetail,
+    HealthResult,
+    Home,
+    InitWorkTraining,
+    InspectionCreate,
+    IntroductoryBriefing,
+    Login,
+    Lows,
+    MutateEducationInfo,
+    MutateHealthResult,
+    MutateOrderReport,
+    MutateSafetyInfo,
+    MutateSafetyNotes,
+    MutateWorkPermission,
+    MutationRepeatBriefing,
+    PersonalCardDetails,
+    PersonalCards,
+    RepeatBriefing,
+    SafetyInfo,
+    SafetyNotes,
+    TbMagazines,
+    WorkPermission,
+    WorkShopCreatePage,
+    WorkshopEmployes,
+    WorkshopHome,
+    WorkshopInspections,
+} from './loadable';
 import { Protected } from './protected';
 import { Public } from './public';
 
@@ -88,7 +141,20 @@ export const Router = () => {
                         },
                         {
                             path: ROUTES.accidents,
-                            element: <Accidents />,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <AccidentWorkshops />,
+                                },
+                                {
+                                    path: ROUTES.single,
+                                    element: <Accidents />,
+                                },
+                                {
+                                    path: ROUTES.workshopAccidentDetails,
+                                    element: <AccidentDetails />,
+                                },
+                            ],
                         },
                         {
                             path: ROUTES.dangers,
@@ -314,6 +380,14 @@ export const Router = () => {
                                 {
                                     index: true,
                                     element: <Accidents />,
+                                },
+                                {
+                                    path: `${ROUTES.single}/${ROUTES.add}`,
+                                    element: <AddAccident />,
+                                },
+                                {
+                                    path: ROUTES.workshopAccidentDetails,
+                                    element: <AccidentDetails />,
                                 },
                                 {
                                     path: ROUTES.workshopAccidentsActAdd,

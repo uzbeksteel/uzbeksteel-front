@@ -27,7 +27,7 @@ const deleteFile = async (id: string): Promise<TUploadFileResponse> => {
 };
 
 export const downloadFile = async (id: string | number): Promise<AxiosResponse> => {
-    return await axios.get(`${API_URL}${Endpoints.Files}/${id}/${Endpoints.Download}`, { responseType: 'blob' });
+    return await axios.get(`${API_URL}/${Endpoints.Files}/${id}/${Endpoints.Download}`, { responseType: 'blob' });
 };
 
 export const useUploadFileQuery = (onSuccess: (data: TUploadFileResponse) => void) =>

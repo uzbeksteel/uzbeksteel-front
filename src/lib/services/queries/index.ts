@@ -8,3 +8,4 @@ export * from './personal-cards';
 export * from './upload';
 export * from './users';
 export * from './workshop';
+export * from './accident';
