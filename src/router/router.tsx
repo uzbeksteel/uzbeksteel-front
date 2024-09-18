@@ -329,6 +329,172 @@ export const Router = () => {
                                 },
                             ],
                         },
+                        {
+                            path: ROUTES.personalCard2,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <PersonalCards />,
+                                },
+                                {
+                                    path: ROUTES.add,
+                                    element: <MutatePersonalCard type="create" />,
+                                },
+                                {
+                                    path: ROUTES.edit,
+                                    element: <MutatePersonalCard type="edit" />,
+                                },
+                                {
+                                    path: ROUTES.single,
+                                    children: [
+                                        {
+                                            index: true,
+                                            element: <PersonalCardDetails />,
+                                        },
+                                        // {
+                                        //     path: ROUTES.personalCardDetailItem,
+                                        //     children: [
+                                        //         {
+                                        //             index: true,
+                                        //             element: <IntroductoryBriefing />,
+                                        //         },
+                                        //         {
+                                        //             path: ROUTES.add,
+                                        //             element: <MutateIntroBriefing type="create" />,
+                                        //         },
+                                        //         {
+                                        //             path: ROUTES.edit,
+                                        //             element: <MutateIntroBriefing type="edit" />,
+                                        //         },
+                                        //     ],
+                                        // },
+                                        // {
+                                        //     path: ROUTES.initWorkTraining,
+                                        //     children: [{ index: true, element: <InitWorkTraining /> }],
+                                        // },
+                                        // {
+                                        //     path: ROUTES.orderReport,
+                                        //     children: [
+                                        //         {
+                                        //             index: true,
+                                        //             element: <OrderReport />,
+                                        //         },
+                                        //         {
+                                        //             path: ROUTES.add,
+                                        //             element: <MutateOrderReport />,
+                                        //         },
+                                        //         {
+                                        //             path: ROUTES.edit,
+                                        //             element: <MutateOrderReport />,
+                                        //         },
+                                        //     ],
+                                        // },
+                                        // {
+                                        //     path: ROUTES.workPermission,
+                                        //     children: [
+                                        //         {
+                                        //             index: true,
+                                        //             element: <WorkPermission />,
+                                        //         },
+                                        //         {
+                                        //             path: ROUTES.add,
+                                        //             element: <MutateWorkPermission />,
+                                        //         },
+                                        //         {
+                                        //             path: ROUTES.edit,
+                                        //             element: <MutateWorkPermission />,
+                                        //         },
+                                        //     ],
+                                        // },
+                                        // {
+                                        //     path: ROUTES.safetyInfo,
+                                        //     children: [
+                                        //         {
+                                        //             index: true,
+                                        //             element: <SafetyInfo />,
+                                        //         },
+                                        //         {
+                                        //             path: ROUTES.add,
+                                        //             element: <MutateSafetyInfo />,
+                                        //         },
+                                        //         {
+                                        //             path: ROUTES.edit,
+                                        //             element: <MutateSafetyInfo />,
+                                        //         },
+                                        //     ],
+                                        // },
+                                        // {
+                                        //     path: ROUTES.repeatBriefing,
+                                        //     children: [
+                                        //         {
+                                        //             index: true,
+                                        //             element: <RepeatBriefing />,
+                                        //         },
+                                        //         {
+                                        //             path: ROUTES.add,
+                                        //             element: <MutationRepeatBriefing />,
+                                        //         },
+                                        //         {
+                                        //             path: ROUTES.edit,
+                                        //             element: <MutationRepeatBriefing />,
+                                        //         },
+                                        //     ],
+                                        // },
+                                        // {
+                                        //     path: ROUTES.educationInfo,
+                                        //     children: [
+                                        //         {
+                                        //             index: true,
+                                        //             element: <EducationInfo />,
+                                        //         },
+                                        //         {
+                                        //             path: ROUTES.add,
+                                        //             element: <MutateEducationInfo />,
+                                        //         },
+                                        //         {
+                                        //             path: ROUTES.edit,
+                                        //             element: <MutateEducationInfo />,
+                                        //         },
+                                        //     ],
+                                        // },
+                                        // {
+                                        //     path: ROUTES.safetyNotes,
+                                        //     children: [
+                                        //         {
+                                        //             index: true,
+                                        //             element: <SafetyNotes />,
+                                        //         },
+                                        //         {
+                                        //             path: ROUTES.add,
+                                        //             element: <MutateSafetyNotes />,
+                                        //         },
+                                        //         {
+                                        //             path: ROUTES.edit,
+                                        //             element: <MutateSafetyNotes />,
+                                        //         },
+                                        //     ],
+                                        // },
+                                        {
+                                            path: ROUTES.workshopHealthResult,
+                                            children: [
+                                                {
+                                                    index: true,
+                                                    element: <HealthResult />,
+                                                },
+                                                {
+                                                    path: ROUTES.add,
+                                                    element: <MutateHealthResult />,
+                                                },
+                                                {
+                                                    path: ROUTES.edit,
+                                                    element: <MutateHealthResult />,
+                                                },
+                                            ],
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
                     ],
                 },
                 {
