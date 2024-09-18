@@ -74,7 +74,7 @@ export const Dangers = () => {
                 </Typography>
             </Box>
             <Box $p="10px">
-                <Table onChange={handleTableChange} scroll={{ x: true }} columns={columns} dataSource={data} titleTable="Касблар рўйхати" />
+                <Table onChange={handleTableChange} scroll={{ x: true }} isAdd={true} columns={columns} dataSource={data} titleTable="Касблар рўйхати" />
             </Box>
         </>
     );

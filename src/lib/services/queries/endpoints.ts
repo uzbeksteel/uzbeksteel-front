@@ -22,4 +22,10 @@ export enum Endpoints {
     Download = 'download',
     Files = 'files',
     Documents = 'documents',
+    PersonalCard = 'personal-card',
+    Professions = 'professions',
+    Accident = 'accident',
+    CreateAccidentAct = 'accident/create-act',
+    CreateAccidentOrder = 'accident/create-order',
+    CreateAccidentOrderFile = 'accident/create-order-file',
 }

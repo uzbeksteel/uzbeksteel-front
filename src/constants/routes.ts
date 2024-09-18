@@ -14,6 +14,17 @@ export const ROUTES = {
     accidents: '/accidents',
     magazine: '/magazine',
     dangers: '/dangers',
+    personalCard: '/personal-card',
+    personalCardDetailItem: '/personal-card/:id/intro-briefing',
+    edit: 'edit/:id',
+    initWorkTraining: '/personal-card/:id/init-work-training',
+    orderReport: '/personal-card/:id/order-report',
+    workPermission: '/personal-card/:id/work-permission',
+    safetyInfo: '/personal-card/:id/safety-info',
+    repeatBriefing: '/personal-card/:id/repeat-briefing',
+    educationInfo: '/personal-card/:id/education-info',
+    safetyNotes: '/personal-card/:id/safety-notes',
+    healthResult: '/personal-card/:id/health-result',
 
     // admin routes
     admin: '/admin',
@@ -29,4 +40,8 @@ export const ROUTES = {
     workshopEmployes: '/workshop/employes',
     workshopInspections: '/workshop/inspections',
     workshopInspectionsAdd: '/workshop/inspections/add',
+    workshopDangers: '/workshop/dangers',
+    workshopAccidents: '/workshop/accidents',
+    workshopAccidentsActAdd: '/workshop/accidents/act-add',
+    workshopAccidentsOrderAdd: '/workshop/accidents/order-add',
 } as const;

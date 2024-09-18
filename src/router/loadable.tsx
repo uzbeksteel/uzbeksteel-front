@@ -17,6 +17,26 @@ export const CertificationCreate = getLoadablePage('CertificationCreate');
 export const Accidents = getLoadablePage('Accidents');
 export const TbMagazines = getLoadablePage('TbMagazines');
 export const CreateActs = getLoadablePage('CreateActs');
+export const PersonalCards = getLoadablePage('PersonalCards');
+export const MutatePersonalCard = getLoadablePage('MutablePersonalCard');
+export const PersonalCardDetails = getLoadablePage('PersonalCardDetails');
+export const IntroductoryBriefing = getLoadablePage('IntroductoryBriefing');
+export const MutateIntroBriefing = getLoadablePage('MutateIntroBriefing');
+export const InitWorkTraining = getLoadablePage('InitWorkTraining');
+export const OrderReport = getLoadablePage('OrderReport');
+export const MutateOrderReport = getLoadablePage('MutateOrderReport');
+export const WorkPermission = getLoadablePage('WorkPermission');
+export const MutateWorkPermission = getLoadablePage('MutateWorkPermission');
+export const SafetyInfo = getLoadablePage('SafetyInfo');
+export const MutateSafetyInfo = getLoadablePage('MutateSafetyInfo');
+export const RepeatBriefing = getLoadablePage('RepeatBriefing');
+export const MutationRepeatBriefing = getLoadablePage('MutationRepeatBriefing');
+export const EducationInfo = getLoadablePage('EducationInfo');
+export const MutateEducationInfo = getLoadablePage('MutateEducationInfo');
+export const SafetyNotes = getLoadablePage('SafetyNotes');
+export const MutateSafetyNotes = getLoadablePage('MutateSafetyNotes');
+export const HealthResult = getLoadablePage('HealthResult');
+export const MutateHealthResult = getLoadablePage('MutateHealthResult');
 
 // admin
 export const AdminHome = getLoadablePage('AdminHome');
@@ -25,7 +45,7 @@ export const Archives = getLoadablePage('Archives');
 export const AdminEmployees = getLoadablePage('AdminEmployees');
 export const AdminWorkshops = getLoadablePage('AdminWorkshops');
 export const WorkShopCreatePage = getLoadablePage('WorkShopCreatePage');
-export const AdminWorkShopBranches = getLoadablePage('WorkshopBrnches');
+export const AdminWorkShopBranches = getLoadablePage('WorkshopBranches');
 export const AdminCreateWorkShopBranches = getLoadablePage('CreateWorkshopBranches');
 
 // workshop
@@ -37,3 +57,5 @@ export const CreateEmployee = getLoadablePage('CreateEmployee');
 export const Dangers = getLoadablePage('Dangers');
 export const DangersDetail = getLoadablePage('DangersDetail');
 export const AddDanger = getLoadablePage('AddDanger');
+export const AddAccidentAct = getLoadablePage('CreateAct');
+export const AddAccidentOrder = getLoadablePage('CreateOrder');

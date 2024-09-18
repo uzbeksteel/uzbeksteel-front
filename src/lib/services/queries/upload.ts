@@ -10,7 +10,7 @@ const uploadFile = async (body: FormData): Promise<TUploadFileResponse> => {
     const hideMessage = message.loading(dictionary.loading, 0);
 
     try {
-        return await api.post(`${Endpoints.Upload}file`, body);
+        return await api.post(`files/${Endpoints.Upload}`, body);
     } finally {
         hideMessage();
     }

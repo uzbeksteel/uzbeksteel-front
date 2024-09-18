@@ -2,7 +2,7 @@ import { dictionary } from '@/constants';
 import type { TParams } from '@/types/app';
 import { TAntFormProps, TFieldProps } from '@/types/components';
 import { useIsMutating } from '@tanstack/react-query';
-import { Form as AntForm, Col, Input, InputNumber, Row, Spin } from 'antd';
+import { Col, Form as AntForm, Input, InputNumber, Row, Spin } from 'antd';
 import { Button } from '..';
 import { Box } from '../box';
 
@@ -46,7 +46,7 @@ export const Field = ({ span, textarea, rule, isRequired, isInputNumber, childre
                 ]}
                 {...props}
             >
-                {children ? children : textarea ? <Input.TextArea style={{ borderRadius: '0px' }} rows={4} /> : isInputNumber ? <InputNumber style={{ borderRadius: '0px' }} formatter={formatNumber} parser={formatNumber} /> : <Input style={{ borderRadius: '0px' }} {...props} />}
+                {children ? children : textarea ? <Input.TextArea style={{ borderRadius: '0px' }} placeholder={props.placeholder} rows={4} /> : isInputNumber ? <InputNumber placeholder={props.placeholder} style={{ borderRadius: '0px' }} formatter={formatNumber} parser={formatNumber} /> : <Input style={{ borderRadius: '0px' }} {...props} />}
             </AntForm.Item>
         </Col>
     );

@@ -1,8 +1,9 @@
 import { ROUTES } from '@/constants';
 import { AdminLayout, TbLayout, WorkshopLayout } from '@/layout';
+import { MutateIntroBriefing, MutatePersonalCard, OrderReport } from '@/pages';
 import { useAuthStore } from '@/store';
 import { useRoutes } from 'react-router-dom';
-import { Accidents, AddDanger, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateActs, CreateEmployee, Dangers, DangersDetail, Deeds, DocumentDetail, Forgot, Graphics, GraphicsDetail, Home, InspectionCreate, Login, Lows, TbMagazines, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
+import { Accidents, AddAccidentAct, AddAccidentOrder, AddDanger, AdminCreateWorkShopBranches, AdminEmployees, AdminHome, AdminWorkShopBranches, AdminWorkshops, AnalyticalData, Archives, Certification, CertificationCreate, CertificationList, CreateActs, CreateEmployee, Dangers, DangersDetail, Deeds, DocumentDetail, EducationInfo, Forgot, Graphics, GraphicsDetail, HealthResult, Home, InitWorkTraining, InspectionCreate, IntroductoryBriefing, Login, Lows, MutateEducationInfo, MutateHealthResult, MutateOrderReport, MutateSafetyInfo, MutateSafetyNotes, MutateWorkPermission, MutationRepeatBriefing, PersonalCardDetails, PersonalCards, RepeatBriefing, SafetyInfo, SafetyNotes, TbMagazines, WorkPermission, WorkShopCreatePage, WorkshopEmployes, WorkshopHome, WorkshopInspections } from './loadable';
 import { Protected } from './protected';
 import { Public } from './public';
 
@@ -100,9 +101,171 @@ export const Router = () => {
                                     path: ROUTES.single,
                                     element: <DangersDetail />,
                                 },
+                            ],
+                        },
+                        {
+                            path: ROUTES.personalCard,
+                            children: [
                                 {
-                                    path: `${ROUTES.single}/${ROUTES.add}`,
-                                    element: <AddDanger />,
+                                    index: true,
+                                    element: <PersonalCards />,
+                                },
+                                {
+                                    path: ROUTES.add,
+                                    element: <MutatePersonalCard type="create" />,
+                                },
+                                {
+                                    path: ROUTES.edit,
+                                    element: <MutatePersonalCard type="edit" />,
+                                },
+                                {
+                                    path: ROUTES.single,
+                                    children: [
+                                        {
+                                            index: true,
+                                            element: <PersonalCardDetails />,
+                                        },
+                                        {
+                                            path: ROUTES.personalCardDetailItem,
+                                            children: [
+                                                {
+                                                    index: true,
+                                                    element: <IntroductoryBriefing />,
+                                                },
+                                                {
+                                                    path: ROUTES.add,
+                                                    element: <MutateIntroBriefing type="create" />,
+                                                },
+                                                {
+                                                    path: ROUTES.edit,
+                                                    element: <MutateIntroBriefing type="edit" />,
+                                                },
+                                            ],
+                                        },
+                                        {
+                                            path: ROUTES.initWorkTraining,
+                                            children: [{ index: true, element: <InitWorkTraining /> }],
+                                        },
+                                        {
+                                            path: ROUTES.orderReport,
+                                            children: [
+                                                {
+                                                    index: true,
+                                                    element: <OrderReport />,
+                                                },
+                                                {
+                                                    path: ROUTES.add,
+                                                    element: <MutateOrderReport />,
+                                                },
+                                                {
+                                                    path: ROUTES.edit,
+                                                    element: <MutateOrderReport />,
+                                                },
+                                            ],
+                                        },
+                                        {
+                                            path: ROUTES.workPermission,
+                                            children: [
+                                                {
+                                                    index: true,
+                                                    element: <WorkPermission />,
+                                                },
+                                                {
+                                                    path: ROUTES.add,
+                                                    element: <MutateWorkPermission />,
+                                                },
+                                                {
+                                                    path: ROUTES.edit,
+                                                    element: <MutateWorkPermission />,
+                                                },
+                                            ],
+                                        },
+                                        {
+                                            path: ROUTES.safetyInfo,
+                                            children: [
+                                                {
+                                                    index: true,
+                                                    element: <SafetyInfo />,
+                                                },
+                                                {
+                                                    path: ROUTES.add,
+                                                    element: <MutateSafetyInfo />,
+                                                },
+                                                {
+                                                    path: ROUTES.edit,
+                                                    element: <MutateSafetyInfo />,
+                                                },
+                                            ],
+                                        },
+                                        {
+                                            path: ROUTES.repeatBriefing,
+                                            children: [
+                                                {
+                                                    index: true,
+                                                    element: <RepeatBriefing />,
+                                                },
+                                                {
+                                                    path: ROUTES.add,
+                                                    element: <MutationRepeatBriefing />,
+                                                },
+                                                {
+                                                    path: ROUTES.edit,
+                                                    element: <MutationRepeatBriefing />,
+                                                },
+                                            ],
+                                        },
+                                        {
+                                            path: ROUTES.educationInfo,
+                                            children: [
+                                                {
+                                                    index: true,
+                                                    element: <EducationInfo />,
+                                                },
+                                                {
+                                                    path: ROUTES.add,
+                                                    element: <MutateEducationInfo />,
+                                                },
+                                                {
+                                                    path: ROUTES.edit,
+                                                    element: <MutateEducationInfo />,
+                                                },
+                                            ],
+                                        },
+                                        {
+                                            path: ROUTES.safetyNotes,
+                                            children: [
+                                                {
+                                                    index: true,
+                                                    element: <SafetyNotes />,
+                                                },
+                                                {
+                                                    path: ROUTES.add,
+                                                    element: <MutateSafetyNotes />,
+                                                },
+                                                {
+                                                    path: ROUTES.edit,
+                                                    element: <MutateSafetyNotes />,
+                                                },
+                                            ],
+                                        },
+                                        {
+                                            path: ROUTES.healthResult,
+                                            children: [
+                                                {
+                                                    index: true,
+                                                    element: <HealthResult />,
+                                                },
+                                                {
+                                                    path: ROUTES.add,
+                                                    element: <MutateHealthResult />,
+                                                },
+                                                {
+                                                    path: ROUTES.edit,
+                                                    element: <MutateHealthResult />,
+                                                },
+                                            ],
+                                        },
+                                    ],
                                 },
                             ],
                         },
@@ -131,6 +294,40 @@ export const Router = () => {
                         {
                             path: ROUTES.workshopInspectionsAdd,
                             element: <InspectionCreate />,
+                        },
+                        {
+                            path: ROUTES.workshopDangers,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <Dangers />,
+                                },
+                                {
+                                    path: ROUTES.single,
+                                    element: <DangersDetail />,
+                                },
+                                {
+                                    path: `${ROUTES.single}/${ROUTES.add}`,
+                                    element: <AddDanger />,
+                                },
+                            ],
+                        },
+                        {
+                            path: ROUTES.workshopAccidents,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <Accidents />,
+                                },
+                                {
+                                    path: ROUTES.workshopAccidentsActAdd,
+                                    element: <AddAccidentAct />,
+                                },
+                                {
+                                    path: ROUTES.workshopAccidentsOrderAdd,
+                                    element: <AddAccidentOrder />,
+                                },
+                            ],
                         },
                     ],
                 },
