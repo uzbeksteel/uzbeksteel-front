@@ -25,11 +25,6 @@ export const Content = ({ title, children, onclick }: Props) => {
                             Редактировать
                         </Button>
                     </Col>
-                    <Col span={12}>
-                        <Button type="dashed" icon={<Icon name="Trash" />}>
-                            Удалить
-                        </Button>
-                    </Col>
                 </Row>
             </Box>
             {children}

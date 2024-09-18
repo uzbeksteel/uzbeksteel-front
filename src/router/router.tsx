@@ -115,6 +115,10 @@ export const Router = () => {
                                     element: <MutatePersonalCard type="create" />,
                                 },
                                 {
+                                    path: ROUTES.edit,
+                                    element: <MutatePersonalCard type="edit" />,
+                                },
+                                {
                                     path: ROUTES.single,
                                     children: [
                                         {
