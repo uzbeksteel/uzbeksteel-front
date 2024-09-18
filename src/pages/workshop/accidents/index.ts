@@ -1,2 +1,3 @@
-export { CreateAct } from './create-act.tsx';
-export { CreateOrder } from './create-order/create-order.tsx';
+export { CreateAct } from './create-act';
+export { CreateOrder } from './create-order/create-order';
+export { AddAccident } from './add-accident';

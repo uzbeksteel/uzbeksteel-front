@@ -14,3 +14,9 @@ export enum CONTROL_TYPE {
     FIRST_STAGE = 'FIRST_STAGE',
     SECOND_STAGE = 'SECOND_STAGE',
 }
+
+export enum AccidentStatus {
+    NEW = 'NEW',
+    IN_PROCESS = 'IN_PROCESS',
+    DONE = 'DONE',
+}

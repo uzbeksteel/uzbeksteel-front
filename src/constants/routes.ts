@@ -25,6 +25,7 @@ export const ROUTES = {
     educationInfo: '/personal-card/:id/education-info',
     safetyNotes: '/personal-card/:id/safety-notes',
     healthResult: '/personal-card/:id/health-result',
+    accidentDetails: '/accidents/:id/details',
 
     // admin routes
     admin: '/admin',
@@ -47,4 +48,5 @@ export const ROUTES = {
     workshopPersonalCard: '/workshop/personal-card',
     personalCard2: 'personal-card',
     workshopHealthResult: 'health-result',
+    workshopAccidentDetails: ':id/details',
 } as const;
