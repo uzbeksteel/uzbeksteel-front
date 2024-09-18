@@ -67,3 +67,14 @@ export type TImageBody = {
 };
 
 export type TParams = number | string | undefined | any;
+
+export interface IResponse<T> {
+    data: T;
+    meta: {
+        itemsPerPage: number;
+        totalItems: number;
+        currentPage: number;
+        totalPages: number;
+        sortBy: string[][];
+    };
+}

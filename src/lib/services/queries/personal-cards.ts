@@ -1,12 +1,19 @@
-import { TParams } from '@/types/app';
-import { IPersonalCard } from '@/types/personal-cards';
+import { createQueryString } from '@/lib/helper';
+import { IResponse, TParams } from '@/types/app';
+import { IIntroBriefing, IPersonalCard } from '@/types/personal-cards';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api';
 import { Endpoints } from './endpoints';
 
-const findAll = async (): Promise<IPersonalCard[]> => {
-    const responce = await api.get(Endpoints.PersonalCard);
-    return responce.data;
+export const getBriefing = async (persoanlcardId: string) => {
+    const response: IIntroBriefing = await api.get(Endpoints.PersonalCard + '/' + Endpoints.IntroBriefing + '/byPersonalCardId/' + persoanlcardId);
+
+    return response;
+};
+
+const findAll = async (search?: string): Promise<IResponse<IPersonalCard[]>> => {
+    const responce: any = await api.get(Endpoints.PersonalCard + createQueryString({ search }));
+    return responce;
 };
 
 const findOne = async (id: TParams): Promise<IPersonalCard> => {
@@ -19,10 +26,20 @@ export const useGetPersonalCardQuery = (id: TParams) =>
         queryKey: [Endpoints.PersonalCard, id],
         queryFn: () => findOne(id),
         enabled: !!id,
+        refetchOnWindowFocus: false,
     });
 
-export const useGetPersonalCardsQuery = () =>
-    useQuery<IPersonalCard[]>({
-        queryKey: [Endpoints.PersonalCard],
-        queryFn: findAll,
+export const useGetPersonalCardsQuery = (search: string) =>
+    useQuery<IResponse<IPersonalCard[]>>({
+        queryKey: [Endpoints.PersonalCard, search],
+        queryFn: () => findAll(search),
     });
+
+export const useIntroBriefingQuery = (personalCardId: string) => {
+    return useQuery({
+        queryKey: [Endpoints.IntroBriefing, personalCardId],
+        queryFn: () => getBriefing(personalCardId),
+        refetchInterval: 60 * 60 * 1000,
+        enabled: !!personalCardId,
+    });
+};
