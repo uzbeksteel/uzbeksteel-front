@@ -6,8 +6,9 @@ import { api } from '../api';
 import { Endpoints } from './endpoints';
 
 export const getBriefing = async (persoanlcardId: string) => {
-    const response = await api.get<IIntroBriefing>(Endpoints.PersonalCard + '/' + Endpoints.IntroBriefing + '/byPersonalCardId/' + persoanlcardId);
-    return response.data;
+    const response: IIntroBriefing = await api.get(Endpoints.PersonalCard + '/' + Endpoints.IntroBriefing + '/byPersonalCardId/' + persoanlcardId);
+
+    return response;
 };
 
 const findAll = async (search?: string): Promise<IResponse<IPersonalCard[]>> => {
@@ -37,7 +38,7 @@ export const useGetPersonalCardsQuery = (search: string) =>
 export const useIntroBriefingQuery = (personalCardId: string) => {
     return useQuery({
         queryKey: [Endpoints.IntroBriefing, personalCardId],
-        queryFn: async () => getBriefing(personalCardId),
+        queryFn: () => getBriefing(personalCardId),
         refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
