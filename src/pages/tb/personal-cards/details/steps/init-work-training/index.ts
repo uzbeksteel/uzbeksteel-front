@@ -1,0 +1,1 @@
+export { InitWorkTraining } from './InitWorkTraining';
