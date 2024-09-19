@@ -94,7 +94,7 @@ export const useGetWorkPermissionQuery = (personalCardId: string) => {
         enabled: !!personalCardId,
     });
 };
-
+//test
 export const usePersonalCardMedicalQuery = (personalCardId: string) => {
     return useQuery({
         queryKey: [Endpoints.PersonalCardMedicalPersonal, personalCardId],
