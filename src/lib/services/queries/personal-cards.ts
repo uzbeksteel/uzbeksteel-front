@@ -1,14 +1,19 @@
 import { createQueryString } from '@/lib/helper';
 import { IResponse, TParams } from '@/types/app';
-import { IIntroBriefing, IPersonalCard } from '@/types/personal-cards';
+import { IIntroBriefing, IPersonalCard, IWorkInitTraining } from '@/types/personal-cards';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api';
 import { Endpoints } from './endpoints';
 
-export const getBriefing = async (persoanlcardId: string) => {
+export const getIntroBriefing = async (persoanlcardId: string) => {
     const response: IIntroBriefing = await api.get(Endpoints.PersonalCard + '/' + Endpoints.IntroBriefing + '/byPersonalCardId/' + persoanlcardId);
 
     return response;
+};
+
+export const getInitWorkTraining = async (persoanlcardId: string) => {
+    const responce: IWorkInitTraining = await api.get(Endpoints.InitWorkTraining + '/byPersonalCard/' + persoanlcardId);
+    return responce;
 };
 
 const findAll = async (search?: string): Promise<IResponse<IPersonalCard[]>> => {
@@ -38,7 +43,16 @@ export const useGetPersonalCardsQuery = (search: string) =>
 export const useIntroBriefingQuery = (personalCardId: string) => {
     return useQuery({
         queryKey: [Endpoints.IntroBriefing, personalCardId],
-        queryFn: () => getBriefing(personalCardId),
+        queryFn: () => getIntroBriefing(personalCardId),
+        refetchInterval: 60 * 60 * 1000,
+        enabled: !!personalCardId,
+    });
+};
+
+export const useGetInitWorkTrainingQuery = (personalCardId: string) => {
+    return useQuery({
+        queryKey: [Endpoints.InitWorkTraining, personalCardId],
+        queryFn: () => getInitWorkTraining(personalCardId),
         refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
