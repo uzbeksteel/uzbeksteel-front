@@ -1,5 +1,4 @@
 import { Box, Loading, Table } from '@/components';
-import { useSafetyInfoQuery } from '@/lib/services';
 import { useAppStore } from '@/store';
 import { useParams } from 'react-router-dom';
 import { Content } from '../../components';
