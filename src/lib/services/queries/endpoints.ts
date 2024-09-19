@@ -30,6 +30,8 @@ export enum Endpoints {
     CreateAccidentOrderFile = 'accident/create-order-file',
     IntroBriefing = 'introductory-briefing',
     AccidentById = 'accident/by-id',
+    PersonalCardMedical = '/health-result',
+    PersonalCardMedicalPersonal = '/health-result/byPersonalCard',
     InitWorkTraining = 'init-work-training',
     Order = 'order',
     WorkPermission = 'work-permission',

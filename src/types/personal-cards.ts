@@ -2,7 +2,6 @@ import { Dayjs } from 'dayjs';
 import { IFile } from './graphics';
 import { IProfession } from './profession';
 import { IUsers, IWorkshop } from './workshop';
-import { ExpandIcon } from 'lucide-react';
 
 export interface IPersonalCard {
     id: string;
@@ -37,35 +36,15 @@ export interface IIntroBriefing {
     personalCard: IPersonalCard;
 }
 
-export interface IWorkInitTraining {
-    id: string;
-    created_at: string;
-    updated_at: string;
-    deleted_at: any;
-    master_signature: boolean;
-    employee_signature: boolean;
+export interface IPersonalCardMedical {
+    mediacal_exam_name: string;
+    mediacal_exam_date: string;
+    author_signature: boolean;
     personalCard: IPersonalCard;
-    program: IProgram;
-}
-
-export interface IProgram {
     id: string;
     created_at: string;
     updated_at: string;
     deleted_at: any;
-    name: string;
-    briefings: IBriefing[];
-}
-
-export interface IBriefing {
-    id: string;
-    created_at: string;
-    updated_at: string;
-    deleted_at: any;
-    fullname: string;
-    duration: number;
-    number: string;
-    description: string;
 }
 
 export interface IOrder {
@@ -100,6 +79,13 @@ export interface IFiles {
     type: string;
 }
 
+export type TCreateMedicalPayload = {
+    mediacalExamName: string;
+    mediacalExamDate: string | Dayjs;
+    authorSignature: boolean;
+    personalCard: string;
+};
+
 export interface Iprofession {
     id: string;
     created_at: string;
@@ -109,6 +95,36 @@ export interface Iprofession {
     description: string;
 }
 
+export interface IWorkInitTraining {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: any;
+    master_signature: boolean;
+    employee_signature: boolean;
+    personalCard: IPersonalCard;
+    program: IProgram;
+}
+
+export interface IProgram {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: any;
+    name: string;
+    briefings: IBriefing[];
+}
+
+export interface IBriefing {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: any;
+    fullname: string;
+    duration: number;
+    number: string;
+    description: string;
+}
 export interface IWorkPermission {
     id: string;
     created_at: string;
@@ -133,4 +149,3 @@ export interface ISafetyInfo {
     employer_signature: boolean;
     personalCard: IPersonalCard;
 }
-

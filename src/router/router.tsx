@@ -1,6 +1,6 @@
 import { ROUTES } from '@/constants';
 import { AdminLayout, TbLayout, WorkshopLayout } from '@/layout';
-import { MutateIntroBriefing, MutatePersonalCard, OrderReport } from '@/pages';
+import { MutateHealthResult, MutateIntroBriefing, MutatePersonalCard, OrderReport } from '@/pages';
 import { useAuthStore } from '@/store';
 import { useRoutes } from 'react-router-dom';
 import {
@@ -39,7 +39,6 @@ import {
     Login,
     Lows,
     MutateEducationInfo,
-    MutateHealthResult,
     MutateOrderReport,
     MutateSafetyInfo,
     MutateSafetyNotes,
@@ -501,11 +500,11 @@ export const Router = () => {
                                                 },
                                                 {
                                                     path: ROUTES.add,
-                                                    element: <MutateHealthResult />,
+                                                    element: <MutateHealthResult type="create" />,
                                                 },
                                                 {
                                                     path: ROUTES.edit,
-                                                    element: <MutateHealthResult />,
+                                                    element: <MutateHealthResult type="edit" />,
                                                 },
                                             ],
                                         },
