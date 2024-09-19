@@ -5,8 +5,8 @@ import { useAuthStore } from '@/store';
 import { useRoutes } from 'react-router-dom';
 import {
     AccidentDetails,
-    Accidents,
     AccidentWorkshops,
+    Accidents,
     AddAccident,
     AddAccidentAct,
     AddAccidentOrder,
