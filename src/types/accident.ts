@@ -3,6 +3,10 @@ import { IWorkshop } from '@/types/workshop.ts';
 import { IFile } from '@/types/graphics.ts';
 
 export interface IAccidentAct {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: any;
     accidentPlace: string;
     fullName: string;
     gender: string;

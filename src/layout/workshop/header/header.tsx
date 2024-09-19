@@ -1,5 +1,4 @@
-import { Image } from '@/assets';
-import { Icon, Typography } from '@/components';
+import { Icon, User } from '@/components';
 import { Flex } from 'antd';
 import { LayoutHeader } from '../../style';
 import { Props } from '../../type';
@@ -18,15 +17,7 @@ export const Header = ({ bg }: Props) => {
                     <Icon name="Settings" color="#D5680A" />
 
                     <Icon name="Globe" color="#D5680A" />
-
-                    <Flex gap={10} justify="space-between" align="center">
-                        <Flex justify="center" align="center" gap={12}>
-                            <img src={Image} height={30} width={30} />
-                        </Flex>
-                        <Typography type="title" level={5} marginBottom="0" color="#D5680A !important">
-                            Anvar
-                        </Typography>
-                    </Flex>
+                    <User />
                 </Flex>
             </LayoutHeader>
         </>

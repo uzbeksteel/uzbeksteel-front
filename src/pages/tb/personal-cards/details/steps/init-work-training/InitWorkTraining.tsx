@@ -1,13 +1,20 @@
-import { Box } from '@/components';
+import { Box, Loading } from '@/components';
 import { StyledParagraph } from '@/components/typography/style';
+import { useGetInitWorkTrainingQuery } from '@/lib/services';
 import { useAppStore } from '@/store';
 import { Checkbox } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Content } from '../../components';
 import { CreateModal } from './components';
 
 export const InitWorkTraining = () => {
     const { setIsModal } = useAppStore();
+    const { id } = useParams();
+    const { data, isLoading } = useGetInitWorkTrainingQuery(id!);
+
+    if (isLoading) {
+        return <Loading />;
+    }
 
     return (
         <>
@@ -16,6 +23,7 @@ export const InitWorkTraining = () => {
                     setIsModal(true);
                 }}
                 title="Иш жойда дастлабки тайёргарлик"
+                editable={false}
             >
                 <Box
                     $justify="space-between"
@@ -34,16 +42,21 @@ export const InitWorkTraining = () => {
                         </div>
 
                         <StyledParagraph>
-                            <Link to="#">Lorem ipsum dolor</Link> дастури доирасида ва кўрсатмаларга мувофиқ ўтказилади
+                            <Link style={{ color: 'orange', fontWeight: 'bold' }} to="#">
+                                {data?.program?.name || '________________'}
+                            </Link>{' '}
+                            дастури доирасида ва кўрсатмаларга мувофиқ ўтказилади
                         </StyledParagraph>
 
                         <StyledParagraph>Мен бажарилаётган иш учун хавфсизлик чоралари бўйича кўрсатмалар олдим.</StyledParagraph>
                     </Box>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <Checkbox defaultChecked style={{ marginBottom: '8px' }}>
+                        <Checkbox checked={data?.master_signature || false} style={{ marginBottom: '8px' }} disabled={true}>
                             Мастер имзоси
                         </Checkbox>
-                        <Checkbox defaultChecked>Ишчи имзоси</Checkbox>
+                        <Checkbox checked={data?.employee_signature || false} disabled={true}>
+                            Ишчи имзоси
+                        </Checkbox>
                     </div>
                 </Box>
             </Content>

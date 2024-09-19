@@ -7,9 +7,10 @@ interface Props {
     title: string;
     onclick?: (e: any) => void;
     children: ReactNode;
+    editable?: boolean;
 }
 
-export const Content = ({ title, children, onclick }: Props) => {
+export const Content = ({ title, children, onclick, editable = true }: Props) => {
     const navigate = useNavigate();
 
     return (
@@ -19,13 +20,15 @@ export const Content = ({ title, children, onclick }: Props) => {
                 <Typography type="title" level={3}>
                     {title.slice(0, 40)}...
                 </Typography>
-                <Row style={{ marginLeft: 'auto' }} gutter={10}>
-                    <Col span={12}>
-                        <Button onClick={onclick} type="primary" icon={<Icon name="FilePenLine" />}>
-                            Редактировать
-                        </Button>
-                    </Col>
-                </Row>
+                {!editable || (
+                    <Row style={{ marginLeft: 'auto' }} gutter={10}>
+                        <Col span={12}>
+                            <Button onClick={onclick} type="primary" icon={<Icon name="FilePenLine" />}>
+                                Редактировать
+                            </Button>
+                        </Col>
+                    </Row>
+                )}
             </Box>
             {children}
         </Fragment>
