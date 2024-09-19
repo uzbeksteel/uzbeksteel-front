@@ -35,3 +35,21 @@ export interface IIntroBriefing {
     dateTime: string;
     personalCard: IPersonalCard;
 }
+
+export interface IPersonalCardMedical {
+    mediacal_exam_name: string;
+    mediacal_exam_date: string;
+    author_signature: boolean;
+    personalCard: IPersonalCard;
+    id: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: any;
+}
+
+export type TCreateMedicalPayload = {
+    mediacalExamName: string;
+    mediacalExamDate: string | Dayjs;
+    authorSignature: boolean;
+    personalCard: string;
+};

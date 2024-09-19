@@ -49,4 +49,12 @@ export const ROUTES = {
     personalCard2: 'personal-card',
     workshopHealthResult: 'health-result',
     workshopAccidentDetails: ':id/details',
+    workshopSafetyNotes: 'safety-notes',
+    workshopEducationInfo: 'education-info',
+    workshopRepeatBriefing: 'repeat-briefing',
+    workShopSafetyInf: 'safety-info',
+    workShopWorkPermission: 'work-permission',
+    workShopOrderReport: 'order-report',
+    workShopInitWorkTraining: 'init-work-training',
+    workshopIntroBriefing: 'intro-briefing',
 } as const;
