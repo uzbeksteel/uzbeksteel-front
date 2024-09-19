@@ -3,6 +3,7 @@ import { useAppStore } from '@/store';
 import { useParams } from 'react-router-dom';
 import { Content } from '../../components';
 import { SafetyInfoColumns } from './constants';
+import { useSafetyInfoQuery } from '@/lib/services';
 
 export const SafetyInfo = () => {
     const { id } = useParams();

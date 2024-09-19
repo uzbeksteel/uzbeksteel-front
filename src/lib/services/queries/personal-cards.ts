@@ -1,9 +1,14 @@
 import { createQueryString } from '@/lib/helper';
 import { IResponse, TParams } from '@/types/app';
-import { IIntroBriefing, IOrder, IPersonalCard, IPersonalCardMedical, IWorkInitTraining, IWorkPermission } from '@/types/personal-cards';
+import { IIntroBriefing, IOrder, IPersonalCard, IPersonalCardMedical, ISafetyInfo, IWorkInitTraining, IWorkPermission } from '@/types/personal-cards';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api';
 import { Endpoints } from './endpoints';
+
+export const getSafetyInfo = async (persoanlcardId: string, search?: string) => {
+    const response: any = await api.get(`${Endpoints.SafetyInfo}/byPersonalcard?filter.personalCard.id=${persoanlcardId}${search?.length ? `&search=${search}` : ''}`);
+    return response;
+};
 
 export const getIntroBriefing = async (persoanlcardId: string) => {
     const response: IIntroBriefing = await api.get(Endpoints.PersonalCard + '/' + Endpoints.IntroBriefing + '/byPersonalCardId/' + persoanlcardId);
@@ -111,3 +116,12 @@ export const useGetPersonalCardMedicalQuery = (id: TParams) =>
         enabled: !!id,
         refetchOnWindowFocus: false,
     });
+
+export const useSafetyInfoQuery = (personalCardId: string, search?: string) => {
+    return useQuery<IResponse<ISafetyInfo[]>>({
+        queryKey: [Endpoints.SafetyInfo, personalCardId, search],
+        queryFn: () => getSafetyInfo(personalCardId, search),
+        refetchInterval: 60 * 60 * 1000,
+        enabled: !!personalCardId,
+    });
+};
