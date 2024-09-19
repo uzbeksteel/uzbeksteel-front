@@ -1,6 +1,6 @@
 import { createQueryString } from '@/lib/helper';
 import { IResponse, TParams } from '@/types/app';
-import { IIntroBriefing, IOrder, IPersonalCard, IWorkInitTraining } from '@/types/personal-cards';
+import { IIntroBriefing, IOrder, IPersonalCard, IWorkInitTraining, IWorkPermission } from '@/types/personal-cards';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api';
 import { Endpoints } from './endpoints';
@@ -18,6 +18,11 @@ export const getInitWorkTraining = async (persoanlcardId: string) => {
 
 export const getOrder = async (persoanlcardId: string) => {
     const responce: IOrder = await api.get(`${Endpoints.Order}/byPersonalCard/${persoanlcardId}`);
+    return responce;
+};
+
+export const getWorkPermission = async (persoanlcardId: string) => {
+    const responce: IWorkPermission = await api.get(`${Endpoints.WorkPermission}/byPersonalCard/${persoanlcardId}`);
     return responce;
 };
 
@@ -67,6 +72,15 @@ export const useGetOrderQuery = (personalCardId: string) => {
     return useQuery({
         queryKey: [Endpoints.Order, personalCardId],
         queryFn: () => getOrder(personalCardId),
+        refetchInterval: 60 * 60 * 1000,
+        enabled: !!personalCardId,
+    });
+};
+
+export const useGetWorkPermissionQuery = (personalCardId: string) => {
+    return useQuery({
+        queryKey: [Endpoints.WorkPermission, personalCardId],
+        queryFn: () => getWorkPermission(personalCardId),
         refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });

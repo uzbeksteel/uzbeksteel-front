@@ -107,3 +107,19 @@ export interface Iprofession {
     name: string;
     description: string;
 }
+
+export interface IWorkPermission {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: any;
+    order_number: string;
+    fullName: string;
+    status: string;
+    permission_work_date: string;
+    workshop_director_signature: boolean;
+    master_signature: boolean;
+    inpector_signature: boolean;
+    teacher_signature: boolean;
+    personalCard: IPersonalCard;
+}

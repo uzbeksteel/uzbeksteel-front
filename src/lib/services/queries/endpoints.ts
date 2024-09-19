@@ -32,4 +32,5 @@ export enum Endpoints {
     AccidentById = 'accident/by-id',
     InitWorkTraining = 'init-work-training',
     Order = 'order',
+    WorkPermission = 'work-permission',
 }
