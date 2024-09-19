@@ -33,4 +33,8 @@ export enum Endpoints {
     InitWorkTraining = 'init-work-training',
     Order = 'order',
     WorkPermission = 'work-permission',
+    SafetyInfo = 'safety-info',
+    RepeatBriefing = 'repeat-briefing',
+    EducationInfo = 'education-info',
+    SafetyNotes = 'safety-notes',
 }

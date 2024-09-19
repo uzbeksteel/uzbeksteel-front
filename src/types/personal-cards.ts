@@ -2,6 +2,7 @@ import { Dayjs } from 'dayjs';
 import { IFile } from './graphics';
 import { IProfession } from './profession';
 import { IUsers, IWorkshop } from './workshop';
+import { ExpandIcon } from 'lucide-react';
 
 export interface IPersonalCard {
     id: string;
@@ -123,3 +124,13 @@ export interface IWorkPermission {
     teacher_signature: boolean;
     personalCard: IPersonalCard;
 }
+
+export interface ISafetyInfo {
+    date: string;
+    ordinal_number: number;
+    reason: string;
+    author_signature: boolean;
+    employer_signature: boolean;
+    personalCard: IPersonalCard;
+}
+

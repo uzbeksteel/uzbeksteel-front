@@ -1,6 +1,6 @@
 import { createQueryString } from '@/lib/helper';
 import { IResponse, TParams } from '@/types/app';
-import { IIntroBriefing, IOrder, IPersonalCard, IWorkInitTraining, IWorkPermission } from '@/types/personal-cards';
+import { IIntroBriefing, IOrder, IPersonalCard, ISafetyInfo, IWorkInitTraining, IWorkPermission } from '@/types/personal-cards';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api';
 import { Endpoints } from './endpoints';
@@ -24,6 +24,11 @@ export const getOrder = async (persoanlcardId: string) => {
 export const getWorkPermission = async (persoanlcardId: string) => {
     const responce: IWorkPermission = await api.get(`${Endpoints.WorkPermission}/byPersonalCard/${persoanlcardId}`);
     return responce;
+};
+
+export const getSafetyInfo = async (persoanlcardId: string, search?: string) => {
+    const response: any = await api.get(`${Endpoints.SafetyInfo}/byPersonalcard?filter.personalCard.id=${persoanlcardId}${search?.length ? `&search=${search}` : ''}`);
+    return response;
 };
 
 const findAll = async (search?: string): Promise<IResponse<IPersonalCard[]>> => {
@@ -81,6 +86,15 @@ export const useGetWorkPermissionQuery = (personalCardId: string) => {
     return useQuery({
         queryKey: [Endpoints.WorkPermission, personalCardId],
         queryFn: () => getWorkPermission(personalCardId),
+        refetchInterval: 60 * 60 * 1000,
+        enabled: !!personalCardId,
+    });
+};
+
+export const useSafetyInfoQuery = (personalCardId: string, search?: string) => {
+    return useQuery<IResponse<ISafetyInfo[]>>({
+        queryKey: [Endpoints.SafetyInfo, personalCardId, search],
+        queryFn: () => getSafetyInfo(personalCardId, search),
         refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
