@@ -5,10 +5,11 @@ import { getAccidentsQuery } from '@/lib/services';
 import { TablePaginationConfig } from 'antd/es/table';
 import { useState } from 'react';
 import dayjs from 'dayjs';
-import { accidentStatusDictionary } from '@/pages/tb/accidents/dictionary.ts';
 import { history } from '@/lib/utils';
 import { IAccident } from '@/types/accident.ts';
 import { useAuthStore } from '@/store';
+import { accidentStatusDictionary } from './dictionary.ts';
+import { StatusDropdown } from './status-dropdown.tsx';
 
 interface TableProps {
     status: AccidentStatus;
@@ -59,7 +60,7 @@ export const Table = ({ status }: TableProps) => {
             dataIndex: 'status',
             key: 'status',
             width: '5%',
-            render: (text: AccidentStatus) => accidentStatusDictionary[text],
+            render: (text: AccidentStatus, record: IAccident) => (isWorkshop ? accidentStatusDictionary[text] : <StatusDropdown currentStatus={text} accidentId={record.id} />),
         },
         {
             title: 'Харакатлар',
