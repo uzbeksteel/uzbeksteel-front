@@ -66,3 +66,44 @@ export interface IBriefing {
     number: string;
     description: string;
 }
+
+export interface IOrder {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: any;
+    order_number: number;
+    date: string;
+    fullName: string;
+    start_date_of_internship: string;
+    internship_duration: number;
+    position_of_attached_person: string;
+    name_of_attached_person: string;
+    author_of_intership: string;
+    workshop_director_signature: boolean;
+    master_signature: boolean;
+    teacher_signature: boolean;
+    employer_signature: boolean;
+    workshop: IWorkshop;
+    personalCard: IPersonalCard;
+    profession: IProfession;
+}
+
+export interface IFiles {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: any;
+    name: string;
+    url: string;
+    type: string;
+}
+
+export interface Iprofession {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: any;
+    name: string;
+    description: string;
+}

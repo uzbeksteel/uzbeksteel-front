@@ -31,4 +31,5 @@ export enum Endpoints {
     IntroBriefing = 'introductory-briefing',
     AccidentById = 'accident/by-id',
     InitWorkTraining = 'init-work-training',
+    Order = 'order',
 }
