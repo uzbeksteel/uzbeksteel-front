@@ -51,7 +51,7 @@ export const AccidentDetails = () => {
         {
             title: 'Харакатлар',
             dataIndex: '',
-            key: '',
+            key: 'id',
             width: '10%',
             render: () => {
                 return (
@@ -78,7 +78,7 @@ export const AccidentDetails = () => {
         {
             title: 'Харакатлар',
             dataIndex: '',
-            key: '',
+            key: 'id',
             width: '10%',
             render: (_: any, record: IAccidentOrderFile) => {
                 return (
@@ -94,7 +94,7 @@ export const AccidentDetails = () => {
         {
             title: 'Т/р',
             dataIndex: '',
-            key: '',
+            key: 'id',
             width: '5%',
             // @ts-ignore
             render: (text, record, index) => index + 1,
@@ -118,7 +118,7 @@ export const AccidentDetails = () => {
         {
             title: 'Харакатлар',
             dataIndex: '',
-            key: '',
+            key: 'id',
             width: '10%',
             render: () => {
                 return (
