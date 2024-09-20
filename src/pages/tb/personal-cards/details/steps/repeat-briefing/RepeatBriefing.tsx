@@ -9,7 +9,6 @@ import { EmergancyBreafingColumn } from './constants';
 export const RepeatBriefing = () => {
     const { id } = useParams();
     const { data, isPending, isError, error } = useRepeatPerconalQuery(id as string);
-    console.log(data);
 
     if (isPending) {
         return <Loading />;

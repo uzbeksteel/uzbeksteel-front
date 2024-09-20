@@ -247,6 +247,14 @@ export const Router = () => {
                                                     index: true,
                                                     element: <RepeatBriefing />,
                                                 },
+                                                {
+                                                    path: ROUTES.add,
+                                                    element: <MutationRepeatBriefing />,
+                                                },
+                                                {
+                                                    path: ROUTES.edit,
+                                                    element: <MutationRepeatBriefing />,
+                                                },
                                             ],
                                         },
                                         {

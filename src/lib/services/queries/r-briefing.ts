@@ -2,6 +2,7 @@ import { IEmerganceyBreafing } from '@/types/emergancy-breafing';
 import { useQuery } from '@tanstack/react-query';
 import { Endpoints } from '.';
 import { api } from '../api';
+import { TParams } from '@/types/app';
 
 const findRepeatByPersonal = async (id: string): Promise<IEmerganceyBreafing[]> => {
     const responce: IEmerganceyBreafing[] = await api.get(`${Endpoints.RepeatBriefingByPersonal}/${id}`);
@@ -20,7 +21,7 @@ export const useRepeatPerconalQuery = (personalCard: string) =>
         initialData: [],
     });
 
-export const useOneRepeatQuery = (id: string) =>
+export const useOneRepeatQuery = (id: TParams) =>
     useQuery({
         queryKey: [Endpoints.RepeatBriefing, id],
         queryFn: () => findOneRepeat(id),
