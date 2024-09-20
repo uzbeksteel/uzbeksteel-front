@@ -134,7 +134,7 @@ export const AccidentDetails = () => {
             <PageHeader title="Бахтсиз ходисалар" />
             <Box $direction="column" $p="20px">
                 <Box>
-                    <Table isAdd={!isWorkshop || !!(data?.order || data?.orderFile)} titleTable="Буйруқлар рўйхати" columns={data?.orderFile ? orderFileColumns : orderColumns} dataSource={[data?.orderFile ? data?.orderFile : data?.order]} onClick={() => navigate(`${ROUTES.workshopAccidentsOrderAdd}?accidentId=${id}`)} />
+                    <Table isAdd={!isWorkshop || !!(data?.order || data?.orderFile)} titleTable="Буйруқлар рўйхати" columns={data?.orderFile ? orderFileColumns : orderColumns} dataSource={data?.orderFile ? [data?.orderFile] : data?.order ? [data?.order] : []} onClick={() => navigate(`${ROUTES.workshopAccidentsOrderAdd}?accidentId=${id}`)} />
                 </Box>
                 <Box>
                     <Table isAdd={!isWorkshop} titleTable="Актлар рўйхати" dataSource={data?.acts} columns={actColumns} onClick={() => navigate(`${ROUTES.workshopAccidentsActAdd}?accidentId=${id}`)} />
