@@ -22,6 +22,7 @@ export const ROUTES = {
     workPermission: '/personal-card/:id/work-permission',
     safetyInfo: '/personal-card/:id/safety-info',
     repeatBriefing: '/personal-card/:id/repeat-briefing',
+    emergancyBriefing: '/personal-card/:id/emergancy-briefing',
     educationInfo: '/personal-card/:id/education-info',
     safetyNotes: '/personal-card/:id/safety-notes',
     healthResult: '/personal-card/:id/health-result',

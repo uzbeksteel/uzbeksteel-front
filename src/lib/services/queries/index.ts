@@ -1,3 +1,4 @@
+export * from './accident';
 export * from './auth';
 export * from './branches';
 export * from './document';
@@ -6,7 +7,7 @@ export * from './graphic';
 export * from './magazine';
 export * from './personal-cards';
 export * from './profession';
+export * from './r-briefing';
 export * from './upload';
 export * from './users';
 export * from './workshop';
-export * from './accident';

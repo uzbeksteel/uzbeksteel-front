@@ -37,6 +37,9 @@ export enum Endpoints {
     WorkPermission = 'work-permission',
     SafetyInfo = 'safety-info',
     RepeatBriefing = 'repeat-briefing',
+    RepeatBriefingByPersonal = 'repeat-briefing/byPersonalCard',
     EducationInfo = 'education-info',
     SafetyNotes = 'safety-notes',
+    EmergancyBriefing = 'emergancy-briefing',
+    EmergancyBriefingByPersonal = 'emergancy-briefing/byPersonalCard',
 }

@@ -265,6 +265,7 @@ export const Router = () => {
                                                 },
                                             ],
                                         },
+
                                         {
                                             path: ROUTES.healthResult,
                                             children: [
