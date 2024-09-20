@@ -25,7 +25,7 @@ export const ExportForm = () => {
                 <Select placeholder="Ишга қўювчи исм фамиляси" options={users.map((el) => ({ value: el.id, label: el.first_name }))} />
             </Field>
             <Field name="professionId" label="Ишга қўювчи лавозими" span={24} required>
-                <Select placeholder="Ишга қўювчи лавозими" options={professions.map((el) => ({ value: el.id, label: el.name }))} />
+                <Select placeholder="Ишга қўювчи лавозими" options={professions?.map((el) => ({ value: el.id, label: el.name }))} />
             </Field>
             <Field name="date" label="Сана" span={24} required>
                 <DatePicker placeholder="Сана" style={{ borderRadius: '0', width: '100%' }} />
