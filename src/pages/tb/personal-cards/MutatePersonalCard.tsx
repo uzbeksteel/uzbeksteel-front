@@ -84,7 +84,7 @@ export const MutatePersonalCard: FC<IProps> = ({ type = 'create' }) => {
                         <Select placeholder={'Цехни танланг'} options={workshops.map((w) => ({ label: w.name, value: w.id }))} />
                     </Field>
                     <Field name={'professionId'} span={24} label={'Должность, профессия'}>
-                        <Select placeholder={'Должность, профессия танланг'} options={professions.map((p) => ({ label: p.name, value: p.id }))} />
+                        <Select placeholder={'Должность, профессия танланг'} options={professions?.map((p) => ({ label: p.name, value: p.id }))} />
                     </Field>
 
                     <Field name={'education'} span={24} label={'Образование'} placeholder={'Образование танланг'} required={false} />

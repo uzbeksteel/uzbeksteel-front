@@ -15,6 +15,7 @@ export const ROUTES = {
     magazine: '/magazine',
     dangers: '/dangers',
     personalCard: '/personal-card',
+    profession: '/profession',
     personalCardDetailItem: '/personal-card/:id/intro-briefing',
     edit: 'edit/:id',
     initWorkTraining: '/personal-card/:id/init-work-training',

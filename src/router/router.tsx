@@ -40,12 +40,14 @@ import {
     Lows,
     MutateEducationInfo,
     MutateOrderReport,
+    MutateProfession,
     MutateSafetyInfo,
     MutateSafetyNotes,
     MutateWorkPermission,
     MutationRepeatBriefing,
     PersonalCardDetails,
     PersonalCards,
+    Profession,
     RepeatBriefing,
     SafetyInfo,
     SafetyNotes,
@@ -276,6 +278,23 @@ export const Router = () => {
                                             ],
                                         },
                                     ],
+                                },
+                            ],
+                        },
+                        {
+                            path: ROUTES.profession,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <Profession />,
+                                },
+                                {
+                                    path: ROUTES.add,
+                                    element: <MutateProfession />,
+                                },
+                                {
+                                    path: ROUTES.single,
+                                    element: <MutateProfession />,
                                 },
                             ],
                         },
