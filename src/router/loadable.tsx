@@ -38,6 +38,8 @@ export const MutateSafetyNotes = getLoadablePage('MutateSafetyNotes');
 export const HealthResult = getLoadablePage('HealthResult');
 export const MutateHealthResult = getLoadablePage('MutateHealthResult');
 export const AccidentWorkshops = getLoadablePage('AccidentWorkshops');
+export const Profession = getLoadablePage('Profession');
+export const MutateProfession = getLoadablePage('MutateProfession');
 
 // admin
 export const AdminHome = getLoadablePage('AdminHome');

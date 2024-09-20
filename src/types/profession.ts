@@ -6,3 +6,8 @@ export interface IProfession {
     name: string;
     description: string;
 }
+
+export interface IProfessionPayload {
+    name: string;
+    description: string;
+}

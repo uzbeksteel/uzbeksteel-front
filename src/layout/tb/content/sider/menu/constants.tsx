@@ -46,4 +46,9 @@ export const menuItems = [
         icon: <Icon name="SquareUserRound" />,
         label: menuLabels[8],
     },
+    {
+        key: ROUTES.profession,
+        icon: <Icon name="PencilRuler" />,
+        label: menuLabels[9],
+    },
 ];
