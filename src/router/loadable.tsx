@@ -40,6 +40,7 @@ export const MutateHealthResult = getLoadablePage('MutateHealthResult');
 export const AccidentWorkshops = getLoadablePage('AccidentWorkshops');
 export const Profession = getLoadablePage('Profession');
 export const MutateProfession = getLoadablePage('MutateProfession');
+export const EmergancyBreafing = getLoadablePage('EmergancyBreafing');
 
 // admin
 export const AdminHome = getLoadablePage('AdminHome');
