@@ -1,7 +1,7 @@
 import { Box, Card, Loading } from '@/components';
-import { IMAGE_PREVIEW_URL } from '@/constants';
+import { IMAGE_PREVIEW_URL, UserRoles } from '@/constants';
 import { useGetPersonalCardQuery } from '@/lib/services';
-import { dateFormatter, errorMessage } from '@/lib/utils';
+import { checkRole, dateFormatter, errorMessage } from '@/lib/utils';
 import { Alert, Flex, Image } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Content } from './components/Content';
@@ -26,8 +26,10 @@ export const PersonalCardDetails = () => {
         }
     };
 
+    const isPermission = checkRole(UserRoles.DIRECTOR);
+
     return (
-        <Content title="Ишчилар шахсий карталари" onclick={handleClick}>
+        <Content title="Ишчилар шахсий карталари" editable={isPermission} onclick={handleClick}>
             <Box $p="20px" $gap="10px" style={{ background: '#FFF', marginTop: '20px' }}>
                 <Card>
                     <S.Title>Меҳнатни муҳофаза қилиш ва саноат хавфсизлиги бўйича брифинг ва тренинг</S.Title>

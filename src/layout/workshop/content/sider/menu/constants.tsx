@@ -36,8 +36,8 @@ export const menuItems = [
         label: menuLabels[6],
     },
     {
-        key: ROUTES.personalCard,
+        key: ROUTES.workshopPersonalCard,
         icon: <Icon name="SquareUserRound" />,
-        label: menuLabels[8],
+        label: menuLabels[7],
     },
 ];
