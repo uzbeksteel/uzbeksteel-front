@@ -15,6 +15,11 @@ export const getEnergencyBriefing = async (personalCardId: string, search?: stri
     return response;
 };
 
+export const getEducationInfo = async (personalCardId: string, search?: string) => {
+    const response: any = await api.get(`${Endpoints.EducationInfo}/byPersonalcard?filter.personalCard.id=${personalCardId}${search?.length ? `&search=${search}` : ''}`);
+    return response;
+};
+
 export const getIntroBriefing = async (persoanlcardId: string) => {
     const response: IIntroBriefing = await api.get(Endpoints.PersonalCard + '/' + Endpoints.IntroBriefing + '/byPersonalCardId/' + persoanlcardId);
     return response;
@@ -135,6 +140,15 @@ export const useEmergencyBriefingQuery = (personalCardId: string, search?: strin
     return useQuery<IResponse<IRepatBriefing[]>>({
         queryKey: [Endpoints.EmergancyBriefing, personalCardId, search],
         queryFn: () => getEnergencyBriefing(personalCardId, search),
+        refetchInterval: 60 * 60 * 1000,
+        enabled: !!personalCardId,
+    });
+};
+
+export const useEducationInfoQuery = (personalCardId: string, search?: string) => {
+    return useQuery({
+        queryKey: [Endpoints.EducationInfo, personalCardId, search],
+        queryFn: () => getEducationInfo(personalCardId, search),
         refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
