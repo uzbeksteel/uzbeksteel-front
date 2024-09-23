@@ -28,6 +28,7 @@ import {
     Deeds,
     DocumentDetail,
     EducationInfo,
+    EmergancyBreafing,
     Forgot,
     Graphics,
     GraphicsDetail,
@@ -256,6 +257,15 @@ export const Router = () => {
                                                 {
                                                     path: ROUTES.edit,
                                                     element: <MutationRepeatBriefing />,
+                                                },
+                                            ],
+                                        },
+                                        {
+                                            path: ROUTES.emergancyBriefing,
+                                            children: [
+                                                {
+                                                    index: true,
+                                                    element: <EmergancyBreafing />,
                                                 },
                                             ],
                                         },

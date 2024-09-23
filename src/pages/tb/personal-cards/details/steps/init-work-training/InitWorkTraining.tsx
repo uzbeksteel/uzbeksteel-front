@@ -23,7 +23,6 @@ export const InitWorkTraining = () => {
                     setIsModal(true);
                 }}
                 title="Иш жойда дастлабки тайёргарлик"
-                editable={false}
             >
                 <Box
                     $justify="space-between"

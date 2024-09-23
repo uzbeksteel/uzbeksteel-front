@@ -1,13 +1,14 @@
 import { Typography } from '@/components';
+import { ROUTES, UserTypes } from '@/constants';
 import { useLoginQuery } from '@/lib/services';
+import { setLocalStorage } from '@/lib/utils';
 import { useAuthStore } from '@/store';
 import { ILoginResponse, TLoginBody } from '@/types/auth';
 import { Flex, Tabs } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import { dictionary } from '../dictionary';
 import { Auth } from '../style';
 import { getTabs } from './constants';
-import { useNavigate } from 'react-router-dom';
-import { ROUTES, UserTypes } from '@/constants';
 
 export const Login = () => {
     const { setToken, setIsAuth, setUser } = useAuthStore();
@@ -19,6 +20,7 @@ export const Login = () => {
         setIsAuth(true);
         setToken(data.accessToken);
         setUser(user);
+        setLocalStorage('user', user);
         if (user.user_type === UserTypes.GRAND_MASTER || user.user_type === UserTypes.MASTER) {
             navigate(ROUTES.workshop);
         } else if (user.user_type === UserTypes.INDUSTRIAL_SECURITY) {

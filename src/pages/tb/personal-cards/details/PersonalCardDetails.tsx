@@ -1,7 +1,7 @@
 import { Box, Card, Loading } from '@/components';
-import { IMAGE_PREVIEW_URL } from '@/constants';
+import { IMAGE_PREVIEW_URL, UserRoles } from '@/constants';
 import { useGetPersonalCardQuery } from '@/lib/services';
-import { dateFormatter, errorMessage } from '@/lib/utils';
+import { checkRole, dateFormatter, errorMessage } from '@/lib/utils';
 import { Alert, Flex, Image } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Content } from './components/Content';
@@ -26,8 +26,10 @@ export const PersonalCardDetails = () => {
         }
     };
 
+    const isPermission = checkRole(UserRoles.DIRECTOR);
+
     return (
-        <Content title="Ишчилар шахсий карталари" onclick={handleClick}>
+        <Content title="Ишчилар шахсий карталари" editable={isPermission} onclick={handleClick}>
             <Box $p="20px" $gap="10px" style={{ background: '#FFF', marginTop: '20px' }}>
                 <Card>
                     <S.Title>Меҳнатни муҳофаза қилиш ва саноат хавфсизлиги бўйича брифинг ва тренинг</S.Title>
@@ -71,8 +73,8 @@ export const PersonalCardDetails = () => {
                     <S.Link to={'work-permission'}>4. Протокол-разрешение</S.Link>
                     <S.Link to={'safety-info'}>5. Сведения о проверке знаний по охране труда и промышленной безопасности</S.Link>
                     <S.Link to={'repeat-briefing'}>6. Сведения о прохождении периодического (повторного) инструктажа и обучения</S.Link>
-                    <S.Link to={'education-info'}>7. Сведения о внеочередном инструктаже.</S.Link>
-                    <S.Link to={'safety-notes'}>8. Сведения о прохождении специального технического обучения</S.Link>
+                    <S.Link to={'emergancy-briefing'}>7. Сведения о внеочередном инструктаже.</S.Link>
+                    <S.Link to={'education-info'}>8. Сведения о прохождении специального технического обучения</S.Link>
                     <S.Link to={'safety-notes'}>9. Отметка о вручении инструкций по охране труда, промышленной безопасности и производственной санитарии</S.Link>
                     <S.Link to={'health-result'}>10. Сведения о прохождении медицинского осмотра</S.Link>
                 </S.List>

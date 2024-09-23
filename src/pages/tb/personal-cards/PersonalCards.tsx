@@ -1,5 +1,7 @@
 import { Box, Card, Icon, Table, Typography } from '@/components';
+import { UserRoles } from '@/constants';
 import { useGetPersonalCardsQuery } from '@/lib/services';
+import { checkRole } from '@/lib/utils';
 import { useAppStore } from '@/store';
 import { useNavigate } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
@@ -9,6 +11,8 @@ export const PersonalCards = () => {
     const { search } = useAppStore();
     const { data, isLoading } = useGetPersonalCardsQuery(search);
     const navigate = useNavigate();
+
+    const isPermission = checkRole(UserRoles.DIRECTOR);
 
     return (
         <Fragment>
@@ -25,6 +29,7 @@ export const PersonalCards = () => {
                     dataSource={data?.data || []}
                     titleTable="Ишчилар шахсий карталари"
                     loading={!!isLoading}
+                    isAdd={!isPermission}
                     pagination={{
                         position: ['bottomCenter'],
                         current: data?.meta.currentPage,

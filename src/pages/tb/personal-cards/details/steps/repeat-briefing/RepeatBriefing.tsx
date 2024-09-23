@@ -1,5 +1,5 @@
 import { Box, Loading, Table } from '@/components';
-import { useRepeatPerconalQuery } from '@/lib/services/queries/r-briefing';
+import { useRepeatPersonalQuery } from '@/lib/services/queries/r-briefing';
 import { errorMessage } from '@/lib/utils';
 import { Alert } from 'antd';
 import { useParams } from 'react-router-dom';
@@ -8,7 +8,7 @@ import { EmergancyBreafingColumn } from './constants';
 
 export const RepeatBriefing = () => {
     const { id } = useParams();
-    const { data, isPending, isError, error } = useRepeatPerconalQuery(id as string);
+    const { data, isPending, isError, error } = useRepeatPersonalQuery(id!);
 
     if (isPending) {
         return <Loading />;
@@ -29,7 +29,7 @@ export const RepeatBriefing = () => {
                     boxShadow: '0px 0px 1px #E5E5E5',
                 }}
             >
-                <Table columns={EmergancyBreafingColumn} dataSource={data || []} bordered />
+                <Table columns={EmergancyBreafingColumn} dataSource={data.data} bordered />
             </Box>
         </Content>
     );
