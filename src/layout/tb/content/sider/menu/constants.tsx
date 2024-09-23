@@ -51,4 +51,9 @@ export const menuItems = [
         icon: <Icon name="PencilRuler" />,
         label: menuLabels[9],
     },
+    {
+        key: ROUTES.highDangers,
+        icon: <Icon name="TriangleAlert" />,
+        label: menuLabels[10],
+    },
 ];

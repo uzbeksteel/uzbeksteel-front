@@ -7,6 +7,7 @@ export type TAntFormProps = {
     loading?: boolean;
     children: ReactNode;
     isloading?: boolean;
+    onCancel?: () => void;
 } & Partial<FormProps>;
 
 export type TFieldProps = {

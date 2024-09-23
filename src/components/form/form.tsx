@@ -6,7 +6,7 @@ import { Col, Form as AntForm, Input, InputNumber, Row, Spin } from 'antd';
 import { Button } from '..';
 import { Box } from '../box';
 
-export const Form = ({ save, loading, children, isloading, ...props }: TAntFormProps) => {
+export const Form = ({ save, loading, children, isloading, onCancel, ...props }: TAntFormProps) => {
     const isMutating = useIsMutating();
 
     return loading ? (
@@ -19,7 +19,7 @@ export const Form = ({ save, loading, children, isloading, ...props }: TAntFormP
 
             {!save && (
                 <Box $gap="10px" $justify="end" $mt="10px">
-                    <Button htmlType="submit" type="primary" loading={!!isMutating} disabled={!!isMutating} style={{ background: 'white', color: '#d5680a', border: '1px solid ' }}>
+                    <Button htmlType="button" onClick={onCancel} type="primary" loading={!!isMutating} disabled={!!isMutating} style={{ background: 'white', color: '#d5680a', border: '1px solid ' }}>
                         {dictionary.cancel}
                     </Button>
                     <Button htmlType="submit" type="primary" loading={!!isMutating} disabled={!!isMutating}>

@@ -8,3 +8,4 @@ export * from './lows';
 export * from './magazines';
 export * from './personal-cards';
 export * from './professions';
+export * from './high-dangers';
