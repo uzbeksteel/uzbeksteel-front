@@ -1,6 +1,7 @@
 import { Box, Loading } from '@/components';
+import { UserRoles } from '@/constants';
 import { useGetWorkPermissionQuery } from '@/lib/services';
-import { dateFormatter } from '@/lib/utils';
+import { checkRole, dateFormatter } from '@/lib/utils';
 import { Checkbox, Col, Row, Typography } from 'antd';
 import { useParams } from 'react-router-dom';
 import { Content } from '../../components';
@@ -13,8 +14,10 @@ export const WorkPermission = () => {
         return <Loading />;
     }
     const { Text, Title } = Typography;
+    const isPermission = checkRole(UserRoles.DIRECTOR);
+
     return (
-        <Content title="Ишлашга рухсат бериш" editable={false}>
+        <Content title="Ишлашга рухсат бериш" editable={isPermission}>
             <Box
                 $justify="space-between"
                 $p="20px"

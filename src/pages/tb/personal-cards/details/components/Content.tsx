@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 interface Props {
     title: string;
-    
     onclick?: (e: any) => void;
     children: ReactNode;
     editable?: boolean;
