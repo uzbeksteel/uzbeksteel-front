@@ -10,6 +10,11 @@ export const getSafetyInfo = async (persoanlcardId: string, search?: string) => 
     return response;
 };
 
+export const getSafetyNotes = async (persoanlcardId: string, search?: string) => {
+    const response: any = await api.get(`${Endpoints.SafetyNotes}/byPersonalcard?filter.personalCard.id=${persoanlcardId}${search?.length ? `&search=${search}` : ''}`);
+    return response;
+};
+
 export const getEnergencyBriefing = async (personalCardId: string, search?: string) => {
     const response: any = await api.get(`${Endpoints.EmergancyBriefing}/byPersonalcard?filter.personalCard.id=${personalCardId}${search?.length ? `&search=${search}` : ''}`);
     return response;
@@ -149,6 +154,15 @@ export const useEducationInfoQuery = (personalCardId: string, search?: string) =
     return useQuery({
         queryKey: [Endpoints.EducationInfo, personalCardId, search],
         queryFn: () => getEducationInfo(personalCardId, search),
+        refetchInterval: 60 * 60 * 1000,
+        enabled: !!personalCardId,
+    });
+};
+
+export const useSafetyNotesQuery = (personalCardId: string, search?: string) => {
+    return useQuery<IResponse<IRepatBriefing[]>>({
+        queryKey: [Endpoints.SafetyInfo, personalCardId, search],
+        queryFn: () => getSafetyNotes(personalCardId, search),
         refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });

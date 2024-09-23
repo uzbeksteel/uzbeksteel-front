@@ -161,3 +161,15 @@ export interface IRepatBriefing {
     employer_signature: boolean;
     personalCard: IPersonalCard;
 }
+
+export interface ISafetyNotes {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: any;
+    date: string;
+    briefing_name: string;
+    briefing_number: string;
+    employer_signature: boolean;
+    personalCard: IPersonalCard;
+}
