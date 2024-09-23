@@ -1,8 +1,8 @@
+import { TParams } from '@/types/app';
 import { IEmerganceyBreafing } from '@/types/emergancy-breafing';
 import { useQuery } from '@tanstack/react-query';
 import { Endpoints } from '.';
 import { api } from '../api';
-import { TParams } from '@/types/app';
 
 const findRepeatByPersonal = async (id: string): Promise<IEmerganceyBreafing[]> => {
     const responce: IEmerganceyBreafing[] = await api.get(`${Endpoints.RepeatBriefingByPersonal}/${id}`);
