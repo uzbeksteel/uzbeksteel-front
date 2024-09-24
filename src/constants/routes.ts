@@ -60,4 +60,5 @@ export const ROUTES = {
     workShopOrderReport: 'order-report',
     workShopInitWorkTraining: 'init-work-training',
     workshopIntroBriefing: 'intro-briefing',
+    workshopEmergancyBriefing: 'emergancy-briefing',
 } as const;
