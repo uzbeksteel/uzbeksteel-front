@@ -1,6 +1,6 @@
 import { createQueryString } from '@/lib/helper';
 import { IResponse, TParams } from '@/types/app';
-import { IIntroBriefing, IOrder, IPersonalCard, IPersonalCardMedical, IRepatBriefing, ISafetyInfo, IWorkInitTraining, IWorkPermission } from '@/types/personal-cards';
+import { IIntroBriefing, IOrder, IPersonalCard, IPersonalCardMedical, IRepatBriefing, ISafetyInfo, ISafetyNotes, IWorkInitTraining, IWorkPermission } from '@/types/personal-cards';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api';
 import { Endpoints } from './endpoints';
@@ -17,6 +17,11 @@ export const findOneSafetyInfo = async (id: string) => {
 
 export const findOneEducationInfo = async (id: string) => {
     const responce: any = await api.get(`${Endpoints.EducationInfo}/${id}`);
+    return responce;
+};
+
+export const findOneSafetyNote = async (id: string) => {
+    const responce: any = await api.get(`${Endpoints.SafetyNotes}/${id}`);
     return responce;
 };
 
@@ -182,6 +187,15 @@ export const useOneEducationInfoQuery = (id: string, type: string) => {
     return useQuery({
         queryKey: [Endpoints.EducationInfo, id],
         queryFn: () => findOneEducationInfo(id),
+        enabled: !!type,
+        refetchOnWindowFocus: false,
+    });
+};
+
+export const useOneSafetyNoteQuery = (id: string, type: string) => {
+    return useQuery<ISafetyNotes>({
+        queryKey: [Endpoints.SafetyNotes, id],
+        queryFn: () => findOneSafetyNote(id),
         enabled: !!type,
         refetchOnWindowFocus: false,
     });

@@ -24,3 +24,11 @@ export interface IEducationInfoBody {
     authorSignature: boolean;
     personalCard?: string;
 }
+
+export interface ISafetyNotesBody {
+    date: string | Dayjs;
+    briefingName: string;
+    briefingNumber: string;
+    employerSignature: boolean;
+    personalCard?: string;
+}
