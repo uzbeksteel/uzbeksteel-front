@@ -29,6 +29,7 @@ export const ROUTES = {
     healthResult: '/personal-card/:id/health-result',
     accidentDetails: '/accidents/:id/details',
     highDangers: '/high-dangers',
+    highDangersDetails: '/high-dangers/:id/details',
 
     // admin routes
     admin: '/admin',

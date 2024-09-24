@@ -5,8 +5,8 @@ import { history } from '@/lib/utils';
 import { ROUTES } from '@/constants';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useGetHighDangersQuery } from '@/lib/services/queries/high-dangers.ts';
-import { CreateHighDanger } from '@/pages/tb/high-dangers/create-high-danger';
+import { CreateHighDanger } from './create-high-danger';
+import { useGetHighDangersQuery } from '@/lib/services';
 
 export const HighDangers = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -53,7 +53,7 @@ export const HighDangers = () => {
             width: '10%',
             render: (_, record) => {
                 return (
-                    <Button onClick={() => history.push(`${ROUTES.accidents}/${record.id}`)} type="link" style={{ color: '#F08D10' }}>
+                    <Button onClick={() => history.push(`${ROUTES.highDangersDetails}`.replace(':id', record.id))} type="link" style={{ color: '#F08D10' }}>
                         <Icon name="Eye" /> Кўриш
                     </Button>
                 );

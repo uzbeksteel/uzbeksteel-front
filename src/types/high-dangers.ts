@@ -27,3 +27,10 @@ export interface ICreateHighDanger {
     name: string;
     workshop: string;
 }
+
+export interface ICreateHighDangerItl {
+    name: string;
+    itl_number: string;
+    high_danger: string;
+    file: string;
+}

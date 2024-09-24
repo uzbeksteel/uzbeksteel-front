@@ -33,6 +33,7 @@ import {
     Graphics,
     GraphicsDetail,
     HealthResult,
+    HighDangerDetails,
     HighDangers,
     HighDangerWorkshops,
     Home,
@@ -328,6 +329,10 @@ export const Router = () => {
                                 {
                                     path: ROUTES.single,
                                     element: <HighDangers />,
+                                },
+                                {
+                                    path: ROUTES.highDangersDetails,
+                                    element: <HighDangerDetails />,
                                 },
                             ],
                         },

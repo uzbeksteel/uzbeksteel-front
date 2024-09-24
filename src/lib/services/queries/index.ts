@@ -11,3 +11,4 @@ export * from './r-briefing';
 export * from './upload';
 export * from './users';
 export * from './workshop';
+export * from './high-dangers';
