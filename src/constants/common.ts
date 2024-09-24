@@ -19,3 +19,15 @@ export const StatusOptions = [
         value: 'DISSATISFIED',
     },
 ];
+
+export const InspectionOptions = [
+    { label: 'ПЕРВИЧНЫЙ', value: 'BIRLAMCHI' },
+    {
+        label: 'ОЖИДАНИЕ',
+        value: 'NAVBATDAGI',
+    },
+    {
+        label: 'ВНЕ ОЧЕРЕДИ',
+        value: 'NAVBATDAN_TASHQARI',
+    },
+];

@@ -15,7 +15,7 @@ export const SafetyInfo = () => {
     }
     return (
         <>
-            <Content editable={false} title="Сведения о проверке знаний по охране труда и промышленной безопасности">
+            <Content title="Сведения о проверке знаний по охране труда и промышленной безопасности">
                 <Box
                     $justify="space-between"
                     $align="end"
@@ -26,7 +26,6 @@ export const SafetyInfo = () => {
                     }}
                 >
                     <Table
-                        isAdd={true}
                         columns={SafetyInfoColumns}
                         dataSource={data?.data}
                         pagination={{
