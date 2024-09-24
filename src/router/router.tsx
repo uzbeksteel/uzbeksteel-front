@@ -48,6 +48,7 @@ import {
     MutateSafetyInfo,
     MutateSafetyNotes,
     MutateWorkPermission,
+    MutationEmergencyBriefing,
     MutationRepeatBriefing,
     PersonalCardDetails,
     PersonalCards,
@@ -512,6 +513,23 @@ export const Router = () => {
                                                 {
                                                     path: ROUTES.edit,
                                                     element: <MutationRepeatBriefing />,
+                                                },
+                                            ],
+                                        },
+                                        {
+                                            path: ROUTES.workshopEmergancyBriefing,
+                                            children: [
+                                                {
+                                                    index: true,
+                                                    element: <EmergancyBreafing />,
+                                                },
+                                                {
+                                                    path: ROUTES.add,
+                                                    element: <MutationEmergencyBriefing />,
+                                                },
+                                                {
+                                                    path: ROUTES.edit,
+                                                    element: <MutationEmergencyBriefing />,
                                                 },
                                             ],
                                         },

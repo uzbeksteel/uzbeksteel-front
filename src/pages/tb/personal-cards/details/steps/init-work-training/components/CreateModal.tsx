@@ -1,8 +1,10 @@
 import { Box, CustomModal, Field, Form, Select } from '@/components';
+import { createInitWorkTrainingMutation } from '@/lib/services/mutations/init-work-training';
 import { useProgramQuery } from '@/lib/services/queries/program';
 import { useAppStore } from '@/store';
 import { Checkbox } from 'antd';
 import { useForm } from 'antd/es/form/Form';
+import { useParams } from 'react-router-dom';
 
 interface IValues {
     program: string;
@@ -11,14 +13,22 @@ interface IValues {
 }
 
 export const CreateModal = () => {
+    const { id } = useParams();
     const [form] = useForm();
     const { isModal, setIsModal } = useAppStore();
     const { data, isPending } = useProgramQuery();
 
+    const { mutateAsync, isSuccess } = createInitWorkTrainingMutation(id!);
+
     const onFinish = (value: IValues) => {
-        console.log(value);
+        if (id) {
+            mutateAsync({ ...value, personalCard: id });
+        }
     };
 
+    if (isSuccess) {
+        setIsModal(false);
+    }
     return (
         <CustomModal
             open={isModal}

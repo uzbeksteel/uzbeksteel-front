@@ -1,6 +1,6 @@
 import { Box, Field, Form, PageHeader } from '@/components';
 import { useOneRepeatQuery } from '@/lib/services';
-import { createRepeatBriefingMutation, updateRepeatBriefingMutation } from '@/lib/services/mutations/repeat-briefing';
+import { createEmergencyBriefingMutation, updateEmergencyBriefingMutation } from '@/lib/services/mutations/emergency-briefing';
 import { IRepeatBriefingBody } from '@/types/safety-info';
 import { Checkbox, DatePicker } from 'antd';
 import { useForm } from 'antd/es/form/Form';
@@ -10,7 +10,7 @@ import { useLocation, useParams } from 'react-router-dom';
 
 type mode = 'edit' | 'create';
 
-export const MutationRepeatBriefing = () => {
+export const MutationEmergencyBriefing = () => {
     const [form] = useForm();
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -19,8 +19,8 @@ export const MutationRepeatBriefing = () => {
 
     const { data } = useOneRepeatQuery(type === 'edit' ? (id as string) : null);
 
-    const { mutateAsync } = createRepeatBriefingMutation(id!);
-    const { mutateAsync: updateMutateAsync } = updateRepeatBriefingMutation(id!);
+    const { mutateAsync } = createEmergencyBriefingMutation(id!);
+    const { mutateAsync: updateMutateAsync } = updateEmergencyBriefingMutation(id!);
 
     useEffect(() => {
         if (type === 'edit') {

@@ -1,6 +1,6 @@
 import { createQueryString } from '@/lib/helper';
 import { IResponse, TParams } from '@/types/app';
-import { IIntroBriefing, IOrder, IPersonalCard, IPersonalCardMedical, IRepatBriefing, ISafetyInfo, IWorkInitTraining, IWorkPermission } from '@/types/personal-cards';
+import { IIntroBriefing, IOrder, IPersonalCard, IPersonalCardMedical, IRepatBriefing, ISafetyInfo, ISafetyNotes, IWorkInitTraining, IWorkPermission } from '@/types/personal-cards';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api';
 import { Endpoints } from './endpoints';
@@ -8,6 +8,21 @@ import { Endpoints } from './endpoints';
 export const getSafetyInfo = async (persoanlcardId: string, search?: string) => {
     const response: any = await api.get(`${Endpoints.SafetyInfo}/byPersonalcard?filter.personalCard.id=${persoanlcardId}${search?.length ? `&search=${search}` : ''}`);
     return response;
+};
+
+export const findOneSafetyInfo = async (id: string) => {
+    const responce: ISafetyInfo = await api.get(`${Endpoints.SafetyInfo}/${id}`);
+    return responce;
+};
+
+export const findOneEducationInfo = async (id: string) => {
+    const responce: any = await api.get(`${Endpoints.EducationInfo}/${id}`);
+    return responce;
+};
+
+export const findOneSafetyNote = async (id: string) => {
+    const responce: any = await api.get(`${Endpoints.SafetyNotes}/${id}`);
+    return responce;
 };
 
 export const getSafetyNotes = async (persoanlcardId: string, search?: string) => {
@@ -83,7 +98,6 @@ export const useIntroBriefingQuery = (personalCardId: string) => {
     return useQuery({
         queryKey: [Endpoints.IntroBriefing, personalCardId],
         queryFn: () => getIntroBriefing(personalCardId),
-        refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
 };
@@ -92,7 +106,6 @@ export const useGetInitWorkTrainingQuery = (personalCardId: string) => {
     return useQuery({
         queryKey: [Endpoints.InitWorkTraining, personalCardId],
         queryFn: () => getInitWorkTraining(personalCardId),
-        refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
 };
@@ -101,7 +114,6 @@ export const useGetOrderQuery = (personalCardId: string) => {
     return useQuery({
         queryKey: [Endpoints.Order, personalCardId],
         queryFn: () => getOrder(personalCardId),
-        refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
 };
@@ -110,7 +122,6 @@ export const useGetWorkPermissionQuery = (personalCardId: string) => {
     return useQuery({
         queryKey: [Endpoints.WorkPermission, personalCardId],
         queryFn: () => getWorkPermission(personalCardId),
-        refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
 };
@@ -119,7 +130,6 @@ export const usePersonalCardMedicalQuery = (personalCardId: string) => {
     return useQuery({
         queryKey: [Endpoints.PersonalCardMedicalPersonal, personalCardId],
         queryFn: () => getHealthResults(personalCardId),
-        refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
 };
@@ -136,7 +146,6 @@ export const useSafetyInfoQuery = (personalCardId: string, search?: string) => {
     return useQuery<IResponse<ISafetyInfo[]>>({
         queryKey: [Endpoints.SafetyInfo, personalCardId, search],
         queryFn: () => getSafetyInfo(personalCardId, search),
-        refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
 };
@@ -145,7 +154,6 @@ export const useEmergencyBriefingQuery = (personalCardId: string, search?: strin
     return useQuery<IResponse<IRepatBriefing[]>>({
         queryKey: [Endpoints.EmergancyBriefing, personalCardId, search],
         queryFn: () => getEnergencyBriefing(personalCardId, search),
-        refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
 };
@@ -154,7 +162,6 @@ export const useEducationInfoQuery = (personalCardId: string, search?: string) =
     return useQuery({
         queryKey: [Endpoints.EducationInfo, personalCardId, search],
         queryFn: () => getEducationInfo(personalCardId, search),
-        refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
 };
@@ -163,7 +170,33 @@ export const useSafetyNotesQuery = (personalCardId: string, search?: string) => 
     return useQuery<IResponse<IRepatBriefing[]>>({
         queryKey: [Endpoints.SafetyInfo, personalCardId, search],
         queryFn: () => getSafetyNotes(personalCardId, search),
-        refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
+    });
+};
+
+export const useOneSafetyInfoQuery = (id: string, type: string) => {
+    return useQuery<ISafetyInfo>({
+        queryKey: [Endpoints.SafetyInfo, id],
+        queryFn: () => findOneSafetyInfo(id),
+        enabled: !!type,
+        refetchOnWindowFocus: false,
+    });
+};
+
+export const useOneEducationInfoQuery = (id: string, type: string) => {
+    return useQuery({
+        queryKey: [Endpoints.EducationInfo, id],
+        queryFn: () => findOneEducationInfo(id),
+        enabled: !!type,
+        refetchOnWindowFocus: false,
+    });
+};
+
+export const useOneSafetyNoteQuery = (id: string, type: string) => {
+    return useQuery<ISafetyNotes>({
+        queryKey: [Endpoints.SafetyNotes, id],
+        queryFn: () => findOneSafetyNote(id),
+        enabled: !!type,
+        refetchOnWindowFocus: false,
     });
 };
