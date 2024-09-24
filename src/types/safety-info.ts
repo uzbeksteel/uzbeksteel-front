@@ -16,3 +16,11 @@ export interface IRepeatBriefingBody {
     employer_signature: boolean;
     personalCard?: string;
 }
+
+export interface IEducationInfoBody {
+    educationDate: string | Dayjs;
+    studyType: string;
+    reportNumber: string;
+    authorSignature: boolean;
+    personalCard?: string;
+}

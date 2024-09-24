@@ -15,6 +15,11 @@ export const findOneSafetyInfo = async (id: string) => {
     return responce;
 };
 
+export const findOneEducationInfo = async (id: string) => {
+    const responce: any = await api.get(`${Endpoints.EducationInfo}/${id}`);
+    return responce;
+};
+
 export const getSafetyNotes = async (persoanlcardId: string, search?: string) => {
     const response: any = await api.get(`${Endpoints.SafetyNotes}/byPersonalcard?filter.personalCard.id=${persoanlcardId}${search?.length ? `&search=${search}` : ''}`);
     return response;
@@ -168,6 +173,15 @@ export const useOneSafetyInfoQuery = (id: string, type: string) => {
     return useQuery<ISafetyInfo>({
         queryKey: [Endpoints.SafetyInfo, id],
         queryFn: () => findOneSafetyInfo(id),
+        enabled: !!type,
+        refetchOnWindowFocus: false,
+    });
+};
+
+export const useOneEducationInfoQuery = (id: string, type: string) => {
+    return useQuery({
+        queryKey: [Endpoints.EducationInfo, id],
+        queryFn: () => findOneEducationInfo(id),
         enabled: !!type,
         refetchOnWindowFocus: false,
     });
