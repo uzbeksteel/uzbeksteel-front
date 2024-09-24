@@ -2,12 +2,13 @@ import { Box, Loading } from '@/components';
 import { useGetOrderQuery } from '@/lib/services';
 import { dateFormatter } from '@/lib/utils';
 import { Checkbox, Col, Row, Typography } from 'antd';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Content } from '../../components';
 
 export const OrderReport = () => {
     const { id } = useParams();
     const { data, isLoading } = useGetOrderQuery(id!);
+    const navigate = useNavigate();
 
     if (isLoading) {
         return <Loading />;
@@ -15,7 +16,13 @@ export const OrderReport = () => {
 
     const { Text, Link } = Typography;
     return (
-        <Content title="Буйруқ" editable={false}>
+        <Content
+            title="Буйруқ"
+            editable={true}
+            onclick={() => {
+                navigate('add');
+            }}
+        >
             <Box
                 $justify="space-between"
                 $p="20px"
