@@ -1,7 +1,7 @@
 import { Box, Field, Form, Icon, Loading, PageHeader, Select } from '@/components';
 import { IMAGE_PREVIEW_URL, IMAGE_URL } from '@/constants';
 import { useUpload } from '@/lib/hooks';
-import { getAllProfessionsQuery, getAllWorkshopsQuery, useGetPersonalCardQuery } from '@/lib/services';
+import { getAllWorkshopsQuery, useGetPersonalCardQuery, useProfessionsQuery } from '@/lib/services';
 import { usePersonalCardCreate, usePersonalCardUpdate } from '@/lib/services/mutations/personal-card';
 import { DatePicker, Upload } from 'antd';
 import { useForm } from 'antd/es/form/Form';
@@ -18,7 +18,7 @@ export const MutatePersonalCard: FC<IProps> = ({ type = 'create' }) => {
     const { id } = useParams();
 
     const { data: workshops, isLoading, isPending } = getAllWorkshopsQuery();
-    const { data: professions, isLoading: ProfessionLoading } = getAllProfessionsQuery();
+    const { data: professions, isLoading: ProfessionLoading } = useProfessionsQuery();
     const { data, isLoading: singleLoading } = useGetPersonalCardQuery(id);
 
     const { mutateAsync } = usePersonalCardCreate();

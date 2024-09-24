@@ -1,12 +1,12 @@
 import { Box, Icon, Table, Typography } from '@/components';
+import { ROUTES } from '@/constants';
+import { useProfessionsQuery } from '@/lib/services';
+import { useNavigate } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
 import { columns } from './components';
-import { getAllProfessionsQuery } from '@/lib/services';
-import { useNavigate } from 'react-router-dom';
-import { ROUTES } from '@/constants';
 
 export const Profession = () => {
-    const { data, isLoading } = getAllProfessionsQuery();
+    const { data, isLoading } = useProfessionsQuery();
     const navigate = useNavigate();
 
     return (

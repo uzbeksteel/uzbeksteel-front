@@ -1,14 +1,14 @@
-import { DatePicker, Form as AntdForm } from 'antd';
 import { Box, Checkbox, Field, Form, Select } from '@/components';
-import { ICreateAccidentOrder } from '@/types/accident.ts';
 import { createAccidentOrderMutation, getUsersQuery } from '@/lib/services';
-import { getAllProfessionsQuery } from '@/lib/services/queries/profession.ts';
+import { useProfessionsQuery } from '@/lib/services/queries/profession.ts';
+import { ICreateAccidentOrder } from '@/types/accident.ts';
+import { Form as AntdForm, DatePicker } from 'antd';
 import { useSearchParams } from 'react-router-dom';
 
 export const ExportForm = () => {
     const [form] = AntdForm.useForm<ICreateAccidentOrder>();
     const { data: users } = getUsersQuery();
-    const { data: professions } = getAllProfessionsQuery();
+    const { data: professions } = useProfessionsQuery();
     const { mutate } = createAccidentOrderMutation();
     const [searchParams] = useSearchParams();
     const accidentId = searchParams.get('accidentId') || '';

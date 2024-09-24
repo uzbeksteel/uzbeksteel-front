@@ -83,7 +83,6 @@ export const useIntroBriefingQuery = (personalCardId: string) => {
     return useQuery({
         queryKey: [Endpoints.IntroBriefing, personalCardId],
         queryFn: () => getIntroBriefing(personalCardId),
-        refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
 };
@@ -92,7 +91,6 @@ export const useGetInitWorkTrainingQuery = (personalCardId: string) => {
     return useQuery({
         queryKey: [Endpoints.InitWorkTraining, personalCardId],
         queryFn: () => getInitWorkTraining(personalCardId),
-        refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
 };
@@ -101,7 +99,6 @@ export const useGetOrderQuery = (personalCardId: string) => {
     return useQuery({
         queryKey: [Endpoints.Order, personalCardId],
         queryFn: () => getOrder(personalCardId),
-        refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
 };
@@ -110,7 +107,6 @@ export const useGetWorkPermissionQuery = (personalCardId: string) => {
     return useQuery({
         queryKey: [Endpoints.WorkPermission, personalCardId],
         queryFn: () => getWorkPermission(personalCardId),
-        refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
 };
@@ -119,7 +115,6 @@ export const usePersonalCardMedicalQuery = (personalCardId: string) => {
     return useQuery({
         queryKey: [Endpoints.PersonalCardMedicalPersonal, personalCardId],
         queryFn: () => getHealthResults(personalCardId),
-        refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
 };
@@ -136,7 +131,6 @@ export const useSafetyInfoQuery = (personalCardId: string, search?: string) => {
     return useQuery<IResponse<ISafetyInfo[]>>({
         queryKey: [Endpoints.SafetyInfo, personalCardId, search],
         queryFn: () => getSafetyInfo(personalCardId, search),
-        refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
 };
@@ -145,7 +139,6 @@ export const useEmergencyBriefingQuery = (personalCardId: string, search?: strin
     return useQuery<IResponse<IRepatBriefing[]>>({
         queryKey: [Endpoints.EmergancyBriefing, personalCardId, search],
         queryFn: () => getEnergencyBriefing(personalCardId, search),
-        refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
 };
@@ -154,7 +147,6 @@ export const useEducationInfoQuery = (personalCardId: string, search?: string) =
     return useQuery({
         queryKey: [Endpoints.EducationInfo, personalCardId, search],
         queryFn: () => getEducationInfo(personalCardId, search),
-        refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
 };
@@ -163,7 +155,6 @@ export const useSafetyNotesQuery = (personalCardId: string, search?: string) => 
     return useQuery<IResponse<IRepatBriefing[]>>({
         queryKey: [Endpoints.SafetyInfo, personalCardId, search],
         queryFn: () => getSafetyNotes(personalCardId, search),
-        refetchInterval: 60 * 60 * 1000,
         enabled: !!personalCardId,
     });
 };
