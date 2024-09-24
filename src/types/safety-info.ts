@@ -8,3 +8,11 @@ export interface ISafetyInfoBody {
     employer_signature: boolean;
     personalCard?: string;
 }
+
+export interface IRepeatBriefingBody {
+    briefingDate: string | Dayjs;
+    briefingName: string;
+    master_signature: boolean;
+    employer_signature: boolean;
+    personalCard?: string;
+}
