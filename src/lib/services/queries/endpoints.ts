@@ -45,4 +45,5 @@ export enum Endpoints {
     Program = 'program',
     HighDangers = 'high-dangers',
     Itl = 'itl',
+    HighDangerOrder = 'high-danger-order',
 }

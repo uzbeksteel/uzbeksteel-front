@@ -1,6 +1,6 @@
 import { downloadFile, useGetDangerByIdQuery } from '@/lib/services';
 import { useParams } from 'react-router-dom';
-import { Button, Icon, Table } from '@/components';
+import { Box, Button, Icon, Table } from '@/components';
 import { TableColumnsType } from 'antd';
 import { TablePaginationConfig } from 'antd/es/table';
 import { useState } from 'react';
@@ -69,7 +69,7 @@ export const Itl = () => {
             width: '10%',
             render: (_: any, record: IAccidentOrderFile) => {
                 return (
-                    <Button onClick={() => handleDownloadFile(record.file.id, record.name)} type="link" style={{ color: '#F08D10' }}>
+                    <Button onClick={() => handleDownloadFile(record.file.id, record.file.name)} type="link" style={{ color: '#F08D10' }}>
                         <Icon name="Download" /> Юклаш
                     </Button>
                 );
@@ -80,5 +80,9 @@ export const Itl = () => {
     const handleTableChange = (pagination: TablePaginationConfig) => {
         setCurrentPage(pagination.current || 1);
     };
-    return <Table onClick={() => CreateItl(id!)} titleTable="ИТЛ рўйхати" onChange={handleTableChange} dataSource={data?.itl} columns={columns} />;
+    return (
+        <Box>
+            <Table onClick={() => CreateItl(id!)} titleTable="ИТЛ рўйхати" onChange={handleTableChange} dataSource={data?.itl} columns={columns} />
+        </Box>
+    );
 };
