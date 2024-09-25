@@ -443,6 +443,15 @@ export const Router = () => {
                                             children: [{ index: true, element: <InitWorkTraining /> }],
                                         },
                                         {
+                                            path: ROUTES.workshopEmergancyBriefing,
+                                            children: [
+                                                {
+                                                    index: true,
+                                                    element: <EmergancyBreafing />,
+                                                },
+                                            ],
+                                        },
+                                        {
                                             path: ROUTES.workShopOrderReport,
                                             children: [
                                                 {
