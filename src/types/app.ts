@@ -39,7 +39,7 @@ export enum ETheme {
 
 export type TUploadFileResponse = {
     images: string[];
-    id: number;
+    id: string;
     createdAt: string;
 };
 

@@ -1,6 +1,7 @@
 import { dateFormatter } from '@/lib/utils';
 import { Tag } from 'antd';
 import { ColumnsType } from 'antd/es/table';
+import { Actions } from './Actions';
 
 export const SafetyNotesColumns: ColumnsType<any> = [
     {
@@ -20,5 +21,11 @@ export const SafetyNotesColumns: ColumnsType<any> = [
         title: 'Подпись в получении инструкций',
         dataIndex: 'employer_signature',
         render: (d) => <Tag color="orange">{d ? 'Подписано' : 'Неподписано'}</Tag>,
+    },
+    {
+        title: 'Харакатлар',
+        dataIndex: 'id',
+        render: (id: string) => <Actions id={id} />,
+        key: '4',
     },
 ];

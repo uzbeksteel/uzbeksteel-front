@@ -1,15 +1,15 @@
 import { modal } from '@/app';
-import { Content } from './content';
 import { Typography } from '@/components';
+import { Content } from './content';
 
-export const CreateHighDanger = (workshopId: string) => {
+export const CreateOrder = (highDangerId: string) => {
     modal.confirm({
         title: (
             <Typography type="title" level={5}>
-                Хавфи юқори бўлган иш яратиш
+                Буйруқ яратиш
             </Typography>
         ),
-        content: <Content workshopId={workshopId} />,
+        content: <Content highDangerId={highDangerId} />,
         footer: null,
         icon: null,
         width: 572,

@@ -1,6 +1,7 @@
 import { dateFormatter } from '@/lib/utils';
 import { Tag } from 'antd';
 import { ColumnsType } from 'antd/es/table';
+import { Actions } from './Actions';
 
 export const EducationInfoColumns: ColumnsType<any> = [
     {
@@ -20,5 +21,11 @@ export const EducationInfoColumns: ColumnsType<any> = [
         title: 'Подпись лица, сделавшего запись, должность, фамилия',
         dataIndex: 'author_signature',
         render: (el: boolean) => <Tag color={el ? 'green' : 'red'}>{el ? 'Имзоланган' : 'Имзоланмаган'}</Tag>,
+    },
+    {
+        title: 'Харакатлар',
+        dataIndex: 'id',
+        render: (id: string) => <Actions id={id} />,
+        key: '4',
     },
 ];

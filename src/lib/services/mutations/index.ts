@@ -4,3 +4,4 @@ export * from './magazine';
 export * from './workshop';
 export * from './accident';
 export * from './profession';
+export * from './high-dangers';

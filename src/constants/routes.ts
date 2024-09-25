@@ -29,6 +29,7 @@ export const ROUTES = {
     healthResult: '/personal-card/:id/health-result',
     accidentDetails: '/accidents/:id/details',
     highDangers: '/high-dangers',
+    highDangersDetails: '/high-dangers/:id/details',
 
     // admin routes
     admin: '/admin',
@@ -61,4 +62,5 @@ export const ROUTES = {
     workShopOrderReport: 'order-report',
     workShopInitWorkTraining: 'init-work-training',
     workshopIntroBriefing: 'intro-briefing',
+    workshopEmergancyBriefing: 'emergancy-briefing',
 } as const;

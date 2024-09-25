@@ -1,20 +1,70 @@
-import { Box, Field, Form, PageHeader } from '@/components';
+import { Box, Field, Form, Loading, PageHeader } from '@/components';
+import { useOneSafetyNoteQuery } from '@/lib/services';
+import { createSafetyNotesMutation, updateSafetyNotesMutation } from '@/lib/services/mutations/education-info copy';
+import { ISafetyNotesBody } from '@/types/safety-info';
 import { Checkbox, DatePicker } from 'antd';
+import { useForm } from 'antd/es/form/Form';
+import dayjs from 'dayjs';
+import { useEffect } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 export const MutateSafetyNotes = () => {
+    const [form] = useForm();
+    const { id } = useParams();
+    const [searchParams] = useSearchParams();
+    const type = searchParams.get('type');
+    const { mutateAsync } = createSafetyNotesMutation(id!);
+    const { mutateAsync: updateMutateAsync } = updateSafetyNotesMutation(id!);
+    const { data, isLoading } = useOneSafetyNoteQuery(id!, type!);
+
+    const onFinish = (values: ISafetyNotesBody) => {
+        if (id) {
+            if (type == 'edit') {
+                updateMutateAsync({
+                    date: dayjs(values.date),
+                    briefingName: values.briefingName,
+                    briefingNumber: values.briefingNumber,
+                    employerSignature: values.employerSignature ? true : false,
+                });
+            } else {
+                mutateAsync({
+                    date: dayjs(values.date),
+                    briefingName: values.briefingName,
+                    briefingNumber: values.briefingNumber,
+                    employerSignature: values.employerSignature ? true : false,
+                    personalCard: id,
+                });
+            }
+        }
+    };
+
+    useEffect(() => {
+        if (id && type == 'edit' && data) {
+            form.setFieldsValue({
+                date: dayjs(data.date),
+                briefingName: data.briefing_name,
+                briefingNumber: data.briefing_number,
+                employerSignature: data.employer_signature ? true : false,
+            });
+        }
+    }, [data]);
+
+    if (isLoading) {
+        return <Loading />;
+    }
     return (
         <>
             <PageHeader title={'9.Отметка о вручении инструкций по охране труда, промышленной безопасности и производственной санитарии'} />
-            <Form style={{ padding: '20px', margin: '20px', backgroundColor: 'white' }}>
-                <Field span={24} label={'Санаси'} required>
+            <Form form={form} onFinish={onFinish} style={{ padding: '20px', margin: '20px', backgroundColor: 'white' }}>
+                <Field span={24} name={'date'} label={'Санаси'} required>
                     <DatePicker style={{ borderRadius: 0, width: '100%' }} name="birth_date" placeholder="Санаси" />
                 </Field>
 
-                <Field span={24} name={'order_number'} required label={'Инструксия номи'} placeholder="Инструксия номи киритинг" />
+                <Field span={24} name={'briefingName'} required label={'Инструксия номи'} placeholder="Инструксия номи киритинг" />
 
-                <Field span={24} name={'education_type'} required label={'Инструксия рақами'} placeholder="Инструксия рақами киритинг" />
+                <Field span={24} name={'briefingNumber'} required label={'Инструксия рақами'} placeholder="Инструксия рақами киритинг" />
 
-                <Field span={24} name={'signarure'} required={false}>
+                <Field span={24} name={'employerSignature'} valuePropName="checked" isRequired={false}>
                     <Box $justify="space-between">
                         <span>Ишчи имзоси:</span>
                         <Box $gap="10px">

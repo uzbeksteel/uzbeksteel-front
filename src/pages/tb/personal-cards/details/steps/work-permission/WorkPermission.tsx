@@ -3,12 +3,13 @@ import { UserRoles } from '@/constants';
 import { useGetWorkPermissionQuery } from '@/lib/services';
 import { checkRole, dateFormatter } from '@/lib/utils';
 import { Checkbox, Col, Row, Typography } from 'antd';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Content } from '../../components';
 
 export const WorkPermission = () => {
     const { id } = useParams();
     const { data, isLoading } = useGetWorkPermissionQuery(id!);
+    const navigate = useNavigate();
 
     if (isLoading) {
         return <Loading />;
@@ -17,7 +18,13 @@ export const WorkPermission = () => {
     const isPermission = checkRole(UserRoles.DIRECTOR);
 
     return (
-        <Content title="Ишлашга рухсат бериш" editable={isPermission}>
+        <Content
+            title="Ишлашга рухсат бериш"
+            editable={isPermission}
+            onclick={() => {
+                navigate('add');
+            }}
+        >
             <Box
                 $justify="space-between"
                 $p="20px"

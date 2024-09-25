@@ -44,4 +44,6 @@ export enum Endpoints {
     EmergancyBriefingByPersonal = 'emergancy-briefing/byPersonalCard',
     Program = 'program',
     HighDangers = 'high-dangers',
+    Itl = 'itl',
+    HighDangerOrder = 'high-danger-order',
 }

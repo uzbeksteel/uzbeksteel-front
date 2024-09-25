@@ -1,6 +1,6 @@
 import { createQueryString } from '@/lib/helper';
 import { IResponse, TParams } from '@/types/app';
-import { IIntroBriefing, IOrder, IPersonalCard, IPersonalCardMedical, IRepatBriefing, ISafetyInfo, IWorkInitTraining, IWorkPermission } from '@/types/personal-cards';
+import { IIntroBriefing, IOrder, IPersonalCard, IPersonalCardMedical, IRepatBriefing, ISafetyInfo, ISafetyNotes, IWorkInitTraining, IWorkPermission } from '@/types/personal-cards';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api';
 import { Endpoints } from './endpoints';
@@ -8,6 +8,21 @@ import { Endpoints } from './endpoints';
 export const getSafetyInfo = async (persoanlcardId: string, search?: string) => {
     const response: any = await api.get(`${Endpoints.SafetyInfo}/byPersonalcard?filter.personalCard.id=${persoanlcardId}${search?.length ? `&search=${search}` : ''}`);
     return response;
+};
+
+export const findOneSafetyInfo = async (id: string) => {
+    const responce: ISafetyInfo = await api.get(`${Endpoints.SafetyInfo}/${id}`);
+    return responce;
+};
+
+export const findOneEducationInfo = async (id: string) => {
+    const responce: any = await api.get(`${Endpoints.EducationInfo}/${id}`);
+    return responce;
+};
+
+export const findOneSafetyNote = async (id: string) => {
+    const responce: any = await api.get(`${Endpoints.SafetyNotes}/${id}`);
+    return responce;
 };
 
 export const getSafetyNotes = async (persoanlcardId: string, search?: string) => {
@@ -156,5 +171,32 @@ export const useSafetyNotesQuery = (personalCardId: string, search?: string) => 
         queryKey: [Endpoints.SafetyInfo, personalCardId, search],
         queryFn: () => getSafetyNotes(personalCardId, search),
         enabled: !!personalCardId,
+    });
+};
+
+export const useOneSafetyInfoQuery = (id: string, type: string) => {
+    return useQuery<ISafetyInfo>({
+        queryKey: [Endpoints.SafetyInfo, id],
+        queryFn: () => findOneSafetyInfo(id),
+        enabled: !!type,
+        refetchOnWindowFocus: false,
+    });
+};
+
+export const useOneEducationInfoQuery = (id: string, type: string) => {
+    return useQuery({
+        queryKey: [Endpoints.EducationInfo, id],
+        queryFn: () => findOneEducationInfo(id),
+        enabled: !!type,
+        refetchOnWindowFocus: false,
+    });
+};
+
+export const useOneSafetyNoteQuery = (id: string, type: string) => {
+    return useQuery<ISafetyNotes>({
+        queryKey: [Endpoints.SafetyNotes, id],
+        queryFn: () => findOneSafetyNote(id),
+        enabled: !!type,
+        refetchOnWindowFocus: false,
     });
 };

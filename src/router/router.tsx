@@ -33,6 +33,7 @@ import {
     Graphics,
     GraphicsDetail,
     HealthResult,
+    HighDangerDetails,
     HighDangers,
     HighDangerWorkshops,
     Home,
@@ -47,6 +48,7 @@ import {
     MutateSafetyInfo,
     MutateSafetyNotes,
     MutateWorkPermission,
+    MutationEmergencyBriefing,
     MutationRepeatBriefing,
     PersonalCardDetails,
     PersonalCards,
@@ -329,6 +331,10 @@ export const Router = () => {
                                     path: ROUTES.single,
                                     element: <HighDangers />,
                                 },
+                                {
+                                    path: ROUTES.highDangersDetails,
+                                    element: <HighDangerDetails />,
+                                },
                             ],
                         },
                     ],
@@ -516,6 +522,23 @@ export const Router = () => {
                                                 {
                                                     path: ROUTES.edit,
                                                     element: <MutationRepeatBriefing />,
+                                                },
+                                            ],
+                                        },
+                                        {
+                                            path: ROUTES.workshopEmergancyBriefing,
+                                            children: [
+                                                {
+                                                    index: true,
+                                                    element: <EmergancyBreafing />,
+                                                },
+                                                {
+                                                    path: ROUTES.add,
+                                                    element: <MutationEmergencyBriefing />,
+                                                },
+                                                {
+                                                    path: ROUTES.edit,
+                                                    element: <MutationEmergencyBriefing />,
                                                 },
                                             ],
                                         },

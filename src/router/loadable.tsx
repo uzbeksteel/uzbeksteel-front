@@ -41,6 +41,7 @@ export const AccidentWorkshops = getLoadablePage('AccidentWorkshops');
 export const Profession = getLoadablePage('Profession');
 export const MutateProfession = getLoadablePage('MutateProfession');
 export const EmergancyBreafing = getLoadablePage('EmergancyBreafing');
+export const MutationEmergencyBriefing = getLoadablePage('MutationEmergencyBriefing');
 
 // admin
 export const AdminHome = getLoadablePage('AdminHome');
@@ -67,3 +68,4 @@ export const AddAccident = getLoadablePage('AddAccident');
 export const AccidentDetails = getLoadablePage('AccidentDetails');
 export const HighDangerWorkshops = getLoadablePage('HighDangerWorkshops');
 export const HighDangers = getLoadablePage('HighDangers');
+export const HighDangerDetails = getLoadablePage('HighDangerDetails');

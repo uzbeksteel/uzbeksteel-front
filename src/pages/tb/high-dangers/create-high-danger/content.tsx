@@ -1,7 +1,6 @@
 import { Form as AntdForm, Modal } from 'antd';
 import { Field, Form } from '@/components';
-import { createHighDangerMutation } from '@/lib/services/mutations/high-dangers.ts';
-import { Endpoints } from '@/lib/services';
+import { createHighDangerMutation, Endpoints } from '@/lib/services';
 import { useQueryClient } from '@tanstack/react-query';
 
 interface ContentProps {
