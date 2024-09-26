@@ -39,8 +39,8 @@ export const Field = ({ span, textarea, rule, isRequired, isInputNumber, childre
             <AntForm.Item
                 rules={[
                     {
-                        required: isRequired ?? true,
-                        message: `${dictionary.messages[0]}, ${props.label}`,
+                        required: isRequired === undefined ? false : isRequired,
+                        message: isRequired ? `${dictionary.messages[0]}, ${props.label}` : undefined,
                     },
                     ...(rule ? rule : []),
                 ]}

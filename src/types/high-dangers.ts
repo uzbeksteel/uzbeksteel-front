@@ -1,5 +1,6 @@
-import { IWorkshop } from '@/types/workshop.ts';
+import { IUsers, IWorkshop } from '@/types/workshop.ts';
 import { IFiles } from '@/types/personal-cards.ts';
+import { IProfession } from '@/types/profession.ts';
 
 export interface IHighDangerItl {
     id: string;
@@ -22,6 +23,30 @@ export interface IHighDangerOrder {
     file: IFiles;
 }
 
+export interface IHighDangerLicence {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: any;
+    masterFullName: string;
+    workPlace: string;
+    objectName: string;
+    workDescription: string;
+    shouldBeStopped?: string;
+    shouldBeDiscontinued?: string;
+    shouldBeInstalled?: string;
+    airSampling?: string;
+    shouldBeBlocked?: string;
+    heightSafetyMeasures?: string;
+    warning?: string;
+    insulationSafetyMeasures?: string;
+    workplaceLayouts?: string;
+    additionalMeasures?: string;
+    masterPosition: IProfession;
+    employer: IUsers;
+    employerPosition: IProfession;
+}
+
 export interface IHighDanger {
     id: string;
     created_at: string;
@@ -31,6 +56,7 @@ export interface IHighDanger {
     workshop: IWorkshop;
     itl: IHighDangerItl[];
     order: IHighDangerOrder[];
+    licence: IHighDangerLicence[];
     is_deleted: boolean;
 }
 
@@ -51,4 +77,11 @@ export interface ICreateHighDangerOrder {
     number: string;
     high_danger: string;
     file: string;
+}
+
+export interface ICreateHighDangerLicence extends Omit<IHighDangerLicence, 'id' | 'created_at' | 'deleted_at' | 'updated_at' | 'employer' | 'masterPosition' | 'employerPosition'> {
+    dangerId: string;
+    masterPositionId: string;
+    employerPositionId: string;
+    employerId: string;
 }

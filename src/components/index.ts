@@ -18,3 +18,4 @@ export * from './switch';
 export * from './checkbox';
 export * from './dragger';
 export { User } from './user';
+export { AutoComplete } from './autoComplete';

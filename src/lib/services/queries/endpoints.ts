@@ -46,4 +46,5 @@ export enum Endpoints {
     HighDangers = 'high-dangers',
     Itl = 'itl',
     HighDangerOrder = 'high-danger-order',
+    HighDangerLicence = 'high-danger-licence',
 }

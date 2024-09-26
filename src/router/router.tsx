@@ -23,6 +23,7 @@ import {
     CertificationList,
     CreateActs,
     CreateEmployee,
+    CreateHighDangerLicence,
     Dangers,
     DangersDetail,
     Deeds,
@@ -334,6 +335,10 @@ export const Router = () => {
                                 {
                                     path: ROUTES.highDangersDetails,
                                     element: <HighDangerDetails />,
+                                },
+                                {
+                                    path: ROUTES.highDangerLicenceAdd,
+                                    element: <CreateHighDangerLicence />,
                                 },
                             ],
                         },

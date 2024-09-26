@@ -69,3 +69,4 @@ export const AccidentDetails = getLoadablePage('AccidentDetails');
 export const HighDangerWorkshops = getLoadablePage('HighDangerWorkshops');
 export const HighDangers = getLoadablePage('HighDangers');
 export const HighDangerDetails = getLoadablePage('HighDangerDetails');
+export const CreateHighDangerLicence = getLoadablePage('CreateHighDangerLicence');
