@@ -11,11 +11,11 @@ export const SafetyNotesColumns: ColumnsType<any> = [
     },
     {
         title: 'Наименование инструкций по охране труда, промышленной безопасности и производственной санитарии',
-        dataIndex: 'briefing_name',
+        dataIndex: ['briefing', 'fullname'],
     },
     {
         title: 'Номер   инструкций',
-        dataIndex: 'briefing_number',
+        dataIndex: ['briefing', 'number'],
     },
     {
         title: 'Подпись в получении инструкций',

@@ -1,4 +1,4 @@
-import { Box, Field, Form, Loading, PageHeader } from '@/components';
+import { Box, Field, Form, Loading, PageHeader, Select } from '@/components';
 import { useOneEducationInfoQuery } from '@/lib/services';
 import { createEducationInfoMutation, updateEducationInfoMutation } from '@/lib/services/mutations/education-info';
 import { IEducationInfoBody } from '@/types/safety-info';
@@ -60,7 +60,15 @@ export const MutateEducationInfo = () => {
                     <DatePicker style={{ borderRadius: 0, width: '100%' }} name="birth_date" placeholder="Ўқиш санаси" />
                 </Field>
 
-                <Field span={24} name={'studyType'} required label={'Ўқиш тури'} placeholder="Ўқиш тури киритинг" />
+                <Field span={24} name={'studyType'} required label={'Ўқиш тури'}>
+                    <Select
+                        options={[
+                            { label: 'BIRLAMCHI', value: 'BIRLAMCHI' },
+                            { label: 'IKKILAMCHI', value: 'IKKILAMCHI' },
+                        ]}
+                        placeholder="Ўқиш тури киритинг"
+                    />
+                </Field>
 
                 <Field span={24} name={'reportNumber'} required label={'Ҳужжат рақами'} placeholder="Ҳужжат рақами киритинг" />
 
