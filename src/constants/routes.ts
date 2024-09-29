@@ -56,7 +56,7 @@ export const ROUTES = {
     workshopSafetyNotes: 'safety-notes',
     workshopEducationInfo: 'education-info',
     workshopRepeatBriefing: 'repeat-briefing',
-    workshopEmergancyBriefing: 'personal-card/:id/emergancy-briefing',
+    workshopEmergancyBriefing2: 'personal-card/:id/emergancy-briefing',
     workShopSafetyInf: 'safety-info',
     workShopWorkPermission: 'work-permission',
     workShopOrderReport: 'order-report',
