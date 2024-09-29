@@ -30,6 +30,7 @@ export const ROUTES = {
     accidentDetails: '/accidents/:id/details',
     highDangers: '/high-dangers',
     highDangersDetails: '/high-dangers/:id/details',
+    highDangerLicenceAdd: '/high-dangers/:id/licence/add',
 
     // admin routes
     admin: '/admin',

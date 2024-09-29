@@ -82,7 +82,7 @@ export const Order = () => {
     };
     return (
         <Box>
-            <Table onClick={() => CreateOrder(id!)} titleTable="ИТЛ рўйхати" onChange={handleTableChange} dataSource={data?.order} columns={columns} />
+            <Table onClick={() => CreateOrder(id!)} titleTable="Буйруқлар рўйхати" onChange={handleTableChange} dataSource={data?.order} columns={columns} />
         </Box>
     );
 };

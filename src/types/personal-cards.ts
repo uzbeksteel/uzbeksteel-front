@@ -168,8 +168,7 @@ export interface ISafetyNotes {
     updated_at: string;
     deleted_at: any;
     date: string;
-    briefing_name: string;
-    briefing_number: string;
+    briefing: IBriefing;
     employer_signature: boolean;
     personalCard: IPersonalCard;
 }

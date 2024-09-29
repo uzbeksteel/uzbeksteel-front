@@ -1,6 +1,7 @@
-import { Box, Field, Form, Loading, PageHeader } from '@/components';
+import { Box, Field, Form, Loading, PageHeader, Select } from '@/components';
 import { useOneSafetyNoteQuery } from '@/lib/services';
 import { createSafetyNotesMutation, updateSafetyNotesMutation } from '@/lib/services/mutations/education-info copy';
+import { useSelectableBrieifngQuery } from '@/lib/services/queries/briefing';
 import { ISafetyNotesBody } from '@/types/safety-info';
 import { Checkbox, DatePicker } from 'antd';
 import { useForm } from 'antd/es/form/Form';
@@ -16,21 +17,20 @@ export const MutateSafetyNotes = () => {
     const { mutateAsync } = createSafetyNotesMutation(id!);
     const { mutateAsync: updateMutateAsync } = updateSafetyNotesMutation(id!);
     const { data, isLoading } = useOneSafetyNoteQuery(id!, type!);
+    const { data: selectableBriefing, isPending } = useSelectableBrieifngQuery();
 
     const onFinish = (values: ISafetyNotesBody) => {
         if (id) {
             if (type == 'edit') {
                 updateMutateAsync({
                     date: dayjs(values.date),
-                    briefingName: values.briefingName,
-                    briefingNumber: values.briefingNumber,
+                    briefing: values.briefing,
                     employerSignature: values.employerSignature ? true : false,
                 });
             } else {
                 mutateAsync({
                     date: dayjs(values.date),
-                    briefingName: values.briefingName,
-                    briefingNumber: values.briefingNumber,
+                    briefing: values.briefing,
                     employerSignature: values.employerSignature ? true : false,
                     personalCard: id,
                 });
@@ -41,10 +41,9 @@ export const MutateSafetyNotes = () => {
     useEffect(() => {
         if (id && type == 'edit' && data) {
             form.setFieldsValue({
-                date: dayjs(data.date),
-                briefingName: data.briefing_name,
-                briefingNumber: data.briefing_number,
-                employerSignature: data.employer_signature ? true : false,
+                date: dayjs(data?.date),
+                briefing: data?.briefing?.id,
+                employerSignature: data?.employer_signature ? true : false,
             });
         }
     }, [data]);
@@ -60,9 +59,9 @@ export const MutateSafetyNotes = () => {
                     <DatePicker style={{ borderRadius: 0, width: '100%' }} name="birth_date" placeholder="Санаси" />
                 </Field>
 
-                <Field span={24} name={'briefingName'} required label={'Инструксия номи'} placeholder="Инструксия номи киритинг" />
-
-                <Field span={24} name={'briefingNumber'} required label={'Инструксия рақами'} placeholder="Инструксия рақами киритинг" />
+                <Field span={24} name={'briefing'} required label={'Инструксия'}>
+                    <Select loading={isPending} options={selectableBriefing?.map((v) => ({ label: v.fullname, value: v.id }))} placeholder="Инструксияни киритинг" />
+                </Field>
 
                 <Field span={24} name={'employerSignature'} valuePropName="checked" isRequired={false}>
                     <Box $justify="space-between">

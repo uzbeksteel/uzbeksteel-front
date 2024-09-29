@@ -27,8 +27,7 @@ export interface IEducationInfoBody {
 
 export interface ISafetyNotesBody {
     date: string | Dayjs;
-    briefingName: string;
-    briefingNumber: string;
+    briefing: string;
     employerSignature: boolean;
     personalCard?: string;
 }
