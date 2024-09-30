@@ -4,6 +4,7 @@ import { IIntroBriefing, IOrder, IPersonalCard, IPersonalCardMedical, IRepatBrie
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api';
 import { Endpoints } from './endpoints';
+import { IEmerganceyBreafing } from '@/types/emergancy-breafing';
 
 export const getSafetyInfo = async (persoanlcardId: string, search?: string) => {
     const response: any = await api.get(`${Endpoints.SafetyInfo}/byPersonalcard?filter.personalCard.id=${persoanlcardId}${search?.length ? `&search=${search}` : ''}`);
@@ -151,7 +152,7 @@ export const useSafetyInfoQuery = (personalCardId: string, search?: string) => {
 };
 
 export const useEmergencyBriefingQuery = (personalCardId: string, search?: string) => {
-    return useQuery<IResponse<IRepatBriefing[]>>({
+    return useQuery<IResponse<IEmerganceyBreafing[]>>({
         queryKey: [Endpoints.EmergancyBriefing, personalCardId, search],
         queryFn: () => getEnergencyBriefing(personalCardId, search),
         enabled: !!personalCardId,

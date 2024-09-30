@@ -1,6 +1,7 @@
-import { Box, Field, Form, PageHeader } from '@/components';
-import { useOneRepeatQuery } from '@/lib/services';
+import { Box, Field, Form, PageHeader, Select } from '@/components';
+import { useOneEmergencyQuery } from '@/lib/services';
 import { createEmergencyBriefingMutation, updateEmergencyBriefingMutation } from '@/lib/services/mutations/emergency-briefing';
+import { useSelectableBrieifngQuery } from '@/lib/services/queries/briefing';
 import { IRepeatBriefingBody } from '@/types/safety-info';
 import { Checkbox, DatePicker } from 'antd';
 import { useForm } from 'antd/es/form/Form';
@@ -17,15 +18,16 @@ export const MutationEmergencyBriefing = () => {
     const { id } = useParams();
     const type = queryParams.get('type') as mode;
 
-    const { data } = useOneRepeatQuery(type === 'edit' ? (id as string) : null);
+    const { data } = useOneEmergencyQuery(type === 'edit' ? (id as string) : null);
 
     const { mutateAsync } = createEmergencyBriefingMutation(id!);
     const { mutateAsync: updateMutateAsync } = updateEmergencyBriefingMutation(id!);
+    const { data: selectableBriefing, isPending } = useSelectableBrieifngQuery();
 
     useEffect(() => {
         if (type === 'edit') {
             form.setFieldValue('briefingDate', dayjs(data?.briefing_date));
-            form.setFieldValue('briefingName', data?.briefing_name);
+            form.setFieldValue('briefings', data?.briefings);
             form.setFieldValue('master_signature', data?.master_signature);
             form.setFieldValue('employer_signature', data?.employer_signature);
         }
@@ -36,14 +38,14 @@ export const MutationEmergencyBriefing = () => {
             if (type === 'edit') {
                 updateMutateAsync({
                     briefingDate: dayjs(values.briefingDate),
-                    briefingName: values.briefingName,
+                    briefings: values.briefings,
                     master_signature: values.master_signature ? true : false,
                     employer_signature: values.employer_signature ? true : false,
                 });
             } else {
                 mutateAsync({
                     briefingDate: dayjs(values.briefingDate),
-                    briefingName: values.briefingName,
+                    briefings: values.briefings,
                     master_signature: values.master_signature ? true : false,
                     employer_signature: values.employer_signature ? true : false,
                     personalCard: id,
@@ -60,7 +62,9 @@ export const MutationEmergencyBriefing = () => {
                     <DatePicker style={{ borderRadius: 0, width: '100%' }} name="birth_date" placeholder="Иструксия ўтказилган санси" />
                 </Field>
 
-                <Field span={24} name={'briefingName'} required label={'Инструксия номи (программа бўйича)'} placeholder="Инструксия номи (программа бўйича) киритинг" />
+                <Field span={24} name={'briefings'} required label={'Инструксия номи (программа бўйича)'}>
+                    <Select mode="multiple" placeholder="Инструксия номи (программа бўйича) киритинг" options={selectableBriefing?.map((b) => ({ label: b.fullname, value: b.id }))} loading={isPending} disabled={isPending} />
+                </Field>
 
                 <Field valuePropName="checked" span={24} name={'master_signature'} isRequired={false}>
                     <Box $justify="space-between">

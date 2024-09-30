@@ -1,4 +1,5 @@
 import { dateFormatter } from '@/lib/utils';
+import { IBriefing } from '@/types/personal-cards';
 import { Tag } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { Actions } from './actions';
@@ -11,7 +12,10 @@ export const EmergancyBreafingColumn: ColumnsType<any> = [
     },
     {
         title: 'Наименование',
-        dataIndex: 'briefing_name',
+        dataIndex: 'briefings',
+        render: (el: IBriefing[]) => {
+            return <>{el?.map((b) => <Tag key={b?.id}>{b?.fullname}</Tag>)}</>;
+        },
     },
     {
         title: 'Подпись лица, проводившего инструктаж или обучение',

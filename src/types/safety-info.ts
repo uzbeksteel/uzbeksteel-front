@@ -11,10 +11,11 @@ export interface ISafetyInfoBody {
 
 export interface IRepeatBriefingBody {
     briefingDate: string | Dayjs;
-    briefingName: string;
+    briefingName?: string;
     master_signature: boolean;
     employer_signature: boolean;
     personalCard?: string;
+    briefings?: string[];
 }
 
 export interface IEducationInfoBody {

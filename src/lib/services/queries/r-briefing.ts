@@ -10,8 +10,13 @@ export const findRepeatByPersonal = async (persoanlcardId: string, search?: stri
     return response;
 };
 
-const findOneRepeat = async (id: string): Promise<IEmerganceyBreafing> => {
-    const responce: IEmerganceyBreafing = await api.get(`${Endpoints.RepeatBriefing}/${id}`);
+const findOneEmergency = async (id: string): Promise<IEmerganceyBreafing> => {
+    const responce: IEmerganceyBreafing = await api.get(`${Endpoints.EmergancyBriefing}/${id}`);
+    return responce;
+};
+
+const findOneRepeat = async (id: string): Promise<IRepatBriefing> => {
+    const responce: IRepatBriefing = await api.get(`${Endpoints.RepeatBriefing}/${id}`);
     return responce;
 };
 
@@ -23,6 +28,13 @@ export const useRepeatPersonalQuery = (personalCardId: string, search?: string) 
         enabled: !!personalCardId,
     });
 };
+
+export const useOneEmergencyQuery = (id: TParams) =>
+    useQuery({
+        queryKey: [Endpoints.EmergancyBriefing, id],
+        queryFn: () => findOneEmergency(id),
+        enabled: !!id,
+    });
 
 export const useOneRepeatQuery = (id: TParams) =>
     useQuery({
