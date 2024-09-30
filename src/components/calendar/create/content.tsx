@@ -4,23 +4,16 @@ import TextArea from 'antd/es/input/TextArea';
 import { useGraphicStore } from '@/store';
 import { useEffect } from 'react';
 import { useCreateGraphicQuery } from '@/lib/services/queries/graphic.ts';
-import { modal } from '@/app';
 import { getAllWorkshopsQuery } from '@/lib/services';
 
 export const Content = () => {
     const { setCreateFormInstance } = useGraphicStore();
     const [form] = Form.useForm();
-    const { mutate } = useCreateGraphicQuery(onSuccess);
+    const { mutate } = useCreateGraphicQuery();
     const { data: workshops } = getAllWorkshopsQuery();
     useEffect(() => {
         setCreateFormInstance(form);
     }, [form]);
-
-    function onSuccess() {
-        modal.success({
-            title: 'Текширув қўшиш мувафақиятли амалга оширилди!',
-        });
-    }
 
     return (
         <Form layout="vertical" form={form} onFinish={(data) => mutate(data)} requiredMark>

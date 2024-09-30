@@ -2,8 +2,9 @@ import { dictionary } from '@/constants';
 import { Endpoints } from '@/lib/services';
 import { api } from '@/lib/services/api';
 import { IActs, IGraphic, IMeasures } from '@/types/graphics.ts';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { message } from 'antd';
+import { modal } from '@/app';
 
 const getGraphics = async (userId?: string): Promise<IGraphic[]> => await api.get(Endpoints.Graphic, { params: { userId } });
 
@@ -58,11 +59,18 @@ export const useGetGraphicsQuery = (userId?: string) =>
         initialData: [],
     });
 
-export const useCreateGraphicQuery = (onSuccess: (data: IGraphic) => void) =>
-    useMutation({
+export const useCreateGraphicQuery = () => {
+    const queryClient = useQueryClient();
+    return useMutation({
         mutationFn: createGraphic,
-        onSuccess,
+        onSuccess: () => {
+            modal.success({
+                title: 'Текширув қўшиш мувафақиятли амалга оширилди!',
+            });
+            queryClient.invalidateQueries({ queryKey: [Endpoints.Graphic] });
+        },
     });
+};
 
 export const useGetGraphicsByDateQuery = (date?: string) =>
     useQuery<IGraphic[]>({
