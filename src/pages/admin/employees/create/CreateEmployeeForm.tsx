@@ -1,4 +1,5 @@
 import { Box, Card, Field, Form, Select } from '@/components';
+import { UserRoles, UserTypes } from '@/constants';
 import { useDebounce } from '@/lib/hooks';
 import { getUser1CByTabNumberQuery } from '@/lib/services';
 import { useCreateUserMutation } from '@/lib/services/mutations/user';
@@ -35,6 +36,9 @@ export const CreateEmployeeForm = () => {
         }
     };
 
+    const roleOption = Object.keys(UserRoles).map((el) => ({ value: el, label: el }));
+    const userTypesOption = Object.keys(UserTypes).map((el) => ({ value: el, label: el }));
+
     return (
         <Box $m="10px 24px">
             <Card>
@@ -69,6 +73,14 @@ export const CreateEmployeeForm = () => {
 
                     <Field span={24} label={dictionary.labels[7]} name="phone" required={true}>
                         <Input name="phone" placeholder={dictionary.labels[7]} />
+                    </Field>
+
+                    <Field span={24} label={dictionary.labels[8]} name="role" required={true}>
+                        <Select loading={true} placeholder={dictionary.labels[8]} options={roleOption} />
+                    </Field>
+
+                    <Field span={24} label={dictionary.labels[9]} name="user_type" required={true}>
+                        <Select loading={true} placeholder={dictionary.labels[9]} options={userTypesOption} />
                     </Field>
                 </Form>
             </Card>

@@ -1,5 +1,4 @@
 import { TUser } from '@/types/users';
-import { IUsers } from '@/types/workshop';
 
 export const getLocalStorage = (key: string) => {
     const item = localStorage.getItem(key);
