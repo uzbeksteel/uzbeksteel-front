@@ -1,9 +1,10 @@
 import dayjs, { Dayjs } from 'dayjs';
 import updateLocale from 'dayjs/plugin/updateLocale';
-import { modal } from '@/app';
-import { dictionary } from '@/constants';
 import { Content } from './content';
 import { Box, Typography } from '@/components';
+import { modalStoreOutside } from '@/store';
+import { modalIds } from '../constants';
+import { dictionary } from '@/constants';
 
 dayjs.extend(updateLocale);
 
@@ -11,21 +12,29 @@ dayjs.updateLocale('en', {
     weekdays: ['Якшанба', 'Душанба', 'Сешанба', 'Чоршанба', 'Пайшанба', 'Жума', 'Шанба'],
 });
 export const Overview = (date: Dayjs) => {
-    modal.info({
-        title: (
-            <Box $align="center" $gap="10px">
-                <Typography type="title" level={5}>
-                    {date.format('DD.MM.YYYY')}
-                </Typography>
-                <Typography type="title" level={5} color="#F08D10 !important">
-                    {date.format('dddd')}
-                </Typography>
-            </Box>
-        ),
-        content: <Content />,
-        icon: null,
-        okText: dictionary.cancel,
-        okButtonProps: { type: 'default', style: { borderRadius: 0 } },
-        width: 572,
-    });
+    modalStoreOutside((state) => ({
+        modals: [
+            ...state.modals,
+            {
+                id: modalIds.overview,
+                content: <Content />,
+                settings: {
+                    title: (
+                        <Box $align="center" $gap="10px">
+                            <Typography type="title" level={5}>
+                                {date.format('DD.MM.YYYY')}
+                            </Typography>
+                            <Typography type="title" level={5} color="#F08D10 !important">
+                                {date.format('dddd')}
+                            </Typography>
+                        </Box>
+                    ),
+                    width: 600,
+                    okButtonProps: { style: { display: 'none' } },
+                    cancelText: dictionary.cancel,
+                },
+                isVisible: true,
+            },
+        ],
+    }));
 };
