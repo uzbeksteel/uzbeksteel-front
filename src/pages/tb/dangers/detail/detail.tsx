@@ -60,11 +60,11 @@ export const DangersDetail = () => {
             key: 'riskScore',
             width: 200,
             onCell: () => ({ style: { padding: 0 } }),
-            render: (text, record) => {
+            render: (text) => {
                 return (
                     <Box $direction="column">
-                        <span style={{ padding: '16px' }}>{`${record.riskLevel === 'High' ? 'Высокий' : 'Низкий'} уровень риска`}</span>
-                        <span style={{ padding: '16px', background: record.riskLevel === 'High' ? 'red' : record.riskLevel === 'Low' ? 'yellow' : 'green' }}>{text}</span>
+                        <span style={{ padding: '16px' }}>{`${text >= 25 ? 'Юқори' : text >= 20 ? 'Ўрта' : 'Паст'} хавфлилик`}</span>
+                        <span style={{ padding: '16px', background: text >= 25 ? '#FF4D4F' : text >= 20 ? '#F7B336' : '#73D13D' }}>{text}</span>
                     </Box>
                 );
             },

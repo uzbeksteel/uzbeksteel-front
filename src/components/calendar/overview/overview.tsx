@@ -12,29 +12,21 @@ dayjs.updateLocale('en', {
     weekdays: ['Якшанба', 'Душанба', 'Сешанба', 'Чоршанба', 'Пайшанба', 'Жума', 'Шанба'],
 });
 export const Overview = (date: Dayjs) => {
-    modalStoreOutside((state) => ({
-        modals: [
-            ...state.modals,
-            {
-                id: modalIds.overview,
-                content: <Content />,
-                settings: {
-                    title: (
-                        <Box $align="center" $gap="10px">
-                            <Typography type="title" level={5}>
-                                {date.format('DD.MM.YYYY')}
-                            </Typography>
-                            <Typography type="title" level={5} color="#F08D10 !important">
-                                {date.format('dddd')}
-                            </Typography>
-                        </Box>
-                    ),
-                    width: 600,
-                    okButtonProps: { style: { display: 'none' } },
-                    cancelText: dictionary.cancel,
-                },
-                isVisible: true,
-            },
-        ],
-    }));
+    modalStoreOutside.openModal({
+        id: modalIds.overview,
+        content: <Content />,
+        title: (
+            <Box $align="center" $gap="10px">
+                <Typography type="title" level={5}>
+                    {date.format('DD.MM.YYYY')}
+                </Typography>
+                <Typography type="title" level={5} color="#F08D10 !important">
+                    {date.format('dddd')}
+                </Typography>
+            </Box>
+        ),
+        width: 600,
+        okButtonProps: { style: { display: 'none' } },
+        cancelText: dictionary.cancel,
+    });
 };

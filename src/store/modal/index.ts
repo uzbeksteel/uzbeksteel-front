@@ -20,4 +20,4 @@ export const useModalStore = create<ModalState>((set) => ({
     },
 }));
 
-export const modalStoreOutside = useModalStore.setState;
+export const modalStoreOutside = useModalStore.getState();

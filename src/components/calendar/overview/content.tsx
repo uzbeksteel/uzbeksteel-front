@@ -10,7 +10,7 @@ import dayjs from 'dayjs';
 
 export const Content = () => {
     const [searchParams, setSearchParams] = useSearchParams();
-    const { data, refetch } = useGetGraphicsByDateQuery(searchParams.get('date')?.split('T')[0]);
+    const { data, refetch, isFetching } = useGetGraphicsByDateQuery(searchParams.get('date')?.split('T')[0]);
     const { mutate } = useDeleteGraphicQuery(onSuccess);
     async function onSuccess() {
         await refetch();
@@ -63,5 +63,5 @@ export const Content = () => {
 
     const dataWithKeys = data?.map((item) => ({ ...item, key: item.id })) || [];
 
-    return <Table columns={columns} dataSource={dataWithKeys} pagination={false} />;
+    return <Table columns={columns} dataSource={dataWithKeys} pagination={false} loading={isFetching} />;
 };
