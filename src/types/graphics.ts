@@ -4,6 +4,7 @@ import { Dayjs } from 'dayjs';
 export interface IGraphic {
     id: string;
     date: Dayjs;
+    submissionDate: Dayjs;
     workshop: IWorkshop;
     inspection: string;
     created_at: string;
@@ -58,4 +59,11 @@ export interface IMeasures {
     file: IFile;
     graphic: IGraphic;
     workshop: Workshop;
+}
+
+export interface IUpdateGraphic {
+    inspection: string;
+    workshop: IWorkshop;
+    date: Dayjs;
+    submissionDat?: Dayjs;
 }

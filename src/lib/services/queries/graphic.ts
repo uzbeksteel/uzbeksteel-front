@@ -16,14 +16,7 @@ const getMeasures = async (graphicId?: string, search?: string): Promise<IMeasur
 
 const getReports = async (graphicId?: string, search?: string): Promise<IMeasures[]> => (await api.get(`${Endpoints.Reports.toString()}${graphicId ? `?filter.graphic.id=${graphicId}${search ? `&search=${search}` : ''}` : search ? `&search=${search}` : ''}`)).data;
 
-export const getGraphicById = async (id: string): Promise<IGraphic> => {
-    const hideMessage = message.loading(dictionary.loading, 0);
-    try {
-        return await api.get(`${Endpoints.Graphic}/${id}`);
-    } finally {
-        hideMessage();
-    }
-};
+export const getGraphicById = async (id: string): Promise<IGraphic> => await api.get(`${Endpoints.Graphic}/${id}`);
 
 const createGraphic = async (request: Pick<IGraphic, 'date' | 'inspection' | 'workshop'>): Promise<IGraphic> => {
     const hideMessage = message.loading(dictionary.loading, 0);
@@ -85,10 +78,14 @@ export const useDeleteGraphicQuery = (onSuccess: () => void) =>
         onSuccess,
     });
 
-export const useUpdateGraphicQuery = (onSuccess: () => void) =>
+export const useUpdateGraphicQuery = () =>
     useMutation({
         mutationFn: updateGraphic,
-        onSuccess,
+        onSuccess: () => {
+            modal.success({
+                title: 'Текширув янгилаш мувафақиятли амалга оширилди!',
+            });
+        },
     });
 
 export const getActsQuery = (graphicId?: string, search?: string) => {
@@ -131,4 +128,10 @@ export const getReportsQuery = (graphicId?: string, search?: string) =>
         refetchOnMount(query) {
             return query.state.data?.length ? false : true;
         },
+    });
+
+export const useGetGraphicByIdQuery = (graphicId: string) =>
+    useQuery({
+        queryKey: [Endpoints.Graphic, graphicId],
+        queryFn: () => getGraphicById(graphicId),
     });

@@ -1,59 +1,53 @@
-import { useEffect } from 'react';
-import { Field } from '@/components';
-import { DatePicker, Form, Select } from 'antd';
+import { Box, Field, Form } from '@/components';
+import { DatePicker, Form as AntdForm, Modal, Select, Skeleton } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
-import dayjs, { Dayjs } from 'dayjs';
-import { useGraphicStore } from '@/store';
-import { IGraphic } from '@/types/graphics.ts';
-import { useUpdateGraphicQuery } from '@/lib/services/queries/graphic.ts';
-import { modal } from '@/app';
+import dayjs from 'dayjs';
+import { useGetGraphicByIdQuery, useUpdateGraphicQuery } from '@/lib/services/queries/graphic.ts';
 import { getAllWorkshopsQuery } from '@/lib/services';
-
-type IUpdateForm = Pick<IGraphic, 'workshop' | 'inspection'> & { date: Dayjs };
+import { useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { IUpdateGraphic } from '@/types/graphics.ts';
 
 export const Content = () => {
-    const [form] = Form.useForm<IUpdateForm>();
-    const { setUpdateFormInstance, updateGraphicCredentials } = useGraphicStore();
-    const { mutate } = useUpdateGraphicQuery(onSuccess);
+    const [form] = AntdForm.useForm<IUpdateGraphic>();
+    const [searchParams] = useSearchParams();
     const { data: workshops } = getAllWorkshopsQuery();
+    const { data: updateGraphicCredentials, isFetched: isUpdateGraphicCredentialsFetched } = useGetGraphicByIdQuery(searchParams.get('graphicId')!);
+    const { mutate } = useUpdateGraphicQuery();
 
     useEffect(() => {
-        setUpdateFormInstance(form);
-        const initialValues = {
-            ...updateGraphicCredentials,
-            date: dayjs(updateGraphicCredentials?.date),
-        } as IUpdateForm;
-        initialValues.workshop = initialValues.workshop.ref_key as never;
-        form.setFieldsValue(initialValues);
+        if (isUpdateGraphicCredentialsFetched) {
+            const initialValues = {
+                ...updateGraphicCredentials,
+                date: dayjs(updateGraphicCredentials?.date),
+                submissionDate: updateGraphicCredentials?.submissionDate && dayjs(updateGraphicCredentials?.submissionDate),
+            } as IUpdateGraphic;
+            initialValues.workshop = initialValues.workshop.ref_key as never;
+            form.setFieldsValue(initialValues);
+        }
     }, [form, updateGraphicCredentials]);
-
-    function onSuccess() {
-        modal.success({
-            title: 'Текширув янгилаш мувафақиятли амалга оширилди!',
-        });
-    }
-
-    const getUpdatedFields = (currentValues: IUpdateForm, initialValues: IUpdateForm) => {
-        return (Object.keys(currentValues) as Array<keyof IUpdateForm>).reduce((acc, key) => {
+    const getUpdatedFields = (currentValues: IUpdateGraphic, initialValues: IUpdateGraphic) => {
+        return (Object.keys(currentValues) as Array<keyof IUpdateGraphic>).reduce((acc, key) => {
             if (currentValues[key] !== initialValues[key]) {
                 // @ts-ignore
                 acc[key] = currentValues[key];
             }
             return acc;
-        }, {} as Partial<IUpdateForm>);
+        }, {} as Partial<IUpdateGraphic>);
     };
 
-    const onFinish = (values: IUpdateForm) => {
+    const onFinish = (values: IUpdateGraphic) => {
         const initialValues = {
             ...updateGraphicCredentials,
             date: dayjs(updateGraphicCredentials?.date),
-        } as IUpdateForm;
+            submissionDate: updateGraphicCredentials?.submissionDate && dayjs(updateGraphicCredentials?.submissionDate),
+        } as IUpdateGraphic;
         const updatedFields = getUpdatedFields(values, initialValues);
         mutate({ ...updatedFields, id: updateGraphicCredentials?.id });
     };
 
-    return (
-        <Form layout="vertical" form={form} onFinish={onFinish} requiredMark>
+    return isUpdateGraphicCredentialsFetched ? (
+        <Form form={form} onFinish={onFinish} onCancel={() => Modal.destroyAll()}>
             <Field span={24} name="date" label="Сана" rules={[{ required: true, message: 'Тўлдирилиши шарт!' }]}>
                 <DatePicker style={{ borderRadius: 0, width: '100%' }} />
             </Field>
@@ -69,6 +63,16 @@ export const Content = () => {
             <Field span={24} name="inspection" label="Текширув" rules={[{ required: true, message: 'Тўлдирилиши шарт!' }]}>
                 <TextArea style={{ borderRadius: 0, width: '100%' }} />
             </Field>
+            <Field span={24} name="submissionDate" label="Чора тадбир ва хисоботни топшириш санаси" rules={[{ required: true, message: 'Тўлдирилиши шарт!' }]}>
+                <DatePicker placeholder="Чора тадбир ва хисоботни топшириш санаси" style={{ borderRadius: 0, width: '100%' }} />
+            </Field>
         </Form>
+    ) : (
+        <Box $direction="column" $gap="15px">
+            <Skeleton.Input style={{ width: '100%' }} />
+            <Skeleton.Input style={{ width: '100%' }} />
+            <Skeleton.Input style={{ width: '100%' }} />
+            <Skeleton.Input style={{ width: '100%' }} />
+        </Box>
     );
 };

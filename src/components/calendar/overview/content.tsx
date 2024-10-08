@@ -2,17 +2,16 @@ import { Modal, Table } from 'antd';
 import { Box, Icon } from '@/components';
 import { useDeleteGraphicQuery, useGetGraphicsByDateQuery } from '@/lib/services/queries/graphic.ts';
 import { IGraphic } from '@/types/graphics.ts';
-import { Update } from '@/components/calendar/update';
-import { useGraphicStore } from '@/store';
 import { ROUTES } from '@/constants';
 import { history } from '@/lib/utils';
+import { useSearchParams } from 'react-router-dom';
+import { Update } from '@/components/calendar/update';
+import dayjs from 'dayjs';
 
 export const Content = () => {
-    const params = new URLSearchParams(window.location.href.split('?')[1]);
-    const { data, refetch } = useGetGraphicsByDateQuery(params.get('date')?.split('T')[0]);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const { data, refetch } = useGetGraphicsByDateQuery(searchParams.get('date')?.split('T')[0]);
     const { mutate } = useDeleteGraphicQuery(onSuccess);
-    const setUpdateGraphicCredentials = useGraphicStore((state) => state.setUpdateGraphicCredentials);
-
     async function onSuccess() {
         await refetch();
     }
@@ -29,12 +28,22 @@ export const Content = () => {
             key: 'inspection',
         },
         {
-            title: '',
+            title: 'Чора тадбир ва хисоботни топшириш санаси',
+            dataIndex: 'submissionDate',
+            key: 'submissionDate',
+            render: (text: string) => text && dayjs(text).format('DD.MM.YYYY'),
+        },
+        {
+            title: 'Ҳаракат',
             dataIndex: '',
             key: 'actions',
             render: (_: any, record: IGraphic) => {
                 const handleEditBtn = () => {
-                    setUpdateGraphicCredentials(record);
+                    const currentParams = Object.fromEntries([...searchParams]);
+                    setSearchParams({
+                        ...currentParams,
+                        graphicId: record.id,
+                    });
                     Update();
                 };
                 const handleEyeBtn = () => {

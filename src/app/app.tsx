@@ -12,11 +12,11 @@ export const App = () => {
 
     return (
         <QueryProvider>
-            <ThemeProvider>
-                <HistoryRouterProvider history={history}>
+            <HistoryRouterProvider history={history}>
+                <ThemeProvider>
                     <Router />
-                </HistoryRouterProvider>
-            </ThemeProvider>
+                </ThemeProvider>
+            </HistoryRouterProvider>
         </QueryProvider>
     );
 };

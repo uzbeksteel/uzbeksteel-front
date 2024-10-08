@@ -1,19 +1,13 @@
-import { Field } from '@/components';
-import { DatePicker, Form, Select } from 'antd';
+import { Field, Form } from '@/components';
+import { DatePicker, Form as AntdForm, Select } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
-import { useGraphicStore } from '@/store';
-import { useEffect } from 'react';
 import { useCreateGraphicQuery } from '@/lib/services/queries/graphic.ts';
 import { getAllWorkshopsQuery } from '@/lib/services';
 
 export const Content = () => {
-    const { setCreateFormInstance } = useGraphicStore();
-    const [form] = Form.useForm();
+    const [form] = AntdForm.useForm();
     const { mutate } = useCreateGraphicQuery();
     const { data: workshops } = getAllWorkshopsQuery();
-    useEffect(() => {
-        setCreateFormInstance(form);
-    }, [form]);
 
     return (
         <Form layout="vertical" form={form} onFinish={(data) => mutate(data)} requiredMark>
