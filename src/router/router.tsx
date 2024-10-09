@@ -602,6 +602,23 @@ export const Router = () => {
                                 },
                             ],
                         },
+                        {
+                            path: ROUTES.workshopHighDangers,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <HighDangers />,
+                                },
+                                {
+                                    path: ROUTES.workshopHighDangersDetails,
+                                    element: <HighDangerDetails />,
+                                },
+                                {
+                                    path: ROUTES.workshopHighDangerLicenceAdd,
+                                    element: <CreateHighDangerLicence />,
+                                },
+                            ],
+                        },
                     ],
                 },
                 {

@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 import { ModalState } from './types.ts';
 
 export const useModalStore = create<ModalState>((set) => ({

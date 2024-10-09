@@ -1,5 +1,5 @@
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { Box, Button, Icon, Table, Typography } from '@/components';
+import { Box, Icon, Table, Typography } from '@/components';
 import { ColumnsType, TablePaginationConfig } from 'antd/es/table';
 import { useState } from 'react';
 import { ROUTES } from '@/constants';
@@ -73,19 +73,6 @@ export const DangersDetail = () => {
             title: 'Методы контроля и существующие способы защиты',
             dataIndex: 'controlMethods',
             key: 'controlMethods',
-        },
-        {
-            title: 'Харакатлар',
-            dataIndex: '',
-            key: '',
-            width: '10%',
-            render: () => {
-                return (
-                    <Button type="link" style={{ color: '#F08D10' }}>
-                        <Icon name="Eye" /> Кўриш
-                    </Button>
-                );
-            },
         },
     ];
     const handleTableChange = (pagination: TablePaginationConfig) => {

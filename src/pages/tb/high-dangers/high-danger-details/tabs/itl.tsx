@@ -1,5 +1,5 @@
 import { downloadFile, useGetDangerByIdQuery } from '@/lib/services';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { Box, Button, Icon, Table } from '@/components';
 import { TableColumnsType } from 'antd';
 import { TablePaginationConfig } from 'antd/es/table';
@@ -8,11 +8,14 @@ import dayjs from 'dayjs';
 import { addMessage } from '@/lib/utils';
 import { IAccidentOrderFile } from '@/types/accident.ts';
 import { CreateItl } from '@/pages/tb/high-dangers/create-itl';
+import { ROUTES } from '@/constants';
 
 export const Itl = () => {
     const { id } = useParams();
     const [currentPage, setCurrentPage] = useState(1);
     const { data } = useGetDangerByIdQuery(id!);
+    const { pathname } = useLocation();
+    const isWorkshop = pathname.includes(ROUTES.workshop);
 
     const handleDownloadFile = async (id: string, fileName: string) => {
         try {
@@ -82,7 +85,7 @@ export const Itl = () => {
     };
     return (
         <Box>
-            <Table onClick={() => CreateItl(id!)} titleTable="ИТЛ рўйхати" onChange={handleTableChange} dataSource={data?.itl} columns={columns} />
+            <Table onClick={() => CreateItl(id!)} isAdd={isWorkshop} titleTable="ИТЛ рўйхати" onChange={handleTableChange} dataSource={data?.itl} columns={columns} />
         </Box>
     );
 };
