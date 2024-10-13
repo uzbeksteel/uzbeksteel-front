@@ -5,8 +5,8 @@ import { useAuthStore } from '@/store';
 import { useRoutes } from 'react-router-dom';
 import {
     AccidentDetails,
-    Accidents,
     AccidentWorkshops,
+    Accidents,
     AddAccident,
     AddAccidentAct,
     AddAccidentOrder,
@@ -35,11 +35,12 @@ import {
     GraphicsDetail,
     HealthResult,
     HighDangerDetails,
-    HighDangers,
     HighDangerWorkshops,
+    HighDangers,
     Home,
     InitWorkTraining,
     InspectionCreate,
+    InspectionWorkshop,
     IntroductoryBriefing,
     Login,
     Lows,
@@ -110,7 +111,16 @@ export const Router = () => {
                         },
                         {
                             path: ROUTES.magazine,
-                            element: <TbMagazines />,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <InspectionWorkshop />,
+                                },
+                                {
+                                    path: ROUTES.single,
+                                    element: <TbMagazines />,
+                                },
+                            ],
                         },
                         {
                             path: ROUTES.lows,

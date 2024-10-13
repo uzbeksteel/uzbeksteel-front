@@ -15,6 +15,7 @@ export const Certification = getLoadablePage('Certification');
 export const CertificationList = getLoadablePage('CertificationList');
 export const CertificationCreate = getLoadablePage('CertificationCreate');
 export const Accidents = getLoadablePage('Accidents');
+export const InspectionWorkshop = getLoadablePage('InspectionWorkshop');
 export const TbMagazines = getLoadablePage('TbMagazines');
 export const CreateActs = getLoadablePage('CreateActs');
 export const PersonalCards = getLoadablePage('PersonalCards');

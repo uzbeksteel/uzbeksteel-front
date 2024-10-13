@@ -1,4 +1,5 @@
 import { Box, Card, Field, Form, Icon, Select } from '@/components';
+import { IMAGE_URL } from '@/constants';
 import { getAllWorkshopsQuery, useActMutation, useMeasuresMutation, useReportsMutation } from '@/lib/services';
 import { history } from '@/lib/utils';
 import { Input, Upload, message } from 'antd';
@@ -27,7 +28,7 @@ export const CreateActForm = () => {
     const props: UploadProps = {
         name: 'file',
         multiple: true,
-        action: 'http://localhost:3000/api/v1/files/upload',
+        action: IMAGE_URL,
         onChange(info) {
             const { status } = info.file;
             if (status !== 'uploading') {
