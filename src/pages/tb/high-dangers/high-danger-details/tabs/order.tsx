@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { downloadFile, useGetDangerByIdQuery } from '@/lib/services';
 import { TablePaginationConfig } from 'antd/es/table';
@@ -8,11 +8,14 @@ import { IAccidentOrderFile } from '@/types/accident.ts';
 import { addMessage } from '@/lib/utils';
 import dayjs from 'dayjs';
 import { CreateOrder } from '../../create-order';
+import { ROUTES } from '@/constants';
 
 export const Order = () => {
     const { id } = useParams();
     const [currentPage, setCurrentPage] = useState(1);
     const { data } = useGetDangerByIdQuery(id!);
+    const { pathname } = useLocation();
+    const isWorkshop = pathname.includes(ROUTES.workshop);
 
     const handleDownloadFile = async (id: string, fileName: string) => {
         try {
@@ -82,7 +85,7 @@ export const Order = () => {
     };
     return (
         <Box>
-            <Table onClick={() => CreateOrder(id!)} titleTable="Буйруқлар рўйхати" onChange={handleTableChange} dataSource={data?.order} columns={columns} />
+            <Table onClick={() => CreateOrder(id!)} titleTable="Буйруқлар рўйхати" isAdd={!isWorkshop} onChange={handleTableChange} dataSource={data?.order} columns={columns} />
         </Box>
     );
 };

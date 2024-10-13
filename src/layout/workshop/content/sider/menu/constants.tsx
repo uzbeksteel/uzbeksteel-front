@@ -40,4 +40,9 @@ export const menuItems = [
         icon: <Icon name="SquareUserRound" />,
         label: menuLabels[7],
     },
+    {
+        key: ROUTES.workshopHighDangers,
+        icon: <Icon name="TriangleAlert" />,
+        label: menuLabels[8],
+    },
 ];

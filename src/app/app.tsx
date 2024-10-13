@@ -2,6 +2,7 @@ import { useToken } from '@/lib/hooks';
 import { history } from '@/lib/utils';
 import { Router } from '@/router';
 import { HistoryRouterProvider, QueryProvider, ThemeProvider } from './providers';
+import { Modal } from '@/components';
 
 export const App = () => {
     const { isInitiated } = useToken();
@@ -15,6 +16,7 @@ export const App = () => {
             <HistoryRouterProvider history={history}>
                 <ThemeProvider>
                     <Router />
+                    <Modal />
                 </ThemeProvider>
             </HistoryRouterProvider>
         </QueryProvider>

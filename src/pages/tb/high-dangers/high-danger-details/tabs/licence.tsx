@@ -3,7 +3,7 @@ import { TablePaginationConfig } from 'antd/es/table';
 import { useState } from 'react';
 import { TableColumnsType } from 'antd';
 import { useGetDangerByIdQuery } from '@/lib/services';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { history } from '@/lib/utils';
 import { ROUTES } from '@/constants';
 
@@ -11,6 +11,8 @@ export const Licence = () => {
     const { id } = useParams();
     const [currentPage, setCurrentPage] = useState(1);
     const { data } = useGetDangerByIdQuery(id!);
+    const { pathname } = useLocation();
+    const isWorkshop = pathname.includes(ROUTES.workshop);
 
     const columns: TableColumnsType = [
         {
@@ -53,7 +55,7 @@ export const Licence = () => {
     };
     return (
         <Box>
-            <Table onClick={() => history.push(ROUTES.highDangerLicenceAdd.replace(':id', id!))} titleTable="Рухсатномалар рўйхати" onChange={handleTableChange} dataSource={data?.licence} columns={columns} />
+            <Table onClick={() => history.push(ROUTES.highDangerLicenceAdd.replace(':id', id!))} isAdd={!isWorkshop} titleTable="Рухсатномалар рўйхати" onChange={handleTableChange} dataSource={data?.licence} columns={columns} />
         </Box>
     );
 };

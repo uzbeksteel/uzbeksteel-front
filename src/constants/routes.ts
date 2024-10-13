@@ -64,4 +64,7 @@ export const ROUTES = {
     workShopInitWorkTraining: 'init-work-training',
     workshopIntroBriefing: 'intro-briefing',
     workshopEmergancyBriefing: 'emergancy-briefing',
+    workshopHighDangers: '/workshop/workshop-high-danger',
+    workshopHighDangersDetails: ':id/details',
+    workshopHighDangerLicenceAdd: ':id/licence/add',
 } as const;

@@ -4,14 +4,19 @@ import { ColumnsType, TablePaginationConfig } from 'antd/es/table';
 import { history } from '@/lib/utils';
 import { ROUTES } from '@/constants';
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { CreateHighDanger } from './create-high-danger';
 import { useGetHighDangersQuery } from '@/lib/services';
+import { useAuthStore } from '@/store';
 
 export const HighDangers = () => {
     const [currentPage, setCurrentPage] = useState(1);
+    const { pathname } = useLocation();
+    const isWorkshop = pathname.includes(ROUTES.workshop);
     const { id } = useParams();
-    const { data } = useGetHighDangersQuery(id!);
+    const { user } = useAuthStore();
+    const workshopId = isWorkshop ? user?.workshop.id : id;
+    const { data } = useGetHighDangersQuery(workshopId!);
     const columns: ColumnsType = [
         {
             title: 'Т/р',
@@ -53,7 +58,7 @@ export const HighDangers = () => {
             width: '10%',
             render: (_, record) => {
                 return (
-                    <Button onClick={() => history.push(`${ROUTES.highDangersDetails}`.replace(':id', record.id))} type="link" style={{ color: '#F08D10' }}>
+                    <Button onClick={() => history.push(`${isWorkshop ? `${pathname}/${ROUTES.workshopHighDangersDetails}` : ROUTES.highDangersDetails}`.replace(':id', record.id))} type="link" style={{ color: '#F08D10' }}>
                         <Icon name="Eye" /> Кўриш
                     </Button>
                 );
@@ -69,7 +74,7 @@ export const HighDangers = () => {
             <PageHeader title="Хавфи юқори бўлган ишлар" />
             <Box $p="10px">
                 <Table
-                    onClick={() => CreateHighDanger(id!)}
+                    onClick={() => CreateHighDanger(workshopId!)}
                     onChange={handleTableChange}
                     scroll={{ x: true }}
                     columns={columns}

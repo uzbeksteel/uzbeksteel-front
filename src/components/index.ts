@@ -9,7 +9,7 @@ export { Float } from './float';
 export * from './form';
 export { Icon } from './icon';
 export { Loading } from './loading';
-export { ImageModal } from './modal';
+export { Modal } from './modal';
 export { ProfileDisplay } from './profileDisplay';
 export { Select } from './select/Select';
 export { Table } from './table';

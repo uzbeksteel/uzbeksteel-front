@@ -1,9 +1,10 @@
 import dayjs, { Dayjs } from 'dayjs';
 import updateLocale from 'dayjs/plugin/updateLocale';
-import { modal } from '@/app';
-import { dictionary } from '@/constants';
 import { Content } from './content';
 import { Box, Typography } from '@/components';
+import { modalStoreOutside } from '@/store';
+import { modalIds } from '../constants';
+import { dictionary } from '@/constants';
 
 dayjs.extend(updateLocale);
 
@@ -11,7 +12,9 @@ dayjs.updateLocale('en', {
     weekdays: ['Якшанба', 'Душанба', 'Сешанба', 'Чоршанба', 'Пайшанба', 'Жума', 'Шанба'],
 });
 export const Overview = (date: Dayjs) => {
-    modal.info({
+    modalStoreOutside.openModal({
+        id: modalIds.overview,
+        content: <Content />,
         title: (
             <Box $align="center" $gap="10px">
                 <Typography type="title" level={5}>
@@ -22,10 +25,8 @@ export const Overview = (date: Dayjs) => {
                 </Typography>
             </Box>
         ),
-        content: <Content />,
-        icon: null,
-        okText: dictionary.cancel,
-        okButtonProps: { type: 'default', style: { borderRadius: 0 } },
-        width: 572,
+        width: '700px',
+        okButtonProps: { style: { display: 'none' } },
+        cancelText: dictionary.cancel,
     });
 };

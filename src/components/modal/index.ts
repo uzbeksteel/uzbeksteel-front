@@ -1,1 +1,1 @@
-export { Modal as ImageModal } from './modal';
+export { Modal } from './modal';
