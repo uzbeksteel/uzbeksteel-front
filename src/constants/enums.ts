@@ -20,3 +20,9 @@ export enum AccidentStatus {
     IN_PROCESS = 'IN_PROCESS',
     DONE = 'DONE',
 }
+
+export enum GraphicStatus {
+    PENDING = 'PENDING',
+    CHECKED = 'CHECKED',
+    COMPLETED = 'COMPLETED',
+}

@@ -78,15 +78,18 @@ export const useDeleteGraphicQuery = (onSuccess: () => void) =>
         onSuccess,
     });
 
-export const useUpdateGraphicQuery = () =>
-    useMutation({
+export const useUpdateGraphicQuery = () => {
+    const queryClient = useQueryClient();
+    return useMutation({
         mutationFn: updateGraphic,
         onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [Endpoints.Graphic] });
             modal.success({
                 title: 'Текширув янгилаш мувафақиятли амалга оширилди!',
             });
         },
     });
+};
 
 export const getActsQuery = (graphicId?: string, search?: string) => {
     return useQuery<IActs[]>({

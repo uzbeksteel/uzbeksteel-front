@@ -25,7 +25,7 @@ export const Overview = (date: Dayjs) => {
                 </Typography>
             </Box>
         ),
-        width: 600,
+        width: '700px',
         okButtonProps: { style: { display: 'none' } },
         cancelText: dictionary.cancel,
     });
