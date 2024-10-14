@@ -39,6 +39,7 @@ export const ROUTES = {
     adminEmployees: '/admin/employees',
     adminAnalyticalData: '/admin/analytical-data',
     adminArchives: '/admin/archive',
+    addWorkshopBranchMaster: 'add-master',
 
     // work shop routes
     workshop: '/workshop',

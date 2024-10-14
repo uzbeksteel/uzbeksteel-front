@@ -12,6 +12,7 @@ export enum Endpoints {
     Workshop = 'workshop',
     WorkShopBranches = 'workshop-branches',
     WorkShopBranchesByRefKey = 'workshop/selectable-workshop-branches/',
+    WorkShopBranchesAddUser = 'workshop-branches/add-user',
     Magazine = 'magazines',
     SignatureMagazine = 'magazines/signature',
     User = 'user',

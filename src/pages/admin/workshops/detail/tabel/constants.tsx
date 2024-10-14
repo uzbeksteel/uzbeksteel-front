@@ -4,7 +4,7 @@ import { Tag } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { Key } from 'react';
 
-export const WorkShopBranchesComplumns: ColumnsType<any> = [
+export const WorkShopBranchesColumns: ColumnsType<any> = [
     {
         title: 'Т/р',
         render(_value, _record, index) {
@@ -33,7 +33,7 @@ export const WorkShopBranchesComplumns: ColumnsType<any> = [
         width: 100,
     },
     {
-        title: 'Masters',
+        title: 'Мастерлар',
         dataIndex: ['masters'],
         key: 'Начальник цеха',
         render: (a) => {

@@ -6,7 +6,7 @@ import { Endpoints } from './endpoints';
 const selectableWorkshops = async (): Promise<IMainWorkshops[]> => api.get(Endpoints.SelectbleWorkshops);
 const selectableWorkshopEmpoyes = async (ref_key: string): Promise<IWorkShopEmployes[]> => api.get(`${Endpoints.SelectbleWorkshopEmployes}/${ref_key}`);
 const getAllWorkshops = async (): Promise<IWorkshop[]> => (await api.get(Endpoints.Workshop)).data;
-const getWorkShopBranches = async () => (await api.get(Endpoints.WorkShopBranches)).data;
+const getWorkShopBranches = async (parent_ref_key?: string) => (await api.get(Endpoints.WorkShopBranches, { params: { parent_ref_key } })).data;
 const getWorkShopBranchesByRef = async (ref: string): Promise<IBranches[]> => await api.get(Endpoints.WorkShopBranchesByRefKey + ref);
 const getUserQuery = async (): Promise<IUsers[]> => (await api.get(Endpoints.Users)).data;
 
@@ -33,10 +33,10 @@ export const getAllWorkshopsQuery = (_id?: string) =>
         // enabled: !!id,
     });
 
-export const getWorkShopBranchesQuery = () =>
+export const getWorkShopBranchesQuery = (parent_ref_key?: string) =>
     useQuery<any[]>({
-        queryKey: [Endpoints.WorkShopBranches],
-        queryFn: getWorkShopBranches,
+        queryKey: [Endpoints.WorkShopBranches, parent_ref_key],
+        queryFn: () => getWorkShopBranches(parent_ref_key),
         initialData: [],
     });
 
