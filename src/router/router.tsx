@@ -11,6 +11,7 @@ import {
     AddAccidentAct,
     AddAccidentOrder,
     AddDanger,
+    AddWorkshopBranchMaster,
     AdminCreateWorkShopBranches,
     AdminEmployees,
     AdminHome,
@@ -650,6 +651,10 @@ export const Router = () => {
                                         {
                                             path: ROUTES.add,
                                             element: <AdminCreateWorkShopBranches />,
+                                        },
+                                        {
+                                            path: ROUTES.addWorkshopBranchMaster,
+                                            element: <AddWorkshopBranchMaster />,
                                         },
                                     ],
                                 },

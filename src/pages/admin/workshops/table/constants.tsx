@@ -1,8 +1,10 @@
-import { Box, Edit, See } from '@/components';
+import { Box, Edit, Icon, See } from '@/components';
 import { Tag } from 'antd';
 import { ColumnsType } from 'antd/es/table';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '@/constants';
 
-export const WorkShoptableComplumns: ColumnsType<any> = [
+export const WorkShopTableColumns: ColumnsType<any> = [
     {
         title: 'Т/р',
         key: 'id',
@@ -29,11 +31,14 @@ export const WorkShoptableComplumns: ColumnsType<any> = [
         render: (record) => {
             return (
                 <Box $justify="space-around" $align="center">
+                    <Link to={`${record?.ref_key}/${ROUTES.addWorkshopBranchMaster}`}>
+                        <Icon btn name="UserPlus" />
+                    </Link>
                     <Edit id={'12'} />
                     <See id={record?.ref_key} />
                 </Box>
             );
         },
-        width: '200px',
+        width: '250px',
     },
 ];
