@@ -1,5 +1,5 @@
 import { Box, Field, Form } from '@/components';
-import { DatePicker, Form as AntdForm, Modal, Select, Skeleton } from 'antd';
+import { DatePicker, Form as AntdForm, Select, Skeleton } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import dayjs from 'dayjs';
 import { useGetGraphicByIdQuery, useUpdateGraphicQuery } from '@/lib/services/queries/graphic.ts';
@@ -7,6 +7,8 @@ import { getAllWorkshopsQuery } from '@/lib/services';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { IUpdateGraphic } from '@/types/graphics.ts';
+import { useModalStore } from '@/store';
+import { modalIds } from '@/components/calendar/constants.ts';
 
 export const Content = () => {
     const [form] = AntdForm.useForm<IUpdateGraphic>();
@@ -14,6 +16,7 @@ export const Content = () => {
     const { data: workshops } = getAllWorkshopsQuery();
     const { data: updateGraphicCredentials, isFetched: isUpdateGraphicCredentialsFetched } = useGetGraphicByIdQuery(searchParams.get('graphicId')!);
     const { mutate } = useUpdateGraphicQuery();
+    const { closeModal } = useModalStore();
 
     useEffect(() => {
         if (isUpdateGraphicCredentialsFetched) {
@@ -47,7 +50,7 @@ export const Content = () => {
     };
 
     return isUpdateGraphicCredentialsFetched ? (
-        <Form form={form} onFinish={onFinish} onCancel={() => Modal.destroyAll()}>
+        <Form form={form} onFinish={onFinish} onCancel={() => closeModal(modalIds.update)}>
             <Field span={24} name="date" label="Сана" rules={[{ required: true, message: 'Тўлдирилиши шарт!' }]}>
                 <DatePicker style={{ borderRadius: 0, width: '100%' }} />
             </Field>
