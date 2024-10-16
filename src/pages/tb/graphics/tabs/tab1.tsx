@@ -41,11 +41,14 @@ export const Tab1 = () => {
             <ul>
                 {graphicsForDate.map((graphic, index) => (
                     <li key={index}>
-                        <Badge status="warning">
-                            <span>
-                                {graphic.inspection} - <span style={{ fontWeight: 'bold', color: '#595959', fontSize: '11px' }}>{graphicsDictionary.status[graphic.status]}</span>
-                            </span>
-                        </Badge>
+                        <Badge
+                            status="warning"
+                            text={
+                                <span>
+                                    {graphic.inspection} - <span style={{ fontWeight: 'bold', color: '#595959', fontSize: '11px' }}>{graphicsDictionary.status[graphic.status]}</span>
+                                </span>
+                            }
+                        />
                     </li>
                 ))}
             </ul>
