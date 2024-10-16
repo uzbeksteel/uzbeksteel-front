@@ -1,14 +1,12 @@
 import { Box, Card, Icon, Typography } from '@/components';
-import { getWorkShopBranchesQuery } from '@/lib/services';
 import { Tabs } from 'antd';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
 import { inspectionTabs } from './constants';
 
 export const TbMagazines = () => {
     const navigate = useNavigate();
-    const { id } = useParams();
-    const { data } = getWorkShopBranchesQuery(id);
+
     return (
         <Fragment>
             <Box $p="20px" $gap="10px" style={{ background: '#FFF' }}>

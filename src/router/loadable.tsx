@@ -71,3 +71,4 @@ export const HighDangerWorkshops = getLoadablePage('HighDangerWorkshops');
 export const HighDangers = getLoadablePage('HighDangers');
 export const HighDangerDetails = getLoadablePage('HighDangerDetails');
 export const CreateHighDangerLicence = getLoadablePage('CreateHighDangerLicence');
+export const AddWorkshopBranchMaster = getLoadablePage('AddWorkshopBranchMaster');

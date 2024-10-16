@@ -1,13 +1,14 @@
 import { Box, Table } from '@/components';
 import { getWorkShopBranchesQuery } from '@/lib/services';
-import { WorkShopBranchesComplumns } from './constants';
+import { WorkShopBranchesColumns } from './constants';
+import { useParams } from 'react-router-dom';
 
 export const WorkshopBranchesTable = () => {
-    const { data, isLoading, refetch, isRefetching } = getWorkShopBranchesQuery();
-
+    const { id } = useParams();
+    const { data, isLoading, refetch, isRefetching } = getWorkShopBranchesQuery(id);
     return (
-        <Box style={{ maxWidth: '1200px', width: '100%' }}>
-            <Table scroll={{ x: 1700 }} onRotate={() => refetch({})} titleTable="Бўлимлар рўйхати" columns={WorkShopBranchesComplumns} dataSource={data} loading={isLoading || isRefetching} pagination={{ pageSize: 20, position: ['bottomCenter'] }} />
+        <Box>
+            <Table scroll={{ x: true }} onRotate={() => refetch({})} columns={WorkShopBranchesColumns} dataSource={data} loading={isLoading || isRefetching} pagination={{ pageSize: 20, position: ['bottomCenter'] }} />
         </Box>
     );
 };

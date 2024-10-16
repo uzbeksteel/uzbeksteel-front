@@ -1,12 +1,10 @@
 import { Box, Icon } from '@/components';
 import { dateFormatter } from '@/lib/utils';
 import { IMagazine } from '@/types/magazine';
-import { TUser } from '@/types/users';
-import { Button, Flex, Tag } from 'antd';
+import { Button, Tag } from 'antd';
 import { ColumnsType } from 'antd/es/table';
-import { Key } from 'react';
 
-export const InspectionColumn = ({ success }: { success: (id: string) => void }): ColumnsType<any> => {
+export const InspectionColumn = ({ success }: { success: (id: string) => void }): ColumnsType<IMagazine> => {
     return [
         {
             title: 'Т/р',
@@ -15,7 +13,6 @@ export const InspectionColumn = ({ success }: { success: (id: string) => void })
             },
             key: 'id',
             defaultSortOrder: 'descend',
-            sorter: (a, b) => a?.id - b?.id,
         },
         {
             title: 'Назоратни ўтказиш санаси',
@@ -37,42 +34,24 @@ export const InspectionColumn = ({ success }: { success: (id: string) => void })
         },
         {
             title: 'Уста ва меҳнатни муҳофаза қилиш бўйича вакилнинг Ф.И.Ш.',
-            dataIndex: ['commissions'],
+            dataIndex: 'commissions',
             key: 'commissions',
-            render: (user: TUser[]) => (
-                <Flex align="center" vertical>
-                    {user.map((u: TUser, index: Key | null | undefined) => (
-                        <Tag color="success" key={index}>
-                            {u.first_name}
-                        </Tag>
-                    ))}
-                </Flex>
-            ),
             width: '200px',
         },
         {
             title: 'Ижроси учун жавобгар шахслар',
-            dataIndex: ['responsibles'],
+            dataIndex: 'responsibles',
             key: 'responsibles',
-            render: (user: TUser[]) => {
-                return user.map((u: TUser, index: Key | null | undefined) => (
-                    <Tag color="success" key={index}>
-                        {u.first_name} {u.last_name}
-                    </Tag>
-                ));
-            },
         },
-
         {
             title: 'Бажариш муддати',
             dataIndex: 'complate_date',
             render: (date: string) => dateFormatter(date),
             key: 'complate_date',
         },
-
         {
             title: 'Бажарилганлиги бўйича белги',
-            dataIndex: ['signature'],
+            dataIndex: 'signature',
             key: 'signature',
             render: (signature: boolean) => {
                 return <Tag color={`${signature ? 'success' : 'processing'}`}>{signature ? 'Тасдиқланган' : 'Тасдиқланмаган'}</Tag>;
@@ -83,7 +62,7 @@ export const InspectionColumn = ({ success }: { success: (id: string) => void })
             render: (el: IMagazine) => {
                 return (
                     <Box $justify="space-around" $align="center">
-                        <Button onClick={() => success(el.id)} disabled={el.signature} type="primary">
+                        <Button onClick={() => success(el?.id)} disabled={el?.signature} type="primary">
                             <Icon name="BadgeCheck" />
                         </Button>
                     </Box>
