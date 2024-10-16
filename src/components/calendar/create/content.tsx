@@ -3,14 +3,17 @@ import { DatePicker, Form as AntdForm, Select } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import { useCreateGraphicQuery } from '@/lib/services/queries/graphic.ts';
 import { getAllWorkshopsQuery } from '@/lib/services';
+import { useModalStore } from '@/store';
+import { modalIds } from '@/components/calendar/constants.ts';
 
 export const Content = () => {
     const [form] = AntdForm.useForm();
     const { mutate } = useCreateGraphicQuery();
     const { data: workshops } = getAllWorkshopsQuery();
+    const { closeModal } = useModalStore();
 
     return (
-        <Form layout="vertical" form={form} onFinish={(data) => mutate(data)} requiredMark>
+        <Form onCancel={() => closeModal(modalIds.create)} layout="vertical" form={form} onFinish={(data) => mutate(data)} requiredMark>
             <Field span={24} name="date" label="Сана" rules={[{ required: true, message: 'Тўлдирилиши шарт!' }]}>
                 <DatePicker style={{ borderRadius: 0, width: '100%' }} />
             </Field>

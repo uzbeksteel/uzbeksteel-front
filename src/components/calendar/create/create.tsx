@@ -1,11 +1,12 @@
-import { modal } from '@/app';
 import { Content } from './content';
+import { modalStoreOutside } from '@/store';
+import { modalIds } from '@/components/calendar/constants.ts';
 
 export const Create = () => {
-    modal.confirm({
-        title: 'Текширув графиги яратиш',
+    modalStoreOutside.openModal({
+        id: modalIds.create,
         content: <Content />,
-        icon: null,
+        title: 'Текширув графиги яратиш',
         footer: null,
     });
 };
