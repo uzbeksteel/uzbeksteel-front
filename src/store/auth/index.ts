@@ -36,6 +36,7 @@ const useAppBase = create<IAuthStore>()((set) => ({
     setUser: (user) =>
         set(() => {
             setLocalStorage(USER, toBase64(user));
+            console.log(toBase64(user));
             return { user };
         }),
 }));

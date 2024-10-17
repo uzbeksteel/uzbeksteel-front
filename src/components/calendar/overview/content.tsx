@@ -1,4 +1,4 @@
-import { Table } from 'antd';
+import { Table, Tag } from 'antd';
 import { Box } from '@/components';
 import { useDeleteGraphicQuery, useGetGraphicsByDateQuery, useUpdateGraphicQuery } from '@/lib/services/queries/graphic.ts';
 import { IGraphic } from '@/types/graphics.ts';
@@ -11,6 +11,7 @@ import { graphicsDictionary } from '@/pages/tb/graphics/dictionary.ts';
 import { CircleCheckBig, Eye, Pencil, Trash2 } from 'lucide-react';
 import { useModalStore } from '@/store';
 import { modalIds } from '@/components/calendar/constants.ts';
+import { TagColor } from '@/pages/tb/graphics/constants.tsx';
 
 export const Content = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -43,7 +44,7 @@ export const Content = () => {
             title: 'Статус',
             dataIndex: 'status',
             key: 'status',
-            render: (text: GraphicStatus) => graphicsDictionary.status[text],
+            render: (text: GraphicStatus) => <Tag color={TagColor[text]}>{graphicsDictionary.status[text]}</Tag>,
         },
         {
             title: 'Ҳаракат',

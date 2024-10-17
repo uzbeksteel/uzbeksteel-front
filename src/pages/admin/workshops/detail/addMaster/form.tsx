@@ -4,7 +4,7 @@ import { getUser1CByTabNumberQuery, getWorkShopBranchesByRefQuery, useAddWorksho
 import { generateSelectOptions } from '@/lib/helper';
 import styled from 'styled-components';
 import { useDebounce } from '@/lib/hooks';
-import { useAppStore } from '@/store';
+import { useAppStore, useAuthStore } from '@/store';
 import { useEffect } from 'react';
 import { IWorkshopBranchUser } from '@/types/workshop.ts';
 import dayjs from 'dayjs';
@@ -27,9 +27,9 @@ export const AddMasterForm = () => {
     const { data: user } = getUser1CByTabNumberQuery(search);
     const { data: workshopBranches, isLoading: isWBLoading } = getWorkShopBranchesByRefQuery(id!);
     const { mutate: addUser } = useAddWorkshopBranchMasterMutation();
-
+    const { user: loginUser } = useAuthStore();
     const userTypesOption = Object.keys(UserTypes).map((el) => ({ value: el, label: dictionary.options[el as UserTypes] }));
-
+    console.log(loginUser);
     useEffect(() => {
         if (user?.ishchi) {
             const fullName = user.ishchi.split(' ');

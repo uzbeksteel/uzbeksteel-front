@@ -5,8 +5,9 @@ import { useAuthStore } from '@/store';
 import { IGraphic } from '@/types/graphics.ts';
 import dayjs, { Dayjs } from 'dayjs';
 import { useLocation } from 'react-router-dom';
-import { Badge } from 'antd';
+import { Badge, Tag } from 'antd';
 import { graphicsDictionary } from '../dictionary.ts';
+import { TagColor } from '@/pages/tb/graphics/constants.tsx';
 
 export const Tab1 = () => {
     let userId;
@@ -45,7 +46,7 @@ export const Tab1 = () => {
                             status="warning"
                             text={
                                 <span>
-                                    {graphic.inspection} - <span style={{ fontWeight: 'bold', color: '#595959', fontSize: '11px' }}>{graphicsDictionary.status[graphic.status]}</span>
+                                    {graphic.inspection} - <Tag color={TagColor[graphic.status]}>{graphicsDictionary.status[graphic.status]}</Tag>
                                 </span>
                             }
                         />
