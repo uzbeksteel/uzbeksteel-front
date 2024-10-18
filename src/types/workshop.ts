@@ -97,4 +97,5 @@ export interface IWorkshopBranchUser {
     userType: UserTypes;
     workshopBranchRefKey?: string;
     workshopRefKey: string;
+    nationality: string;
 }

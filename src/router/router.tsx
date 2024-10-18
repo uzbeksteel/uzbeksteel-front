@@ -5,8 +5,8 @@ import { useAuthStore } from '@/store';
 import { useRoutes } from 'react-router-dom';
 import {
     AccidentDetails,
-    AccidentWorkshops,
     Accidents,
+    AccidentWorkshops,
     AddAccident,
     AddAccidentAct,
     AddAccidentOrder,
@@ -25,6 +25,7 @@ import {
     CreateActs,
     CreateEmployee,
     CreateHighDangerLicence,
+    CreateWorkshopEmployee,
     Dangers,
     DangersDetail,
     Deeds,
@@ -36,8 +37,8 @@ import {
     GraphicsDetail,
     HealthResult,
     HighDangerDetails,
-    HighDangerWorkshops,
     HighDangers,
+    HighDangerWorkshops,
     Home,
     InitWorkTraining,
     InspectionCreate,
@@ -369,7 +370,16 @@ export const Router = () => {
                         },
                         {
                             path: ROUTES.workshopEmployes,
-                            element: <WorkshopEmployes />,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <WorkshopEmployes />,
+                                },
+                                {
+                                    path: ROUTES.add,
+                                    element: <CreateWorkshopEmployee />,
+                                },
+                            ],
                         },
                         {
                             path: ROUTES.workshopInspections,
