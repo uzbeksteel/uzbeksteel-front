@@ -2,6 +2,7 @@ export enum UserTypes {
     MASTER = 'MASTER',
     GRAND_MASTER = 'GRAND_MASTER',
     INDUSTRIAL_SECURITY = 'INDUSTRIAL_SECURITY',
+    WORKSHOP_MASTER = 'WORKSHOP_MASTER',
 }
 
 export enum UserRoles {
@@ -19,4 +20,10 @@ export enum AccidentStatus {
     NEW = 'NEW',
     IN_PROCESS = 'IN_PROCESS',
     DONE = 'DONE',
+}
+
+export enum GraphicStatus {
+    PENDING = 'PENDING',
+    CHECKED = 'CHECKED',
+    COMPLETED = 'COMPLETED',
 }

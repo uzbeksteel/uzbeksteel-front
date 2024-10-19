@@ -5,6 +5,8 @@ import { IActs, IGraphic, IMeasures } from '@/types/graphics.ts';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { message } from 'antd';
 import { modal } from '@/app';
+import { useModalStore } from '@/store';
+import { modalIds } from '@/components/calendar/constants.ts';
 
 const getGraphics = async (userId?: string): Promise<IGraphic[]> => await api.get(Endpoints.Graphic, { params: { userId } });
 
@@ -54,9 +56,11 @@ export const useGetGraphicsQuery = (userId?: string) =>
 
 export const useCreateGraphicQuery = () => {
     const queryClient = useQueryClient();
+    const closeModal = useModalStore((state) => state.closeModal);
     return useMutation({
         mutationFn: createGraphic,
         onSuccess: () => {
+            closeModal(modalIds.create);
             modal.success({
                 title: 'Текширув қўшиш мувафақиятли амалга оширилди!',
             });
@@ -78,15 +82,20 @@ export const useDeleteGraphicQuery = (onSuccess: () => void) =>
         onSuccess,
     });
 
-export const useUpdateGraphicQuery = () =>
-    useMutation({
+export const useUpdateGraphicQuery = () => {
+    const queryClient = useQueryClient();
+    const closeModal = useModalStore((state) => state.closeModal);
+    return useMutation({
         mutationFn: updateGraphic,
         onSuccess: () => {
+            closeModal(modalIds.update);
+            queryClient.invalidateQueries({ queryKey: [Endpoints.Graphic] });
             modal.success({
                 title: 'Текширув янгилаш мувафақиятли амалга оширилди!',
             });
         },
     });
+};
 
 export const getActsQuery = (graphicId?: string, search?: string) => {
     return useQuery<IActs[]>({

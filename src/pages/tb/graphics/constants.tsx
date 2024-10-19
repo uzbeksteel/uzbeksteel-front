@@ -1,6 +1,7 @@
 import { Calendar } from '@/components';
 import { Tab1 } from '@/pages/tb/graphics/tabs';
 import { TabsProps } from 'antd';
+import { GraphicStatus } from '@/constants';
 
 export const getTabs = () => {
     const items: TabsProps['items'] = [
@@ -21,4 +22,10 @@ export const getTabs = () => {
         },
     ];
     return items;
+};
+
+export const TagColor: Record<GraphicStatus, string> = {
+    [GraphicStatus.PENDING]: 'gold',
+    [GraphicStatus.CHECKED]: 'green',
+    [GraphicStatus.COMPLETED]: 'blue',
 };

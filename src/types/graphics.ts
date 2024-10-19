@@ -1,11 +1,13 @@
 import { IWorkshop } from '@/types/workshop.ts';
 import { Dayjs } from 'dayjs';
+import { GraphicStatus } from '@/constants';
 
 export interface IGraphic {
     id: string;
     date: Dayjs;
     submissionDate: Dayjs;
     workshop: IWorkshop;
+    status: GraphicStatus;
     inspection: string;
     created_at: string;
     updated_at: string;

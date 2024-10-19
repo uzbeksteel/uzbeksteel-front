@@ -3,9 +3,11 @@ import { ROUTES } from '@/constants';
 import { useGetGraphicsQuery } from '@/lib/services/queries/graphic.ts';
 import { useAuthStore } from '@/store';
 import { IGraphic } from '@/types/graphics.ts';
-import { Badge } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
 import { useLocation } from 'react-router-dom';
+import { Badge, Tag } from 'antd';
+import { graphicsDictionary } from '../dictionary.ts';
+import { TagColor } from '@/pages/tb/graphics/constants.tsx';
 
 export const Tab1 = () => {
     let userId;
@@ -23,10 +25,10 @@ export const Tab1 = () => {
                 if (!acc[date]) {
                     acc[date] = [];
                 }
-                acc[date].push(graphic.inspection);
+                acc[date].push(graphic);
                 return acc;
             },
-            {} as Record<string, string[]>,
+            {} as Record<string, IGraphic[]>,
         );
     };
 
@@ -40,7 +42,14 @@ export const Tab1 = () => {
             <ul>
                 {graphicsForDate.map((graphic, index) => (
                     <li key={index}>
-                        <Badge status="warning" text={graphic} />
+                        <Badge
+                            status="warning"
+                            text={
+                                <span>
+                                    {graphic.inspection} - <Tag color={TagColor[graphic.status]}>{graphicsDictionary.status[graphic.status]}</Tag>
+                                </span>
+                            }
+                        />
                     </li>
                 ))}
             </ul>

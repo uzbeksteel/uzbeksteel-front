@@ -4,12 +4,12 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { api } from '../api';
 import { Endpoints } from '../queries';
 
-const cerateUser = async (body: CreateUserBody): Promise<TUser> => api.post(Endpoints.Users, body);
+const createUser = async (body: CreateUserBody): Promise<TUser> => api.post(Endpoints.Users, body);
 
 export const useCreateUserMutation = () => {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: (body: CreateUserBody) => cerateUser(body),
+        mutationFn: createUser,
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: [Endpoints.Users] });
             successMessage('Ходим яратилди!');

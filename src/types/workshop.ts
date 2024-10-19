@@ -1,4 +1,5 @@
 import { TUser } from './users';
+import { UserTypes } from '@/constants';
 
 export interface IMainWorkshops {
     Ref_Key: string;
@@ -32,7 +33,6 @@ export interface IWorkShopEmployes {
 export interface CreateWorkShopBody {
     name: string;
     ref_key: string;
-    workshop_director: string;
 }
 
 export interface IMasters {
@@ -83,4 +83,19 @@ export interface IUsers {
     phone: string;
     role: string;
     user_type: string;
+}
+
+export interface IWorkshopBranchUser {
+    tabNumber: string;
+    name: string;
+    surname: string;
+    password: string;
+    position: string;
+    birthDate: Date;
+    bornPlace: string;
+    phoneNumber: string;
+    userType: UserTypes;
+    workshopBranchRefKey?: string;
+    workshopRefKey: string;
+    nationality: string;
 }

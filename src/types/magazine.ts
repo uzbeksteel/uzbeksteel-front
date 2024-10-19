@@ -1,22 +1,23 @@
-import { TUser } from './users';
 import { IWorkshop } from './workshop';
 
 export interface IMagazine {
-    id: string;
-    created_at: string;
-    updated_at: string;
-    deleted_at: any;
     control_date: string;
     omissions: string;
     measures: string;
     complate_date: string;
     signature: boolean;
     magazine_type: string;
-    is_deleted: boolean;
+    commissions: string;
+    responsibles: string;
     workshop: IWorkshop;
     workshop_branches: WorkshopBranches;
-    commissions: TUser[];
-    responsibles: TUser[];
+    disadvantages_images: TImages;
+    complated_images: null | TImages;
+    is_deleted: boolean;
+    id: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: any;
 }
 
 export interface WorkshopBranches {
@@ -27,4 +28,14 @@ export interface WorkshopBranches {
     name: string;
     ref_key: string;
     code: string;
+}
+
+export interface TImages {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: any;
+    name: string;
+    url: string;
+    type: string;
 }

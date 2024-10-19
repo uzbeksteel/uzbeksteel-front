@@ -1,9 +1,30 @@
 import { Icon, User } from '@/components';
+import { useSocket } from '@/store';
 import { Flex } from 'antd';
+import { useEffect, useState } from 'react';
 import { LayoutHeader } from '../../style';
 import { Props } from '../../type';
 
+interface Notification {
+    message: string;
+}
+
 export const Header = ({ bg }: Props) => {
+    const [notifications, setNotifications] = useState<Notification[]>([]);
+    const { socket } = useSocket();
+
+    useEffect(() => {
+        if (socket) {
+            socket.on('newNotification', (notification: Notification) => {
+                setNotifications([notification, ...notifications]);
+            });
+
+            return () => {
+                socket.off('newNotification');
+            };
+        }
+    }, []);
+
     return (
         <>
             <LayoutHeader $bg={bg}>
@@ -13,6 +34,8 @@ export const Header = ({ bg }: Props) => {
 
                 <Flex gap="large">
                     <Icon name="Expand" color="#D5680A" />
+
+                    <Icon name="Bell" color="#D5680A" />
 
                     <Icon name="Settings" color="#D5680A" />
 

@@ -11,6 +11,7 @@ import {
     AddAccidentAct,
     AddAccidentOrder,
     AddDanger,
+    AddWorkshopBranchMaster,
     AdminCreateWorkShopBranches,
     AdminEmployees,
     AdminHome,
@@ -24,6 +25,7 @@ import {
     CreateActs,
     CreateEmployee,
     CreateHighDangerLicence,
+    CreateWorkshopEmployee,
     Dangers,
     DangersDetail,
     Deeds,
@@ -40,6 +42,7 @@ import {
     Home,
     InitWorkTraining,
     InspectionCreate,
+    InspectionWorkshop,
     IntroductoryBriefing,
     Login,
     Lows,
@@ -110,7 +113,16 @@ export const Router = () => {
                         },
                         {
                             path: ROUTES.magazine,
-                            element: <TbMagazines />,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <InspectionWorkshop />,
+                                },
+                                {
+                                    path: ROUTES.single,
+                                    element: <TbMagazines />,
+                                },
+                            ],
                         },
                         {
                             path: ROUTES.lows,
@@ -358,7 +370,16 @@ export const Router = () => {
                         },
                         {
                             path: ROUTES.workshopEmployes,
-                            element: <WorkshopEmployes />,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <WorkshopEmployes />,
+                                },
+                                {
+                                    path: ROUTES.add,
+                                    element: <CreateWorkshopEmployee />,
+                                },
+                            ],
                         },
                         {
                             path: ROUTES.workshopInspections,
@@ -650,6 +671,10 @@ export const Router = () => {
                                         {
                                             path: ROUTES.add,
                                             element: <AdminCreateWorkShopBranches />,
+                                        },
+                                        {
+                                            path: ROUTES.addWorkshopBranchMaster,
+                                            element: <AddWorkshopBranchMaster />,
                                         },
                                     ],
                                 },

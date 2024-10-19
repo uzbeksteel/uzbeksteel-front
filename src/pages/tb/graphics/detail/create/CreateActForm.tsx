@@ -1,11 +1,12 @@
 import { Box, Card, Field, Form, Icon, Select } from '@/components';
+import { IMAGE_URL } from '@/constants';
 import { getAllWorkshopsQuery, useActMutation, useMeasuresMutation, useReportsMutation } from '@/lib/services';
 import { history } from '@/lib/utils';
-import { Input, Upload, message } from 'antd';
+import { Input, message, Upload } from 'antd';
 import { UploadProps } from 'antd/lib';
 import { useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { workShopDictionary } from '../../dictionary';
+import { graphicsDictionary } from '@/pages/tb/graphics/dictionary.ts';
 
 interface IValues {
     name: string;
@@ -27,7 +28,7 @@ export const CreateActForm = () => {
     const props: UploadProps = {
         name: 'file',
         multiple: true,
-        action: 'http://localhost:3000/api/v1/files/upload',
+        action: IMAGE_URL,
         onChange(info) {
             const { status } = info.file;
             if (status !== 'uploading') {
@@ -79,15 +80,15 @@ export const CreateActForm = () => {
         <Box $m="10px 24px">
             <Card>
                 <Form onFinish={onFinish} loading={isLoading}>
-                    <Field span={24} label={workShopDictionary.labels[0]} name="name" required={true}>
-                        <Input placeholder={workShopDictionary.labels[0]} />
+                    <Field span={24} label={graphicsDictionary.labels[0]} name="name" required={true}>
+                        <Input placeholder={graphicsDictionary.labels[0]} />
                     </Field>
 
-                    <Field span={24} label={workShopDictionary.labels[1]} name="sex" required={true}>
-                        <Select loading={isLoading} placeholder={workShopDictionary.labels[0]} showSearch={true} options={data.map((v) => ({ label: v.name, value: v.id }))} />
+                    <Field span={24} label={graphicsDictionary.labels[1]} name="sex" required={true}>
+                        <Select loading={isLoading} placeholder={graphicsDictionary.labels[0]} showSearch={true} options={data.map((v) => ({ label: v.name, value: v.id }))} />
                     </Field>
 
-                    <Field span={24} label={workShopDictionary.labels[2]} name="file" required={true}>
+                    <Field span={24} label={graphicsDictionary.labels[2]} name="file" required={true}>
                         <Upload.Dragger {...props}>
                             <p className="ant-upload-drag-icon">
                                 <Box $align="center" $justify="center">
