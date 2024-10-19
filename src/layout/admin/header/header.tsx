@@ -1,38 +1,29 @@
 import { Icon, User } from '@/components';
-import { connectSocket } from '@/lib';
-import { USER, getLocalStorage } from '@/lib/utils';
+import { useSocket } from '@/store';
 import { Flex } from 'antd';
 import { useEffect, useState } from 'react';
 import { LayoutHeader } from '../../style';
 import { Props } from '../../type';
 
 interface Notification {
-    id: string;
     message: string;
 }
 
 export const Header = ({ bg }: Props) => {
     const [notifications, setNotifications] = useState<Notification[]>([]);
-    const [sockets, setSockets] = useState<any>();
-    const user = getLocalStorage(USER);
+    const { socket } = useSocket();
 
     useEffect(() => {
-        const socket = connectSocket(user.id);
-
         if (socket) {
-            setSockets(socket);
+            socket.on('newNotification', (notification: Notification) => {
+                setNotifications([notification, ...notifications]);
+            });
+
+            return () => {
+                socket.off('newNotification');
+            };
         }
     }, []);
-
-    useEffect(() => {
-        if (sockets) {
-            console.log(sockets, '22222');
-
-            sockets.on('newNotification', (notification: Notification) => {
-                setNotifications((prevNotifications) => [notification, ...prevNotifications]);
-            });
-        }
-    }, [sockets]);
 
     return (
         <>
