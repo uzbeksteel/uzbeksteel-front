@@ -18,7 +18,6 @@ export const useToken = () => {
         requestForToken().then((fcmToken) => {
             if (fcmToken) {
                 setToken(fcmToken);
-                console.log('FCM Token received:', fcmToken);
             }
         });
     }, []);

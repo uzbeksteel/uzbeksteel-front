@@ -65,10 +65,10 @@ export interface CreateUserBody {
     password: string;
     tab_number: string;
     position: string;
-    birth_date: string;
+    birth_date: Date;
     place_of_birth: string;
     nationality?: string;
     phone: string;
     role?: string;
-    user_type?: string;
+    user_type?: UserTypes;
 }
