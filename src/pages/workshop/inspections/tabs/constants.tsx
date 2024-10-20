@@ -1,9 +1,7 @@
 import { Box, Edit } from '@/components';
 import { dateFormatter } from '@/lib/utils';
-import { TUser } from '@/types/users';
-import { Flex, Tag } from 'antd';
+import { Tag } from 'antd';
 import { ColumnsType } from 'antd/es/table';
-import { Key } from 'react';
 
 export const InspectionColumn: ColumnsType<any> = [
     {
@@ -37,28 +35,12 @@ export const InspectionColumn: ColumnsType<any> = [
         title: 'Уста ва меҳнатни муҳофаза қилиш бўйича вакилнинг Ф.И.Ш.',
         dataIndex: ['commissions'],
         key: 'commissions',
-        render: (user: TUser[]) => (
-            <Flex align="center" vertical>
-                {user.map((u: TUser, index: Key | null | undefined) => (
-                    <Tag color="success" key={index}>
-                        {u.first_name}
-                    </Tag>
-                ))}
-            </Flex>
-        ),
         width: '200px',
     },
     {
         title: 'Ижроси учун жавобгар шахслар',
         dataIndex: ['responsibles'],
         key: 'responsibles',
-        render: (user: TUser[]) => {
-            return user.map((u: TUser, index: Key | null | undefined) => (
-                <Tag color="success" key={index}>
-                    {u.first_name} {u.last_name}
-                </Tag>
-            ));
-        },
     },
 
     {
@@ -77,11 +59,12 @@ export const InspectionColumn: ColumnsType<any> = [
     },
     {
         title: 'Ҳаракат',
-
-        render: () => {
+        dataIndex: 'id',
+        key: 'id',
+        render: (id: string) => {
             return (
                 <Box $justify="space-around" $align="center">
-                    <Edit id={'12'} />
+                    <Edit id={id} />
                 </Box>
             );
         },

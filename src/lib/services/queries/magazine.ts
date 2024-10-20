@@ -15,7 +15,7 @@ const getMagazinesByType = async (type: CONTROL_TYPE, id: string): Promise<IMaga
 };
 
 const findMagazineByUser = async (type: CONTROL_TYPE): Promise<IMagazine[]> => api.get(`${Endpoints.Magazine}/${Endpoints.User}` + createQueryString({ type }));
-
+const findOneMagazine = async (id: string): Promise<IMagazine> => await api.get(`${Endpoints.Magazine}/${id}`);
 export const useGetMagzineByTypeQuery = (type: CONTROL_TYPE, id: string) =>
     useQuery<IMagazine[]>({
         queryKey: [Endpoints.Magazine, type, id],
@@ -28,4 +28,11 @@ export const useGetMagzineByUserQuery = (type: CONTROL_TYPE) =>
         queryKey: [Endpoints.Magazine, type],
         queryFn: () => findMagazineByUser(type),
         initialData: [],
+    });
+
+export const useFindOneMagazine = (id: string) =>
+    useQuery<IMagazine>({
+        queryKey: [Endpoints.Magazine, id],
+        queryFn: () => findOneMagazine(id),
+        enabled: !!id,
     });

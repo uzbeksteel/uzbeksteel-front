@@ -62,7 +62,7 @@ export const getImageFormData = (fileList: UploadFile[]) => {
     const formData = new FormData();
 
     for (const file of fileList) {
-        formData.append('images', file.originFileObj as File);
+        formData.append('file', file.originFileObj as File);
     }
 
     return formData;

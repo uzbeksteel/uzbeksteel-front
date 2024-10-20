@@ -3,6 +3,7 @@ import { Tabs } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
 import { inspectionTabs } from './constants';
+import { CheckInspectionModal } from './modals';
 
 export const TbMagazines = () => {
     const navigate = useNavigate();
@@ -18,6 +19,7 @@ export const TbMagazines = () => {
             <Card>
                 <Tabs defaultActiveKey="1" items={inspectionTabs()} />
             </Card>
+            <CheckInspectionModal />
         </Fragment>
     );
 };

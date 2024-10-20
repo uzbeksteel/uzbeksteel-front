@@ -373,12 +373,22 @@ export const Router = () => {
                         },
                         {
                             path: ROUTES.workshopInspections,
-                            element: <WorkshopInspections />,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <WorkshopInspections />,
+                                },
+                                {
+                                    path: ROUTES.add,
+                                    element: <InspectionCreate />,
+                                },
+                                {
+                                    path: ROUTES.single,
+                                    element: <InspectionCreate />,
+                                },
+                            ],
                         },
-                        {
-                            path: ROUTES.workshopInspectionsAdd,
-                            element: <InspectionCreate />,
-                        },
+
                         {
                             path: ROUTES.workshopDangers,
                             children: [

@@ -9,17 +9,18 @@ const initialState = {
     isDrawer: false,
     search: '',
     action: history.action,
-    imageId: 0,
+    imageId: '',
     fileList: [],
+    extraFileList: [],
     location: history.location,
     collapsed: getLocalStorage(COLLAPSED) ?? false,
     previewImage: '',
     previewTitle: '',
+    extraImageId: '',
 };
 
 const useAppBase = create<IAppStore>()((set) => ({
     ...initialState,
-
     setTheme: (theme) =>
         set((state) => {
             setLocalStorage(THEME, theme);
@@ -29,8 +30,10 @@ const useAppBase = create<IAppStore>()((set) => ({
                 theme,
             };
         }),
+    setExtraFileList: (extraFileList) => set({ extraFileList }),
     setSearch: (search) => set(() => ({ search })),
     setImageId: (imageId) => set(() => ({ imageId })),
+    setExtraImageId: (extraImageId) => set({ extraImageId }),
     setHistory: ({ action, location }) => set(() => ({ action, location })),
     setIsModal: (isModal) => set(() => ({ isModal })),
     setIsDrawer: (isDrawer) => set(() => ({ isDrawer })),

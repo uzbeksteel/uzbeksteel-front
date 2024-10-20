@@ -6,20 +6,17 @@ import { useState } from 'react';
 import { useDeleteFileQuery, useUploadFileQuery } from '../services/queries';
 import { VALID_MIME_TYPES, getImageFormData, getImgUrl, handleBeforeUpload, handlePreview } from '../utils';
 
-export const useUpload = (mutateAsync: any, isDisable?: boolean) => {
+export const useUpload = (_mutateAsync?: any, isDisable?: boolean) => {
     const [values, setValues] = useState<any>(null);
     const [fileList, setFileList] = useState<UploadFile[]>([]);
+    const [uploadedFileId, setUploadedFileId] = useState<string | null>(null);
     const { setIsModal, setPreviewImage, setPreviewTitle } = useAppStore();
     const { mutateAsync: uploadMutateAsync } = useUploadFileQuery(onUploadSuccess);
     const { mutateAsync: deleteMutateAsync } = useDeleteFileQuery(onDeleteSuccess);
 
     function onUploadSuccess(data: TUploadFileResponse) {
-        const newValues = {
-            ...values,
-            image_id: data.id,
-        };
+        setUploadedFileId(data.id);
         setFileList([]);
-        mutateAsync(newValues);
     }
 
     function onDeleteSuccess(data: any) {
@@ -58,6 +55,8 @@ export const useUpload = (mutateAsync: any, isDisable?: boolean) => {
     const handleChange: UploadProps['onChange'] = ({ fileList: newFileList }) => setFileList(newFileList);
 
     const handleOnFinish = (values: any) => {
+        console.log(fileList);
+
         if (fileList.length === 0) {
             return message.warning('Пожалуйста, загрузите изображения');
         } else {
@@ -87,6 +86,7 @@ export const useUpload = (mutateAsync: any, isDisable?: boolean) => {
     };
 
     return {
+        uploadedFileId,
         uploadProps,
         fieldProps,
         setFileList,

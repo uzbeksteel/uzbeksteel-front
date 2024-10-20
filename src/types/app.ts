@@ -7,20 +7,24 @@ export interface IAppStore {
     action: Action;
     isModal: boolean;
     isDrawer: boolean;
-    imageId: number;
+    imageId: string;
     fileList: UploadFile[];
+    extraFileList: UploadFile[];
     location: Location;
     collapsed: boolean;
     previewImage: string;
     previewTitle: string;
+    extraImageId: string;
 
     setTheme: (theme: ETheme) => void;
     setSearch: (search: string) => void;
     setHistory: ({ action, location }: THistory) => void;
-    setImageId: (imageId: number) => void;
+    setImageId: (imageId: string) => void;
+    setExtraImageId: (extraImageId: string) => void;
     setIsModal: (isModal: boolean) => void;
     setIsDrawer: (isDrawer: boolean) => void;
     setFileList: (fileList: UploadFile[]) => void;
+    setExtraFileList: (fextraFileList: UploadFile[]) => void;
     setCollapsed: (collapsed: boolean) => void;
     setPreviewImage: (image: string) => void;
     setPreviewTitle: (title: string) => void;
