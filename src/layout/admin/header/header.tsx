@@ -16,14 +16,18 @@ export const Header = ({ bg }: Props) => {
     useEffect(() => {
         if (socket) {
             socket.on('newNotification', (notification: Notification) => {
-                setNotifications([notification, ...notifications]);
+                setNotifications([notification]);
             });
 
             return () => {
                 socket.off('newNotification');
             };
         }
-    }, []);
+    }, [socket]);
+
+    useEffect(() => {
+        console.log(notifications);
+    }, [notifications]);
 
     return (
         <>
