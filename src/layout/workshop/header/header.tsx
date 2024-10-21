@@ -1,4 +1,4 @@
-import { Icon, User } from '@/components';
+import { Icon, LanguageSelect, User } from '@/components';
 import { Flex } from 'antd';
 import { LayoutHeader } from '../../style';
 import { Props } from '../../type';
@@ -11,12 +11,12 @@ export const Header = ({ bg }: Props) => {
                     <img src="/logo.svg" height={40} width={140} />
                 </Flex>
 
-                <Flex gap="large">
+                <Flex gap="large" align="center">
                     <Icon name="Expand" color="#D5680A" />
 
                     <Icon name="Settings" color="#D5680A" />
 
-                    <Icon name="Globe" color="#D5680A" />
+                    <LanguageSelect />
                     <User />
                 </Flex>
             </LayoutHeader>

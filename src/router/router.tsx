@@ -2,7 +2,7 @@ import { ROUTES } from '@/constants';
 import { AdminLayout, TbLayout, WorkshopLayout } from '@/layout';
 import { MutateHealthResult, MutateIntroBriefing, MutatePersonalCard, OrderReport } from '@/pages';
 import { useAuthStore } from '@/store';
-import { useRoutes } from 'react-router-dom';
+import { useRoutes, useSearchParams } from 'react-router-dom';
 import {
     AccidentDetails,
     Accidents,
@@ -69,9 +69,31 @@ import {
 } from './loadable';
 import { Protected } from './protected';
 import { Public } from './public';
+import { useTranslation } from 'react-i18next';
+import { startTransition, useEffect } from 'react';
 
 export const Router = () => {
     const { isAuth } = useAuthStore();
+    const { i18n } = useTranslation();
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const defaultLanguage = (i18n.language || i18n.options.fallbackLng || 'уз') as string;
+
+    useEffect(() => {
+        let lngParam = searchParams.get('lng');
+
+        if (!lngParam) {
+            lngParam = defaultLanguage;
+            searchParams.set('lng', lngParam);
+            setSearchParams(searchParams);
+        }
+
+        if (i18n.language !== lngParam) {
+            startTransition(() => {
+                i18n.changeLanguage(lngParam);
+            });
+        }
+    }, [searchParams, i18n, defaultLanguage]);
 
     return useRoutes([
         {
