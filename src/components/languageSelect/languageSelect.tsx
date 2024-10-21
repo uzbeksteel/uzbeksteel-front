@@ -11,7 +11,7 @@ const StyledSelect = styled(Select)<SelectProps>`
     }
 
     .ant-select-arrow {
-        color: #000;
+        color: #d5680a;
     }
 `;
 
