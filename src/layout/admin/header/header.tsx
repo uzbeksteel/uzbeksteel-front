@@ -1,4 +1,4 @@
-import { Icon, LanguageSelect, User } from '@/components';
+import { FullscreenButton, Icon, LanguageSelect, User } from '@/components';
 import { useSocket } from '@/store';
 import { Flex } from 'antd';
 import { useEffect, useState } from 'react';
@@ -33,7 +33,7 @@ export const Header = ({ bg }: Props) => {
                 </Flex>
 
                 <Flex gap="large" align="center">
-                    <Icon name="Expand" color="#D5680A" />
+                    <FullscreenButton />
 
                     <Icon name="Bell" color="#D5680A" />
 

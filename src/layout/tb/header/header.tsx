@@ -1,4 +1,4 @@
-import { Icon, LanguageSelect, User } from '@/components';
+import { FullscreenButton, Icon, LanguageSelect, User } from '@/components';
 import { Flex } from 'antd';
 import { LayoutHeader } from '../../style';
 import { Props } from '../../type';
@@ -12,7 +12,7 @@ export const Header = ({ bg }: Props) => {
                 </Flex>
 
                 <Flex gap="large" align="center">
-                    <Icon name="Expand" color="#D5680A" />
+                    <FullscreenButton />
 
                     <Icon name="Settings" color="#D5680A" />
 

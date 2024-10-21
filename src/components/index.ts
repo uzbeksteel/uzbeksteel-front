@@ -20,3 +20,4 @@ export * from './dragger';
 export { User } from './user';
 export { AutoComplete } from './autoComplete';
 export { LanguageSelect } from './languageSelect';
+export { FullscreenButton } from './fullscreenButton';
