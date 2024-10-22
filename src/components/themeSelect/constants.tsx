@@ -1,9 +1,10 @@
 import { SelectProps } from 'antd';
 import { Box, Icon } from '@/components';
+import { Theme } from '@/constants';
 
 export const selectOptions: SelectProps['options'] = [
     {
-        value: 'dark',
+        value: Theme.DARK,
         label: (
             <Box $align="center" $gap="5px">
                 <Icon name="Moon" color="#d5680a" /> Dark
@@ -11,7 +12,7 @@ export const selectOptions: SelectProps['options'] = [
         ),
     },
     {
-        value: 'light',
+        value: Theme.LIGHT,
         label: (
             <Box $align="center" $gap="5px">
                 <Icon name="Sun" color="#d5680a" /> Light
@@ -19,5 +20,3 @@ export const selectOptions: SelectProps['options'] = [
         ),
     },
 ];
-
-export const browserTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';

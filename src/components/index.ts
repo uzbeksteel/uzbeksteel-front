@@ -21,4 +21,4 @@ export { User } from './user';
 export { AutoComplete } from './autoComplete';
 export { LanguageSelect } from './languageSelect';
 export { FullscreenButton } from './fullscreenButton';
-export { ThemeSelect } from './themeButton';
+export { ThemeSelect } from './themeSelect';

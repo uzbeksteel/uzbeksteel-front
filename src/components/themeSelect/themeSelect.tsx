@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import { Select, SelectProps } from 'antd';
-import { browserTheme, selectOptions } from '@/components/themeButton/constants.tsx';
+import { selectOptions } from '@/components/themeSelect/constants.tsx';
 import { useSearchParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { getLocalStorage, setLocalStorage } from '@/lib/utils';
+import { useEffect } from 'react';
+import { useThemeStore } from '@/store';
+import { Theme } from '@/constants';
 
 const StyledSelect = styled(Select)<SelectProps>`
     .ant-select-selector {
@@ -19,26 +20,19 @@ const StyledSelect = styled(Select)<SelectProps>`
 export const ThemeSelect = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const initialTheme = searchParams.get('theme') || getLocalStorage('theme') || browserTheme;
-
-    const [theme, setTheme] = useState(initialTheme);
+    const { theme, setTheme } = useThemeStore();
 
     useEffect(() => {
-        const urlTheme = searchParams.get('theme');
+        const urlTheme = searchParams.get('theme') as Theme;
         if (urlTheme) {
             setTheme(urlTheme);
-            setLocalStorage('theme', urlTheme);
-        } else if (getLocalStorage('theme')) {
-            setTheme(getLocalStorage('theme'));
-        } else {
-            setTheme(browserTheme);
         }
-    }, [searchParams, browserTheme]);
+    }, [searchParams, setTheme]);
 
-    const handleThemeChange = (value: string) => {
+    const handleThemeChange = (value: Theme) => {
         setTheme(value);
         setSearchParams({ theme: value });
-        setLocalStorage('theme', value);
     };
+
     return <StyledSelect options={selectOptions} value={theme} onChange={(value) => handleThemeChange(value)} />;
 };
