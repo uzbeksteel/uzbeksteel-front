@@ -27,3 +27,8 @@ export enum GraphicStatus {
     CHECKED = 'CHECKED',
     COMPLETED = 'COMPLETED',
 }
+
+export enum Theme {
+    DARK = 'dark',
+    LIGHT = 'light',
+}

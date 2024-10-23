@@ -2,7 +2,6 @@ import { UploadFile } from 'antd';
 import { Action, Location } from 'history';
 
 export interface IAppStore {
-    theme: ETheme;
     search: string;
     action: Action;
     isModal: boolean;
@@ -16,7 +15,6 @@ export interface IAppStore {
     previewTitle: string;
     extraImageId: string;
 
-    setTheme: (theme: ETheme) => void;
     setSearch: (search: string) => void;
     setHistory: ({ action, location }: THistory) => void;
     setImageId: (imageId: string) => void;
@@ -34,12 +32,6 @@ type THistory = {
     action: Action;
     location: Location;
 };
-
-export enum ETheme {
-    LIGHT = 'light',
-    DARK = 'dark',
-    SYSTEM = 'system',
-}
 
 export type TUploadFileResponse = {
     images: string[];

@@ -1,4 +1,4 @@
-import { FullscreenButton, Icon, LanguageSelect, User } from '@/components';
+import { FullscreenButton, Icon, LanguageSelect, ThemeSelect, User } from '@/components';
 import { useSocket } from '@/store';
 import { Flex } from 'antd';
 import { useEffect, useState } from 'react';
@@ -40,9 +40,7 @@ export const Header = ({ bg }: Props) => {
                     <FullscreenButton />
 
                     <Icon name="Bell" color="#D5680A" />
-
-                    <Icon name="Settings" color="#D5680A" />
-
+                    <ThemeSelect />
                     <LanguageSelect />
 
                     <User />

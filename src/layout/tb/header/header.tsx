@@ -1,4 +1,4 @@
-import { FullscreenButton, Icon, LanguageSelect, User } from '@/components';
+import { FullscreenButton, LanguageSelect, ThemeSelect, User } from '@/components';
 import { Flex } from 'antd';
 import { LayoutHeader } from '../../style';
 import { Props } from '../../type';
@@ -13,11 +13,8 @@ export const Header = ({ bg }: Props) => {
 
                 <Flex gap="large" align="center">
                     <FullscreenButton />
-
-                    <Icon name="Settings" color="#D5680A" />
-
+                    <ThemeSelect />
                     <LanguageSelect />
-
                     <User />
                 </Flex>
             </LayoutHeader>

@@ -1,10 +1,9 @@
-import { COLLAPSED, THEME, getLocalStorage, history, setLocalStorage } from '@/lib/utils';
-import { ETheme, IAppStore } from '@/types/app';
+import { COLLAPSED, getLocalStorage, history, setLocalStorage } from '@/lib/utils';
+import { IAppStore } from '@/types/app';
 import { create } from 'zustand';
 import { createSelectors } from '../createSelectors';
 
 const initialState = {
-    theme: getLocalStorage(THEME) || ETheme.LIGHT,
     isModal: false,
     isDrawer: false,
     search: '',
@@ -21,15 +20,6 @@ const initialState = {
 
 const useAppBase = create<IAppStore>()((set) => ({
     ...initialState,
-    setTheme: (theme) =>
-        set((state) => {
-            setLocalStorage(THEME, theme);
-
-            return {
-                ...state,
-                theme,
-            };
-        }),
     setExtraFileList: (extraFileList) => set({ extraFileList }),
     setSearch: (search) => set(() => ({ search })),
     setImageId: (imageId) => set(() => ({ imageId })),
