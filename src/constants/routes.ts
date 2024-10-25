@@ -40,6 +40,7 @@ export const ROUTES = {
     adminAnalyticalData: '/admin/analytical-data',
     adminArchives: '/admin/archive',
     addWorkshopBranchMaster: 'add-master',
+    notifications: 'notifications',
 
     // work shop routes
     workshop: '/workshop',

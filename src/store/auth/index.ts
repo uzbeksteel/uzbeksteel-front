@@ -1,14 +1,15 @@
 import { clearLocalStorage, getLocalStorage, setLocalStorage, TOKEN, USER } from '@/lib/utils';
+import { fromBase64, toBase64 } from '@/lib/utils/base64.ts';
 import { create } from 'zustand';
 import { createSelectors } from '../createSelectors';
 import { IAuthStore } from './types';
-import { fromBase64, toBase64 } from '@/lib/utils/base64.ts';
 
 const useAppBase = create<IAuthStore>()((set) => ({
     token: getLocalStorage(TOKEN),
     isAuth: null,
     isInitiated: true,
     user: fromBase64(getLocalStorage(USER)),
+    fcmToken: null,
 
     logout: () =>
         set((state) => {
@@ -38,6 +39,7 @@ const useAppBase = create<IAuthStore>()((set) => ({
             setLocalStorage(USER, toBase64(user));
             return { user };
         }),
+    setFcmToken: (fcm) => set(() => ({ fcmToken: fcm })),
 }));
 
 export const useAuthStore = createSelectors(useAppBase);

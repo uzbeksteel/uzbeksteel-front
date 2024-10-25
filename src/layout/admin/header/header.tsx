@@ -1,34 +1,9 @@
-import { FullscreenButton, Icon, LanguageSelect, ThemeSelect, User } from '@/components';
-import { useSocket } from '@/store';
+import { FullscreenButton, LanguageSelect, NotificationBell, ThemeSelect, User } from '@/components';
 import { Flex } from 'antd';
-import { useEffect, useState } from 'react';
 import { LayoutHeader } from '../../style';
 import { Props } from '../../type';
 
-interface Notification {
-    message: string;
-}
-
 export const Header = ({ bg }: Props) => {
-    const [notifications, setNotifications] = useState<Notification[]>([]);
-    const { socket } = useSocket();
-
-    useEffect(() => {
-        if (socket) {
-            socket.on('newNotification', (notification: Notification) => {
-                setNotifications([notification]);
-            });
-
-            return () => {
-                socket.off('newNotification');
-            };
-        }
-    }, [socket]);
-
-    useEffect(() => {
-        console.log(notifications);
-    }, [notifications]);
-
     return (
         <>
             <LayoutHeader $bg={bg}>
@@ -37,9 +12,8 @@ export const Header = ({ bg }: Props) => {
                 </Flex>
 
                 <Flex gap="large" align="center">
+                    <NotificationBell />
                     <FullscreenButton />
-
-                    <Icon name="Bell" color="#D5680A" />
                     <ThemeSelect />
                     <LanguageSelect />
 

@@ -1,10 +1,9 @@
 import { requestForToken } from '@/lib/config/firebase';
 import { useAuthStore } from '@/store/auth';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export const useToken = () => {
-    const { token, isInitiated, setIsAuth, setIsInitiated } = useAuthStore();
-    const [tokensw, setToken] = useState<string | null>(null);
+    const { token, isInitiated, setIsAuth, setFcmToken, setIsInitiated } = useAuthStore();
 
     const getAppConfigs = () => {
         if (token) {
@@ -17,12 +16,10 @@ export const useToken = () => {
         getAppConfigs();
         requestForToken().then((fcmToken) => {
             if (fcmToken) {
-                setToken(fcmToken);
+                setFcmToken(fcmToken);
             }
         });
     }, []);
-
-    console.log({ tokensw });
 
     return { isInitiated };
 };

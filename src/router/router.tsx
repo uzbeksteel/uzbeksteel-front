@@ -1,12 +1,16 @@
+import { Loading } from '@/components';
 import { ROUTES } from '@/constants';
 import { AdminLayout, TbLayout, WorkshopLayout } from '@/layout';
+import { useDevice } from '@/lib/hooks';
 import { MutateHealthResult, MutateIntroBriefing, MutatePersonalCard, OrderReport } from '@/pages';
 import { useAuthStore } from '@/store';
+import { startTransition, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useRoutes, useSearchParams } from 'react-router-dom';
 import {
     AccidentDetails,
-    Accidents,
     AccidentWorkshops,
+    Accidents,
     AddAccident,
     AddAccidentAct,
     AddAccidentOrder,
@@ -37,8 +41,8 @@ import {
     GraphicsDetail,
     HealthResult,
     HighDangerDetails,
-    HighDangers,
     HighDangerWorkshops,
+    HighDangers,
     Home,
     InitWorkTraining,
     InspectionCreate,
@@ -54,6 +58,7 @@ import {
     MutateWorkPermission,
     MutationEmergencyBriefing,
     MutationRepeatBriefing,
+    NotificationsPage,
     PersonalCardDetails,
     PersonalCards,
     Profession,
@@ -69,12 +74,12 @@ import {
 } from './loadable';
 import { Protected } from './protected';
 import { Public } from './public';
-import { useTranslation } from 'react-i18next';
-import { startTransition, useEffect } from 'react';
 
 export const Router = () => {
     const { isAuth } = useAuthStore();
     const { i18n } = useTranslation();
+    const { isPending } = useDevice();
+
     const [searchParams, setSearchParams] = useSearchParams();
 
     const defaultLanguage = (i18n.language || i18n.options.fallbackLng || 'уз') as string;
@@ -90,10 +95,13 @@ export const Router = () => {
 
         if (i18n.language !== lngParam) {
             startTransition(() => {
-                i18n.changeLanguage(lngParam);
+                i18n.changeLanguage(lngParam!);
             });
         }
     }, [searchParams, i18n, defaultLanguage]);
+    if (isPending) {
+        return <Loading />;
+    }
 
     return useRoutes([
         {
@@ -376,6 +384,10 @@ export const Router = () => {
                                 },
                             ],
                         },
+                        {
+                            path: ROUTES.notifications,
+                            children: [{ index: true, element: <NotificationsPage /> }],
+                        },
                     ],
                 },
                 {
@@ -385,6 +397,10 @@ export const Router = () => {
                         {
                             index: true,
                             element: <WorkshopHome />,
+                        },
+                        {
+                            path: ROUTES.notifications,
+                            children: [{ index: true, element: <NotificationsPage /> }],
                         },
                         {
                             path: ROUTES.workshopGraphics,
@@ -681,6 +697,10 @@ export const Router = () => {
                         {
                             index: true,
                             element: <AdminHome />,
+                        },
+                        {
+                            path: ROUTES.notifications,
+                            children: [{ index: true, element: <NotificationsPage /> }],
                         },
                         {
                             path: ROUTES.adminWorkshop,

@@ -73,3 +73,6 @@ export const HighDangerDetails = getLoadablePage('HighDangerDetails');
 export const CreateHighDangerLicence = getLoadablePage('CreateHighDangerLicence');
 export const AddWorkshopBranchMaster = getLoadablePage('AddWorkshopBranchMaster');
 export const CreateWorkshopEmployee = getLoadablePage('CreateWorkshopEmployee');
+
+// GENERAL
+export const NotificationsPage = getLoadablePage('NotificationsPage');

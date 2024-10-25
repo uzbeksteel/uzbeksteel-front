@@ -1,5 +1,6 @@
 export { useAuthSocket } from './use-auth-socket';
 export { useDebounce } from './use-debounce';
+export { useDevice } from './use-device';
 export { useError } from './use-error';
 export { usePathname } from './use-pathname';
 export { useGetQuery } from './use-query';

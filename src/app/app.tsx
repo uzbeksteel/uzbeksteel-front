@@ -1,4 +1,4 @@
-import { Modal } from '@/components';
+import { Loading, Modal } from '@/components';
 import { useToken } from '@/lib/hooks';
 import { history } from '@/lib/utils';
 import { Router } from '@/router';
@@ -9,7 +9,7 @@ export const App = () => {
     const { isInitiated } = useToken();
 
     if (isInitiated) {
-        return;
+        return <Loading />;
     }
 
     return (

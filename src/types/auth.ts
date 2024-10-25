@@ -1,5 +1,5 @@
-import { ISuccessResponse } from './api';
 import { TUser } from '@/types/users.ts';
+import { ISuccessResponse } from './api';
 
 export type TLoginBody = {
     tabNumber: string;
@@ -19,3 +19,7 @@ export type TLoginData = {
     status: string;
     created_at: string;
 };
+
+export interface IRegisterDevicePayload {
+    deviceToken: string;
+}

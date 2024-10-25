@@ -49,4 +49,5 @@ export enum Endpoints {
     HighDangerOrder = 'high-danger-order',
     HighDangerLicence = 'high-danger-licence',
     Briefing = 'briefing',
+    Devices = 'devices/register',
 }
