@@ -1,6 +1,8 @@
-export const API_URL = (import.meta.env.APP_API_URL as string) || 'https://uzbekstell-back.codetech.uz/api/v1/';
+// export const API_URL = (import.meta.env.APP_API_URL as string) || 'https://uzbekstell-back.codetech.uz/api/v1/';
 
-// export const API_URL = (import.meta.env.APP_API_URL as string) || 'http://localhost:3000/api/v1/';
+export const BASE_URL = import.meta.env.APP_API_URL as string;
+
+export const API_URL = `${BASE_URL}/api/v1`;
 
 export const IMAGE_URL = `${API_URL}/files/upload`;
 

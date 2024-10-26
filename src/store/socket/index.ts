@@ -1,4 +1,5 @@
-import { errorMessage } from '@/lib/utils';
+import { BASE_URL } from '@/constants';
+import { addMessage, errorMessage, successMessage } from '@/lib/utils';
 import { io } from 'socket.io-client';
 import { create } from 'zustand';
 import { initializeAuthStore } from '../auth';
@@ -14,7 +15,7 @@ export const useSocket = create<SocketState>((set) => ({
     connectConnect: (token) => {
         const { logout } = initializeAuthStore();
 
-        const socket = io('http://localhost:3000', {
+        const socket = io(BASE_URL, {
             transports: ['websocket'],
             auth: {
                 token: `${token}`,
@@ -24,7 +25,7 @@ export const useSocket = create<SocketState>((set) => ({
         set({ socket });
 
         socket.on('connect', () => {
-            console.log('Socket connected with id:', socket.id);
+            successMessage('Connection established');
         });
 
         socket.on('connect_error', (error) => {
@@ -37,7 +38,7 @@ export const useSocket = create<SocketState>((set) => ({
         });
 
         socket.on('disconnect', () => {
-            console.log('Socket disconnected');
+            addMessage('Socket disconnected');
         });
     },
     disConnectSocket: () => {

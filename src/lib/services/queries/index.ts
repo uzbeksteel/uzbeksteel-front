@@ -6,6 +6,7 @@ export { Endpoints } from './endpoints';
 export * from './graphic';
 export * from './high-dangers';
 export * from './magazine';
+export * from './notifications';
 export * from './personal-cards';
 export * from './profession';
 export * from './r-briefing';

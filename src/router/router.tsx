@@ -99,6 +99,7 @@ export const Router = () => {
             });
         }
     }, [searchParams, i18n, defaultLanguage]);
+
     if (isPending) {
         return <Loading />;
     }

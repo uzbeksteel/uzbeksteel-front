@@ -1,3 +1,4 @@
+import { history } from '@/lib/utils';
 import { useSocket } from '@/store';
 import { Notification } from '@/types/notifications';
 import { BellOutlined } from '@ant-design/icons';
@@ -23,10 +24,6 @@ export const NotificationBell: React.FC = () => {
         }
     }, [socket]);
 
-    useEffect(() => {
-        console.log(notifications);
-    }, [notifications]);
-
     const handleMarkAllAsRead = () => {
         setNotifications((prevNotifications) => prevNotifications.map((notification) => ({ ...notification, read: true })));
         setUnreadCount(0);
@@ -44,9 +41,14 @@ export const NotificationBell: React.FC = () => {
     );
 
     return (
-        <Popover content={notificationList} title="Notifications" trigger="click">
+        <Popover content={notificationList} title="Notifications" trigger="hover">
             <Badge count={unreadCount}>
-                <BellOutlined style={{ fontSize: '24px', color: '#D5680C', cursor: 'pointer' }} />
+                <BellOutlined
+                    onClick={() => {
+                        history.push('/notifications');
+                    }}
+                    style={{ fontSize: '24px', color: '#D5680C', cursor: 'pointer' }}
+                />
             </Badge>
         </Popover>
     );
