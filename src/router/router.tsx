@@ -1,16 +1,14 @@
 import { Loading } from '@/components';
 import { ROUTES } from '@/constants';
 import { AdminLayout, TbLayout, WorkshopLayout } from '@/layout';
-import { useDevice } from '@/lib/hooks';
+import { useBootstrap, useDevice } from '@/lib/hooks';
 import { MutateHealthResult, MutateIntroBriefing, MutatePersonalCard, OrderReport } from '@/pages';
 import { useAuthStore } from '@/store';
-import { startTransition, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useRoutes, useSearchParams } from 'react-router-dom';
+import { useRoutes } from 'react-router-dom';
 import {
     AccidentDetails,
-    AccidentWorkshops,
     Accidents,
+    AccidentWorkshops,
     AddAccident,
     AddAccidentAct,
     AddAccidentOrder,
@@ -41,8 +39,8 @@ import {
     GraphicsDetail,
     HealthResult,
     HighDangerDetails,
-    HighDangerWorkshops,
     HighDangers,
+    HighDangerWorkshops,
     Home,
     InitWorkTraining,
     InspectionCreate,
@@ -77,28 +75,8 @@ import { Public } from './public';
 
 export const Router = () => {
     const { isAuth } = useAuthStore();
-    const { i18n } = useTranslation();
     const { isPending } = useDevice();
-
-    const [searchParams, setSearchParams] = useSearchParams();
-
-    const defaultLanguage = (i18n.language || i18n.options.fallbackLng || 'уз') as string;
-
-    useEffect(() => {
-        let lngParam = searchParams.get('lng');
-
-        if (!lngParam) {
-            lngParam = defaultLanguage;
-            searchParams.set('lng', lngParam);
-            setSearchParams(searchParams);
-        }
-
-        if (i18n.language !== lngParam) {
-            startTransition(() => {
-                i18n.changeLanguage(lngParam!);
-            });
-        }
-    }, [searchParams, i18n, defaultLanguage]);
+    useBootstrap();
     if (isPending) {
         return <Loading />;
     }
