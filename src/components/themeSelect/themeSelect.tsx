@@ -31,7 +31,9 @@ export const ThemeSelect = () => {
 
     const handleThemeChange = (value: Theme) => {
         setTheme(value);
-        setSearchParams({ theme: value });
+        const updatedParams = new URLSearchParams(searchParams);
+        updatedParams.set('theme', value);
+        setSearchParams(updatedParams, { replace: true });
     };
 
     return <StyledSelect options={selectOptions} value={theme} onChange={(value) => handleThemeChange(value)} />;
