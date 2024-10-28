@@ -1,6 +1,6 @@
 import { startTransition, useEffect, useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
 
 export const useBootstrap = () => {
     const { i18n } = useTranslation();
@@ -21,5 +21,5 @@ export const useBootstrap = () => {
                 i18n.changeLanguage(lngParam);
             });
         }
-    }, [searchParams, setSearchParams, i18n, defaultLanguage]);
+    }, [searchParams, i18n, defaultLanguage]);
 };

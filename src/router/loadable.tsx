@@ -43,6 +43,7 @@ export const Profession = getLoadablePage('Profession');
 export const MutateProfession = getLoadablePage('MutateProfession');
 export const EmergancyBreafing = getLoadablePage('EmergancyBreafing');
 export const MutationEmergencyBriefing = getLoadablePage('MutationEmergencyBriefing');
+export const WorkShop = getLoadablePage('Workshop');
 
 // admin
 export const AdminHome = getLoadablePage('AdminHome');

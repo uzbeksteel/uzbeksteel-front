@@ -1,8 +1,8 @@
-import { IProfession } from '@/types/profession';
+import { IWorkshop } from '@/types/workshop';
 import { ColumnType } from 'antd/es/table';
-import { Actions } from '../../workshop/components/actions';
+import { Actions } from './components/actions';
 
-export const columns: ColumnType<IProfession>[] = [
+export const columns: ColumnType<IWorkshop>[] = [
     {
         title: 'Т/р',
         dataIndex: 'id',
@@ -13,11 +13,6 @@ export const columns: ColumnType<IProfession>[] = [
         title: 'Номи',
         dataIndex: 'name',
         key: '1',
-    },
-    {
-        title: 'Тавсифи',
-        dataIndex: 'description',
-        key: '2',
     },
     {
         title: 'Харакатлар',

@@ -1,10 +1,10 @@
 import { createQueryString } from '@/lib/helper';
 import { IResponse, TParams } from '@/types/app';
+import { IEmerganceyBreafing } from '@/types/emergancy-breafing';
 import { IIntroBriefing, IOrder, IPersonalCard, IPersonalCardMedical, IRepatBriefing, ISafetyInfo, ISafetyNotes, IWorkInitTraining, IWorkPermission } from '@/types/personal-cards';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api';
 import { Endpoints } from './endpoints';
-import { IEmerganceyBreafing } from '@/types/emergancy-breafing';
 
 export const getSafetyInfo = async (persoanlcardId: string, search?: string) => {
     const response: any = await api.get(`${Endpoints.SafetyInfo}/byPersonalcard?filter.personalCard.id=${persoanlcardId}${search?.length ? `&search=${search}` : ''}`);
@@ -61,8 +61,8 @@ export const getWorkPermission = async (persoanlcardId: string) => {
     return responce;
 };
 
-const findAll = async (search?: string): Promise<IResponse<IPersonalCard[]>> => {
-    const responce: any = await api.get(Endpoints.PersonalCard + createQueryString({ search }));
+const findAll = async (search?: string, id?: string): Promise<IResponse<IPersonalCard[]>> => {
+    const responce: any = await api.get(Endpoints.PersonalCard + createQueryString({ search, 'filter.workshop.id': id }));
     return responce;
 };
 
@@ -89,10 +89,10 @@ export const useGetPersonalCardQuery = (id: TParams) =>
         refetchOnWindowFocus: false,
     });
 
-export const useGetPersonalCardsQuery = (search: string) =>
+export const useGetPersonalCardsQuery = (search: string, id?: string) =>
     useQuery<IResponse<IPersonalCard[]>>({
-        queryKey: [Endpoints.PersonalCard, search],
-        queryFn: () => findAll(search),
+        queryKey: [Endpoints.PersonalCard, search, id],
+        queryFn: () => findAll(search, id),
     });
 
 export const useIntroBriefingQuery = (personalCardId: string) => {

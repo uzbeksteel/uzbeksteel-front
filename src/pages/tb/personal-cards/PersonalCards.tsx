@@ -3,13 +3,14 @@ import { UserRoles } from '@/constants';
 import { useGetPersonalCardsQuery } from '@/lib/services';
 import { checkRole } from '@/lib/utils';
 import { useAppStore } from '@/store';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
 import { columns } from './components/constants';
 
 export const PersonalCards = () => {
     const { search } = useAppStore();
-    const { data, isLoading } = useGetPersonalCardsQuery(search);
+    const { id } = useParams();
+    const { data, isLoading } = useGetPersonalCardsQuery(search, id);
     const navigate = useNavigate();
 
     const isPermission = checkRole(UserRoles.DIRECTOR);

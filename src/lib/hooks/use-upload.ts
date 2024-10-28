@@ -55,8 +55,6 @@ export const useUpload = (_mutateAsync?: any, isDisable?: boolean) => {
     const handleChange: UploadProps['onChange'] = ({ fileList: newFileList }) => setFileList(newFileList);
 
     const handleOnFinish = (values: any) => {
-        console.log(fileList);
-
         if (fileList.length === 0) {
             return message.warning('Пожалуйста, загрузите изображения');
         } else {
