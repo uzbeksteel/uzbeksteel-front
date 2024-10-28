@@ -12,7 +12,7 @@ i18n.use(Backend)
         fallbackLng: 'уз',
         supportedLngs: languages,
         detection: {
-            order: ['querystring', 'localStorage', 'cookie'],
+            order: ['querystring', 'localStorage', 'cookie', 'navigator'],
             caches: ['localStorage', 'cookie'],
         },
         interpolation: {

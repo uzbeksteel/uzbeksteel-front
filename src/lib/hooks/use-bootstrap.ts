@@ -9,11 +9,12 @@ export const useBootstrap = () => {
     const defaultLanguage = useMemo(() => (i18n.language || i18n.options.fallbackLng || 'уз') as string, [i18n.language, i18n.options.fallbackLng]);
 
     useEffect(() => {
-        let lngParam = searchParams.get('lng') || defaultLanguage;
+        const lngParam = searchParams.get('lng') || defaultLanguage;
 
         if (!searchParams.get('lng')) {
-            searchParams.set('lng', lngParam);
-            setSearchParams(searchParams);
+            const updatedParams = new URLSearchParams(searchParams);
+            updatedParams.set('lng', lngParam);
+            setSearchParams(updatedParams, { replace: true });
         }
 
         if (i18n.language !== lngParam) {

@@ -21,9 +21,12 @@ export const LanguageSelect = () => {
 
     const handleChange = (value: string) => {
         i18n.changeLanguage(value);
-        searchParams.set('lng', value);
-        setSearchParams(searchParams);
+
+        const updatedParams = new URLSearchParams(searchParams);
+        updatedParams.set('lng', value);
+
+        setSearchParams(updatedParams, { replace: true });
     };
 
-    return <StyledSelect options={selectOptions} defaultValue={i18n.language} onChange={(value) => handleChange(value)} />;
+    return <StyledSelect options={selectOptions} value={i18n.language} onChange={(value) => handleChange(value)} />;
 };

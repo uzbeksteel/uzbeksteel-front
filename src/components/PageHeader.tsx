@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { Box, Card, Icon, Typography } from '.';
+import { history } from '@/lib/utils';
 
 interface PageHeaderProps {
     title: string;
