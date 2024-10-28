@@ -31,6 +31,7 @@ export const ROUTES = {
     highDangers: '/high-dangers',
     highDangersDetails: '/high-dangers/:id/details',
     highDangerLicenceAdd: '/high-dangers/:id/licence/add',
+    tbWorkshops: '/tb-workshops',
 
     // admin routes
     admin: '/admin',

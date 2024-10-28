@@ -198,7 +198,7 @@ export const Router = () => {
                             ],
                         },
                         {
-                            path: ROUTES.workshop,
+                            path: ROUTES.tbWorkshops,
                             children: [
                                 {
                                     index: true,

@@ -12,7 +12,7 @@ export const Workshop = () => {
         <Box $direction="column">
             <PageHeader title={'Цехлар'} />
             <Box $p="5px">
-                <Table titleTable="Цехлар" loading={!isLoading} columns={columns} dataSource={data} />
+                <Table titleTable="Цехлар" loading={isLoading} columns={columns} dataSource={data} />
             </Box>
         </Box>
     );

@@ -42,7 +42,7 @@ export const menuItems = [
         label: menuLabels[7],
     },
     {
-        key: ROUTES.workshop,
+        key: ROUTES.tbWorkshops,
         icon: <Icon name="SquareUserRound" />,
         label: menuLabels[8],
     },
