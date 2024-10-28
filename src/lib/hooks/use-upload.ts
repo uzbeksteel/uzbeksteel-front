@@ -4,10 +4,9 @@ import { TUploadFileResponse } from '@/types/app';
 import { FormItemProps, InputProps, UploadFile, UploadProps } from 'antd';
 import { useState } from 'react';
 import { useDeleteFileQuery, useUploadFileQuery } from '../services/queries';
-import { VALID_MIME_TYPES, getImageFormData, getImgUrl, handleBeforeUpload, handlePreview } from '../utils';
+import { getImageFormData, getImgUrl, handleBeforeUpload, handlePreview, VALID_MIME_TYPES } from '../utils';
 
 export const useUpload = (_mutateAsync?: any, isDisable?: boolean) => {
-    const [values, setValues] = useState<any>(null);
     const [fileList, setFileList] = useState<UploadFile[]>([]);
     const [uploadedFileId, setUploadedFileId] = useState<string | null>(null);
     const { setIsModal, setPreviewImage, setPreviewTitle } = useAppStore();
@@ -54,14 +53,13 @@ export const useUpload = (_mutateAsync?: any, isDisable?: boolean) => {
 
     const handleChange: UploadProps['onChange'] = ({ fileList: newFileList }) => setFileList(newFileList);
 
-    const handleOnFinish = (values: any) => {
+    const handleOnFinish = () => {
         if (fileList.length === 0) {
             return message.warning('Пожалуйста, загрузите изображения');
         } else {
             const formData = getImageFormData(fileList);
 
             uploadMutateAsync(formData);
-            setValues(values);
         }
     };
 
