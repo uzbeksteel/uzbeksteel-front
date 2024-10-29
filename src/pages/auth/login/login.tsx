@@ -1,5 +1,5 @@
 import { Typography } from '@/components';
-import { ROUTES, UserTypes } from '@/constants';
+import { ROUTES, UserRoles, UserTypes } from '@/constants';
 import { useLoginQuery } from '@/lib/services';
 import { useAuthStore } from '@/store';
 import { ILoginResponse, TLoginBody } from '@/types/auth';
@@ -19,8 +19,9 @@ export const Login = () => {
         setIsAuth(true);
         setToken(data.accessToken);
         setUser(user);
-
-        if (user.user_type === UserTypes.GRAND_MASTER || user.user_type === UserTypes.MASTER) {
+        if (user.role === UserRoles.ADMIN || user.user_type === UserTypes.ADMIN) {
+            navigate(ROUTES.admin);
+        } else if (user.user_type === UserTypes.GRAND_MASTER || user.user_type === UserTypes.MASTER) {
             navigate(ROUTES.workshop);
         } else if (user.user_type === UserTypes.INDUSTRIAL_SECURITY) {
             navigate(ROUTES.graphics);
