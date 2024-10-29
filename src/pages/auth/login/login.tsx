@@ -20,16 +20,26 @@ export const Login = () => {
         setIsAuth(true);
         setToken(data.accessToken);
         setUser(user);
+
         if (user.user_type === UserTypes.GRAND_MASTER || user.user_type === UserTypes.MASTER) {
             navigate(ROUTES.workshop);
         } else if (user.user_type === UserTypes.INDUSTRIAL_SECURITY) {
             navigate(ROUTES.graphics);
         }
-        requestForToken().then((fcmToken) => {
-            if (fcmToken) {
-                setFcmToken(fcmToken);
-            }
-        });
+
+        if (Notification.permission === 'granted') {
+            requestForToken().then((fcmToken) => {
+                if (fcmToken) {
+                    setFcmToken(fcmToken);
+                }
+            });
+        } else if (Notification.permission !== 'denied') {
+            requestForToken().then((fcmToken) => {
+                if (fcmToken) {
+                    setFcmToken(fcmToken);
+                }
+            });
+        }
     }
 
     const onFinish = (values: TLoginBody) => {
