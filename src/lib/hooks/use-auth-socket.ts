@@ -6,12 +6,14 @@ export const useAuthSocket = () => {
     const { token } = useAuthStore();
 
     useEffect(() => {
-        connectConnect(token!);
+        if (token) {
+            connectConnect(token!);
+        }
 
         return () => {
             disConnectSocket();
         };
-    }, [connectConnect, disConnectSocket]);
+    }, [connectConnect, disConnectSocket, token]);
 
     return { socket };
 };
