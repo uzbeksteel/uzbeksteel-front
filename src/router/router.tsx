@@ -2,7 +2,7 @@ import { Loading } from '@/components';
 import { ROUTES } from '@/constants';
 import { AdminLayout, TbLayout, WorkshopLayout } from '@/layout';
 import { requestForToken } from '@/lib';
-import { useBootstrap, useDevice } from '@/lib/hooks';
+import { useDevice } from '@/lib/hooks';
 import { MutateHealthResult, MutateIntroBriefing, MutatePersonalCard, OrderReport } from '@/pages';
 import { useAuthStore } from '@/store';
 import { useEffect } from 'react';
@@ -79,7 +79,6 @@ import { Public } from './public';
 export const Router = () => {
     const { isAuth, setFcmToken } = useAuthStore();
     const { isPending } = useDevice();
-    useBootstrap();
 
     useEffect(() => {
         if (Notification.permission === 'granted') {

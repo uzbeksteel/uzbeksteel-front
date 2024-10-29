@@ -7,4 +7,3 @@ export { useGetQuery } from './use-query';
 export { useResponsive } from './use-responsive';
 export { useToken } from './use-token';
 export { useUpload } from './use-upload';
-export { useBootstrap } from './use-bootstrap';
