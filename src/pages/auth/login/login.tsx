@@ -1,5 +1,6 @@
 import { Typography } from '@/components';
 import { ROUTES, UserTypes } from '@/constants';
+import { requestForToken } from '@/lib';
 import { useLoginQuery } from '@/lib/services';
 import { useAuthStore } from '@/store';
 import { ILoginResponse, TLoginBody } from '@/types/auth';
@@ -10,7 +11,7 @@ import { Auth } from '../style';
 import { getTabs } from './constants';
 
 export const Login = () => {
-    const { setToken, setIsAuth, setUser } = useAuthStore();
+    const { setToken, setIsAuth, setUser, setFcmToken } = useAuthStore();
     const { mutateAsync, isPending } = useLoginQuery(onSuccess);
     const navigate = useNavigate();
 
@@ -24,6 +25,11 @@ export const Login = () => {
         } else if (user.user_type === UserTypes.INDUSTRIAL_SECURITY) {
             navigate(ROUTES.graphics);
         }
+        requestForToken().then((fcmToken) => {
+            if (fcmToken) {
+                setFcmToken(fcmToken);
+            }
+        });
     }
 
     const onFinish = (values: TLoginBody) => {
