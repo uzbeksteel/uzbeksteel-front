@@ -15,11 +15,20 @@ interface IProps {
 
 export const MutatePersonalCard: FC<IProps> = ({ type = 'create' }) => {
     const [form] = useForm();
-    const { id } = useParams();
+    let id: string | undefined;
+
+    useEffect(() => {
+        if (type === 'edit') {
+            const { id: slug } = useParams();
+            if (id) {
+                id = slug;
+            }
+        }
+    }, []);
 
     const { data: workshops, isLoading, isPending } = getAllWorkshopsQuery();
     const { data: professions, isLoading: ProfessionLoading } = useProfessionsQuery();
-    const { data, isLoading: singleLoading } = useGetPersonalCardQuery(id);
+    const { data, isLoading: singleLoading } = useGetPersonalCardQuery(id!);
 
     const { mutateAsync } = usePersonalCardCreate();
     const { mutateAsync: updatePersonalCard } = usePersonalCardUpdate(id!);
@@ -35,8 +44,9 @@ export const MutatePersonalCard: FC<IProps> = ({ type = 'create' }) => {
 
     const onFinish = (values: any) => {
         if (type === 'create') {
+            const { upload, ...payload } = values;
             mutateAsync({
-                ...values,
+                ...payload,
                 date_of_entry_to_work: dayjs(values.date_of_entry_to_work),
                 fileId: values.upload.file.response.id,
             });
