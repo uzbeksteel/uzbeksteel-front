@@ -26,7 +26,7 @@ export const CreateEmployeeForm = () => {
     const { data: professions, isLoading: isProfessionsLoading } = useProfessionsQuery();
     const { mutate: createUser } = useCreateUserMutation();
 
-    const userTypesOption = Object.keys(UserTypes).map((el) => ({ value: el, label: dictionary.options[el as UserTypes] }));
+    const userTypesOption = Object.keys(UserTypes).map((el) => ({ value: el, label: dictionary.options[el as Exclude<UserTypes, UserTypes.ADMIN>] }));
 
     useEffect(() => {
         if (user?.ishchi) {

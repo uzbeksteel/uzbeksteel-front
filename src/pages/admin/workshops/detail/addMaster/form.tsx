@@ -27,7 +27,7 @@ export const AddMasterForm = () => {
     const { data: user } = getUser1CByTabNumberQuery(search);
     const { data: workshopBranches, isLoading: isWBLoading } = getWorkShopBranchesByRefQuery(id!);
     const { mutate: addUser } = useAddWorkshopBranchMasterMutation();
-    const userTypesOption = Object.keys(UserTypes).map((el) => ({ value: el, label: dictionary.options[el as UserTypes] }));
+    const userTypesOption = Object.keys(UserTypes).map((el) => ({ value: el, label: dictionary.options[el as Exclude<UserTypes, UserTypes.ADMIN>] }));
     useEffect(() => {
         if (user?.ishchi) {
             const fullName = user.ishchi.split(' ');
