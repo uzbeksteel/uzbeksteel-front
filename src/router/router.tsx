@@ -1,8 +1,5 @@
-import { Loading } from '@/components';
 import { ROUTES } from '@/constants';
 import { AdminLayout, TbLayout, WorkshopLayout } from '@/layout';
-import { requestForToken } from '@/lib';
-import { useDevice } from '@/lib/hooks';
 import { MutateHealthResult, MutateIntroBriefing, MutatePersonalCard, OrderReport } from '@/pages';
 import { useAuthStore } from '@/store';
 import { useEffect } from 'react';
@@ -77,28 +74,28 @@ import { Protected } from './protected';
 import { Public } from './public';
 
 export const Router = () => {
-    const { isAuth, setFcmToken } = useAuthStore();
-    const { isPending } = useDevice();
+    const { isAuth } = useAuthStore();
+    // const { isPending } = useDevice();
 
     useEffect(() => {
         if (Notification.permission === 'granted') {
-            requestForToken().then((fcmToken) => {
-                if (fcmToken) {
-                    setFcmToken(fcmToken);
-                }
-            });
+            // requestForToken().then((fcmToken) => {
+            //     if (fcmToken) {
+            //         setFcmToken(fcmToken);
+            //     }
+            // });
         } else if (Notification.permission !== 'denied') {
-            requestForToken().then((fcmToken) => {
-                if (fcmToken) {
-                    setFcmToken(fcmToken);
-                }
-            });
+            // requestForToken().then((fcmToken) => {
+            //     if (fcmToken) {
+            //         setFcmToken(fcmToken);
+            //     }
+            // });
         }
     }, [isAuth]);
 
-    if (isPending) {
-        return <Loading />;
-    }
+    // if (isPending) {
+    //     return <Loading />;
+    // }
 
     return useRoutes([
         {
