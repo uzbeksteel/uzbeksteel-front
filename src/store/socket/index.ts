@@ -1,5 +1,4 @@
 import { BASE_URL } from '@/constants';
-import { addMessage, errorMessage, successMessage } from '@/lib/utils';
 import { io } from 'socket.io-client';
 import { create } from 'zustand';
 import { initializeAuthStore } from '../auth';
@@ -25,20 +24,20 @@ export const useSocket = create<SocketState>((set) => ({
         set({ socket });
 
         socket.on('connect', () => {
-            successMessage('Connection established');
+            console.log('Connected to server');
         });
 
         socket.on('connect_error', (error) => {
             if (error.message === 'Unauthorized') {
                 logout();
-                errorMessage('Authentication failed. Please re-authenticate.');
+                console.log('Authentication failed. Please re-authenticate.');
             } else {
-                errorMessage(`Connection error: ${error.message}`);
+                console.log(`Connection error: ${error.message}`);
             }
         });
 
         socket.on('disconnect', () => {
-            addMessage('Socket disconnected');
+            console.log('Disconnected from server');
         });
     },
     disConnectSocket: () => {
